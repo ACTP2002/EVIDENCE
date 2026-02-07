@@ -1,48 +1,48 @@
 from django.urls import path
-from .views import *
+from . import views
 
 urlpatterns = [
     # Cases
-    path('cases/', CaseListView.as_view()),
-    path('cases/<str:case_id>/', CaseDetailView.as_view()),
-    path('cases/<str:case_id>/customer/', CaseCustomerView.as_view()),
-    path('cases/<str:case_id>/account/', CaseAccountView.as_view()),
-    path('cases/<str:case_id>/transactions/', CaseTransactionsView.as_view()),
-    path('cases/<str:case_id>/logins/', CaseLoginsView.as_view()),
-    path('cases/<str:case_id>/devices/', CaseDevicesView.as_view()),
-    path('cases/<str:case_id>/network/', CaseNetworkView.as_view()),
-    path('cases/<str:case_id>/timeline/', CaseTimelineView.as_view()),
-    path('cases/<str:case_id>/notes/', InvestigationNotesView.as_view()),
+    path('cases/', views.CaseListView.as_view(), name='case-list'),
+    path('cases/<str:case_id>/', views.CaseDetailView.as_view(), name='case-detail'),
+    path('cases/<str:case_id>/customer/', views.CaseCustomerView.as_view(), name='case-customer'),
+    path('cases/<str:case_id>/account/', views.CaseAccountView.as_view(), name='case-account'),
+    path('cases/<str:case_id>/transactions/', views.CaseTransactionsView.as_view(), name='case-transactions'),
+    path('cases/<str:case_id>/logins/', views.CaseLoginsView.as_view(), name='case-logins'),
+    path('cases/<str:case_id>/devices/', views.CaseDevicesView.as_view(), name='case-devices'),
+    path('cases/<str:case_id>/network/', views.CaseNetworkView.as_view(), name='case-network'),
+    path('cases/<str:case_id>/timeline/', views.CaseTimelineView.as_view(), name='case-timeline'),
+    path('cases/<str:case_id>/notes/', views.CaseNotesView.as_view(), name='case-notes'),
     
     # Customers
-    path('customers/', CustomerListView.as_view()),
-    path('customers/<str:customer_id>/', CustomerDetailView.as_view()),
-    path('customers/<str:customer_id>/accounts/', CustomerAccountsView.as_view()),
-    path('customers/<str:customer_id>/cases/', CustomerCasesView.as_view()),
-    path('customers/<str:customer_id>/transactions/', CustomerTransactionsView.as_view()),
-    path('customers/<str:customer_id>/logins/', CustomerLoginsView.as_view()),
+    path('customers/', views.CustomerListView.as_view(), name='customer-list'),
+    path('customers/<str:customer_id>/', views.CustomerDetailView.as_view(), name='customer-detail'),
+    path('customers/<str:customer_id>/accounts/', views.CustomerAccountsView.as_view(), name='customer-accounts'),
+    path('customers/<str:customer_id>/cases/', views.CustomerCasesView.as_view(), name='customer-cases'),
+    path('customers/<str:customer_id>/transactions/', views.CustomerTransactionsView.as_view(), name='customer-transactions'),
+    path('customers/<str:customer_id>/logins/', views.CustomerLoginsView.as_view(), name='customer-logins'),
     
     # Accounts
-    path('accounts/', AccountListView.as_view()),
-    path('accounts/<str:account_id>/', AccountDetailView.as_view()),
-    path('accounts/<str:account_id>/customer/', AccountCustomerView.as_view()),
-    path('accounts/<str:account_id>/transactions/', AccountTransactionsView.as_view()),
-    path('accounts/<str:account_id>/cases/', AccountCasesView.as_view()),
+    path('accounts/', views.AccountListView.as_view(), name='account-list'),
+    path('accounts/<str:account_id>/', views.AccountDetailView.as_view(), name='account-detail'),
+    path('accounts/<str:account_id>/customer/', views.AccountCustomerView.as_view(), name='account-customer'),
+    path('accounts/<str:account_id>/transactions/', views.AccountTransactionsView.as_view(), name='account-transactions'),
+    path('accounts/<str:account_id>/cases/', views.AccountCasesView.as_view(), name='account-cases'),
     
     # Transactions
-    path('transactions/', TransactionListView.as_view()),
-    path('transactions/<str:transaction_id>/', TransactionDetailView.as_view()),
+    path('transactions/', views.TransactionListView.as_view(), name='transaction-list'),
+    path('transactions/<str:transaction_id>/', views.TransactionDetailView.as_view(), name='transaction-detail'),
     
     # Devices
-    path('devices/', DeviceListView.as_view()),
-    path('devices/<str:device_id>/', DeviceDetailView.as_view()),
-    path('devices/<str:device_id>/accounts/', DeviceAccountsView.as_view()),
-    path('devices/<str:device_id>/logins/', DeviceLoginsView.as_view()),
+    path('devices/', views.DeviceListView.as_view(), name='device-list'),
+    path('devices/<str:device_id>/', views.DeviceDetailView.as_view(), name='device-detail'),
+    path('devices/<str:device_id>/accounts/', views.DeviceAccountsView.as_view(), name='device-accounts'),
+    path('devices/<str:device_id>/logins/', views.DeviceLoginsView.as_view(), name='device-logins'),
     
     # Alerts
-    path('alerts/', AlertListView.as_view()),
-    path('alerts/<str:alert_id>/', AlertDetailView.as_view()),
+    path('alerts/', views.AlertListView.as_view(), name='alert-list'),
+    path('alerts/<str:alert_id>/', views.AlertDetailView.as_view(), name='alert-detail'),
     
     # Network
-    path('network/connections/<str:entity_id>/', NetworkConnectionsView.as_view()),
+    path('network/connections/<str:entity_id>/', views.NetworkConnectionsView.as_view(), name='network-connections'),
 ]

@@ -85,6 +85,7 @@ class BaseRelatedView(APIView):
         
         return Response(children)
 
+# ============ Input Data ============================ #
 # ============ CASES ============
 class CaseListView(BaseListView):
     filename = 'cases.json'
@@ -292,3 +293,6 @@ class NetworkConnectionsView(APIView):
     def get(self, request, entity_id):
         connections = DataLoader.filter_by('network_connections.json', entity_id=entity_id)
         return Response(connections)
+    
+
+# ============ Output Data ============================ #

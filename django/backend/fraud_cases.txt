@@ -1,0 +1,377 @@
+[
+        {
+            "case_metadata": {
+                "case_id": "CASE-20260207-000123",
+                "created_at": "2026-02-07T14:22:11Z",
+                "last_updated_at": "2026-02-07T14:35:42Z"
+            },
+            "entity_profile": {
+                "primary_entity": {
+                    "entity_type": "user_account",
+                    "entity_id": "USR-998233",
+                    "attributes": {
+                        "email": "redacted@example.com",
+                        "account_age_days": 12,
+                        "kyc_level": "partial",
+                        "risk_segment": "high"
+                    }
+                },
+                "related_entities": [
+                    {
+                        "entity_type": "device",
+                        "entity_id": "DEV-78219",
+                        "attributes": {
+                            "device_fingerprint": "a8f3c9...",
+                            "first_seen": "2026-02-06T03:12:22Z",
+                            "geo": "MY"
+                        }
+                    },
+                    {
+                        "entity_type": "ip_address",
+                        "entity_id": "IP-185.199.xxx.xxx",
+                        "attributes": {
+                            "asn": "AS13335",
+                            "country": "SG",
+                            "risk_score": 0.91
+                        }
+                    }
+                ]
+            },
+            "alerts": [
+                {
+                    "alert_id": "ALERT-ATO-00091",
+                    "source_system": "ATO_Detector",
+                    "alert_type": "account_takeover",
+                    "severity": "critical",
+                    "confidence": 0.88,
+                    "triggered_at": "2026-02-07T13:55:01Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "login_anomaly",
+                            "details": {
+                                "ip_change": true,
+                                "geo_velocity_km_per_hr": 2100,
+                                "failed_login_attempts": 7
+                            }
+                        }
+                    ],
+                    "raw_signal_refs": ["sig_77821", "sig_77822"]
+                },
+                {
+                    "alert_id": "ALERT-GRAPH-00211",
+                    "source_system": "Graph_Risk_Engine",
+                    "alert_type": "network_risk",
+                    "severity": "high",
+                    "confidence": 0.79,
+                    "triggered_at": "2026-02-07T14:01:44Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "shared_device",
+                            "details": {
+                                "linked_accounts": 5,
+                                "known_fraud_ratio": 0.6
+                            }
+                        }
+                    ]
+                },
+                {
+                    "alert_id": "ALERT-BEHAV-00412",
+                    "source_system": "Behavioral_Anomaly_Model",
+                    "alert_type": "behavior_deviation",
+                    "severity": "medium",
+                    "confidence": 0.71,
+                    "triggered_at": "2026-02-07T14:05:10Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "transaction_pattern_shift",
+                            "details": {
+                                "avg_txn_amount_change_pct": 340,
+                                "time_of_day_shift": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "case_metadata": {
+                "case_id": "CASE-20260207-000456",
+                "created_at": "2026-02-07T09:14:33Z",
+                "last_updated_at": "2026-02-07T11:22:18Z"
+            },
+            "entity_profile": {
+                "primary_entity": {
+                    "entity_type": "merchant",
+                    "entity_id": "MER-445821",
+                    "attributes": {
+                        "business_name": "QuickElectronics Ltd",
+                        "account_age_days": 89,
+                        "kyc_level": "full",
+                        "risk_segment": "medium"
+                    }
+                },
+                "related_entities": [
+                    {
+                        "entity_type": "bank_account",
+                        "entity_id": "BNK-992314",
+                        "attributes": {
+                            "account_holder": "redacted",
+                            "first_seen": "2026-01-15T11:42:01Z",
+                            "country": "ID"
+                        }
+                    }
+                ]
+            },
+            "alerts": [
+                {
+                    "alert_id": "ALERT-CBACK-01124",
+                    "source_system": "Chargeback_Monitor",
+                    "alert_type": "chargeback_spike",
+                    "severity": "critical",
+                    "confidence": 0.94,
+                    "triggered_at": "2026-02-07T09:14:33Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "chargeback_ratio",
+                            "details": {
+                                "chargebacks_7d": 23,
+                                "transactions_7d": 47,
+                                "ratio": 0.489
+                            }
+                        }
+                    ],
+                    "raw_signal_refs": ["sig_91203", "sig_91204"]
+                },
+                {
+                    "alert_id": "ALERT-CATEG-00772",
+                    "source_system": "Category_Risk_Engine",
+                    "alert_type": "high_risk_category",
+                    "severity": "high",
+                    "confidence": 0.82,
+                    "triggered_at": "2026-02-07T10:08:12Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "mcc_shift",
+                            "details": {
+                                "previous_mcc": "5732",
+                                "current_mcc": "5944",
+                                "fraud_rate_current": 0.18
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "case_metadata": {
+                "case_id": "CASE-20260207-000789",
+                "created_at": "2026-02-07T16:41:22Z",
+                "last_updated_at": "2026-02-07T16:41:22Z"
+            },
+            "entity_profile": {
+                "primary_entity": {
+                    "entity_type": "user_account",
+                    "entity_id": "USR-102948",
+                    "attributes": {
+                        "email": "user102948@example.com",
+                        "account_age_days": 421,
+                        "kyc_level": "full",
+                        "risk_segment": "low"
+                    }
+                },
+                "related_entities": [
+                    {
+                        "entity_type": "device",
+                        "entity_id": "DEV-33821",
+                        "attributes": {
+                            "device_fingerprint": "b2d8f1...",
+                            "first_seen": "2025-01-03T08:22:11Z",
+                            "geo": "US"
+                        }
+                    },
+                    {
+                        "entity_type": "ip_address",
+                        "entity_id": "IP-104.28.xxx.xxx",
+                        "attributes": {
+                            "asn": "AS15169",
+                            "country": "US",
+                            "risk_score": 0.12
+                        }
+                    }
+                ]
+            },
+            "alerts": [
+                {
+                    "alert_id": "ALERT-ML-05521",
+                    "source_system": "ML_Transaction_Scorer",
+                    "alert_type": "unusual_transaction",
+                    "severity": "low",
+                    "confidence": 0.63,
+                    "triggered_at": "2026-02-07T16:41:22Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "amount_anomaly",
+                            "details": {
+                                "amount_usd": 8500,
+                                "historical_avg_usd": 145,
+                                "z_score": 4.2
+                            }
+                        }
+                    ],
+                    "raw_signal_refs": ["sig_44501"]
+                }
+            ]
+        },
+        {
+            "case_metadata": {
+                "case_id": "CASE-20260207-001012",
+                "created_at": "2026-02-07T08:03:47Z",
+                "last_updated_at": "2026-02-07T12:19:55Z"
+            },
+            "entity_profile": {
+                "primary_entity": {
+                    "entity_type": "user_account",
+                    "entity_id": "USR-774422",
+                    "attributes": {
+                        "email": "temp_acc@tempmail.io",
+                        "account_age_days": 2,
+                        "kyc_level": "none",
+                        "risk_segment": "critical"
+                    }
+                },
+                "related_entities": [
+                    {
+                        "entity_type": "device",
+                        "entity_id": "DEV-99102",
+                        "attributes": {
+                            "device_fingerprint": "c9a4e2...",
+                            "first_seen": "2026-02-05T19:33:09Z",
+                            "geo": "VN"
+                        }
+                    },
+                    {
+                        "entity_type": "ip_address",
+                        "entity_id": "IP-45.142.xxx.xxx",
+                        "attributes": {
+                            "asn": "AS49870",
+                            "country": "NL",
+                            "risk_score": 0.97
+                        }
+                    }
+                ]
+            },
+            "alerts": [
+                {
+                    "alert_id": "ALERT-MULE-00334",
+                    "source_system": "Mule_Detector",
+                    "alert_type": "money_mule",
+                    "severity": "critical",
+                    "confidence": 0.91,
+                    "triggered_at": "2026-02-07T08:03:47Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "rapid_in_out_flow",
+                            "details": {
+                                "inflow_24h_usd": 12400,
+                                "outflow_24h_usd": 11950,
+                                "retention_ratio": 0.036
+                            }
+                        }
+                    ],
+                    "raw_signal_refs": ["sig_88912", "sig_88913", "sig_88914"]
+                },
+                {
+                    "alert_id": "ALERT-SYNTH-00881",
+                    "source_system": "Synthetic_Identity_Engine",
+                    "alert_type": "synthetic_identity",
+                    "severity": "critical",
+                    "confidence": 0.86,
+                    "triggered_at": "2026-02-07T11:47:29Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "email_disposable",
+                            "details": {
+                                "domain": "tempmail.io",
+                                "disposable_score": 0.99
+                            }
+                        },
+                        {
+                            "evidence_type": "identity_mix",
+                            "details": {
+                                "name_age_mismatch": true,
+                                "address_validation_failed": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "alert_id": "ALERT-VPN-00192",
+                    "source_system": "Network_Intelligence",
+                    "alert_type": "vpn_proxy_usage",
+                    "severity": "medium",
+                    "confidence": 0.77,
+                    "triggered_at": "2026-02-07T08:12:33Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "datacenter_ip",
+                            "details": {
+                                "hosting_provider": "ServerSpace",
+                                "vpn_probability": 0.89
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "case_metadata": {
+                "case_id": "CASE-20260207-001345",
+                "created_at": "2026-02-07T19:28:14Z",
+                "last_updated_at": "2026-02-07T19:28:14Z"
+            },
+            "entity_profile": {
+                "primary_entity": {
+                    "entity_type": "payment_card",
+                    "entity_id": "CARD-667733",
+                    "attributes": {
+                        "bin": "424242",
+                        "issuer_country": "GB",
+                        "card_age_days": 156,
+                        "risk_segment": "high"
+                    }
+                },
+                "related_entities": [
+                    {
+                        "entity_type": "user_account",
+                        "entity_id": "USR-334821",
+                        "attributes": {
+                            "email": "cardholder@example.co.uk",
+                            "account_age_days": 512,
+                            "kyc_level": "full"
+                        }
+                    }
+                ]
+            },
+            "alerts": [
+                {
+                    "alert_id": "ALERT-CARD-02214",
+                    "source_system": "Card_Fraud_Monitor",
+                    "alert_type": "card_testing",
+                    "severity": "high",
+                    "confidence": 0.84,
+                    "triggered_at": "2026-02-07T19:28:14Z",
+                    "evidence": [
+                        {
+                            "evidence_type": "micro_transactions",
+                            "details": {
+                                "transactions_1h": 18,
+                                "avg_amount_usd": 1.2,
+                                "unique_merchants": 12
+                            }
+                        }
+                    ],
+                    "raw_signal_refs": ["sig_55601", "sig_55602"]
+                }
+            ]
+        }
+    ]

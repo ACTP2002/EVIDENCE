@@ -1,0 +1,184 @@
+[
+    {
+      "event_id": "evt_txn_0001",
+      "event_time": "2026-02-07T09:16:02.120Z",
+      "stream_type": "transactional",
+      "event_type": "withdrawal",
+      "user_id": "u_001",
+      "account_id": "a_2001",
+      "session_id": "s_9001",
+      "device_id": "d_fraud_01",
+      "ip": "203.0.113.10",
+      "data": {
+        "txn_id": "T-900001",
+        "amount": 980.50,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0002",
+      "event_time": "2026-02-07T09:16:47.311Z",
+      "stream_type": "transactional",
+      "event_type": "withdrawal",
+      "user_id": "u_001",
+      "account_id": "a_2001",
+      "session_id": "s_9001",
+      "device_id": "d_fraud_01",
+      "ip": "203.0.113.10",
+      "data": {
+        "txn_id": "T-900002",
+        "amount": 1203.75,
+        "currency": "USD",
+        "channel": "api",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0003",
+      "event_time": "2026-02-07T09:17:10.904Z",
+      "stream_type": "transactional",
+      "event_type": "withdrawal",
+      "user_id": "u_001",
+      "account_id": "a_2001",
+      "session_id": "s_9002",
+      "device_id": "d_fraud_02",
+      "ip": "203.0.113.10",
+      "data": {
+        "txn_id": "T-900003",
+        "amount": 2450.00,
+        "currency": "USD",
+        "channel": "api",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0004",
+      "event_time": "2026-02-07T09:18:05.550Z",
+      "stream_type": "transactional",
+      "event_type": "withdrawal",
+      "user_id": "u_001",
+      "account_id": "a_2001",
+      "session_id": "s_9002",
+      "device_id": "d_fraud_02",
+      "ip": "203.0.113.10",
+      "data": {
+        "txn_id": "T-900004",
+        "amount": 3100.25,
+        "currency": "USD",
+        "channel": "api",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0005",
+      "event_time": "2026-02-07T09:18:59.882Z",
+      "stream_type": "transactional",
+      "event_type": "withdrawal",
+      "user_id": "u_001",
+      "account_id": "a_2001",
+      "session_id": "s_9003",
+      "device_id": "d_fraud_03",
+      "ip": "203.0.113.10",
+      "data": {
+        "txn_id": "T-900005",
+        "amount": 4200.00,
+        "currency": "USD",
+        "channel": "api",
+        "result": "success"
+      }
+    },
+  
+    {
+      "event_id": "evt_txn_0006",
+      "event_time": "2026-02-07T08:42:11.331Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "user_id": "u_002",
+      "account_id": "a_2002",
+      "session_id": "s_8001",
+      "device_id": "d_norm_01",
+      "ip": "198.51.100.22",
+      "data": {
+        "txn_id": "T-800001",
+        "amount": 12.67,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0007",
+      "event_time": "2026-02-07T09:01:44.912Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "user_id": "u_002",
+      "account_id": "a_2002",
+      "session_id": "s_8001",
+      "device_id": "d_norm_01",
+      "ip": "198.51.100.22",
+      "data": {
+        "txn_id": "T-800002",
+        "amount": 6.63,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0008",
+      "event_time": "2026-02-07T10:22:09.501Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "user_id": "u_002",
+      "account_id": "a_2002",
+      "session_id": "s_8002",
+      "device_id": "d_norm_02",
+      "ip": "198.51.100.23",
+      "data": {
+        "txn_id": "T-800003",
+        "amount": 18.92,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0009",
+      "event_time": "2026-02-07T13:15:55.118Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "user_id": "u_002",
+      "account_id": "a_2002",
+      "session_id": "s_8003",
+      "device_id": "d_norm_02",
+      "ip": "198.51.100.23",
+      "data": {
+        "txn_id": "T-800004",
+        "amount": 22.59,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success"
+      }
+    },
+    {
+      "event_id": "evt_txn_0010",
+      "event_time": "2026-02-07T18:02:41.772Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "user_id": "u_002",
+      "account_id": "a_2002",
+      "session_id": "s_8004",
+      "device_id": "d_norm_03",
+      "ip": "198.51.100.24",
+      "data": {
+        "txn_id": "T-800005",
+        "amount": 19.23,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success"
+      }
+    }
+  ]
+  

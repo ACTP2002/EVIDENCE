@@ -1,0 +1,211 @@
+[
+  {
+    "case_id": "CASE-2025-88412",
+    "created_at": "2025-05-14T09:15:00Z",
+    "assembled_at": "2025-05-14T09:15:22Z",
+    "status": "investigating",
+    "priority": "critical",
+    "assigned_to": "INV-001",
+    "sla_deadline": "2025-05-16T09:15:00Z",
+    "total_amount_at_risk": 35000.00,
+    "customer_id": "CUST-7721",
+    "account_id": "ACC-882193",
+    "alerts": [
+      {
+        "alert_id": "ALT-9901",
+        "alert_type": "money_laundering",
+        "triggered_at": "2025-05-14T08:00:00Z",
+        "severity": "critical",
+        "risk_score": 92,
+        "description": "Total deposits ($35,000) exceed declared monthly income ($2,500) by 1400%.",
+        "detector_source": "ml_anomaly",
+        "evidence": [
+          {
+            "evidence_type": "income_anomaly",
+            "details": {
+              "declared_income": 2500,
+              "actual_deposits_30d": 35000,
+              "ratio": 14.0
+            }
+          }
+        ],
+        "raw_signal_refs": ["sig_10001", "sig_10002"]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-2025-91203",
+    "created_at": "2025-06-02T11:30:00Z",
+    "assembled_at": "2025-06-02T11:30:18Z",
+    "status": "open",
+    "priority": "high",
+    "assigned_to": "INV-002",
+    "sla_deadline": "2025-06-04T11:30:00Z",
+    "total_amount_at_risk": 8500.00,
+    "customer_id": "CUST-4512",
+    "account_id": "ACC-451288",
+    "alerts": [
+      {
+        "alert_id": "ALT-1122",
+        "alert_type": "account_takeover",
+        "triggered_at": "2025-06-02T10:15:00Z",
+        "severity": "high",
+        "risk_score": 87,
+        "description": "Login from new device in different country, followed by immediate large withdrawal.",
+        "detector_source": "behavior_detector",
+        "evidence": [
+          {
+            "evidence_type": "impossible_travel",
+            "details": {
+              "previous_location": "London, UK",
+              "current_location": "Bucharest, Romania",
+              "time_diff_minutes": 127,
+              "distance_km": 2100
+            }
+          }
+        ],
+        "raw_signal_refs": ["sig_20001"]
+      },
+      {
+        "alert_id": "ALT-1123",
+        "alert_type": "velocity_check",
+        "triggered_at": "2025-06-02T10:22:00Z",
+        "severity": "medium",
+        "risk_score": 74,
+        "description": "3 transactions totaling $8,500 within 15 minutes.",
+        "detector_source": "transaction_monitor",
+        "evidence": null,
+        "raw_signal_refs": ["sig_20002", "sig_20003"]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-2025-77884",
+    "created_at": "2025-04-18T14:05:00Z",
+    "assembled_at": "2025-04-18T14:05:11Z",
+    "status": "escalated",
+    "priority": "critical",
+    "assigned_to": "INV-003",
+    "sla_deadline": "2025-04-19T14:05:00Z",
+    "total_amount_at_risk": 118000.00,
+    "customer_id": "CUST-9821",
+    "account_id": "ACC-982145",
+    "alerts": [
+      {
+        "alert_id": "ALT-7712",
+        "alert_type": "structuring",
+        "triggered_at": "2025-04-18T13:00:00Z",
+        "severity": "critical",
+        "risk_score": 95,
+        "description": "12 deposits just under $10,000 threshold in 7 days.",
+        "detector_source": "aml_detector",
+        "evidence": [
+          {
+            "evidence_type": "smurfing_pattern",
+            "details": {
+              "num_transactions": 12,
+              "avg_amount": 9833,
+              "threshold": 10000,
+              "days": 7
+            }
+          }
+        ],
+        "raw_signal_refs": ["sig_30001", "sig_30002", "sig_30003"]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-2025-55201",
+    "created_at": "2025-03-10T08:22:00Z",
+    "assembled_at": "2025-03-10T08:22:09Z",
+    "status": "closed",
+    "priority": "low",
+    "assigned_to": "INV-001",
+    "sla_deadline": "2025-03-14T08:22:00Z",
+    "total_amount_at_risk": 8500.00,
+    "customer_id": "CUST-1029",
+    "account_id": "ACC-102948",
+    "alerts": [
+      {
+        "alert_id": "ALT-5521",
+        "alert_type": "unusual_transaction",
+        "triggered_at": "2025-03-10T08:20:00Z",
+        "severity": "low",
+        "risk_score": 63,
+        "description": "Single large transaction ($8,500) significantly above historical average ($145).",
+        "detector_source": "ml_transaction_scorer",
+        "evidence": [
+          {
+            "evidence_type": "amount_anomaly",
+            "details": {
+              "amount_usd": 8500,
+              "historical_avg_usd": 145,
+              "z_score": 4.2
+            }
+          }
+        ],
+        "raw_signal_refs": ["sig_40001"]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-2025-66339",
+    "created_at": "2025-07-01T15:40:00Z",
+    "assembled_at": "2025-07-01T15:40:14Z",
+    "status": "investigating",
+    "priority": "critical",
+    "assigned_to": "INV-002",
+    "sla_deadline": "2025-07-03T15:40:00Z",
+    "total_amount_at_risk": 24800.00,
+    "customer_id": "CUST-7744",
+    "account_id": "ACC-774422",
+    "alerts": [
+      {
+        "alert_id": "ALT-3340",
+        "alert_type": "money_mule",
+        "triggered_at": "2025-07-01T15:30:00Z",
+        "severity": "critical",
+        "risk_score": 91,
+        "description": "Rapid in-out flow: $12,400 in, $11,950 out within 24 hours.",
+        "detector_source": "mule_detector",
+        "evidence": [
+          {
+            "evidence_type": "rapid_in_out_flow",
+            "details": {
+              "inflow_24h_usd": 12400,
+              "outflow_24h_usd": 11950,
+              "retention_ratio": 0.036
+            }
+          }
+        ],
+        "raw_signal_refs": ["sig_50001", "sig_50002"]
+      },
+      {
+        "alert_id": "ALT-8810",
+        "alert_type": "synthetic_identity",
+        "triggered_at": "2025-07-01T15:35:00Z",
+        "severity": "critical",
+        "risk_score": 86,
+        "description": "Disposable email domain and identity inconsistencies detected.",
+        "detector_source": "synthetic_identity_engine",
+        "evidence": [
+          {
+            "evidence_type": "email_disposable",
+            "details": {
+              "domain": "tempmail.io",
+              "disposable_score": 0.99
+            }
+          },
+          {
+            "evidence_type": "identity_mix",
+            "details": {
+              "name_age_mismatch": true,
+              "address_validation_failed": true
+            }
+          }
+        ],
+        "raw_signal_refs": ["sig_50003", "sig_50004"]
+      }
+    ]
+  }
+]

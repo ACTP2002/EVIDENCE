@@ -1,0 +1,90 @@
+[
+  {
+    "entity_id": "ACC-882193",
+    "connection_type": "shared_device",
+    "connected_entity_id": "ACC-0012",
+    "connection_strength": "strong",
+    "first_observed": "2025-05-10T10:00:00Z",
+    "details": "Device DEV-IPHONE-99 used by both accounts within 10 minutes."
+  },
+  {
+    "entity_id": "ACC-882193",
+    "connection_type": "shared_device",
+    "connected_entity_id": "ACC-4491",
+    "connection_strength": "medium",
+    "first_observed": "2025-05-12T14:30:00Z",
+    "details": "Device DEV-IPHONE-99 used by both accounts on same day."
+  },
+  {
+    "entity_id": "ACC-451288",
+    "connection_type": "shared_device",
+    "connected_entity_id": "ACC-7821",
+    "connection_strength": "strong",
+    "first_observed": "2025-06-02T10:12:00Z",
+    "details": "Same device fingerprint DEV-ANDROID-5521 as flagged account ACC-7821."
+  },
+  {
+    "entity_id": "ACC-451288",
+    "connection_type": "shared_device",
+    "connected_entity_id": "ACC-9104",
+    "connection_strength": "medium",
+    "first_observed": "2025-06-02T08:30:00Z",
+    "details": "Device DEV-ANDROID-5521 previously used by ACC-9104."
+  },
+  {
+    "entity_id": "ACC-774422",
+    "connection_type": "shared_device",
+    "connected_entity_id": "ACC-1122",
+    "connection_strength": "strong",
+    "first_observed": "2025-06-30T07:50:00Z",
+    "details": "Device DEV-ANDROID-9910 linked to multiple suspicious accounts."
+  },
+  {
+    "entity_id": "ACC-774422",
+    "connection_type": "shared_device",
+    "connected_entity_id": "ACC-5544",
+    "connection_strength": "strong",
+    "first_observed": "2025-06-30T07:50:00Z",
+    "details": "Device DEV-ANDROID-9910 linked to multiple suspicious accounts."
+  },
+  {
+    "entity_id": "ACC-774422",
+    "connection_type": "shared_device",
+    "connected_entity_id": "ACC-8899",
+    "connection_strength": "strong",
+    "first_observed": "2025-06-30T07:50:00Z",
+    "details": "Device DEV-ANDROID-9910 linked to multiple suspicious accounts."
+  },
+  {
+    "entity_id": "ACC-774422",
+    "connection_type": "shared_ip",
+    "connected_entity_id": "ACC-1122",
+    "connection_strength": "medium",
+    "first_observed": "2025-06-30T08:00:00Z",
+    "details": "Same IP address 45.142.182.91 used within 1 hour."
+  },
+  {
+    "entity_id": "ACC-982145",
+    "connection_type": "same_beneficiary",
+    "connected_entity_id": "ACC-1144",
+    "connection_strength": "weak",
+    "first_observed": "2025-04-14T10:00:00Z",
+    "details": "Both accounts transferred to same external account ****7721."
+  },
+  {
+    "entity_id": "CUST-7721",
+    "connection_type": "shared_phone",
+    "connected_entity_id": "CUST-9922",
+    "connection_strength": "medium",
+    "first_observed": "2025-05-10T10:00:00Z",
+    "details": "Phone number +1-555-0199 previously registered to CUST-9922."
+  },
+  {
+    "entity_id": "DEV-ANDROID-9910",
+    "connection_type": "device_fingerprint_match",
+    "connected_entity_id": "DEV-ANDROID-9911",
+    "connection_strength": "strong",
+    "first_observed": "2025-06-30T07:50:00Z",
+    "details": "87% fingerprint similarity - likely same physical device with factory reset."
+  }
+]

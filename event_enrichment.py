@@ -16,6 +16,15 @@ def enrich_event(event, profile_store, status_store):
 
     return {"event": event, "profile": profile, "status": status}
 
+def demo_enrichment(event):
+    profile_store = load_store('db/profile_store.json')
+    status_store = load_store('db/status_store.json')
+
+    enriched_event = enrich_event(event, profile_store, status_store)
+
+    return enriched_event
+
+
 def main():
     if len(sys.argv) != 4:
         print("Usage: python event_enrichment.py <event_json> <profile_store_path> <status_store_path>")

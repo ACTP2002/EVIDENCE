@@ -88,6 +88,17 @@ def build_case(alert, case_store):
 
     return new_case
 
+def demo_bulid_case(alert):
+    alert = json.loads(alert)
+    case_store = load_cases('db/case_store.json')
+
+    case = build_case(alert, case_store)
+
+    if case:
+        save_cases('db/case_store.json', case_store)
+
+    return emit_case(case)
+
 def main():
     if len(sys.argv) != 4:
         print("Usage: python case_builder.py <alert_json> <case_store_path> <output_case_store_path>")

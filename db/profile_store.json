@@ -1,0 +1,3002 @@
+[
+    {
+      "user_id": "u_001",
+      "created_at": "2025-09-08T23:57:18Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2001",
+        "account_status": "active",
+        "account_deposit": "160044"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-10-08T11:56:49Z",
+        "nationality": "ID",
+        "residence_country": "MY",
+        "age": "34",
+        "occupation": "consultant",
+        "income": "11125",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_002",
+      "created_at": "2024-05-18T18:13:00Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2002",
+        "account_status": "active",
+        "account_deposit": "43272"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-03-18T21:47:11Z",
+        "nationality": "SG",
+        "residence_country": "SG",
+        "age": "70",
+        "occupation": "engineer",
+        "income": "19771",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_003",
+      "created_at": "2025-02-04T11:49:07Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2003",
+        "account_status": "active",
+        "account_deposit": "83045"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-02-18T21:19:26Z",
+        "nationality": "PH",
+        "residence_country": "SG",
+        "age": "55",
+        "occupation": "trader",
+        "income": "18476",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_004",
+      "created_at": "2024-12-27T05:58:23Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2004",
+        "account_status": "suspended",
+        "account_deposit": "56408"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-01-30T02:23:24Z",
+        "nationality": "SG",
+        "residence_country": "VN",
+        "age": "40",
+        "occupation": "teacher",
+        "income": "19601",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_005",
+      "created_at": "2025-01-29T20:18:09Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2005",
+        "account_status": "active",
+        "account_deposit": "146205"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-08-01T13:05:02Z",
+        "nationality": "SG",
+        "residence_country": "VN",
+        "age": "42",
+        "occupation": "teacher",
+        "income": "10479",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_006",
+      "created_at": "2026-12-02T01:00:57Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2006",
+        "account_status": "suspended",
+        "account_deposit": "191722"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-05-11T23:53:51Z",
+        "nationality": "TH",
+        "residence_country": "VN",
+        "age": "50",
+        "occupation": "designer",
+        "income": "14378",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_007",
+      "created_at": "2025-06-04T01:01:13Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2007",
+        "account_status": "suspended",
+        "account_deposit": "49812"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-11-14T04:34:41Z",
+        "nationality": "SG",
+        "residence_country": "SG",
+        "age": "51",
+        "occupation": "engineer",
+        "income": "16620",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_008",
+      "created_at": "2024-09-26T01:33:39Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2008",
+        "account_status": "suspended",
+        "account_deposit": "118031"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-01-28T09:10:07Z",
+        "nationality": "ID",
+        "residence_country": "VN",
+        "age": "64",
+        "occupation": "designer",
+        "income": "13679",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_009",
+      "created_at": "2026-06-15T15:56:13Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2009",
+        "account_status": "suspended",
+        "account_deposit": "190576"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-02-12T10:56:49Z",
+        "nationality": "SG",
+        "residence_country": "ID",
+        "age": "39",
+        "occupation": "teacher",
+        "income": "6942",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_010",
+      "created_at": "2025-03-05T20:11:31Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2010",
+        "account_status": "suspended",
+        "account_deposit": "148132"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-11-16T05:25:39Z",
+        "nationality": "MY",
+        "residence_country": "ID",
+        "age": "23",
+        "occupation": "consultant",
+        "income": "7300",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_011",
+      "created_at": "2026-12-29T12:42:53Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2011",
+        "account_status": "suspended",
+        "account_deposit": "99100"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-03-22T08:13:39Z",
+        "nationality": "ID",
+        "residence_country": "TH",
+        "age": "68",
+        "occupation": "engineer",
+        "income": "8637",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_012",
+      "created_at": "2024-01-13T05:58:37Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2012",
+        "account_status": "active",
+        "account_deposit": "91590"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-07-16T15:37:04Z",
+        "nationality": "TH",
+        "residence_country": "TH",
+        "age": "66",
+        "occupation": "manager",
+        "income": "3256",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_013",
+      "created_at": "2025-12-24T03:17:58Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2013",
+        "account_status": "suspended",
+        "account_deposit": "126931"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-03-06T00:07:56Z",
+        "nationality": "ID",
+        "residence_country": "PH",
+        "age": "60",
+        "occupation": "teacher",
+        "income": "5003",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_014",
+      "created_at": "2025-10-18T20:29:59Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2014",
+        "account_status": "active",
+        "account_deposit": "145715"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-02-25T15:32:56Z",
+        "nationality": "ID",
+        "residence_country": "TH",
+        "age": "43",
+        "occupation": "manager",
+        "income": "2264",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_015",
+      "created_at": "2025-09-14T09:55:07Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2015",
+        "account_status": "suspended",
+        "account_deposit": "141505"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-03-06T04:29:51Z",
+        "nationality": "PH",
+        "residence_country": "VN",
+        "age": "65",
+        "occupation": "designer",
+        "income": "7424",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_016",
+      "created_at": "2025-04-04T09:12:43Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2016",
+        "account_status": "suspended",
+        "account_deposit": "4604"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-03-14T19:45:16Z",
+        "nationality": "TH",
+        "residence_country": "ID",
+        "age": "19",
+        "occupation": "manager",
+        "income": "15370",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_017",
+      "created_at": "2026-07-09T06:32:42Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2017",
+        "account_status": "active",
+        "account_deposit": "141311"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-06-25T15:50:13Z",
+        "nationality": "MY",
+        "residence_country": "SG",
+        "age": "61",
+        "occupation": "engineer",
+        "income": "8545",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_018",
+      "created_at": "2025-10-17T01:58:15Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2018",
+        "account_status": "active",
+        "account_deposit": "100792"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-03-16T00:27:54Z",
+        "nationality": "SG",
+        "residence_country": "MY",
+        "age": "22",
+        "occupation": "trader",
+        "income": "7866",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_019",
+      "created_at": "2024-02-14T19:43:56Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2019",
+        "account_status": "active",
+        "account_deposit": "14103"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-10-27T06:05:35Z",
+        "nationality": "VN",
+        "residence_country": "MY",
+        "age": "66",
+        "occupation": "designer",
+        "income": "18248",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_020",
+      "created_at": "2025-11-04T03:30:06Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2020",
+        "account_status": "suspended",
+        "account_deposit": "93109"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-07-11T15:10:34Z",
+        "nationality": "SG",
+        "residence_country": "VN",
+        "age": "63",
+        "occupation": "teacher",
+        "income": "14720",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_021",
+      "created_at": "2026-08-26T07:21:45Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2021",
+        "account_status": "suspended",
+        "account_deposit": "100706"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-11-15T03:14:58Z",
+        "nationality": "ID",
+        "residence_country": "VN",
+        "age": "56",
+        "occupation": "consultant",
+        "income": "8698",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_022",
+      "created_at": "2024-04-23T03:07:25Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2022",
+        "account_status": "active",
+        "account_deposit": "190888"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-07-26T18:53:06Z",
+        "nationality": "PH",
+        "residence_country": "SG",
+        "age": "54",
+        "occupation": "manager",
+        "income": "11296",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_023",
+      "created_at": "2026-05-16T15:07:34Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2023",
+        "account_status": "active",
+        "account_deposit": "170173"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-05-21T18:07:52Z",
+        "nationality": "MY",
+        "residence_country": "MY",
+        "age": "19",
+        "occupation": "engineer",
+        "income": "19271",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_024",
+      "created_at": "2026-02-02T21:22:10Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2024",
+        "account_status": "active",
+        "account_deposit": "159782"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-08-27T20:17:30Z",
+        "nationality": "TH",
+        "residence_country": "TH",
+        "age": "50",
+        "occupation": "manager",
+        "income": "12432",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_025",
+      "created_at": "2024-05-10T14:48:17Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2025",
+        "account_status": "active",
+        "account_deposit": "158767"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-09-10T19:58:47Z",
+        "nationality": "PH",
+        "residence_country": "TH",
+        "age": "40",
+        "occupation": "engineer",
+        "income": "8290",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_026",
+      "created_at": "2025-05-17T14:16:25Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2026",
+        "account_status": "active",
+        "account_deposit": "92808"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-12-29T06:02:19Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "50",
+        "occupation": "trader",
+        "income": "16321",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_027",
+      "created_at": "2026-11-27T21:12:29Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2027",
+        "account_status": "active",
+        "account_deposit": "147856"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-03-06T07:29:37Z",
+        "nationality": "TH",
+        "residence_country": "TH",
+        "age": "37",
+        "occupation": "engineer",
+        "income": "11456",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_028",
+      "created_at": "2025-07-03T02:48:04Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2028",
+        "account_status": "suspended",
+        "account_deposit": "133807"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-05-25T20:40:13Z",
+        "nationality": "SG",
+        "residence_country": "TH",
+        "age": "58",
+        "occupation": "designer",
+        "income": "5603",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_029",
+      "created_at": "2024-10-21T22:43:13Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2029",
+        "account_status": "active",
+        "account_deposit": "51009"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-08-16T05:48:02Z",
+        "nationality": "ID",
+        "residence_country": "TH",
+        "age": "35",
+        "occupation": "consultant",
+        "income": "6383",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_030",
+      "created_at": "2024-09-14T05:23:12Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2030",
+        "account_status": "suspended",
+        "account_deposit": "18142"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-06-29T18:34:33Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "23",
+        "occupation": "consultant",
+        "income": "16590",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_031",
+      "created_at": "2026-10-30T10:16:17Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2031",
+        "account_status": "active",
+        "account_deposit": "127825"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-04-27T15:57:50Z",
+        "nationality": "ID",
+        "residence_country": "MY",
+        "age": "56",
+        "occupation": "teacher",
+        "income": "19790",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_032",
+      "created_at": "2024-10-31T12:37:48Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2032",
+        "account_status": "active",
+        "account_deposit": "3975"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-08-08T01:39:32Z",
+        "nationality": "TH",
+        "residence_country": "PH",
+        "age": "41",
+        "occupation": "engineer",
+        "income": "2445",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_033",
+      "created_at": "2025-12-15T14:20:58Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2033",
+        "account_status": "suspended",
+        "account_deposit": "46601"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-01-30T04:15:05Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "61",
+        "occupation": "designer",
+        "income": "2247",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_034",
+      "created_at": "2024-07-22T18:20:45Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2034",
+        "account_status": "active",
+        "account_deposit": "128865"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-11-16T16:51:13Z",
+        "nationality": "SG",
+        "residence_country": "MY",
+        "age": "65",
+        "occupation": "engineer",
+        "income": "11845",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_035",
+      "created_at": "2026-03-24T03:10:21Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2035",
+        "account_status": "active",
+        "account_deposit": "192266"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-01-30T17:38:38Z",
+        "nationality": "SG",
+        "residence_country": "SG",
+        "age": "59",
+        "occupation": "engineer",
+        "income": "5594",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_036",
+      "created_at": "2025-03-13T15:45:13Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2036",
+        "account_status": "active",
+        "account_deposit": "128301"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-05-04T10:29:10Z",
+        "nationality": "MY",
+        "residence_country": "TH",
+        "age": "40",
+        "occupation": "consultant",
+        "income": "7311",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_037",
+      "created_at": "2026-09-20T11:42:21Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2037",
+        "account_status": "suspended",
+        "account_deposit": "20143"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-09-21T07:12:03Z",
+        "nationality": "PH",
+        "residence_country": "ID",
+        "age": "41",
+        "occupation": "engineer",
+        "income": "2431",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_038",
+      "created_at": "2025-04-08T20:24:46Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2038",
+        "account_status": "active",
+        "account_deposit": "141725"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-11-30T19:36:56Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "44",
+        "occupation": "trader",
+        "income": "13109",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_039",
+      "created_at": "2024-12-28T12:55:05Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2039",
+        "account_status": "active",
+        "account_deposit": "143351"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-07-25T02:03:38Z",
+        "nationality": "TH",
+        "residence_country": "TH",
+        "age": "32",
+        "occupation": "trader",
+        "income": "3657",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_040",
+      "created_at": "2024-07-01T12:57:01Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2040",
+        "account_status": "suspended",
+        "account_deposit": "27247"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-11-03T02:21:38Z",
+        "nationality": "PH",
+        "residence_country": "ID",
+        "age": "51",
+        "occupation": "teacher",
+        "income": "15134",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_041",
+      "created_at": "2026-03-08T06:56:30Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2041",
+        "account_status": "active",
+        "account_deposit": "143402"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-01-02T22:07:38Z",
+        "nationality": "PH",
+        "residence_country": "TH",
+        "age": "43",
+        "occupation": "engineer",
+        "income": "3196",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_042",
+      "created_at": "2026-08-28T06:37:30Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2042",
+        "account_status": "active",
+        "account_deposit": "167427"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-01-11T18:28:32Z",
+        "nationality": "PH",
+        "residence_country": "SG",
+        "age": "55",
+        "occupation": "trader",
+        "income": "3526",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_043",
+      "created_at": "2024-10-14T03:48:58Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2043",
+        "account_status": "suspended",
+        "account_deposit": "17135"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-06-05T23:16:22Z",
+        "nationality": "MY",
+        "residence_country": "TH",
+        "age": "19",
+        "occupation": "consultant",
+        "income": "4802",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_044",
+      "created_at": "2024-09-21T06:58:01Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2044",
+        "account_status": "active",
+        "account_deposit": "131985"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-11-10T12:51:28Z",
+        "nationality": "TH",
+        "residence_country": "ID",
+        "age": "65",
+        "occupation": "consultant",
+        "income": "13016",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_045",
+      "created_at": "2026-03-06T15:46:12Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2045",
+        "account_status": "suspended",
+        "account_deposit": "76641"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-02-04T17:22:17Z",
+        "nationality": "MY",
+        "residence_country": "MY",
+        "age": "21",
+        "occupation": "consultant",
+        "income": "14101",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_046",
+      "created_at": "2024-12-20T09:45:08Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2046",
+        "account_status": "active",
+        "account_deposit": "188990"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-05-06T02:01:53Z",
+        "nationality": "PH",
+        "residence_country": "VN",
+        "age": "25",
+        "occupation": "engineer",
+        "income": "2629",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_047",
+      "created_at": "2026-03-03T01:31:40Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2047",
+        "account_status": "suspended",
+        "account_deposit": "28571"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-07-13T22:00:38Z",
+        "nationality": "ID",
+        "residence_country": "PH",
+        "age": "18",
+        "occupation": "consultant",
+        "income": "17405",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_048",
+      "created_at": "2026-08-21T08:01:53Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2048",
+        "account_status": "active",
+        "account_deposit": "65813"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-01-29T17:41:56Z",
+        "nationality": "ID",
+        "residence_country": "MY",
+        "age": "61",
+        "occupation": "consultant",
+        "income": "2774",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_049",
+      "created_at": "2025-04-11T00:54:33Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2049",
+        "account_status": "suspended",
+        "account_deposit": "37108"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-11-12T10:25:52Z",
+        "nationality": "VN",
+        "residence_country": "VN",
+        "age": "69",
+        "occupation": "teacher",
+        "income": "16153",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_050",
+      "created_at": "2026-08-08T04:33:54Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2050",
+        "account_status": "suspended",
+        "account_deposit": "192292"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-05-10T08:04:11Z",
+        "nationality": "ID",
+        "residence_country": "MY",
+        "age": "48",
+        "occupation": "teacher",
+        "income": "14742",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_051",
+      "created_at": "2025-02-25T23:22:45Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2051",
+        "account_status": "active",
+        "account_deposit": "82908"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-02-15T19:46:14Z",
+        "nationality": "PH",
+        "residence_country": "PH",
+        "age": "20",
+        "occupation": "teacher",
+        "income": "5434",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_052",
+      "created_at": "2024-05-02T18:45:22Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2052",
+        "account_status": "suspended",
+        "account_deposit": "31891"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-04-27T12:26:33Z",
+        "nationality": "PH",
+        "residence_country": "MY",
+        "age": "51",
+        "occupation": "consultant",
+        "income": "8202",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_053",
+      "created_at": "2025-12-30T10:10:30Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2053",
+        "account_status": "suspended",
+        "account_deposit": "54678"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-08-06T20:22:57Z",
+        "nationality": "TH",
+        "residence_country": "PH",
+        "age": "66",
+        "occupation": "trader",
+        "income": "6293",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_054",
+      "created_at": "2025-04-30T12:57:38Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2054",
+        "account_status": "suspended",
+        "account_deposit": "118082"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-11-17T16:59:25Z",
+        "nationality": "TH",
+        "residence_country": "SG",
+        "age": "42",
+        "occupation": "trader",
+        "income": "15479",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_055",
+      "created_at": "2024-02-08T04:04:27Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2055",
+        "account_status": "suspended",
+        "account_deposit": "8614"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-01-14T13:10:54Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "44",
+        "occupation": "teacher",
+        "income": "5138",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_056",
+      "created_at": "2026-01-07T16:06:11Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2056",
+        "account_status": "suspended",
+        "account_deposit": "112185"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-06-30T10:59:12Z",
+        "nationality": "PH",
+        "residence_country": "ID",
+        "age": "41",
+        "occupation": "teacher",
+        "income": "14473",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_057",
+      "created_at": "2026-08-02T14:08:42Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2057",
+        "account_status": "active",
+        "account_deposit": "109309"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-04-20T04:24:46Z",
+        "nationality": "TH",
+        "residence_country": "PH",
+        "age": "45",
+        "occupation": "engineer",
+        "income": "9312",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_058",
+      "created_at": "2026-03-29T08:55:36Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2058",
+        "account_status": "active",
+        "account_deposit": "35683"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-09-23T16:06:47Z",
+        "nationality": "TH",
+        "residence_country": "MY",
+        "age": "42",
+        "occupation": "consultant",
+        "income": "13099",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_059",
+      "created_at": "2024-02-21T03:15:38Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2059",
+        "account_status": "suspended",
+        "account_deposit": "145114"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-12-03T04:51:09Z",
+        "nationality": "VN",
+        "residence_country": "SG",
+        "age": "42",
+        "occupation": "teacher",
+        "income": "10202",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_060",
+      "created_at": "2024-04-06T04:41:12Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2060",
+        "account_status": "suspended",
+        "account_deposit": "78985"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-06-27T04:38:28Z",
+        "nationality": "PH",
+        "residence_country": "ID",
+        "age": "65",
+        "occupation": "trader",
+        "income": "16145",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_061",
+      "created_at": "2024-11-13T21:16:00Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2061",
+        "account_status": "suspended",
+        "account_deposit": "84322"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-11-29T02:09:39Z",
+        "nationality": "PH",
+        "residence_country": "TH",
+        "age": "22",
+        "occupation": "designer",
+        "income": "12924",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_062",
+      "created_at": "2025-10-03T07:32:36Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2062",
+        "account_status": "active",
+        "account_deposit": "168849"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-04-17T12:02:49Z",
+        "nationality": "PH",
+        "residence_country": "TH",
+        "age": "51",
+        "occupation": "teacher",
+        "income": "18878",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_063",
+      "created_at": "2024-04-27T05:29:57Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2063",
+        "account_status": "active",
+        "account_deposit": "41356"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-01-10T19:38:01Z",
+        "nationality": "SG",
+        "residence_country": "SG",
+        "age": "32",
+        "occupation": "teacher",
+        "income": "15641",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_064",
+      "created_at": "2024-04-15T13:49:30Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2064",
+        "account_status": "suspended",
+        "account_deposit": "192798"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-08-05T01:59:59Z",
+        "nationality": "VN",
+        "residence_country": "TH",
+        "age": "65",
+        "occupation": "designer",
+        "income": "12637",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_065",
+      "created_at": "2026-09-01T03:42:37Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2065",
+        "account_status": "active",
+        "account_deposit": "131403"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2024-02-09T19:31:43Z",
+        "nationality": "ID",
+        "residence_country": "TH",
+        "age": "25",
+        "occupation": "teacher",
+        "income": "19207",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_066",
+      "created_at": "2024-05-17T19:00:03Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2066",
+        "account_status": "suspended",
+        "account_deposit": "141911"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-03-09T01:55:24Z",
+        "nationality": "TH",
+        "residence_country": "SG",
+        "age": "34",
+        "occupation": "designer",
+        "income": "15200",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_067",
+      "created_at": "2026-05-20T03:05:49Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2067",
+        "account_status": "active",
+        "account_deposit": "146986"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-10-19T23:10:03Z",
+        "nationality": "VN",
+        "residence_country": "SG",
+        "age": "47",
+        "occupation": "teacher",
+        "income": "8971",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_068",
+      "created_at": "2025-03-31T11:01:40Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2068",
+        "account_status": "active",
+        "account_deposit": "90387"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-12-23T23:33:08Z",
+        "nationality": "VN",
+        "residence_country": "MY",
+        "age": "33",
+        "occupation": "trader",
+        "income": "12379",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_069",
+      "created_at": "2025-04-16T03:00:37Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2069",
+        "account_status": "active",
+        "account_deposit": "122040"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-07-20T18:24:28Z",
+        "nationality": "TH",
+        "residence_country": "PH",
+        "age": "37",
+        "occupation": "manager",
+        "income": "8546",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_070",
+      "created_at": "2026-08-03T11:51:09Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2070",
+        "account_status": "active",
+        "account_deposit": "123770"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-12-12T02:00:36Z",
+        "nationality": "TH",
+        "residence_country": "MY",
+        "age": "48",
+        "occupation": "engineer",
+        "income": "16023",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_071",
+      "created_at": "2024-11-29T20:23:42Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2071",
+        "account_status": "suspended",
+        "account_deposit": "179239"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-05-18T08:29:53Z",
+        "nationality": "MY",
+        "residence_country": "TH",
+        "age": "35",
+        "occupation": "teacher",
+        "income": "4936",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_072",
+      "created_at": "2026-06-26T01:57:05Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2072",
+        "account_status": "suspended",
+        "account_deposit": "117145"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-05-10T07:49:59Z",
+        "nationality": "ID",
+        "residence_country": "PH",
+        "age": "28",
+        "occupation": "manager",
+        "income": "13888",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_073",
+      "created_at": "2024-01-22T20:56:56Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2073",
+        "account_status": "active",
+        "account_deposit": "72892"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-06-04T05:20:22Z",
+        "nationality": "VN",
+        "residence_country": "MY",
+        "age": "48",
+        "occupation": "teacher",
+        "income": "13146",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_074",
+      "created_at": "2026-04-22T19:01:07Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2074",
+        "account_status": "active",
+        "account_deposit": "100729"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-08-26T01:21:30Z",
+        "nationality": "VN",
+        "residence_country": "SG",
+        "age": "31",
+        "occupation": "engineer",
+        "income": "5528",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_075",
+      "created_at": "2025-05-23T19:31:19Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2075",
+        "account_status": "suspended",
+        "account_deposit": "167256"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-08-08T01:18:04Z",
+        "nationality": "PH",
+        "residence_country": "TH",
+        "age": "20",
+        "occupation": "trader",
+        "income": "11260",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_076",
+      "created_at": "2026-08-06T03:34:24Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2076",
+        "account_status": "suspended",
+        "account_deposit": "159004"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-05-06T23:57:31Z",
+        "nationality": "PH",
+        "residence_country": "VN",
+        "age": "66",
+        "occupation": "consultant",
+        "income": "15256",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_077",
+      "created_at": "2025-11-29T19:40:46Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2077",
+        "account_status": "active",
+        "account_deposit": "19891"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-10-28T23:53:45Z",
+        "nationality": "MY",
+        "residence_country": "PH",
+        "age": "21",
+        "occupation": "consultant",
+        "income": "6713",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_078",
+      "created_at": "2025-09-04T16:57:31Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2078",
+        "account_status": "active",
+        "account_deposit": "117774"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2026-11-17T21:29:59Z",
+        "nationality": "PH",
+        "residence_country": "VN",
+        "age": "34",
+        "occupation": "consultant",
+        "income": "7337",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_079",
+      "created_at": "2025-07-23T16:05:14Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2079",
+        "account_status": "suspended",
+        "account_deposit": "179963"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-06-04T19:29:10Z",
+        "nationality": "ID",
+        "residence_country": "MY",
+        "age": "37",
+        "occupation": "engineer",
+        "income": "13379",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_080",
+      "created_at": "2026-11-07T04:22:02Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2080",
+        "account_status": "active",
+        "account_deposit": "5655"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-09-16T14:37:11Z",
+        "nationality": "SG",
+        "residence_country": "SG",
+        "age": "53",
+        "occupation": "manager",
+        "income": "11385",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_081",
+      "created_at": "2025-01-16T17:44:01Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2081",
+        "account_status": "active",
+        "account_deposit": "3858"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-11-25T18:44:40Z",
+        "nationality": "VN",
+        "residence_country": "PH",
+        "age": "39",
+        "occupation": "consultant",
+        "income": "7879",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": true,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_082",
+      "created_at": "2024-08-19T15:20:39Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2082",
+        "account_status": "suspended",
+        "account_deposit": "150525"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-07-27T06:13:50Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "64",
+        "occupation": "trader",
+        "income": "11541",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_083",
+      "created_at": "2026-12-28T13:36:21Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2083",
+        "account_status": "suspended",
+        "account_deposit": "88023"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-02-01T16:08:32Z",
+        "nationality": "ID",
+        "residence_country": "MY",
+        "age": "51",
+        "occupation": "designer",
+        "income": "19228",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_084",
+      "created_at": "2025-12-08T01:03:32Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2084",
+        "account_status": "suspended",
+        "account_deposit": "63955"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-09-01T10:50:48Z",
+        "nationality": "MY",
+        "residence_country": "ID",
+        "age": "39",
+        "occupation": "designer",
+        "income": "11825",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_085",
+      "created_at": "2024-08-09T01:12:46Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2085",
+        "account_status": "active",
+        "account_deposit": "14078"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-07-22T04:32:09Z",
+        "nationality": "MY",
+        "residence_country": "ID",
+        "age": "42",
+        "occupation": "engineer",
+        "income": "9302",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_086",
+      "created_at": "2025-03-31T21:23:28Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2086",
+        "account_status": "suspended",
+        "account_deposit": "89197"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-07-02T06:58:24Z",
+        "nationality": "SG",
+        "residence_country": "TH",
+        "age": "18",
+        "occupation": "consultant",
+        "income": "2923",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_087",
+      "created_at": "2025-06-09T04:53:16Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2087",
+        "account_status": "suspended",
+        "account_deposit": "85319"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-02-17T01:11:40Z",
+        "nationality": "VN",
+        "residence_country": "PH",
+        "age": "52",
+        "occupation": "trader",
+        "income": "11851",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_088",
+      "created_at": "2025-04-19T10:59:41Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2088",
+        "account_status": "suspended",
+        "account_deposit": "173553"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-12-04T17:45:41Z",
+        "nationality": "SG",
+        "residence_country": "SG",
+        "age": "64",
+        "occupation": "consultant",
+        "income": "15185",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_089",
+      "created_at": "2024-05-05T00:51:42Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2089",
+        "account_status": "active",
+        "account_deposit": "147714"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-03-16T00:41:17Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "70",
+        "occupation": "teacher",
+        "income": "5013",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_090",
+      "created_at": "2026-01-27T13:56:59Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2090",
+        "account_status": "active",
+        "account_deposit": "44803"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-08-24T10:00:22Z",
+        "nationality": "MY",
+        "residence_country": "VN",
+        "age": "22",
+        "occupation": "designer",
+        "income": "11525",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_091",
+      "created_at": "2025-09-27T15:38:51Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2091",
+        "account_status": "suspended",
+        "account_deposit": "24935"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-03-23T01:19:30Z",
+        "nationality": "PH",
+        "residence_country": "TH",
+        "age": "48",
+        "occupation": "engineer",
+        "income": "19847",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_092",
+      "created_at": "2024-12-18T09:09:37Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2092",
+        "account_status": "active",
+        "account_deposit": "53198"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-04-01T00:49:45Z",
+        "nationality": "VN",
+        "residence_country": "PH",
+        "age": "34",
+        "occupation": "engineer",
+        "income": "7756",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": false
+      }
+    },
+    {
+      "user_id": "u_093",
+      "created_at": "2024-10-09T03:09:03Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2093",
+        "account_status": "active",
+        "account_deposit": "75997"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-02-15T06:35:46Z",
+        "nationality": "MY",
+        "residence_country": "MY",
+        "age": "24",
+        "occupation": "teacher",
+        "income": "4428",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": true,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_094",
+      "created_at": "2024-06-04T14:40:33Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2094",
+        "account_status": "active",
+        "account_deposit": "59167"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2024-04-02T09:19:56Z",
+        "nationality": "VN",
+        "residence_country": "MY",
+        "age": "23",
+        "occupation": "consultant",
+        "income": "9902",
+        "source_of_funds": "investment"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_095",
+      "created_at": "2026-12-30T14:22:51Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2095",
+        "account_status": "suspended",
+        "account_deposit": "116175"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-01-05T18:42:59Z",
+        "nationality": "ID",
+        "residence_country": "SG",
+        "age": "20",
+        "occupation": "consultant",
+        "income": "11036",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_096",
+      "created_at": "2026-03-27T09:58:48Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2096",
+        "account_status": "active",
+        "account_deposit": "170204"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2025-05-02T04:07:20Z",
+        "nationality": "VN",
+        "residence_country": "VN",
+        "age": "48",
+        "occupation": "teacher",
+        "income": "16461",
+        "source_of_funds": "inheritance"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_097",
+      "created_at": "2024-11-21T11:14:12Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2097",
+        "account_status": "suspended",
+        "account_deposit": "130503"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2026-02-03T20:41:55Z",
+        "nationality": "TH",
+        "residence_country": "PH",
+        "age": "58",
+        "occupation": "manager",
+        "income": "4201",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "high",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_098",
+      "created_at": "2026-05-03T03:36:50Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2098",
+        "account_status": "active",
+        "account_deposit": "72885"
+      },
+      "kyc": {
+        "kyc_level": "tier_3",
+        "verified_at": "2024-04-19T20:42:40Z",
+        "nationality": "VN",
+        "residence_country": "VN",
+        "age": "52",
+        "occupation": "manager",
+        "income": "13303",
+        "source_of_funds": "salary"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_099",
+      "created_at": "2026-08-13T12:32:04Z",
+      "account_status": "suspended",
+      "account": {
+        "account_id": "a_2099",
+        "account_status": "active",
+        "account_deposit": "162348"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2026-12-26T14:58:27Z",
+        "nationality": "TH",
+        "residence_country": "PH",
+        "age": "20",
+        "occupation": "designer",
+        "income": "19121",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "clear",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_100",
+      "created_at": "2026-04-19T21:36:55Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_2100",
+        "account_status": "suspended",
+        "account_deposit": "104733"
+      },
+      "kyc": {
+        "kyc_level": "tier_2",
+        "verified_at": "2025-11-17T21:01:43Z",
+        "nationality": "ID",
+        "residence_country": "SG",
+        "age": "35",
+        "occupation": "consultant",
+        "income": "2821",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "medium",
+        "pep_flag": false,
+        "sanctions_status": "flagged",
+        "adverse_media_flag": true
+      },
+      "verification": {
+        "email_verified": false,
+        "phone_verified": true
+      }
+    }
+  ]

@@ -1,0 +1,174 @@
+[
+    {
+      "case_id": "CASE-7c1a3f9b",
+      "user_id": "u_014",
+      "status": "open",
+      "opened_at": "2026-02-07T09:01:22Z",
+      "last_pdated": "2026-02-07T09:08:44Z",
+      "case_score": 100,
+      "risk_level": "HIGH",
+      "alerts": [
+        {
+          "alert_id": "A-1101",
+          "event_time": "2026-02-07T09:01:22Z",
+          "detector_type": "ATO",
+          "signal": "MULTI_DEVICE_LOGIN",
+          "severity": "HIGH",
+          "confidence": 0.94
+        },
+        {
+          "alert_id": "A-1102",
+          "event_time": "2026-02-07T09:06:05Z",
+          "detector_type": "BEHAVIOR",
+          "signal": "FAILED_LOGIN_SPIKE",
+          "severity": "MEDIUM",
+          "confidence": 0.78
+        },
+        {
+          "alert_id": "A-1103",
+          "event_time": "2026-02-07T09:08:44Z",
+          "detector_type": "TRANSACTION",
+          "signal": "WITHDRAWAL_AMOUNT_SPIKE",
+          "severity": "HIGH",
+          "confidence": 0.86
+        }
+      ]
+    },
+  
+    {
+      "case_id": "CASE-2d9f6a10",
+      "user_id": "u_032",
+      "status": "open",
+      "opened_at": "2026-02-07T08:46:30Z",
+      "last_pdated": "2026-02-07T09:05:10Z",
+      "case_score": 46,
+      "risk_level": "MEDIUM",
+      "alerts": [
+        {
+          "alert_id": "A-1201",
+          "event_time": "2026-02-07T08:46:30Z",
+          "detector_type": "BEHAVIOR",
+          "signal": "FAILED_LOGIN_SPIKE",
+          "severity": "MEDIUM",
+          "confidence": 0.74
+        },
+        {
+          "alert_id": "A-1202",
+          "event_time": "2026-02-07T08:49:58Z",
+          "detector_type": "BEHAVIOR",
+          "signal": "LOGIN_TIME_ANOMALY",
+          "severity": "LOW",
+          "confidence": 0.62
+        },
+        {
+          "alert_id": "A-1203",
+          "event_time": "2026-02-07T09:03:12Z",
+          "detector_type": "NETWORK",
+          "signal": "NEW_IP_SPIKE",
+          "severity": "MEDIUM",
+          "confidence": 0.69
+        }
+      ]
+    },
+  
+    {
+      "case_id": "CASE-0ab4e6c2",
+      "user_id": "u_047",
+      "status": "open",
+      "opened_at": "2026-02-07T07:54:20Z",
+      "last_pdated": "2026-02-07T08:02:18Z",
+      "case_score": 78,
+      "risk_level": "HIGH",
+      "alerts": [
+        {
+          "alert_id": "A-1301",
+          "event_time": "2026-02-07T07:54:20Z",
+          "detector_type": "TRANSACTION",
+          "signal": "AMOUNT_ANOMALY",
+          "severity": "HIGH",
+          "confidence": 0.83
+        },
+        {
+          "alert_id": "A-1302",
+          "event_time": "2026-02-07T07:58:05Z",
+          "detector_type": "NETWORK",
+          "signal": "GEO_CHANGE",
+          "severity": "MEDIUM",
+          "confidence": 0.70
+        },
+        {
+          "alert_id": "A-1303",
+          "event_time": "2026-02-07T08:02:18Z",
+          "detector_type": "TRANSACTION",
+          "signal": "NEW_DESTINATION_PAYOUT",
+          "severity": "MEDIUM",
+          "confidence": 0.72
+        }
+      ]
+    },
+  
+    {
+      "case_id": "CASE-9e13c4a8",
+      "user_id": "u_066",
+      "status": "open",
+      "opened_at": "2026-02-07T06:19:45Z",
+      "last_pdated": "2026-02-07T06:33:09Z",
+      "case_score": 15,
+      "risk_level": "LOW",
+      "alerts": [
+        {
+          "alert_id": "A-1401",
+          "event_time": "2026-02-07T06:19:45Z",
+          "detector_type": "BEHAVIOR",
+          "signal": "LOGIN_TIME_ANOMALY",
+          "severity": "LOW",
+          "confidence": 0.58
+        },
+        {
+          "alert_id": "A-1402",
+          "event_time": "2026-02-07T06:33:09Z",
+          "detector_type": "NETWORK",
+          "signal": "RTT_SPIKE",
+          "severity": "LOW",
+          "confidence": 0.55
+        }
+      ]
+    },
+  
+    {
+      "case_id": "CASE-f4b29d7e",
+      "user_id": "u_089",
+      "status": "open",
+      "opened_at": "2026-02-07T08:09:01Z",
+      "last_pdated": "2026-02-07T08:12:47Z",
+      "case_score": 100,
+      "risk_level": "HIGH",
+      "alerts": [
+        {
+          "alert_id": "A-1501",
+          "event_time": "2026-02-07T08:09:01Z",
+          "detector_type": "ATO",
+          "signal": "IMPOSSIBLE_TRAVEL",
+          "severity": "HIGH",
+          "confidence": 0.96
+        },
+        {
+          "alert_id": "A-1502",
+          "event_time": "2026-02-07T08:10:40Z",
+          "detector_type": "BEHAVIOR",
+          "signal": "NEW_DEVICE_AND_IP",
+          "severity": "HIGH",
+          "confidence": 0.90
+        },
+        {
+          "alert_id": "A-1503",
+          "event_time": "2026-02-07T08:12:47Z",
+          "detector_type": "TRANSACTION",
+          "signal": "RAPID_FUNDS_DRAIN",
+          "severity": "HIGH",
+          "confidence": 0.91
+        }
+      ]
+    }
+  ]
+  

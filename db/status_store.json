@@ -1,0 +1,3102 @@
+[
+    {
+      "user_id": "u_001",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 4,
+        "amount_in_5m": 60.03,
+        "amount_in_1h": 60.03,
+        "amount_in_1d": 978.04,
+        "amount_in_30d": 25509.19,
+        "amount_out_5m": 53.26,
+        "amount_out_1h": 32.92,
+        "amount_out_1d": 743.01,
+        "amount_out_30d": 20654.66
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T21:12:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 42,
+        "packet_loss_5m": 1.29
+      }
+    },
+    {
+      "user_id": "u_002",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 5,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 12.67,
+        "amount_in_1d": 93.84,
+        "amount_in_30d": 3145.35,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 6.63,
+        "amount_out_1d": 67.14,
+        "amount_out_30d": 2342.2
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T05:53:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 76,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_003",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 1,
+        "count_1d": 7,
+        "amount_in_5m": 182.76,
+        "amount_in_1h": 182.76,
+        "amount_in_1d": 912.99,
+        "amount_in_30d": 23308.58,
+        "amount_out_5m": 129.01,
+        "amount_out_1h": 111.83,
+        "amount_out_1d": 733.58,
+        "amount_out_30d": 18399.14
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T22:37:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 78,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_004",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 28.91,
+        "amount_in_1d": 54.69,
+        "amount_in_30d": 1975.05,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 19.68,
+        "amount_out_1d": 36.24,
+        "amount_out_30d": 1159.91
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T13:49:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 95,
+        "packet_loss_5m": 1.04
+      }
+    },
+    {
+      "user_id": "u_005",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 9,
+        "amount_in_5m": 432.05,
+        "amount_in_1h": 587.13,
+        "amount_in_1d": 3890.95,
+        "amount_in_30d": 94880.92,
+        "amount_out_5m": 201.86,
+        "amount_out_1h": 414.76,
+        "amount_out_1d": 3008.58,
+        "amount_out_30d": 49585.36
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 1,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T01:27:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 93,
+        "packet_loss_5m": 0.37
+      }
+    },
+    {
+      "user_id": "u_006",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 554.82,
+        "amount_in_30d": 18364.51,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 333.81,
+        "amount_out_30d": 14640.71
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T05:08:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 79,
+        "packet_loss_5m": 0.03
+      }
+    },
+    {
+      "user_id": "u_007",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 0,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 0.0,
+        "amount_in_30d": 0.0,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 0.0,
+        "amount_out_30d": 0.0
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T05:57:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 54,
+        "packet_loss_5m": 1.71
+      }
+    },
+    {
+      "user_id": "u_008",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 28.67,
+        "amount_in_1d": 81.16,
+        "amount_in_30d": 1731.12,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 18.95,
+        "amount_out_1d": 73.67,
+        "amount_out_30d": 1484.02
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T08:20:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 110,
+        "packet_loss_5m": 1.01
+      }
+    },
+    {
+      "user_id": "u_009",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 0,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 0.0,
+        "amount_in_30d": 0.0,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 0.0,
+        "amount_out_30d": 0.0
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T17:33:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 38,
+        "packet_loss_5m": 0.68
+      }
+    },
+    {
+      "user_id": "u_010",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 169.29,
+        "amount_in_1d": 269.1,
+        "amount_in_30d": 8941.93,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 140.38,
+        "amount_out_1d": 131.68,
+        "amount_out_30d": 6018.19
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 2,
+        "new_device_1d": 2,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T09:57:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 75,
+        "packet_loss_5m": 1.12
+      }
+    },
+    {
+      "user_id": "u_011",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 20.96,
+        "amount_in_1d": 453.61,
+        "amount_in_30d": 11639.8,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 15.85,
+        "amount_out_1d": 235.12,
+        "amount_out_30d": 8514.07
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T20:42:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 39,
+        "packet_loss_5m": 0.6
+      }
+    },
+    {
+      "user_id": "u_012",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 209.15,
+        "amount_in_30d": 5468.4,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 133.75,
+        "amount_out_30d": 4105.88
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T18:54:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 79,
+        "packet_loss_5m": 1.98
+      }
+    },
+    {
+      "user_id": "u_013",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 6,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 44.12,
+        "amount_in_1d": 287.92,
+        "amount_in_30d": 7544.96,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 24.36,
+        "amount_out_1d": 177.84,
+        "amount_out_30d": 6434.06
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-06T23:26:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 46,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_014",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 314.91,
+        "amount_in_1d": 1028.45,
+        "amount_in_30d": 23363.49,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 185.43,
+        "amount_out_1d": 564.49,
+        "amount_out_30d": 12772.02
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T15:34:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 71,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_015",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 7.7,
+        "amount_in_1d": 108.59,
+        "amount_in_30d": 2998.55,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 3.53,
+        "amount_out_1d": 85.56,
+        "amount_out_30d": 2205.37
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T19:31:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 77,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_016",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.53,
+        "amount_in_1d": 14.64,
+        "amount_in_30d": 446.52,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.42,
+        "amount_out_1d": 11.08,
+        "amount_out_30d": 220.37
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 2,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-06T11:07:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 89,
+        "packet_loss_5m": 0.8
+      }
+    },
+    {
+      "user_id": "u_017",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 3,
+        "count_1h": 3,
+        "count_1d": 3,
+        "amount_in_5m": 1115.12,
+        "amount_in_1h": 1671.84,
+        "amount_in_1d": 2814.01,
+        "amount_in_30d": 102118.16,
+        "amount_out_5m": 978.73,
+        "amount_out_1h": 1569.82,
+        "amount_out_1d": 2513.72,
+        "amount_out_30d": 86225.27
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T15:04:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 75,
+        "packet_loss_5m": 0.84
+      }
+    },
+    {
+      "user_id": "u_018",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 567.03,
+        "amount_in_1d": 567.03,
+        "amount_in_30d": 12876.42,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 421.45,
+        "amount_out_1d": 340.63,
+        "amount_out_30d": 10206.58
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T21:49:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 75,
+        "packet_loss_5m": 1.55
+      }
+    },
+    {
+      "user_id": "u_019",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 9,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 148.47,
+        "amount_in_1d": 404.16,
+        "amount_in_30d": 11509.63,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 131.25,
+        "amount_out_1d": 248.98,
+        "amount_out_30d": 7222.44
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T12:58:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 86,
+        "packet_loss_5m": 0.57
+      }
+    },
+    {
+      "user_id": "u_020",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 0,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 24.3,
+        "amount_in_1d": 24.3,
+        "amount_in_30d": 472.6,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 15.17,
+        "amount_out_1d": 20.35,
+        "amount_out_30d": 258.72
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T03:51:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 92,
+        "packet_loss_5m": 0.7
+      }
+    },
+    {
+      "user_id": "u_021",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 69.04,
+        "amount_in_1d": 191.62,
+        "amount_in_30d": 4264.62,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 47.9,
+        "amount_out_1d": 129.23,
+        "amount_out_30d": 2513.72
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 2,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T04:08:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 86,
+        "packet_loss_5m": 0.75
+      }
+    },
+    {
+      "user_id": "u_022",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 5,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 491.54,
+        "amount_in_30d": 16689.61,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 307.84,
+        "amount_out_30d": 11741.27
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T12:29:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 79,
+        "packet_loss_5m": 0.55
+      }
+    },
+    {
+      "user_id": "u_023",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 2,
+        "count_1d": 7,
+        "amount_in_5m": 0.5,
+        "amount_in_1h": 754.6,
+        "amount_in_1d": 4149.71,
+        "amount_in_30d": 127371.49,
+        "amount_out_5m": 0.32,
+        "amount_out_1h": 594.2,
+        "amount_out_1d": 3201.05,
+        "amount_out_30d": 95949.26
+      },
+      "auth": {
+        "login_count_5m": 2,
+        "failed_login_5m": 1,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T05:30:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 56,
+        "packet_loss_5m": 1.18
+      }
+    },
+    {
+      "user_id": "u_024",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 14,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 10666.06,
+        "amount_in_30d": 308727.58,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 6369.44,
+        "amount_out_30d": 229434.59
+      },
+      "auth": {
+        "login_count_5m": 2,
+        "failed_login_5m": 0,
+        "failed_login_1h": 5,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T00:54:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 76,
+        "packet_loss_5m": 0.72
+      }
+    },
+    {
+      "user_id": "u_025",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 11,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 514.01,
+        "amount_in_1d": 1334.92,
+        "amount_in_30d": 46879.88,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 347.27,
+        "amount_out_1d": 781.24,
+        "amount_out_30d": 34235.33
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T21:21:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 98,
+        "packet_loss_5m": 0.44
+      }
+    },
+    {
+      "user_id": "u_026",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 78.47,
+        "amount_in_30d": 2543.45,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 50.47,
+        "amount_out_30d": 1612.31
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 4,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T09:24:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 57,
+        "packet_loss_5m": 1.14
+      }
+    },
+    {
+      "user_id": "u_027",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 27.29,
+        "amount_in_1d": 173.53,
+        "amount_in_30d": 4403.41,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 23.16,
+        "amount_out_1d": 108.14,
+        "amount_out_30d": 2646.73
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T18:41:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 68,
+        "packet_loss_5m": 0.99
+      }
+    },
+    {
+      "user_id": "u_028",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 172.9,
+        "amount_in_30d": 6163.66,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 119.76,
+        "amount_out_30d": 4517.67
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T01:17:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 83,
+        "packet_loss_5m": 2.18
+      }
+    },
+    {
+      "user_id": "u_029",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 3,
+        "amount_in_5m": 18.09,
+        "amount_in_1h": 18.09,
+        "amount_in_1d": 105.85,
+        "amount_in_30d": 3354.34,
+        "amount_out_5m": 7.84,
+        "amount_out_1h": 10.3,
+        "amount_out_1d": 76.92,
+        "amount_out_30d": 2637.49
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T20:44:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 85,
+        "packet_loss_5m": 2.12
+      }
+    },
+    {
+      "user_id": "u_030",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 0,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 0.0,
+        "amount_in_30d": 0.0,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 0.0,
+        "amount_out_30d": 0.0
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-07T06:16:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 86,
+        "packet_loss_5m": 0.79
+      }
+    },
+    {
+      "user_id": "u_031",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 2,
+        "count_1d": 2,
+        "amount_in_5m": 924.31,
+        "amount_in_1h": 924.31,
+        "amount_in_1d": 924.31,
+        "amount_in_30d": 31631.69,
+        "amount_out_5m": 707.32,
+        "amount_out_1h": 772.17,
+        "amount_out_1d": 708.87,
+        "amount_out_30d": 19294.72
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T22:36:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 116,
+        "packet_loss_5m": 0.51
+      }
+    },
+    {
+      "user_id": "u_032",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 16.61,
+        "amount_in_1d": 16.61,
+        "amount_in_30d": 473.79,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 12.75,
+        "amount_out_1d": 11.13,
+        "amount_out_30d": 291.75
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T02:03:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 87,
+        "packet_loss_5m": 0.75
+      }
+    },
+    {
+      "user_id": "u_033",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 40.18,
+        "amount_in_30d": 1258.56,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 29.3,
+        "amount_out_30d": 1013.96
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T22:06:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 89,
+        "packet_loss_5m": 1.16
+      }
+    },
+    {
+      "user_id": "u_034",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 926.8,
+        "amount_in_1d": 926.8,
+        "amount_in_30d": 30028.43,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 754.99,
+        "amount_out_1d": 603.75,
+        "amount_out_30d": 25048.81
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T12:03:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 60,
+        "packet_loss_5m": 0.04
+      }
+    },
+    {
+      "user_id": "u_035",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 0,
+        "amount_in_5m": 207.23,
+        "amount_in_1h": 207.23,
+        "amount_in_1d": 207.23,
+        "amount_in_30d": 4874.61,
+        "amount_out_5m": 123.1,
+        "amount_out_1h": 159.81,
+        "amount_out_1d": 151.39,
+        "amount_out_30d": 3235.35
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T00:29:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 101,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_036",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 5,
+        "amount_in_5m": 310.7,
+        "amount_in_1h": 310.7,
+        "amount_in_1d": 681.46,
+        "amount_in_30d": 15410.0,
+        "amount_out_5m": 167.46,
+        "amount_out_1h": 178.81,
+        "amount_out_1d": 495.3,
+        "amount_out_30d": 8891.42
+      },
+      "auth": {
+        "login_count_5m": 2,
+        "failed_login_5m": 0,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T19:31:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 107,
+        "packet_loss_5m": 0.47
+      }
+    },
+    {
+      "user_id": "u_037",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 32.47,
+        "amount_in_1d": 32.47,
+        "amount_in_30d": 765.22,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 26.08,
+        "amount_out_1d": 23.76,
+        "amount_out_30d": 416.31
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 3,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T15:57:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 111,
+        "packet_loss_5m": 0.7
+      }
+    },
+    {
+      "user_id": "u_038",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 5,
+        "amount_in_5m": 249.0,
+        "amount_in_1h": 249.0,
+        "amount_in_1d": 1231.65,
+        "amount_in_30d": 32275.88,
+        "amount_out_5m": 170.91,
+        "amount_out_1h": 126.55,
+        "amount_out_1d": 810.47,
+        "amount_out_30d": 21319.19
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T17:10:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 86,
+        "packet_loss_5m": 1.53
+      }
+    },
+    {
+      "user_id": "u_039",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 3,
+        "count_1d": 5,
+        "amount_in_5m": 586.05,
+        "amount_in_1h": 1504.66,
+        "amount_in_1d": 1526.88,
+        "amount_in_30d": 45137.62,
+        "amount_out_5m": 290.34,
+        "amount_out_1h": 1349.2,
+        "amount_out_1d": 1078.89,
+        "amount_out_30d": 26916.36
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 4,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T06:39:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 92,
+        "packet_loss_5m": 0.59
+      }
+    },
+    {
+      "user_id": "u_040",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 89.94,
+        "amount_in_30d": 1872.05,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 74.39,
+        "amount_out_30d": 1660.55
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T13:41:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 101,
+        "packet_loss_5m": 1.49
+      }
+    },
+    {
+      "user_id": "u_041",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 6,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 3343.59,
+        "amount_in_1d": 3343.59,
+        "amount_in_30d": 79293.22,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 2484.84,
+        "amount_out_1d": 2131.25,
+        "amount_out_30d": 45452.57
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T02:09:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 80,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_042",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 7,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 1694.63,
+        "amount_in_1d": 7982.25,
+        "amount_in_30d": 240030.41,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 1133.68,
+        "amount_out_1d": 5022.12,
+        "amount_out_30d": 157359.13
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T08:12:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 69,
+        "packet_loss_5m": 0.84
+      }
+    },
+    {
+      "user_id": "u_043",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 0,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 39.73,
+        "amount_in_1d": 39.73,
+        "amount_in_30d": 917.97,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 18.92,
+        "amount_out_1d": 22.54,
+        "amount_out_30d": 715.87
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T03:02:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 37,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_044",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 5,
+        "amount_in_5m": 358.73,
+        "amount_in_1h": 358.73,
+        "amount_in_1d": 1184.42,
+        "amount_in_30d": 46876.38,
+        "amount_out_5m": 311.66,
+        "amount_out_1h": 169.29,
+        "amount_out_1d": 724.01,
+        "amount_out_30d": 35599.41
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 5,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T09:05:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 78,
+        "packet_loss_5m": 1.51
+      }
+    },
+    {
+      "user_id": "u_045",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 63.33,
+        "amount_in_1d": 106.19,
+        "amount_in_30d": 2906.6,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 37.48,
+        "amount_out_1d": 66.23,
+        "amount_out_30d": 1833.39
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 4,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T22:31:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 105,
+        "packet_loss_5m": 0.14
+      }
+    },
+    {
+      "user_id": "u_046",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 759.77,
+        "amount_in_1d": 1020.51,
+        "amount_in_30d": 23572.46,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 393.31,
+        "amount_out_1d": 499.34,
+        "amount_out_30d": 17177.16
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T12:26:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 95,
+        "packet_loss_5m": 0.57
+      }
+    },
+    {
+      "user_id": "u_047",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 15.65,
+        "amount_in_30d": 606.34,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 10.58,
+        "amount_out_30d": 368.92
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T13:00:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 90,
+        "packet_loss_5m": 1.05
+      }
+    },
+    {
+      "user_id": "u_048",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 1,
+        "amount_in_5m": 173.81,
+        "amount_in_1h": 173.81,
+        "amount_in_1d": 173.81,
+        "amount_in_30d": 3266.99,
+        "amount_out_5m": 111.75,
+        "amount_out_1h": 80.71,
+        "amount_out_1d": 89.04,
+        "amount_out_30d": 2580.41
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T13:35:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 97,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_049",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 3,
+        "amount_in_5m": 15.71,
+        "amount_in_1h": 22.2,
+        "amount_in_1d": 66.09,
+        "amount_in_30d": 2141.42,
+        "amount_out_5m": 8.7,
+        "amount_out_1h": 20.36,
+        "amount_out_1d": 40.44,
+        "amount_out_30d": 1832.05
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T06:50:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 84,
+        "packet_loss_5m": 1.26
+      }
+    },
+    {
+      "user_id": "u_050",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 673.39,
+        "amount_in_1d": 1037.27,
+        "amount_in_30d": 25988.36,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 509.27,
+        "amount_out_1d": 579.88,
+        "amount_out_30d": 14018.07
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T16:02:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 83,
+        "packet_loss_5m": 0.65
+      }
+    },
+    {
+      "user_id": "u_051",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 8,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 234.19,
+        "amount_in_1d": 428.55,
+        "amount_in_30d": 10131.57,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 128.87,
+        "amount_out_1d": 247.28,
+        "amount_out_30d": 7780.87
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T13:25:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 83,
+        "packet_loss_5m": 0.9
+      }
+    },
+    {
+      "user_id": "u_052",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 5,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.5,
+        "amount_in_1d": 113.28,
+        "amount_in_30d": 3846.9,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.35,
+        "amount_out_1d": 68.92,
+        "amount_out_30d": 2667.58
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T23:56:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 68,
+        "packet_loss_5m": 1.4
+      }
+    },
+    {
+      "user_id": "u_053",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 55.1,
+        "amount_in_1d": 372.38,
+        "amount_in_30d": 10630.57,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 54.14,
+        "amount_out_1d": 266.86,
+        "amount_out_30d": 9582.73
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 1,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T18:30:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 72,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_054",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 6,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 44.58,
+        "amount_in_1d": 125.26,
+        "amount_in_30d": 3584.39,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 23.32,
+        "amount_out_1d": 97.61,
+        "amount_out_30d": 2997.01
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-06T20:36:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 80,
+        "packet_loss_5m": 0.08
+      }
+    },
+    {
+      "user_id": "u_055",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 38.59,
+        "amount_in_1d": 38.59,
+        "amount_in_30d": 755.49,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 36.21,
+        "amount_out_1d": 22.93,
+        "amount_out_30d": 504.63
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T09:23:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 48,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_056",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 99.75,
+        "amount_in_30d": 2605.33,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 76.66,
+        "amount_out_30d": 2002.49
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 2,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T06:25:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 72,
+        "packet_loss_5m": 1.38
+      }
+    },
+    {
+      "user_id": "u_057",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 2,
+        "count_1d": 4,
+        "amount_in_5m": 169.32,
+        "amount_in_1h": 169.32,
+        "amount_in_1d": 239.25,
+        "amount_in_30d": 6856.19,
+        "amount_out_5m": 73.87,
+        "amount_out_1h": 134.7,
+        "amount_out_1d": 182.33,
+        "amount_out_30d": 4702.35
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T04:49:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 80,
+        "packet_loss_5m": 1.6
+      }
+    },
+    {
+      "user_id": "u_058",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 434.17,
+        "amount_in_1d": 653.34,
+        "amount_in_30d": 12937.85,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 387.63,
+        "amount_out_1d": 540.07,
+        "amount_out_30d": 10675.32
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 5,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T04:51:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 82,
+        "packet_loss_5m": 1.84
+      }
+    },
+    {
+      "user_id": "u_059",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 344.34,
+        "amount_in_1d": 586.72,
+        "amount_in_30d": 18906.61,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 212.16,
+        "amount_out_1d": 327.15,
+        "amount_out_30d": 12229.11
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T17:38:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 74,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_060",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 6,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 84.41,
+        "amount_in_1d": 516.86,
+        "amount_in_30d": 13007.29,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 53.13,
+        "amount_out_1d": 400.89,
+        "amount_out_30d": 10409.66
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T15:32:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 61,
+        "packet_loss_5m": 1.26
+      }
+    },
+    {
+      "user_id": "u_061",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 98.0,
+        "amount_in_1d": 113.4,
+        "amount_in_30d": 3475.28,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 57.01,
+        "amount_out_1d": 72.98,
+        "amount_out_30d": 1849.17
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 2,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T06:45:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 89,
+        "packet_loss_5m": 0.34
+      }
+    },
+    {
+      "user_id": "u_062",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 1086.59,
+        "amount_in_1d": 1450.31,
+        "amount_in_30d": 34091.4,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 755.68,
+        "amount_out_1d": 900.21,
+        "amount_out_30d": 16837.34
+      },
+      "auth": {
+        "login_count_5m": 2,
+        "failed_login_5m": 0,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T01:05:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 80,
+        "packet_loss_5m": 0.85
+      }
+    },
+    {
+      "user_id": "u_063",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 8,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 461.09,
+        "amount_in_30d": 8995.89,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 386.73,
+        "amount_out_30d": 6906.61
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 6,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T17:23:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 63,
+        "packet_loss_5m": 0.12
+      }
+    },
+    {
+      "user_id": "u_064",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 5,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 1925.83,
+        "amount_in_30d": 38541.32,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 1288.04,
+        "amount_out_30d": 27873.57
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T21:03:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 69,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_065",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 12,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 375.05,
+        "amount_in_1d": 3826.08,
+        "amount_in_30d": 102476.13,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 229.34,
+        "amount_out_1d": 2952.15,
+        "amount_out_30d": 77016.37
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T04:00:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 102,
+        "packet_loss_5m": 1.43
+      }
+    },
+    {
+      "user_id": "u_066",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 0.5,
+        "amount_in_1h": 148.85,
+        "amount_in_1d": 149.59,
+        "amount_in_30d": 4738.77,
+        "amount_out_5m": 0.26,
+        "amount_out_1h": 74.7,
+        "amount_out_1d": 112.38,
+        "amount_out_30d": 3162.18
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-06T14:50:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 117,
+        "packet_loss_5m": 1.64
+      }
+    },
+    {
+      "user_id": "u_067",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 3,
+        "count_1h": 0,
+        "count_1d": 7,
+        "amount_in_5m": 302.03,
+        "amount_in_1h": 302.03,
+        "amount_in_1d": 1118.76,
+        "amount_in_30d": 34712.02,
+        "amount_out_5m": 148.19,
+        "amount_out_1h": 180.41,
+        "amount_out_1d": 918.35,
+        "amount_out_30d": 25087.5
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 7,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T23:08:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 82,
+        "packet_loss_5m": 0.93
+      }
+    },
+    {
+      "user_id": "u_068",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 0,
+        "count_1d": 7,
+        "amount_in_5m": 220.35,
+        "amount_in_1h": 220.35,
+        "amount_in_1d": 920.05,
+        "amount_in_30d": 32368.25,
+        "amount_out_5m": 200.95,
+        "amount_out_1h": 165.52,
+        "amount_out_1d": 515.7,
+        "amount_out_30d": 20456.82
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 1,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T23:42:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 66,
+        "packet_loss_5m": 0.04
+      }
+    },
+    {
+      "user_id": "u_069",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 45.49,
+        "amount_in_1h": 96.71,
+        "amount_in_1d": 107.68,
+        "amount_in_30d": 3705.99,
+        "amount_out_5m": 38.86,
+        "amount_out_1h": 72.94,
+        "amount_out_1d": 81.86,
+        "amount_out_30d": 2666.1
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 1,
+        "failed_login_1h": 1,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T11:57:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 86,
+        "packet_loss_5m": 0.68
+      }
+    },
+    {
+      "user_id": "u_070",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 268.14,
+        "amount_in_1h": 268.14,
+        "amount_in_1d": 502.13,
+        "amount_in_30d": 16318.99,
+        "amount_out_5m": 180.94,
+        "amount_out_1h": 161.17,
+        "amount_out_1d": 276.53,
+        "amount_out_30d": 13783.19
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 5,
+        "new_device_1d": 0,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-06T18:54:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 77,
+        "packet_loss_5m": 0.62
+      }
+    },
+    {
+      "user_id": "u_071",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.5,
+        "amount_in_1d": 132.12,
+        "amount_in_30d": 3366.95,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.28,
+        "amount_out_1d": 95.65,
+        "amount_out_30d": 2358.65
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T14:23:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 91,
+        "packet_loss_5m": 0.38
+      }
+    },
+    {
+      "user_id": "u_072",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 179.9,
+        "amount_in_30d": 4497.41,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 101.0,
+        "amount_out_30d": 2468.51
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 1,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T22:56:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 61,
+        "packet_loss_5m": 0.8
+      }
+    },
+    {
+      "user_id": "u_073",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 317.03,
+        "amount_in_1d": 317.03,
+        "amount_in_30d": 11890.46,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 264.54,
+        "amount_out_1d": 264.36,
+        "amount_out_30d": 9809.56
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 7,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-06T20:19:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 101,
+        "packet_loss_5m": 2.0
+      }
+    },
+    {
+      "user_id": "u_074",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 0,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 0.0,
+        "amount_in_30d": 0.0,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 0.0,
+        "amount_out_30d": 0.0
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T06:00:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 59,
+        "packet_loss_5m": 0.04
+      }
+    },
+    {
+      "user_id": "u_075",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 0,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 385.29,
+        "amount_in_1d": 385.29,
+        "amount_in_30d": 14464.98,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 206.62,
+        "amount_out_1d": 289.01,
+        "amount_out_30d": 10199.58
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 1,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T04:32:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 53,
+        "packet_loss_5m": 1.78
+      }
+    },
+    {
+      "user_id": "u_076",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 658.57,
+        "amount_in_1d": 658.57,
+        "amount_in_30d": 20190.55,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 540.38,
+        "amount_out_1d": 550.12,
+        "amount_out_30d": 12404.95
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T19:10:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 102,
+        "packet_loss_5m": 0.41
+      }
+    },
+    {
+      "user_id": "u_077",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 34.74,
+        "amount_in_1d": 98.01,
+        "amount_in_30d": 2278.14,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 27.26,
+        "amount_out_1d": 82.7,
+        "amount_out_30d": 1660.27
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-06T23:38:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 64,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_078",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 1,
+        "count_1d": 13,
+        "amount_in_5m": 820.22,
+        "amount_in_1h": 820.22,
+        "amount_in_1d": 3250.0,
+        "amount_in_30d": 119049.76,
+        "amount_out_5m": 500.97,
+        "amount_out_1h": 454.55,
+        "amount_out_1d": 1617.16,
+        "amount_out_30d": 66078.21
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T01:36:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 74,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_079",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 0.5,
+        "amount_in_30d": 17.99,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 0.41,
+        "amount_out_30d": 16.27
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 4,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T01:31:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 97,
+        "packet_loss_5m": 0.82
+      }
+    },
+    {
+      "user_id": "u_080",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 3,
+        "count_1d": 7,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 18.48,
+        "amount_in_1d": 204.71,
+        "amount_in_30d": 6277.83,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 9.83,
+        "amount_out_1d": 170.05,
+        "amount_out_30d": 4897.49
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T18:02:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 79,
+        "packet_loss_5m": 1.25
+      }
+    },
+    {
+      "user_id": "u_081",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 9,
+        "amount_in_5m": 27.62,
+        "amount_in_1h": 27.62,
+        "amount_in_1d": 120.82,
+        "amount_in_30d": 3183.02,
+        "amount_out_5m": 27.02,
+        "amount_out_1h": 18.85,
+        "amount_out_1d": 79.15,
+        "amount_out_30d": 2350.14
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T19:01:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 75,
+        "packet_loss_5m": 0.82
+      }
+    },
+    {
+      "user_id": "u_082",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 2,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 368.76,
+        "amount_in_1d": 368.76,
+        "amount_in_30d": 13921.03,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 243.48,
+        "amount_out_1d": 221.37,
+        "amount_out_30d": 10439.56
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T06:59:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 102,
+        "packet_loss_5m": 0.2
+      }
+    },
+    {
+      "user_id": "u_083",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 3,
+        "amount_in_5m": 56.38,
+        "amount_in_1h": 56.38,
+        "amount_in_1d": 126.3,
+        "amount_in_30d": 2600.47,
+        "amount_out_5m": 27.91,
+        "amount_out_1h": 41.04,
+        "amount_out_1d": 93.33,
+        "amount_out_30d": 1508.26
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T22:20:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 76,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_084",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 4,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 187.24,
+        "amount_in_30d": 6379.61,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 151.64,
+        "amount_out_30d": 3922.72
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T18:41:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 51,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_085",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 2,
+        "count_1h": 2,
+        "count_1d": 6,
+        "amount_in_5m": 229.77,
+        "amount_in_1h": 278.18,
+        "amount_in_1d": 423.97,
+        "amount_in_30d": 14587.31,
+        "amount_out_5m": 217.38,
+        "amount_out_1h": 203.32,
+        "amount_out_1d": 266.22,
+        "amount_out_30d": 8297.41
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T23:43:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 76,
+        "packet_loss_5m": 0.5
+      }
+    },
+    {
+      "user_id": "u_086",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 328.09,
+        "amount_in_30d": 6283.0,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 273.9,
+        "amount_out_30d": 4583.45
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T00:05:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 103,
+        "packet_loss_5m": 1.05
+      }
+    },
+    {
+      "user_id": "u_087",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 2,
+        "amount_in_5m": 60.11,
+        "amount_in_1h": 84.69,
+        "amount_in_1d": 171.46,
+        "amount_in_30d": 4459.54,
+        "amount_out_5m": 44.66,
+        "amount_out_1h": 53.48,
+        "amount_out_1d": 158.99,
+        "amount_out_30d": 3848.53
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 1,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T04:41:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 95,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_088",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 3,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 944.79,
+        "amount_in_30d": 34365.56,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 646.95,
+        "amount_out_30d": 19141.17
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T23:38:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 96,
+        "packet_loss_5m": 0.0
+      }
+    },
+    {
+      "user_id": "u_089",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 9,
+        "amount_in_5m": 1018.15,
+        "amount_in_1h": 1018.15,
+        "amount_in_1d": 4674.85,
+        "amount_in_30d": 130911.87,
+        "amount_out_5m": 629.11,
+        "amount_out_1h": 808.51,
+        "amount_out_1d": 2816.93,
+        "amount_out_30d": 74790.33
+      },
+      "auth": {
+        "login_count_5m": 2,
+        "failed_login_5m": 0,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T08:38:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 48,
+        "packet_loss_5m": 0.25
+      }
+    },
+    {
+      "user_id": "u_090",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 1,
+        "count_1d": 6,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 151.25,
+        "amount_in_1d": 1688.55,
+        "amount_in_30d": 55266.59,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 77.29,
+        "amount_out_1d": 1236.68,
+        "amount_out_30d": 38276.69
+      },
+      "auth": {
+        "login_count_5m": 2,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T14:17:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 47,
+        "packet_loss_5m": 0.98
+      }
+    },
+    {
+      "user_id": "u_091",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 0,
+        "amount_in_5m": 4.8,
+        "amount_in_1h": 4.8,
+        "amount_in_1d": 4.8,
+        "amount_in_30d": 118.24,
+        "amount_out_5m": 2.25,
+        "amount_out_1h": 2.62,
+        "amount_out_1d": 3.88,
+        "amount_out_30d": 87.29
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 1,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T06:28:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 53,
+        "packet_loss_5m": 1.1
+      }
+    },
+    {
+      "user_id": "u_092",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 4,
+        "count_1d": 2,
+        "amount_in_5m": 407.82,
+        "amount_in_1h": 1539.66,
+        "amount_in_1d": 1539.66,
+        "amount_in_30d": 44248.83,
+        "amount_out_5m": 230.78,
+        "amount_out_1h": 1404.51,
+        "amount_out_1d": 980.89,
+        "amount_out_30d": 28721.74
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 1,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T00:35:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 68,
+        "packet_loss_5m": 1.09
+      }
+    },
+    {
+      "user_id": "u_093",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 2,
+        "count_1d": 13,
+        "amount_in_5m": 119.03,
+        "amount_in_1h": 2178.07,
+        "amount_in_1d": 4500.2,
+        "amount_in_30d": 117068.38,
+        "amount_out_5m": 92.37,
+        "amount_out_1h": 1642.22,
+        "amount_out_1d": 2299.02,
+        "amount_out_30d": 69026.7
+      },
+      "auth": {
+        "login_count_5m": 1,
+        "failed_login_5m": 0,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 1,
+        "last_login_ts": "2026-02-07T02:01:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 53,
+        "packet_loss_5m": 0.27
+      }
+    },
+    {
+      "user_id": "u_094",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 1,
+        "count_1d": 12,
+        "amount_in_5m": 115.79,
+        "amount_in_1h": 115.79,
+        "amount_in_1d": 2626.05,
+        "amount_in_30d": 74108.27,
+        "amount_out_5m": 95.9,
+        "amount_out_1h": 70.68,
+        "amount_out_1d": 1961.26,
+        "amount_out_30d": 48497.0
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 0,
+        "new_ip_1d": 2,
+        "last_login_ts": "2026-02-06T14:11:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 1,
+        "rtt_p95_5m": 89,
+        "packet_loss_5m": 0.58
+      }
+    },
+    {
+      "user_id": "u_095",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 1,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 368.32,
+        "amount_in_30d": 13130.89,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 327.97,
+        "amount_out_30d": 7518.39
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 3,
+        "new_device_1d": 1,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T09:55:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 70,
+        "packet_loss_5m": 2.03
+      }
+    },
+    {
+      "user_id": "u_096",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 5,
+        "amount_in_5m": 382.03,
+        "amount_in_1h": 382.03,
+        "amount_in_1d": 779.57,
+        "amount_in_30d": 20636.72,
+        "amount_out_5m": 159.59,
+        "amount_out_1h": 176.74,
+        "amount_out_1d": 425.74,
+        "amount_out_30d": 14250.44
+      },
+      "auth": {
+        "login_count_5m": 2,
+        "failed_login_5m": 0,
+        "failed_login_1h": 2,
+        "new_device_1d": 2,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-07T04:03:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 53,
+        "packet_loss_5m": 1.02
+      }
+    },
+    {
+      "user_id": "u_097",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 2,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 142.71,
+        "amount_in_30d": 3947.52,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 103.99,
+        "amount_out_30d": 2332.26
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T14:50:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 99,
+        "packet_loss_5m": 0.97
+      }
+    },
+    {
+      "user_id": "u_098",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 2,
+        "count_1d": 5,
+        "amount_in_5m": 1.62,
+        "amount_in_1h": 128.97,
+        "amount_in_1d": 455.48,
+        "amount_in_30d": 9202.7,
+        "amount_out_5m": 0.69,
+        "amount_out_1h": 73.82,
+        "amount_out_1d": 298.85,
+        "amount_out_30d": 6138.39
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 0,
+        "failed_login_1h": 0,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T16:49:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 2,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 86,
+        "packet_loss_5m": 0.47
+      }
+    },
+    {
+      "user_id": "u_099",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 1,
+        "count_1h": 0,
+        "count_1d": 0,
+        "amount_in_5m": 117.71,
+        "amount_in_1h": 117.71,
+        "amount_in_1d": 117.71,
+        "amount_in_30d": 4702.86,
+        "amount_out_5m": 59.21,
+        "amount_out_1h": 103.79,
+        "amount_out_1d": 70.85,
+        "amount_out_30d": 2517.35
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 2,
+        "new_device_1d": 0,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T12:27:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 69,
+        "packet_loss_5m": 1.31
+      }
+    },
+    {
+      "user_id": "u_100",
+      "as_of": "2026-02-07T09:15:00Z",
+      "txn": {
+        "count_5m": 0,
+        "count_1h": 0,
+        "count_1d": 5,
+        "amount_in_5m": 0.0,
+        "amount_in_1h": 0.0,
+        "amount_in_1d": 451.26,
+        "amount_in_30d": 10320.15,
+        "amount_out_5m": 0.0,
+        "amount_out_1h": 0.0,
+        "amount_out_1d": 323.12,
+        "amount_out_30d": 6452.49
+      },
+      "auth": {
+        "login_count_5m": 0,
+        "failed_login_5m": 2,
+        "failed_login_1h": 1,
+        "new_device_1d": 2,
+        "new_ip_1d": 0,
+        "last_login_ts": "2026-02-06T21:42:00Z"
+      },
+      "network": {
+        "unique_ip_5m": 1,
+        "geo_change_1d": 0,
+        "rtt_p95_5m": 67,
+        "packet_loss_5m": 1.18
+      }
+    }
+  ]

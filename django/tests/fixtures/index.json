@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Test Fixtures Index",
+  "description": "Pre-assembled CaseContext samples for testing AI Agent skills",
+
+  "cases": [
+    {
+      "case_id": "CASE-2025-00142",
+      "type": "Money Laundering",
+      "description": "Student with income anomaly - deposits 1640% of declared income",
+      "file": "case_money_laundering.json",
+      "key_signals": [
+        "Declared income: $500/month",
+        "Deposits in 14 days: $8,200",
+        "Multiple unknown senders",
+        "Crypto involvement",
+        "Shared device with flagged accounts",
+        "VPN usage from Netherlands/Germany"
+      ]
+    },
+    {
+      "case_id": "CASE-2025-00143",
+      "type": "Account Takeover",
+      "description": "Credential compromise pattern on legitimate long-term customer",
+      "file": "case_account_takeover.json",
+      "key_signals": [
+        "Multiple failed logins from Russia",
+        "Successful login after failures",
+        "Immediate password change",
+        "Full balance withdrawal attempt",
+        "Device linked to known fraud accounts",
+        "Proxy usage detected"
+      ]
+    },
+    {
+      "case_id": "CASE-2025-00144",
+      "type": "Identity Fraud",
+      "description": "AI-generated documents and synthetic identity suspected",
+      "file": "case_identity_fraud.json",
+      "key_signals": [
+        "AI-generated face suspected in passport",
+        "Metadata anomalies in document",
+        "Font inconsistencies",
+        "Temporary email domain",
+        "VPN usage",
+        "Location mismatch (claims SF, logs from LA)"
+      ]
+    }
+  ]
+}

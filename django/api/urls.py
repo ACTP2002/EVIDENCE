@@ -13,6 +13,10 @@ urlpatterns = [
     path('cases/<str:case_id>/network/', views.CaseNetworkView.as_view(), name='case-network'),
     path('cases/<str:case_id>/timeline/', views.CaseTimelineView.as_view(), name='case-timeline'),
     path('cases/<str:case_id>/notes/', views.CaseNotesView.as_view(), name='case-notes'),
+
+    # AI Agent Investigation
+    path('cases/<str:case_id>/investigate/', views.CaseInvestigateView.as_view(), name='case-investigate'),
+    path('cases/<str:case_id>/feedback/', views.InvestigationFeedbackView.as_view(), name='case-feedback'),
     
     # Customers
     path('customers/', views.CustomerListView.as_view(), name='customer-list'),

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RiskDecompositionOutput",
+  "description": "Output schema for the Risk Decomposer AI skill",
+  "type": "object",
+  "required": ["overall_risk_score", "risk_level", "components", "comparison_baseline", "key_differentiators"],
+  "properties": {
+    "overall_risk_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Overall risk score from 0-100"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "description": "Risk level category"
+    },
+    "components": {
+      "type": "array",
+      "description": "Risk score breakdown by component",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["component_name", "component_score", "weight", "weighted_contribution", "explanation"],
+        "properties": {
+          "component_name": {
+            "type": "string",
+            "description": "Name of the risk component"
+          },
+          "component_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Score for this component (0-100)"
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Weight of this component (0.0-1.0)"
+          },
+          "weighted_contribution": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Weighted contribution to overall score"
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Brief explanation of this component's assessment"
+          },
+          "contributing_factors": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Specific factors contributing to this score"
+          }
+        }
+      }
+    },
+    "comparison_baseline": {
+      "type": "string",
+      "description": "How this case compares to typical cases"
+    },
+    "key_differentiators": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "What makes this case stand out from others"
+    }
+  }
+}

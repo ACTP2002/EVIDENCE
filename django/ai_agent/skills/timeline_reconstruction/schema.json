@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TimelineReconstructionOutput",
+  "description": "Output schema for the Timeline Reconstruction AI skill",
+  "type": "object",
+  "required": ["sequence", "escalation_assessment", "window_start", "window_end", "total_events", "critical_events"],
+  "properties": {
+    "sequence": {
+      "type": "array",
+      "description": "Chronologically ordered list of events",
+      "items": {
+        "type": "object",
+        "required": ["t", "type", "event", "details", "severity"],
+        "properties": {
+          "t": {
+            "type": "string",
+            "description": "ISO timestamp of the event"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["AUTH", "TRANSACTION", "BEHAVIOR", "ALERT"],
+            "description": "Category of event"
+          },
+          "event": {
+            "type": "string",
+            "description": "Event name/description"
+          },
+          "details": {
+            "type": "object",
+            "description": "Event-specific details"
+          },
+          "related_alerts": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Alert IDs related to this event"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["info", "warning", "critical"],
+            "description": "Severity level of the event"
+          }
+        }
+      }
+    },
+    "escalation_assessment": {
+      "type": "object",
+      "required": ["pattern", "severity", "escalation_detected"],
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "Description of detected escalation pattern"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"],
+          "description": "Overall severity of escalation"
+        },
+        "escalation_detected": {
+          "type": "boolean",
+          "description": "Whether an escalation pattern was detected"
+        },
+        "time_to_escalation_minutes": {
+          "type": ["integer", "null"],
+          "description": "Time from first suspicious event to escalation in minutes"
+        },
+        "narrative": {
+          "type": "string",
+          "description": "Plain English explanation for investigators"
+        }
+      }
+    },
+    "window_start": {
+      "type": "string",
+      "description": "ISO timestamp of first event"
+    },
+    "window_end": {
+      "type": "string",
+      "description": "ISO timestamp of last event"
+    },
+    "total_events": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of events in timeline"
+    },
+    "critical_events": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of critical severity events"
+    }
+  }
+}

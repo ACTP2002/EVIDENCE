@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NetworkIntelligenceOutput",
+  "description": "Output schema for the Network Intelligence AI skill",
+  "type": "object",
+  "required": ["entities", "edges", "clusters", "risk_summary", "recommended_investigations"],
+  "properties": {
+    "entities": {
+      "type": "array",
+      "description": "Network entities",
+      "items": {
+        "type": "object",
+        "required": ["entity_id", "entity_type", "risk_level"],
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "description": "Unique entity identifier"
+          },
+          "entity_type": {
+            "type": "string",
+            "enum": ["customer", "account", "device", "ip", "wallet"],
+            "description": "Type of entity"
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "unknown"],
+            "description": "Risk level of entity"
+          },
+          "attributes": {
+            "type": "object",
+            "description": "Entity-specific attributes"
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Connections between entities",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "target_id", "connection_type", "strength", "evidence"],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "description": "Source entity ID"
+          },
+          "target_id": {
+            "type": "string",
+            "description": "Target entity ID"
+          },
+          "connection_type": {
+            "type": "string",
+            "description": "Type of connection"
+          },
+          "strength": {
+            "type": "string",
+            "enum": ["weak", "medium", "strong"],
+            "description": "Connection strength"
+          },
+          "evidence": {
+            "type": "string",
+            "description": "Evidence for connection"
+          }
+        }
+      }
+    },
+    "clusters": {
+      "type": "array",
+      "description": "Identified entity clusters",
+      "items": {
+        "type": "object",
+        "required": ["cluster_id", "entities", "risk_score", "classification", "central_entity"],
+        "properties": {
+          "cluster_id": {
+            "type": "string",
+            "description": "Cluster identifier"
+          },
+          "entities": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Entity IDs in cluster"
+          },
+          "risk_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Cluster risk score"
+          },
+          "classification": {
+            "type": "string",
+            "enum": ["fraud_ring", "legitimate_family", "business_accounts", "unknown"],
+            "description": "Cluster classification"
+          },
+          "central_entity": {
+            "type": "string",
+            "description": "Most connected entity in cluster"
+          }
+        }
+      }
+    },
+    "risk_summary": {
+      "type": "object",
+      "required": ["total_entities", "total_connections", "network_risk_level"],
+      "properties": {
+        "total_entities": {"type": "integer"},
+        "total_connections": {"type": "integer"},
+        "high_risk_entities": {"type": "integer"},
+        "clusters_found": {"type": "integer"},
+        "potential_fraud_rings": {"type": "integer"},
+        "network_risk_level": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        }
+      }
+    },
+    "recommended_investigations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Investigation recommendations based on network analysis"
+    }
+  }
+}

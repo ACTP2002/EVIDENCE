@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RecommendationEngineOutput",
+  "description": "Output schema for the Recommendation Engine AI skill",
+  "type": "object",
+  "required": ["recommendations", "investigation_priority", "suggested_sla_hours", "requires_escalation"],
+  "properties": {
+    "recommendations": {
+      "type": "array",
+      "description": "Prioritized list of recommendations",
+      "items": {
+        "type": "object",
+        "required": ["action", "priority", "reason", "category", "estimated_impact"],
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Recommended action name"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["P0", "P1", "P2", "P3"],
+            "description": "Priority level"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why this action is recommended"
+          },
+          "category": {
+            "type": "string",
+            "enum": ["immediate_action", "investigation_step", "monitoring", "documentation"],
+            "description": "Category of recommendation"
+          },
+          "estimated_impact": {
+            "type": "string",
+            "description": "Expected outcome of the action"
+          }
+        }
+      }
+    },
+    "investigation_priority": {
+      "type": "string",
+      "enum": ["P0", "P1", "P2", "P3"],
+      "description": "Overall investigation priority"
+    },
+    "suggested_sla_hours": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Suggested SLA in hours"
+    },
+    "requires_escalation": {
+      "type": "boolean",
+      "description": "Whether escalation is required"
+    },
+    "escalation_reason": {
+      "type": ["string", "null"],
+      "description": "Reason for escalation if required"
+    }
+  }
+}

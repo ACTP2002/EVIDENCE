@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RegulatoryExplainerOutput",
+  "description": "Output schema for the Regulatory Explainer AI skill",
+  "type": "object",
+  "required": ["case_id", "explanations", "compliance_requirements", "reporting_obligations", "documentation_checklist"],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Case identifier"
+    },
+    "explanations": {
+      "type": "object",
+      "description": "Audience-tailored explanations",
+      "properties": {
+        "investigator": {"$ref": "#/$defs/audienceExplanation"},
+        "compliance": {"$ref": "#/$defs/audienceExplanation"},
+        "regulator": {"$ref": "#/$defs/audienceExplanation"},
+        "management": {"$ref": "#/$defs/audienceExplanation"},
+        "customer_service": {"$ref": "#/$defs/audienceExplanation"}
+      }
+    },
+    "compliance_requirements": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Compliance requirements for the case"
+    },
+    "reporting_obligations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Regulatory reporting obligations"
+    },
+    "documentation_checklist": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Required documentation items"
+    }
+  },
+  "$defs": {
+    "audienceExplanation": {
+      "type": "object",
+      "required": ["audience", "summary", "key_points", "recommended_actions", "risk_level_description"],
+      "properties": {
+        "audience": {
+          "type": "string",
+          "description": "Target audience"
+        },
+        "summary": {
+          "type": "string",
+          "description": "Summary for this audience"
+        },
+        "key_points": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Key points for this audience"
+        },
+        "technical_details": {
+          "type": ["string", "null"],
+          "description": "Technical details if applicable"
+        },
+        "recommended_actions": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Recommended actions"
+        },
+        "regulatory_references": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Applicable regulations"
+        },
+        "risk_level_description": {
+          "type": "string",
+          "description": "Risk level description"
+        }
+      }
+    }
+  }
+}

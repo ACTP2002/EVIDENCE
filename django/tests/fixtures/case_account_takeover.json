@@ -1,0 +1,162 @@
+{
+  "_description": "Test Fixture: Account Takeover Suspect - Legitimate account showing signs of credential compromise",
+
+  "case_id": "CASE-2025-00143",
+  "created_at": "2025-01-16T14:20:00Z",
+  "assembled_at": "2025-01-16T14:20:03Z",
+
+  "alerts": [
+    {
+      "alert_id": "ALT-78301",
+      "alert_type": "account_takeover",
+      "triggered_at": "2025-01-16T14:18:00Z",
+      "severity": "critical",
+      "risk_score": 94,
+      "description": "Multiple failed logins followed by successful login from new device in different country, immediate password change and withdrawal attempt",
+      "detector_source": "ato_detector"
+    }
+  ],
+
+  "customer": {
+    "customer_id": "CUST-223344",
+    "full_name": "Sarah Williams",
+    "email": "s.williams.prof@email.com",
+    "phone": "+442071234567",
+    "date_of_birth": "1985-08-12",
+    "country": "United Kingdom",
+    "address": "45 High Street, London",
+    "verification_status": "verified",
+    "verification_method": "biometric",
+    "verification_date": "2021-03-20",
+    "declared_income": 75000.00,
+    "income_currency": "GBP",
+    "employment_status": "employed",
+    "risk_rating": "low",
+    "pep_status": false,
+    "sanctions_hit": false,
+    "adverse_media": false,
+    "document_type": "passport",
+    "document_country": "United Kingdom",
+    "document_verified": true,
+    "document_flags": []
+  },
+
+  "account": {
+    "account_id": "ACC-112233",
+    "customer_id": "CUST-223344",
+    "account_type": "trading",
+    "account_status": "suspended",
+    "created_at": "2021-03-20T15:00:00Z",
+    "total_deposits_30d": 0.00,
+    "total_withdrawals_30d": 0.00,
+    "total_trades_30d": 12,
+    "average_transaction_amount": 1500.00,
+    "deposit_to_income_ratio": 0.24,
+    "account_age_days": 1032,
+    "is_dormant_reactivated": false
+  },
+
+  "transactions": [
+    {
+      "transaction_id": "TXN-ATO-001",
+      "timestamp": "2025-01-16T14:19:00Z",
+      "type": "withdrawal",
+      "amount": 15000.00,
+      "currency": "GBP",
+      "status": "blocked",
+      "channel": "bank_transfer",
+      "counterparty": "New Bank Account (never used before)",
+      "risk_flags": ["new_recipient", "high_amount", "post_password_change", "full_balance"]
+    }
+  ],
+
+  "logins": [
+    {
+      "event_id": "LOGIN-ATO-001",
+      "timestamp": "2025-01-16T14:00:00Z",
+      "ip_address": "91.121.xxx.xxx",
+      "device_id": "DEV-UNKNOWN1",
+      "device_type": "desktop",
+      "browser": "Chrome",
+      "location_country": "Russia",
+      "location_city": "Moscow",
+      "is_vpn": false,
+      "is_proxy": true,
+      "login_success": false,
+      "failure_reason": "wrong_password",
+      "risk_flags": ["new_device", "new_country", "proxy_detected"]
+    },
+    {
+      "event_id": "LOGIN-ATO-002",
+      "timestamp": "2025-01-16T14:02:00Z",
+      "ip_address": "91.121.xxx.xxx",
+      "device_id": "DEV-UNKNOWN1",
+      "device_type": "desktop",
+      "browser": "Chrome",
+      "location_country": "Russia",
+      "location_city": "Moscow",
+      "is_vpn": false,
+      "is_proxy": true,
+      "login_success": false,
+      "failure_reason": "wrong_password",
+      "risk_flags": ["brute_force_pattern"]
+    },
+    {
+      "event_id": "LOGIN-ATO-003",
+      "timestamp": "2025-01-16T14:05:00Z",
+      "ip_address": "91.121.xxx.xxx",
+      "device_id": "DEV-UNKNOWN1",
+      "device_type": "desktop",
+      "browser": "Chrome",
+      "location_country": "Russia",
+      "location_city": "Moscow",
+      "is_vpn": false,
+      "is_proxy": true,
+      "login_success": true,
+      "failure_reason": null,
+      "risk_flags": ["successful_after_failures", "credential_stuffing_pattern"]
+    }
+  ],
+
+  "devices": [
+    {
+      "device_id": "DEV-TRUSTED-UK",
+      "device_type": "mobile",
+      "os": "iOS 17",
+      "first_seen": "2021-03-20",
+      "last_seen": "2025-01-15",
+      "is_trusted": true,
+      "linked_accounts": ["ACC-112233"]
+    },
+    {
+      "device_id": "DEV-UNKNOWN1",
+      "device_type": "desktop",
+      "os": "Windows 10",
+      "first_seen": "2025-01-16",
+      "last_seen": "2025-01-16",
+      "is_trusted": false,
+      "linked_accounts": ["ACC-112233", "ACC-FRAUD-887", "ACC-FRAUD-888", "ACC-FRAUD-889"]
+    }
+  ],
+
+  "network_connections": [
+    {
+      "connection_type": "shared_device",
+      "connected_entity_id": "ACC-FRAUD-887",
+      "connection_strength": "strong",
+      "first_observed": "2025-01-16",
+      "details": "Device DEV-UNKNOWN1 linked to known fraud account"
+    }
+  ],
+
+  "prior_cases": [],
+
+  "data_completeness": {
+    "kyc_data": true,
+    "transaction_history": true,
+    "login_history": true,
+    "device_data": true,
+    "network_analysis": true,
+    "prior_cases": true
+  }
+}

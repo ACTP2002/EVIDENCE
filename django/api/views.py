@@ -296,3 +296,199 @@ class NetworkConnectionsView(APIView):
     
 
 # ============ Output Data ============================ #
+
+# ============ AI AGENT INVESTIGATION ============
+class CaseInvestigateView(APIView):
+    """
+    AI Agent Investigation Endpoint
+
+    POST /api/cases/{case_id}/investigate/
+    """
+
+    def post(self, request, case_id):
+        """Run AI investigation on a case."""
+        try:
+            from ai_agent.orchestrator import InvestigationOrchestrator
+
+            # Get optional parameters from request
+            include_report = request.data.get('include_report', True)
+            include_regulatory = request.data.get('include_regulatory', False)
+            skills = request.data.get('skills', None)
+
+            # Create orchestrator and run investigation
+            orchestrator = InvestigationOrchestrator()
+            result = orchestrator.investigate(
+                case_id=case_id,
+                skills=skills,
+                include_report=include_report,
+                include_regulatory=include_regulatory
+            )
+
+            return Response(result.to_dict())
+
+        except ValueError as e:
+            # Case not found
+            return Response(
+                {"error": str(e), "case_id": case_id},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Exception as e:
+            # Other errors
+            return Response(
+                {"error": f"Investigation failed: {str(e)}", "case_id": case_id},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+    def get(self, request, case_id):
+        """
+        GET method returns investigation metadata and available skills.
+        Use POST to actually run the investigation.
+        """
+        # Verify case exists
+        case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
+        if not case:
+            return Response(
+                {"error": "Case not found", "case_id": case_id},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        return Response({
+            "case_id": case_id,
+            "message": "Use POST to run investigation",
+            "available_skills": {
+                "case_context_assembler": {
+                    "name": "Case Context Assembler",
+                    "description": "Gathers all relevant data (customer, account, transactions, logins, devices, network)",
+                    "skill_number": 1,
+                    "required": True
+                },
+                "explainability_generator": {
+                    "name": "Explainability Generator",
+                    "description": "Explains why alerts fired with human-readable justifications",
+                    "skill_number": 2,
+                    "required": False
+                },
+                "risk_decomposer": {
+                    "name": "Risk Decomposer",
+                    "description": "Breaks down risk scores into identity, behavioral, transaction, network, and historical components",
+                    "skill_number": 3,
+                    "required": False
+                },
+                "pattern_matching": {
+                    "name": "Pattern Matcher",
+                    "description": "Compares case to historical fraud patterns and predicts likely outcome",
+                    "skill_number": 4,
+                    "required": False
+                },
+                "timeline_reconstruction": {
+                    "name": "Timeline Reconstructor",
+                    "description": "Builds chronological event sequence and detects escalation patterns",
+                    "skill_number": 5,
+                    "required": False
+                },
+                "recommendation_engine": {
+                    "name": "Recommendation Engine",
+                    "description": "Suggests prioritized investigation steps and actions",
+                    "skill_number": 6,
+                    "required": False
+                },
+                "network_intelligence": {
+                    "name": "Network Intelligence",
+                    "description": "Analyzes connections between accounts, devices, IPs to detect fraud rings",
+                    "skill_number": 7,
+                    "required": False
+                },
+                "report_generator": {
+                    "name": "Report Generator",
+                    "description": "Creates audit-ready investigation documentation",
+                    "skill_number": 9,
+                    "required": False
+                },
+                "regulatory_explainer": {
+                    "name": "Regulatory Explainer",
+                    "description": "Tailors findings for different audiences (investigators, compliance, regulators)",
+                    "skill_number": 10,
+                    "required": False
+                },
+                "learning_engine": {
+                    "name": "Learning Engine",
+                    "description": "Records outcomes to improve future detection (used via /feedback endpoint)",
+                    "skill_number": 11,
+                    "required": False
+                }
+            },
+            "options": {
+                "include_report": "boolean - Generate full report (default: true)",
+                "include_regulatory": "boolean - Include regulatory explanations (default: false)",
+                "skills": "array - Specific skill keys to run, e.g. ['case_context_assembler', 'network_intelligence'] (default: all)"
+            },
+            "example_requests": {
+                "run_all_skills": {
+                    "method": "POST",
+                    "body": {}
+                },
+                "run_specific_skills": {
+                    "method": "POST",
+                    "body": {
+                        "skills": ["case_context_assembler", "explainability_generator", "recommendation_engine"]
+                    }
+                },
+                "with_regulatory": {
+                    "method": "POST",
+                    "body": {
+                        "include_regulatory": True
+                    }
+                }
+            }
+        })
+
+
+class InvestigationFeedbackView(APIView):
+    """
+    Record investigation outcome for learning.
+
+    POST /api/cases/{case_id}/feedback/
+
+    Records the investigation outcome to improve future detection:
+    - confirmed_fraud: Case was actual fraud
+    - false_positive: Case was not fraud
+    - inconclusive: Unable to determine
+    """
+
+    def post(self, request, case_id):
+        """Record investigation outcome."""
+        try:
+            from ai_agent.orchestrator import InvestigationOrchestrator
+
+            outcome = request.data.get('outcome')
+            notes = request.data.get('notes', None)
+
+            if outcome not in ['confirmed_fraud', 'false_positive', 'inconclusive']:
+                return Response(
+                    {
+                        "error": "Invalid outcome. Must be one of: confirmed_fraud, false_positive, inconclusive",
+                        "provided": outcome
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            orchestrator = InvestigationOrchestrator()
+            result = orchestrator.record_outcome(case_id, outcome, notes)
+
+            return Response({
+                "message": "Feedback recorded successfully",
+                "case_id": case_id,
+                "outcome": outcome,
+                "learning_result": result
+            })
+
+        except ValueError as e:
+            return Response(
+                {"error": str(e), "case_id": case_id},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Exception as e:
+            return Response(
+                {"error": f"Failed to record feedback: {str(e)}", "case_id": case_id},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )

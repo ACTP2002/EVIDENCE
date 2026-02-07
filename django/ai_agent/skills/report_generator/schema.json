@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReportGeneratorOutput",
+  "description": "Output schema for the Report Generator AI skill",
+  "type": "object",
+  "required": ["report_id", "case_id", "generated_at", "report_type", "executive_summary", "sections", "key_findings", "recommendations"],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "description": "Unique report identifier"
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Associated case ID"
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "ISO timestamp of generation"
+    },
+    "report_type": {
+      "type": "string",
+      "enum": ["investigation_summary", "compliance_report", "sar_draft"],
+      "description": "Type of report"
+    },
+    "executive_summary": {
+      "type": "string",
+      "description": "Executive summary text"
+    },
+    "sections": {
+      "type": "array",
+      "description": "Report sections",
+      "items": {
+        "type": "object",
+        "required": ["title", "content"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Section title"
+          },
+          "content": {
+            "type": "string",
+            "description": "Section content in markdown"
+          },
+          "subsections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {"type": "string"},
+                "content": {"type": "string"}
+              }
+            },
+            "description": "Optional subsections"
+          }
+        }
+      }
+    },
+    "key_findings": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Key investigation findings"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Recommended actions"
+    },
+    "appendices": {
+      "type": "array",
+      "description": "Detailed data appendices",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {"type": "string"},
+          "data": {"type": "array"}
+        }
+      }
+    }
+  }
+}

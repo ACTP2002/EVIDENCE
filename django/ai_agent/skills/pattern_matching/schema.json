@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PatternMatchingOutput",
+  "description": "Output schema for the Pattern Matching AI skill",
+  "type": "object",
+  "required": ["top_matches", "inference", "patterns_detected", "fraud_type_probabilities"],
+  "properties": {
+    "top_matches": {
+      "type": "array",
+      "description": "Top matching historical cases",
+      "items": {
+        "type": "object",
+        "required": ["matched_case_id", "match_score", "matched_patterns", "outcome", "resolution_action", "notes"],
+        "properties": {
+          "matched_case_id": {
+            "type": "string",
+            "description": "Historical case identifier"
+          },
+          "match_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Similarity score 0.0-1.0"
+          },
+          "matched_patterns": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Patterns that matched"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": ["confirmed_fraud", "false_positive", "inconclusive"],
+            "description": "Historical case outcome"
+          },
+          "resolution_action": {
+            "type": "string",
+            "description": "Action taken in historical case"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Notes about the match"
+          }
+        }
+      }
+    },
+    "inference": {
+      "type": "object",
+      "required": ["most_likely_outcome", "confidence", "support"],
+      "properties": {
+        "most_likely_outcome": {
+          "type": "string",
+          "enum": ["confirmed_fraud", "false_positive", "inconclusive", "unknown"],
+          "description": "Predicted outcome"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence in prediction"
+        },
+        "support": {
+          "type": "string",
+          "description": "Reasoning for prediction"
+        }
+      }
+    },
+    "patterns_detected": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Patterns found in current case"
+    },
+    "fraud_type_probabilities": {
+      "type": "object",
+      "description": "Probability distribution across fraud types",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  }
+}

@@ -24,12 +24,10 @@ def stream_data(txn_path):
         if alert:
             case = case_builder.demo_bulid_case(alert)
 
-        if case:
-            return case
         
-        time.sleep(2)
+        time.sleep(1)  # Simulate delay between events
 
-    return None
+    return case
 
 def main():
     return stream_data('streaming_events/trancation_events.json')

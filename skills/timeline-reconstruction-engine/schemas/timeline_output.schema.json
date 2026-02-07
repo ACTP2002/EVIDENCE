@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "required": ["case_id", "alert_id", "timeline"],
+  "properties": {
+    "case_id": { "type": "string" },
+    "alert_id": { "type": "string" },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "entity",
+          "event",
+          "annotation",
+          "annotation_confidence",
+          "criticality",
+          "evidence"
+        ],
+        "properties": {
+          "timestamp": { "type": "string" },
+          "entity": {
+            "type": "object",
+            "required": ["entity_type", "entity_id"],
+            "properties": {
+              "entity_type": { "type": "string" },
+              "entity_id": { "type": "string" }
+            }
+          },
+          "event": { "type": "string" },
+          "what": {},
+          "who": {},
+          "where": {},
+          "annotation": { "type": "string" },
+          "annotation_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "criticality": { "type": "string" },
+          "evidence": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": ["source", "event_id"],
+                "properties": {
+                  "source": { "type": "string" },
+                  "event_id": { "type": "string" }
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["source", "event_id"],
+                  "properties": {
+                    "source": { "type": "string" },
+                    "event_id": { "type": "string" }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

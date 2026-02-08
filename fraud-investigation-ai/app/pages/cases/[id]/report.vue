@@ -8,7 +8,7 @@
                 <div class="flex items-center gap-5">
                     <button
                         class="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-slate-400 hover:bg-gray-50 hover:border-gray-300 hover:text-slate-900 transition-all"
-                        @click="navigateTo(`/cases/${caseId}`)">
+                        @click="navigateTo(`/case/${caseId}`)">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M12 16L6 10L12 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
@@ -504,15 +504,187 @@
                 </div>
             </div>
         </div>
+
+        <!-- Chatbot Button -->
+        <button @click="toggleChat"
+            class="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-accent to-primary rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 group"
+            :class="{ 'scale-0': isChatOpen }">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
+                <path
+                    d="M8 12H8.01M12 12H12.01M16 12H16.01M21 12C21 16.4183 16.9706 20 12 20C10.4607 20 9.01172 19.6565 7.74467 19.0511L3 20L4.39499 16.28C3.51156 15.0423 3 13.5743 3 12C3 7.58172 7.02944 4 12 4C16.9706 4 21 7.58172 21 12Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span
+                class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold animate-pulse">
+                1
+            </span>
+        </button>
+
+        <!-- Chatbot Window -->
+        <div v-show="isChatOpen"
+            class="fixed bottom-6 right-6 w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300"
+            :class="{ 'scale-0': !isChatOpen, 'scale-100': isChatOpen }">
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-accent to-primary p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2L15 6V14L10 18L5 14V6L10 2Z" stroke="white" stroke-width="2"
+                                stroke-linejoin="round" />
+                            <circle cx="10" cy="10" r="1.5" fill="white" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-white font-semibold text-sm">AI Assistant</div>
+                        <div class="text-white/80 text-xs">Active</div>
+                    </div>
+                </div>
+                <button @click="toggleChat"
+                    class="w-8 h-8 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 5L5 15M5 5L15 15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                <div v-for="message in messages" :key="message.id" :class="[
+                    'flex',
+                    message.sender === 'user' ? 'justify-end' : 'justify-start'
+                ]">
+                    <div :class="[
+                        'max-w-[80%] rounded-2xl px-4 py-2.5 text-sm',
+                        message.sender === 'user'
+                            ? 'bg-primary text-white rounded-br-sm'
+                            : 'bg-white text-slate-900 shadow-sm rounded-bl-sm'
+                    ]">
+                        <div class="leading-relaxed">{{ message.text }}</div>
+                        <div :class="[
+                            'text-xs mt-1',
+                            message.sender === 'user' ? 'text-white/70' : 'text-slate-400'
+                        ]">
+                            {{ new Date(message.timestamp).toLocaleTimeString([], {
+                                hour: '2-digit', minute: '2-digit'
+                            }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggested Questions -->
+            <div class="px-4 py-2 bg-white border-t border-gray-100">
+                <div class="text-xs text-slate-400 mb-2">Quick questions:</div>
+                <div class="flex flex-wrap gap-2">
+                    <button @click="userMessage = 'What is the risk score?'; sendMessage()"
+                        class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-xs text-slate-700 transition-colors">
+                        Risk Score
+                    </button>
+                    <button @click="userMessage = 'Show evidence'; sendMessage()"
+                        class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-xs text-slate-700 transition-colors">
+                        Evidence
+                    </button>
+                    <button @click="userMessage = 'Network connections'; sendMessage()"
+                        class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-xs text-slate-700 transition-colors">
+                        Network
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 bg-white border-t border-gray-200">
+                <div class="flex gap-2">
+                    <input v-model="userMessage" @keypress="handleKeyPress" type="text"
+                        placeholder="Ask about this case..."
+                        class="flex-1 px-4 py-2.5 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-primary transition-colors" />
+                    <button @click="sendMessage" :disabled="!userMessage.trim()"
+                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M16 2L8 10M16 2L11 16L8 10M16 2L2 7L8 10" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const caseId = computed(() => route.params.id || 'FR-2024-0847')
 
-// In a real app, you would fetch case data based on caseId
-// For now, we'll use the caseId dynamically in the template
+// Chatbot state
+const isChatOpen = ref(false)
+const messages = ref([
+    {
+        id: 1,
+        text: "Hello! I'm your AI investigation assistant. How can I help you with this case?",
+        sender: 'bot',
+        timestamp: new Date()
+    }
+])
+const userMessage = ref('')
+
+// Toggle chat window
+const toggleChat = () => {
+    isChatOpen.value = !isChatOpen.value
+}
+
+// Send message
+const sendMessage = () => {
+    if (!userMessage.value.trim()) return
+
+    // Add user message
+    messages.value.push({
+        id: messages.value.length + 1,
+        text: userMessage.value,
+        sender: 'user',
+        timestamp: new Date()
+    })
+
+    const userText = userMessage.value
+    userMessage.value = ''
+
+    // Simulate AI response after a delay
+    setTimeout(() => {
+        const botResponse = generateBotResponse(userText)
+        messages.value.push({
+            id: messages.value.length + 1,
+            text: botResponse,
+            sender: 'bot',
+            timestamp: new Date()
+        })
+    }, 800)
+}
+
+// Generate bot response (simple keyword matching for demo)
+const generateBotResponse = (userText) => {
+    const text = userText.toLowerCase()
+
+    if (text.includes('risk') || text.includes('score')) {
+        return `This case has a risk score of 94/100, classified as Critical. The main contributors are: income inconsistency (1,420% deviation), VPN usage from sanctioned jurisdictions (73% of logins), and pattern matching with 12 confirmed ML cases.`
+    } else if (text.includes('evidence') || text.includes('proof')) {
+        return `Key evidence includes: $71,000 in deposits vs $5,000 declared income, 87 VPN sessions from sanctioned jurisdictions, and rapid withdrawal cycles matching known money laundering patterns.`
+    } else if (text.includes('recommend') || text.includes('action')) {
+        return `Recommended actions: 1) Immediate account suspension, 2) Asset freeze, 3) File SAR with FinCEN, 4) Law enforcement referral, 5) Expand investigation to linked accounts.`
+    } else if (text.includes('network') || text.includes('linked')) {
+        return `Network analysis shows this account is linked to 7 other accounts via shared device fingerprint, 3 accounts via shared IP addresses, and coordinated transaction timing within ±15 minutes.`
+    } else if (text.includes('hello') || text.includes('hi')) {
+        return `Hello! I can help you understand this fraud case. Ask me about risk scores, evidence, recommendations, or network connections.`
+    } else {
+        return `I can help you with information about this case's risk assessment, evidence, recommended actions, or network connections. What would you like to know?`
+    }
+}
+
+// Handle Enter key
+const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault()
+        sendMessage()
+    }
+}
 </script>

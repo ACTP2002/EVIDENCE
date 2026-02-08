@@ -10,6 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        accent: '#00D4FF',  // Chat button gradient
+        primary: '#0A2540', // User messages background
         primary: {
           DEFAULT: '#0A2540',
           light: '#1A3F5F',

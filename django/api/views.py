@@ -58,8 +58,6 @@ def anomaly_prediction(model_path: str, input_csv: str):
     
     return output.to_dict(orient="records")
 
-
-# ============ DJANGO VIEW ============
 class AIAnomalyDetectionView(APIView):
     """
     Endpoint that triggers the AI model and returns anomaly results

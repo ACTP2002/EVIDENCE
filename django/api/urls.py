@@ -51,4 +51,7 @@ urlpatterns = [
     
     # Network
     path('network/connections/<str:entity_id>/', views.NetworkConnectionsView.as_view(), name='network-connections'),
+
+    path('cases/<str:case_id>/investigate/', views.CaseInvestigateView.as_view(), name='case-investigate'),
+    path('cases/<str:case_id>/feedback/', views.InvestigationFeedbackView.as_view(), name='case-feedback'),
 ]

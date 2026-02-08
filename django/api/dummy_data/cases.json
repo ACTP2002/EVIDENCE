@@ -8,24 +8,25 @@
     "assigned_to": "INV-001",
     "sla_deadline": "2025-05-16T09:15:00Z",
     "total_amount_at_risk": 35000.00,
-    "customer_id": "CUST-7721",
+    "customer_id": "U9001",
     "account_id": "ACC-882193",
     "alerts": [
       {
         "alert_id": "ALT-9901",
-        "alert_type": "money_laundering",
+        "alert_type": "anamalous behaviour",
         "triggered_at": "2025-05-14T08:00:00Z",
         "severity": "critical",
         "risk_score": 92,
-        "description": "Total deposits ($35,000) exceed declared monthly income ($2,500) by 1400%.",
+        "description": "Withdrawals exceed declared income",
         "detector_source": "ml_anomaly",
         "evidence": [
           {
             "evidence_type": "income_anomaly",
             "details": {
-              "declared_income": 2500,
-              "actual_deposits_30d": 35000,
-              "ratio": 14.0
+              "declared_income": 4000,
+              "account_deposit": -17000,
+              "amount_in_1d": 1000,
+              "amount_out_1d": 43000
             }
           }
         ],

@@ -1,18 +1,5 @@
 [
-  {
-    "account_id": "ACC-882193",
-    "customer_id": "CUST-7721",
-    "account_type": "trading",
-    "account_status": "under_review",
-    "created_at": "2025-01-10T14:22:10Z",
-    "total_deposits_30d": 35000.00,
-    "total_withdrawals_30d": 32000.00,
-    "total_trades_30d": 145,
-    "average_transaction_amount": 241.37,
-    "deposit_to_income_ratio": 14.0,
-    "account_age_days": 124,
-    "is_dormant_reactivated": true
-  },
+  
   {
     "account_id": "ACC-451288",
     "customer_id": "CUST-4512",

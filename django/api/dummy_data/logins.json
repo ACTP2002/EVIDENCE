@@ -1,22 +1,5 @@
 [
   {
-    "event_id": "EVT-1029",
-    "customer_id": "CUST-7721",
-    "account_id": "ACC-882193",
-    "timestamp": "2025-05-14T07:45:00Z",
-    "ip_address": "41.203.72.15",
-    "device_id": "DEV-IPHONE-99",
-    "device_type": "mobile",
-    "browser": "Mobile Safari",
-    "location_country": "Nigeria",
-    "location_city": "Lagos",
-    "is_vpn": true,
-    "is_proxy": false,
-    "login_success": true,
-    "failure_reason": null,
-    "risk_flags": ["new_location", "impossible_travel", "vpn_detected"]
-  },
-  {
     "event_id": "EVT-1028",
     "customer_id": "CUST-7721",
     "account_id": "ACC-882193",

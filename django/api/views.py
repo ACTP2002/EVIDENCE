@@ -5,6 +5,92 @@ import json
 from pathlib import Path
 from functools import lru_cache
 
+import json
+import joblib
+import pandas as pd
+import numpy as np
+from scipy.stats import median_abs_deviation
+
+# ============ AI LOGIC FUNCTION ============
+def anomaly_prediction(model_path: str, input_csv: str):
+    # Load model
+    artifact = joblib.load(model_path)
+    model = artifact["model"]
+    threshold = artifact["threshold"]
+
+    # Load and process data
+    test_df = pd.read_csv(input_csv)
+    test_df["event_time"] = pd.to_datetime(test_df["event_time"])
+    test_df["amount_abs"] = test_df["amount"].abs()
+
+    grp = test_df.groupby("user_id", sort=False)
+
+    # Rolling calculations
+    test_df["amt_roll_med_15"] = grp["amount_abs"].transform(lambda s: s.rolling(15, min_periods=7).median())
+    test_df["amt_roll_mad_15"] = grp["amount_abs"].transform(lambda s: s.rolling(15, min_periods=7).apply(
+        lambda x: median_abs_deviation(x, scale="normal"), raw=False
+    ))
+
+    # Features
+    test_df["amt_dev_from_med"] = test_df["amount_abs"] - test_df["amt_roll_med_15"]
+    test_df["amt_robust_z"] = test_df["amt_dev_from_med"] / (test_df["amt_roll_mad_15"] + 1e-9)
+    test_df["prev_event_time"] = grp["event_time"].shift(1)
+    test_df["gap_seconds"] = (test_df["event_time"] - test_df["prev_event_time"]).dt.total_seconds()
+    test_df["gap_seconds"] = test_df["gap_seconds"].fillna(test_df["gap_seconds"].median())
+    test_df["gap_log"] = np.log1p(test_df["gap_seconds"])
+    test_df["deposit_to_income_ratio"] = (test_df["account_deposit"] / (test_df["declared_income"] + 1e-9))
+    test_df["amount_to_income_ratio"] = (test_df["amount_abs"] / (test_df["declared_income"] + 1e-9))
+    test_df["net_flow_1d"] = test_df["amount_in_1d"] - test_df["amount_out_1d"]
+    test_df["failed_login_ratio_1h"] = (test_df["failed_login_1h"] / (test_df["login_count_1h"] + 1e-9))
+    
+    test_df["new_ip_1d"] = test_df["new_ip_1d"].fillna(0)
+    test_df["geo_change_1d"] = test_df["geo_change_1d"].fillna(0)
+    test_df["is_cross_border"] = (test_df["residence_country"] != test_df["transaction_country"]).astype(int)
+
+    # Model Inference
+    raw = model.decision_function(test_df)
+    test_df["anomaly_score"] = -raw
+    test_df["is_anomaly"] = (test_df["anomaly_score"] >= threshold).astype(int)
+
+    # Format Output
+    output = test_df[["user_id", "txn_id", "event_time", "anomaly_score", "is_anomaly"]].copy()
+    output["event_time"] = output["event_time"].astype(str)
+    
+    return output.to_dict(orient="records")
+
+
+# ============ DJANGO VIEW ============
+class AIAnomalyDetectionView(APIView):
+    """
+    Endpoint that triggers the AI model and returns anomaly results
+    """
+    def get(self, request):
+        try:
+            # Resolve file paths (Assumes files are in the same folder as views.py)
+            base_path = Path(__file__).resolve().parent.parent.parent
+            model_path = base_path / "behavior_iforest.pkl"
+            csv_path = base_path / "test_transactions 2.csv"
+
+            # Check if files exist before running
+            if not model_path.exists() or not csv_path.exists():
+                return Response(
+                    {"error": f"Required files not found at {base_path}"}, 
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+
+            # Run AI prediction
+            results = anomaly_prediction(str(model_path), str(csv_path))
+            print (results)
+
+            return Response({
+                "count": len(results),
+                "results": results
+            }, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
 # ============ DATA LOADER ============
 class DataLoader:
     """Centralized data loading with caching"""

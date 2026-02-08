@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('ai-detect/', views.AIAnomalyDetectionView.as_view(), name='ai-detect'),
+
     # Cases
     path('cases/', views.CaseListView.as_view(), name='case-list'),
     path('cases/<str:case_id>/', views.CaseDetailView.as_view(), name='case-detail'),

@@ -1,0 +1,341 @@
+{
+    "case_id": "CASE-2025-88412",
+    "investigation_id": "INV-CASE-2025-88412-20260208013927",
+    "started_at": "2026-02-08T01:39:27.804031+00:00Z",
+    "completed_at": "2026-02-08T01:43:01.676512+00:00Z",
+    "status": "partial",
+    "case_context": {
+        "case_id": "CASE-2025-88412",
+        "created_at": "2025-05-14T09:15:00Z",
+        "assembled_at": "2026-02-08T01:39:27.806220+00:00Z",
+        "alerts": [
+            {
+                "alert_id": "ALT-9901",
+                "alert_type": "money_laundering",
+                "triggered_at": "2025-05-14T08:00:00Z",
+                "severity": "critical",
+                "risk_score": 92,
+                "description": "Total deposits ($35,000) exceed declared monthly income ($2,500) by 1400%.",
+                "detector_source": "ml_anomaly",
+                "evidence": [
+                    {
+                        "evidence_type": "income_anomaly",
+                        "details": {
+                            "declared_income": 2500,
+                            "actual_deposits_30d": 35000,
+                            "ratio": 14.0
+                        }
+                    }
+                ],
+                "raw_signal_refs": [
+                    "sig_10001",
+                    "sig_10002"
+                ]
+            }
+        ],
+        "customer": {
+            "customer_id": "CUST-7721",
+            "full_name": "James Terrence Miller",
+            "email": "j.miller882@gmail.com",
+            "phone": "+1-555-0199",
+            "country": "USA",
+            "verification_status": "verified",
+            "verification_method": "biometric",
+            "risk_rating": "high",
+            "pep_status": false,
+            "sanctions_hit": false,
+            "adverse_media": true,
+            "document_verified": true,
+            "document_flags": [
+                "ai_generated_face_risk",
+                "unusual_font_spacing"
+            ],
+            "date_of_birth": "1985-11-12",
+            "address": "123 Maple St, Springfield, IL 62701",
+            "verification_date": "2025-01-10",
+            "declared_income": 2500.0,
+            "income_currency": "USD",
+            "employment_status": "Self-employed",
+            "document_type": "passport",
+            "document_country": "USA"
+        },
+        "account": {
+            "account_id": "ACC-882193",
+            "account_type": "trading",
+            "account_status": "under_review",
+            "created_at": "2025-01-10T14:22:10Z",
+            "total_deposits_30d": 35000.0,
+            "total_withdrawals_30d": 32000.0,
+            "total_trades_30d": 145,
+            "average_transaction_amount": 241.37,
+            "account_age_days": 124,
+            "is_dormant_reactivated": true,
+            "customer_id": "CUST-7721",
+            "deposit_to_income_ratio": 14.0
+        },
+        "transactions": [
+            {
+                "transaction_id": "TXN-44102",
+                "timestamp": "2025-05-13T14:20:00Z",
+                "type": "deposit",
+                "amount": 15000.0,
+                "currency": "USD",
+                "status": "completed",
+                "channel": "crypto",
+                "counterparty": "External Wallet (0x71C...a4f)",
+                "risk_flags": [
+                    "high_amount",
+                    "obfuscated_source"
+                ]
+            },
+            {
+                "transaction_id": "TXN-44105",
+                "timestamp": "2025-05-13T16:05:00Z",
+                "type": "withdrawal",
+                "amount": 14500.0,
+                "currency": "USD",
+                "status": "completed",
+                "channel": "bank_transfer",
+                "counterparty": "Offshore Bank Ltd",
+                "risk_flags": [
+                    "rapid_outflow",
+                    "high_risk_destination"
+                ]
+            },
+            {
+                "transaction_id": "TXN-44098",
+                "timestamp": "2025-05-10T09:15:00Z",
+                "type": "deposit",
+                "amount": 8500.0,
+                "currency": "USD",
+                "status": "completed",
+                "channel": "bank_transfer",
+                "counterparty": "Unknown Sender",
+                "risk_flags": [
+                    "unusual_source"
+                ]
+            }
+        ],
+        "logins": [
+            {
+                "event_id": "EVT-1029",
+                "timestamp": "2025-05-14T07:45:00Z",
+                "ip_address": "41.203.72.15",
+                "device_id": "DEV-IPHONE-99",
+                "device_type": "mobile",
+                "location_country": "Nigeria",
+                "is_vpn": true,
+                "is_proxy": false,
+                "login_success": true,
+                "risk_flags": [
+                    "new_location",
+                    "impossible_travel",
+                    "vpn_detected"
+                ],
+                "browser": "Mobile Safari",
+                "location_city": "Lagos",
+                "failure_reason": null
+            },
+            {
+                "event_id": "EVT-1028",
+                "timestamp": "2025-05-13T09:20:00Z",
+                "ip_address": "72.21.91.29",
+                "device_id": "DEV-LAPTOP-2201",
+                "device_type": "desktop",
+                "location_country": "USA",
+                "is_vpn": false,
+                "is_proxy": false,
+                "login_success": true,
+                "risk_flags": [],
+                "browser": "Chrome",
+                "location_city": "Springfield",
+                "failure_reason": null
+            }
+        ],
+        "devices": [
+            {
+                "device_id": "DEV-IPHONE-99",
+                "device_type": "mobile",
+                "os": "iOS 17.4",
+                "first_seen": "2025-05-10T10:00:00Z",
+                "last_seen": "2025-05-14T07:45:00Z",
+                "is_trusted": false,
+                "linked_accounts": [
+                    "ACC-882193",
+                    "ACC-0012",
+                    "ACC-4491"
+                ]
+            },
+            {
+                "device_id": "DEV-LAPTOP-2201",
+                "device_type": "desktop",
+                "os": "Windows 11",
+                "first_seen": "2025-01-10T14:00:00Z",
+                "last_seen": "2025-05-13T09:20:00Z",
+                "is_trusted": true,
+                "linked_accounts": [
+                    "ACC-882193"
+                ]
+            }
+        ],
+        "network_connections": [
+            {
+                "connection_type": "shared_device",
+                "connected_entity_id": "ACC-0012",
+                "connection_strength": "strong",
+                "first_observed": "2025-05-10T10:00:00Z",
+                "details": "Device DEV-IPHONE-99 used by both accounts within 10 minutes."
+            },
+            {
+                "connection_type": "shared_device",
+                "connected_entity_id": "ACC-4491",
+                "connection_strength": "medium",
+                "first_observed": "2025-05-12T14:30:00Z",
+                "details": "Device DEV-IPHONE-99 used by both accounts on same day."
+            },
+            {
+                "connection_type": "shared_phone",
+                "connected_entity_id": "CUST-9922",
+                "connection_strength": "medium",
+                "first_observed": "2025-05-10T10:00:00Z",
+                "details": "Phone number +1-555-0199 previously registered to CUST-9922."
+            }
+        ],
+        "prior_cases": [
+            {
+                "case_id": "CASE-2025-1102",
+                "case_date": "2025-02-15T11:00:00Z",
+                "case_type": "identity_fraud",
+                "outcome": "false_positive",
+                "resolution_notes": "Customer provided valid secondary ID verification after initial flag. Document quality issues resolved - lighting conditions caused unusual shadows on biometric scan. No fraud detected."
+            }
+        ],
+        "data_completeness": {
+            "kyc_data": true,
+            "transaction_history": true,
+            "login_history": true,
+            "device_data": true,
+            "network_analysis": true,
+            "prior_cases": true
+        }
+    },
+    "explainability": {
+        "primary_hypothesis": "Money Laundering - suspicious fund movements to obscure origin",
+        "confidence": 0.95,
+        "justification": [
+            {
+                "claim": "Significant deposit activity is inconsistent with the customer's declared income.",
+                "business_facts": [
+                    "Total deposits in the last 30 days ($35,000) are 14 times higher than the declared monthly income ($2,500)."
+                ],
+                "linked_alerts": [
+                    "ALT-9901"
+                ]
+            },
+            {
+                "claim": "Transactions involve high-risk channels and counterparties, suggesting an attempt to obscure fund origins and destinations.",
+                "business_facts": [
+                    "A deposit of $15,000 was made via cryptocurrency from an external wallet.",
+                    "A withdrawal of $14,500 was made via bank transfer to an offshore bank.",
+                    "A deposit of $8,500 was received from an unknown sender."
+                ],
+                "linked_alerts": []
+            },
+            {
+                "claim": "Login activity shows suspicious patterns, including the use of a VPN and a new device from a high-risk location.",
+                "business_facts": [
+                    "A login occurred from Nigeria (Lagos) using a VPN, shortly after a login from the customer's usual location in the USA (Springfield).",
+                    "This login from Nigeria used a new, untrusted mobile device (DEV-IPHONE-99) which has also been linked to other accounts."
+                ],
+                "linked_alerts": []
+            },
+            {
+                "claim": "The customer's identity verification documents show potential signs of manipulation.",
+                "business_facts": [
+                    "The customer's passport has flags for 'ai_generated_face_risk' and 'unusual_font_spacing'."
+                ],
+                "linked_alerts": []
+            }
+        ],
+        "plain_english_summary": "This case is critical due to strong indicators of money laundering. The customer's recent deposits ($35,000) vastly exceed their declared income ($2,500), and transactions involve high-risk channels like cryptocurrency and offshore banks. Suspicious login activity from a VPN in Nigeria on a new device, combined with potential issues on identity documents, further elevates the risk."
+    },
+    "risk_decomposition": {},
+    "pattern_matches": {},
+    "timeline": {},
+    "recommendations": {},
+    "network_analysis": {},
+    "report": {},
+    "skills_executed": [
+        {
+            "skill_name": "Case Context Assembler",
+            "executed_at": "2026-02-08T01:39:27.804033+00:00",
+            "duration_ms": 2,
+            "success": true,
+            "error": null
+        },
+        {
+            "skill_name": "Explainability Generator",
+            "executed_at": "2026-02-08T01:39:27.806358+00:00",
+            "duration_ms": 3500,
+            "success": true,
+            "error": null
+        },
+        {
+            "skill_name": "Risk Decomposer",
+            "executed_at": "2026-02-08T01:39:31.306487+00:00",
+            "duration_ms": 35264,
+            "success": false,
+            "error": "Error calling model 'models/gemini-2.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 54.39361186s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}"
+        },
+        {
+            "skill_name": "Pattern Matcher",
+            "executed_at": "2026-02-08T01:40:06.570551+00:00",
+            "duration_ms": 34322,
+            "success": false,
+            "error": "Error calling model 'models/gemini-2.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 20.069744705s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '20s'}]}}"
+        },
+        {
+            "skill_name": "Timeline Reconstructor",
+            "executed_at": "2026-02-08T01:40:40.893083+00:00",
+            "duration_ms": 35067,
+            "success": false,
+            "error": "Error calling model 'models/gemini-2.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 45.0020144s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}"
+        },
+        {
+            "skill_name": "Recommendation Engine",
+            "executed_at": "2026-02-08T01:41:15.960275+00:00",
+            "duration_ms": 35376,
+            "success": false,
+            "error": "Error calling model 'models/gemini-2.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 9.628581293s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash-lite'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}"
+        },
+        {
+            "skill_name": "Network Intelligence",
+            "executed_at": "2026-02-08T01:41:51.336596+00:00",
+            "duration_ms": 34600,
+            "success": false,
+            "error": "Error calling model 'models/gemini-2.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 35.024389039s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '35s'}]}}"
+        },
+        {
+            "skill_name": "Report Generator",
+            "executed_at": "2026-02-08T01:42:25.937079+00:00",
+            "duration_ms": 35739,
+            "success": false,
+            "error": "Error calling model 'models/gemini-2.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash-lite\\nPlease retry in 59.285061006s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash-lite', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '59s'}]}}"
+        }
+    ],
+    "total_duration_ms": 213872,
+    "dashboard_summary": {
+        "headline": "Money Laundering - suspicious fund movements to obscure origin",
+        "risk_level": "unknown",
+        "risk_score": 0,
+        "key_evidence": [
+            "Total deposits in the last 30 days ($35,000) are 14 times higher than the declared monthly income ($2,500).",
+            "A deposit of $15,000 was made via cryptocurrency from an external wallet.",
+            "A withdrawal of $14,500 was made via bank transfer to an offshore bank.",
+            "A login occurred from Nigeria (Lagos) using a VPN, shortly after a login from the customer's usual location in the USA (Springfield).",
+            "This login from Nigeria used a new, untrusted mobile device (DEV-IPHONE-99) which has also been linked to other accounts."
+        ],
+        "recommended_actions": [],
+        "escalation_required": false
+    }
+}

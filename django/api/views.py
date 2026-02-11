@@ -576,3 +576,76 @@ class InvestigationFeedbackView(APIView):
                 {"error": f"Failed to record feedback: {str(e)}", "case_id": case_id},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+
+# ============ SENTINEL CHAT AGENT ============
+class CaseChatView(APIView):
+    """
+    SENTINEL Conversational Chat Endpoint
+
+    POST /api/cases/{case_id}/chat/
+
+    Enables natural language conversation with the SENTINEL AI agent
+    for fraud investigation assistance.
+    """
+
+    def post(self, request, case_id):
+        """
+        Process chat message and return AI response.
+
+        Request body:
+        {
+            "message": "Why was this flagged?",
+            "history": [
+                {"role": "user", "content": "..."},
+                {"role": "assistant", "content": "..."}
+            ]
+        }
+
+        Response:
+        {
+            "response": "This case was flagged due to...",
+            "suggested_questions": [
+                "What are the risk factors?",
+                "Show connected accounts",
+                ...
+            ]
+        }
+        """
+        try:
+            from ai_agent.chat_agent import chat_with_sentinel
+
+            message = request.data.get('message', '').strip()
+            history = request.data.get('history', [])
+
+            if not message:
+                return Response(
+                    {"error": "Message is required"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            # Validate history format
+            if not isinstance(history, list):
+                history = []
+
+            # Call the SENTINEL agent
+            result = chat_with_sentinel(case_id, message, history)
+
+            return Response(result, status=status.HTTP_200_OK)
+
+        except ValueError as e:
+            # Case not found or invalid input
+            return Response(
+                {"error": str(e), "case_id": case_id},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Exception as e:
+            # Log error for debugging
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Chat error for case {case_id}: {str(e)}", exc_info=True)
+
+            return Response(
+                {"error": "Failed to process message", "detail": str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )

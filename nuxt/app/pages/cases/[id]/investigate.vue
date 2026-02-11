@@ -510,6 +510,12 @@
 const route = useRoute()
 const caseId = computed(() => route.params.id)
 
+// API composable
+const { chatWithSentinel } = useApi()
+
+// Conversation history for API context
+const conversationHistory = ref([])
+
 // UI State
 const evidenceCollapsed = ref(false)
 const activeEvidenceTab = ref('transactions')
@@ -671,14 +677,16 @@ function askAboutEvidence(type, item) {
     sendMessage(question)
 }
 
-function sendMessage(text) {
+async function sendMessage(text) {
     if (!text || !text.trim()) return
+
+    const userMessage = text.trim()
 
     // Add user message
     messages.value.push({
         id: Date.now(),
         sender: 'user',
-        text: text.trim(),
+        text: userMessage,
         timestamp: formatTime(new Date())
     })
 
@@ -692,23 +700,49 @@ function sendMessage(text) {
         }
     })
 
-    // Simulate AI response (placeholder - will be replaced with actual API call)
-    setTimeout(() => {
+    try {
+        // Call the real API
+        const response = await chatWithSentinel(caseId.value, userMessage, conversationHistory.value)
+
         isTyping.value = false
-        const response = generatePlaceholderResponse(text.trim())
+
+        // Add bot response
         messages.value.push({
             id: Date.now(),
             sender: 'bot',
-            text: response,
+            text: response.response,
             timestamp: formatTime(new Date())
         })
 
-        nextTick(() => {
-            if (chatContainer.value) {
-                chatContainer.value.scrollTop = chatContainer.value.scrollHeight
-            }
+        // Update conversation history for context
+        conversationHistory.value.push(
+            { role: 'user', content: userMessage },
+            { role: 'assistant', content: response.response }
+        )
+
+        // Update suggested questions if provided
+        if (response.suggested_questions && response.suggested_questions.length > 0) {
+            suggestedQuestions.value = response.suggested_questions
+        }
+
+    } catch (error) {
+        isTyping.value = false
+        console.error('Chat API error:', error)
+
+        // Show error message to user
+        messages.value.push({
+            id: Date.now(),
+            sender: 'bot',
+            text: `Sorry, I encountered an error: ${error.message}. Please try again.`,
+            timestamp: formatTime(new Date())
         })
-    }, 1500)
+    }
+
+    nextTick(() => {
+        if (chatContainer.value) {
+            chatContainer.value.scrollTop = chatContainer.value.scrollHeight
+        }
+    })
 }
 
 function generatePlaceholderResponse(question) {

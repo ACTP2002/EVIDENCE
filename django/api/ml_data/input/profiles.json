@@ -1,0 +1,265 @@
+[
+  {
+    "user_id": "U-DEMO-ATO",
+    "declared_income": 137958,
+    "account_deposit": 25000.0,
+    "residence_country": "th",
+    "accounts": [
+      "ACC-ATO"
+    ]
+  },
+  {
+    "user_id": "U-DEMO-GEO",
+    "declared_income": 59984,
+    "account_deposit": 15000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-GEO"
+    ]
+  },
+  {
+    "user_id": "U-DEMO-INCOME",
+    "declared_income": 30000,
+    "account_deposit": 5000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-INCOME"
+    ]
+  },
+  {
+    "user_id": "U-DEMO-MULE",
+    "declared_income": 45169,
+    "account_deposit": 5000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-MULE"
+    ]
+  },
+  {
+    "user_id": "U-DEMO-MULTI",
+    "declared_income": 39103,
+    "account_deposit": 8000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-MULTI-A",
+      "ACC-MULTI-B",
+      "ACC-MULTI-C"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0001",
+    "declared_income": 45795,
+    "account_deposit": 5860.0,
+    "residence_country": "in",
+    "accounts": [
+      "ACC-0001"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0002",
+    "declared_income": 32695,
+    "account_deposit": 10258.0,
+    "residence_country": "in",
+    "accounts": [
+      "ACC-0002"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0003",
+    "declared_income": 145386,
+    "account_deposit": 31736.0,
+    "residence_country": "cn",
+    "accounts": [
+      "ACC-0003"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0004",
+    "declared_income": 124660,
+    "account_deposit": 32643.0,
+    "residence_country": "au",
+    "accounts": [
+      "ACC-0004"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0005",
+    "declared_income": 133481,
+    "account_deposit": 30945.0,
+    "residence_country": "us",
+    "accounts": [
+      "ACC-0005"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0006",
+    "declared_income": 30412,
+    "account_deposit": 12543.0,
+    "residence_country": "gb",
+    "accounts": [
+      "ACC-0006"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0007",
+    "declared_income": 63591,
+    "account_deposit": 22312.0,
+    "residence_country": "us",
+    "accounts": [
+      "ACC-0007"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0008",
+    "declared_income": 79922,
+    "account_deposit": 33538.0,
+    "residence_country": "cn",
+    "accounts": [
+      "ACC-0008"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0009",
+    "declared_income": 109714,
+    "account_deposit": 27195.0,
+    "residence_country": "vn",
+    "accounts": [
+      "ACC-0009"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0010",
+    "declared_income": 79376,
+    "account_deposit": 41976.0,
+    "residence_country": "in",
+    "accounts": [
+      "ACC-0010"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0011",
+    "declared_income": 101895,
+    "account_deposit": 45631.0,
+    "residence_country": "id",
+    "accounts": [
+      "ACC-0011"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0012",
+    "declared_income": 132547,
+    "account_deposit": 29917.0,
+    "residence_country": "ph",
+    "accounts": [
+      "ACC-0012"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0013",
+    "declared_income": 65367,
+    "account_deposit": 41801.0,
+    "residence_country": "gb",
+    "accounts": [
+      "ACC-0013"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0014",
+    "declared_income": 79481,
+    "account_deposit": 41408.0,
+    "residence_country": "au",
+    "accounts": [
+      "ACC-0014"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0015",
+    "declared_income": 104691,
+    "account_deposit": 36883.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-0015"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0016",
+    "declared_income": 93620,
+    "account_deposit": 14017.0,
+    "residence_country": "us",
+    "accounts": [
+      "ACC-0016"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0017",
+    "declared_income": 66444,
+    "account_deposit": 8380.0,
+    "residence_country": "in",
+    "accounts": [
+      "ACC-0017"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0018",
+    "declared_income": 57961,
+    "account_deposit": 21405.0,
+    "residence_country": "th",
+    "accounts": [
+      "ACC-0018"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0019",
+    "declared_income": 148154,
+    "account_deposit": 49738.0,
+    "residence_country": "au",
+    "accounts": [
+      "ACC-0019"
+    ]
+  },
+  {
+    "user_id": "U-NORM-0020",
+    "declared_income": 145262,
+    "account_deposit": 10704.0,
+    "residence_country": "in",
+    "accounts": [
+      "ACC-0020"
+    ]
+  },
+  {
+    "user_id": "U-RING-DEMO-001",
+    "declared_income": 31764,
+    "account_deposit": 10000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-RING-DEMO-001"
+    ]
+  },
+  {
+    "user_id": "U-RING-DEMO-002",
+    "declared_income": 32979,
+    "account_deposit": 10000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-RING-DEMO-002"
+    ]
+  },
+  {
+    "user_id": "U-RING-DEMO-003",
+    "declared_income": 43877,
+    "account_deposit": 10000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-RING-DEMO-003"
+    ]
+  },
+  {
+    "user_id": "U-RING-DEMO-004",
+    "declared_income": 29895,
+    "account_deposit": 10000.0,
+    "residence_country": "my",
+    "accounts": [
+      "ACC-RING-DEMO-004"
+    ]
+  }
+]

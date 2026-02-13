@@ -1,0 +1,624 @@
+[
+  {
+    "case_id": "CASE-20260213-RING-ING-DEM",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464282Z",
+    "status": "OPEN",
+    "priority": "CRITICAL",
+    "case_score": 95,
+    "risk_level": "CRITICAL",
+    "fraud_type": "fraud_ring",
+    "user_id": [
+      "U-RING-DEMO-002",
+      "U-RING-DEMO-004",
+      "U-RING-DEMO-001",
+      "U-RING-DEMO-003"
+    ],
+    "account_id": "ACC-RING-DEMO-001",
+    "alert_ids": [
+      "ALT-000231",
+      "ALT-000232",
+      "ALT-000233",
+      "ALT-000234"
+    ],
+    "alert_count": 4,
+    "summary": {
+      "total_alerts": 4,
+      "total_amount": 86014.51,
+      "unique_users": 4,
+      "unique_accounts": 4,
+      "max_anomaly_score": 0.953,
+      "avg_anomaly_score": 0.921,
+      "time_range": {
+        "first": "2026-02-26T01:10:00Z",
+        "last": "2026-02-26T01:13:00Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    },
+    "ring_members": [
+      "U-RING-DEMO-002",
+      "U-RING-DEMO-004",
+      "U-RING-DEMO-001",
+      "U-RING-DEMO-003"
+    ],
+    "shared_device": "DEV-RING-DEMO",
+    "shared_ip": "103.89.56.170"
+  },
+  {
+    "case_id": "CASE-20260213-U-DEMO-ATO",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464377Z",
+    "status": "OPEN",
+    "priority": "CRITICAL",
+    "case_score": 87,
+    "risk_level": "CRITICAL",
+    "fraud_type": "account_takeover",
+    "user_id": "U-DEMO-ATO",
+    "account_id": "ACC-ATO",
+    "alert_ids": [
+      "ALT-000250",
+      "ALT-000251",
+      "ALT-000252"
+    ],
+    "alert_count": 3,
+    "summary": {
+      "total_alerts": 3,
+      "total_amount": 33847.85,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.742,
+      "avg_anomaly_score": 0.707,
+      "time_range": {
+        "first": "2026-03-09T03:14:44.859485Z",
+        "last": "2026-03-09T03:19:44.859485Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-DEMO-GEO",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464409Z",
+    "status": "OPEN",
+    "priority": "CRITICAL",
+    "case_score": 83,
+    "risk_level": "CRITICAL",
+    "fraud_type": "account_takeover",
+    "user_id": "U-DEMO-GEO",
+    "account_id": "ACC-GEO",
+    "alert_ids": [
+      "ALT-000260"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 11027.49,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.782,
+      "avg_anomaly_score": 0.782,
+      "time_range": {
+        "first": "2026-03-14T09:48:36.228744Z",
+        "last": "2026-03-14T09:48:36.228744Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-DEMO-INCOM",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464436Z",
+    "status": "OPEN",
+    "priority": "CRITICAL",
+    "case_score": 95,
+    "risk_level": "CRITICAL",
+    "fraud_type": "income_anomaly",
+    "user_id": "U-DEMO-INCOME",
+    "account_id": "ACC-INCOME",
+    "alert_ids": [
+      "ALT-000224",
+      "ALT-000225",
+      "ALT-000226"
+    ],
+    "alert_count": 3,
+    "summary": {
+      "total_alerts": 3,
+      "total_amount": 120260.21,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 1.0,
+      "avg_anomaly_score": 0.961,
+      "time_range": {
+        "first": "2026-02-22T13:45:00.415414Z",
+        "last": "2026-02-22T20:03:51.688105Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-DEMO-MULE",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464465Z",
+    "status": "OPEN",
+    "priority": "HIGH",
+    "case_score": 77,
+    "risk_level": "HIGH",
+    "fraud_type": "money_mule",
+    "user_id": "U-DEMO-MULE",
+    "account_id": "ACC-MULE",
+    "alert_ids": [
+      "ALT-000238",
+      "ALT-000239",
+      "ALT-000240",
+      "ALT-000241",
+      "ALT-000242",
+      "ALT-000243",
+      "ALT-000244",
+      "ALT-000245",
+      "ALT-000247",
+      "ALT-000248"
+    ],
+    "alert_count": 10,
+    "summary": {
+      "total_alerts": 10,
+      "total_amount": 86500.96,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.63,
+      "avg_anomaly_score": 0.513,
+      "time_range": {
+        "first": "2026-03-03T05:11:41.593759Z",
+        "last": "2026-03-04T09:09:53.721742Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-DEMO-MULTI",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464492Z",
+    "status": "OPEN",
+    "priority": "CRITICAL",
+    "case_score": 92,
+    "risk_level": "CRITICAL",
+    "fraud_type": "multi_account_fraud",
+    "user_id": "U-DEMO-MULTI",
+    "account_id": "ACC-MULTI-A",
+    "alert_ids": [
+      "ALT-000265",
+      "ALT-000266",
+      "ALT-000267",
+      "ALT-000268",
+      "ALT-000269",
+      "ALT-000270"
+    ],
+    "alert_count": 6,
+    "summary": {
+      "total_alerts": 6,
+      "total_amount": 102254.07,
+      "unique_users": 1,
+      "unique_accounts": 3,
+      "max_anomaly_score": 0.853,
+      "avg_anomaly_score": 0.6,
+      "time_range": {
+        "first": "2026-03-17T09:58:27.716575Z",
+        "last": "2026-03-18T01:38:07.204466Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    },
+    "accounts_involved": [
+      "ACC-MULTI-B",
+      "ACC-MULTI-C",
+      "ACC-MULTI-A"
+    ]
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0001",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464515Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 50,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0001",
+    "account_id": "ACC-0001",
+    "alert_ids": [
+      "ALT-000020"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 4698.91,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.453,
+      "avg_anomaly_score": 0.453,
+      "time_range": {
+        "first": "2026-02-02T09:15:03.950818Z",
+        "last": "2026-02-02T09:15:03.950818Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0004",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464534Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 43,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0004",
+    "account_id": "ACC-0004",
+    "alert_ids": [
+      "ALT-000044"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 2198.1,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.386,
+      "avg_anomaly_score": 0.386,
+      "time_range": {
+        "first": "2026-02-03T16:19:21.196799Z",
+        "last": "2026-02-03T16:19:21.196799Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0005",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464552Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 42,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0005",
+    "account_id": "ACC-0005",
+    "alert_ids": [
+      "ALT-000167"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 1991.9,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.371,
+      "avg_anomaly_score": 0.371,
+      "time_range": {
+        "first": "2026-02-09T17:05:39.718450Z",
+        "last": "2026-02-09T17:05:39.718450Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0006",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464572Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 54,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0006",
+    "account_id": "ACC-0006",
+    "alert_ids": [
+      "ALT-000110",
+      "ALT-000205",
+      "ALT-000211"
+    ],
+    "alert_count": 3,
+    "summary": {
+      "total_alerts": 3,
+      "total_amount": 12609.6,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.41,
+      "avg_anomaly_score": 0.373,
+      "time_range": {
+        "first": "2026-02-06T19:06:10.445310Z",
+        "last": "2026-02-17T23:21:16.939355Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0007",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464593Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 55,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0007",
+    "account_id": "ACC-0007",
+    "alert_ids": [
+      "ALT-000094",
+      "ALT-000191"
+    ],
+    "alert_count": 2,
+    "summary": {
+      "total_alerts": 2,
+      "total_amount": 3951.0,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.453,
+      "avg_anomaly_score": 0.449,
+      "time_range": {
+        "first": "2026-02-05T22:57:49.991725Z",
+        "last": "2026-02-11T03:55:53.612352Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0008",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464612Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 41,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0008",
+    "account_id": "ACC-0008",
+    "alert_ids": [
+      "ALT-000111"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 4868.24,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.361,
+      "avg_anomaly_score": 0.361,
+      "time_range": {
+        "first": "2026-02-06T19:08:46.567109Z",
+        "last": "2026-02-06T19:08:46.567109Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0009",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464631Z",
+    "status": "OPEN",
+    "priority": "LOW",
+    "case_score": 35,
+    "risk_level": "LOW",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0009",
+    "account_id": "ACC-0009",
+    "alert_ids": [
+      "ALT-000019"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 279.75,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.303,
+      "avg_anomaly_score": 0.303,
+      "time_range": {
+        "first": "2026-02-02T09:01:46.180450Z",
+        "last": "2026-02-02T09:01:46.180450Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0011",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464650Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 42,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0011",
+    "account_id": "ACC-0011",
+    "alert_ids": [
+      "ALT-000118"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 122.7,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.371,
+      "avg_anomaly_score": 0.371,
+      "time_range": {
+        "first": "2026-02-07T00:35:56.077096Z",
+        "last": "2026-02-07T00:35:56.077096Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0013",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464667Z",
+    "status": "OPEN",
+    "priority": "LOW",
+    "case_score": 35,
+    "risk_level": "LOW",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0013",
+    "account_id": "ACC-0013",
+    "alert_ids": [
+      "ALT-000076"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 770.74,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.306,
+      "avg_anomaly_score": 0.306,
+      "time_range": {
+        "first": "2026-02-05T07:07:37.511327Z",
+        "last": "2026-02-05T07:07:37.511327Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0015",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464687Z",
+    "status": "OPEN",
+    "priority": "HIGH",
+    "case_score": 61,
+    "risk_level": "HIGH",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0015",
+    "account_id": "ACC-0015",
+    "alert_ids": [
+      "ALT-000097",
+      "ALT-000137",
+      "ALT-000162"
+    ],
+    "alert_count": 3,
+    "summary": {
+      "total_alerts": 3,
+      "total_amount": 1987.75,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.482,
+      "avg_anomaly_score": 0.458,
+      "time_range": {
+        "first": "2026-02-06T01:55:07.743468Z",
+        "last": "2026-02-09T05:12:35.530832Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  },
+  {
+    "case_id": "CASE-20260213-U-NORM-0017",
+    "created_by": "ml_pipeline",
+    "created_at": "2026-02-13T15:32:20.464706Z",
+    "status": "OPEN",
+    "priority": "MEDIUM",
+    "case_score": 44,
+    "risk_level": "MEDIUM",
+    "fraud_type": "behavioral_anomaly",
+    "user_id": "U-NORM-0017",
+    "account_id": "ACC-0017",
+    "alert_ids": [
+      "ALT-000032"
+    ],
+    "alert_count": 1,
+    "summary": {
+      "total_alerts": 1,
+      "total_amount": 1620.77,
+      "unique_users": 1,
+      "unique_accounts": 1,
+      "max_anomaly_score": 0.394,
+      "avg_anomaly_score": 0.394,
+      "time_range": {
+        "first": "2026-02-03T07:12:56.764444Z",
+        "last": "2026-02-03T07:12:56.764444Z"
+      }
+    },
+    "investigation": {
+      "status": "pending",
+      "assigned_to": null,
+      "ai_summary": null,
+      "recommendations": []
+    }
+  }
+]

@@ -20,6 +20,8 @@ Usage:
     python pipeline.py                    # B1 mode (default)
     python pipeline.py --mode b2          # B2 mode (raw events)
     python pipeline.py --threshold 0.3    # Custom threshold
+    or
+    GET /api/ml/run-pipeline/?mode=b2
 """
 
 import json
@@ -28,7 +30,12 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any
 
-from services import FeatureEngineer, Predictor, AlertCreator, CaseBuilder
+try:
+    # When running as Django app
+    from api.ml_data.services import FeatureEngineer, Predictor, AlertCreator, CaseBuilder
+except ImportError:
+    # When running standalone
+    from services import FeatureEngineer, Predictor, AlertCreator, CaseBuilder
 
 
 class Pipeline:

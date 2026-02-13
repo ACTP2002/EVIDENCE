@@ -89,6 +89,89 @@ class AIAnomalyDetectionView(APIView):
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
+# ============ NEW ML PIPELINE ENDPOINT ============
+class MLPipelineView(APIView):
+    """
+    Endpoint that runs the SENTINEL ML pipeline.
+
+    GET /api/ml/run-pipeline/           - Run with defaults (B1 mode)
+    GET /api/ml/run-pipeline/?mode=b2   - Run with B2 mode (raw events)
+    GET /api/ml/run-pipeline/?threshold=0.5 - Custom threshold
+
+    Returns:
+        - summary: Pipeline run statistics
+        - alerts: List of ML-detected anomalies
+        - cases: List of investigation cases
+    """
+    def get(self, request):
+        try:
+            # Get parameters
+            mode = request.query_params.get('mode', 'b1')
+            threshold = float(request.query_params.get('threshold', 0.3))
+
+            if mode not in ['b1', 'b2']:
+                return Response(
+                    {"error": "Invalid mode. Use 'b1' or 'b2'"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            # Resolve paths
+            ml_data_path = Path(__file__).parent / 'ml_data'
+            model_path = ml_data_path / 'sentinel_model.pkl'
+            input_dir = ml_data_path / 'input'
+            output_dir = ml_data_path / 'output'
+
+            # Check if model exists
+            if not model_path.exists():
+                return Response(
+                    {"error": f"Model not found at {model_path}"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+
+            # Check if input files exist
+            if mode == 'b2':
+                required_files = ['transactions_raw.json', 'profiles.json', 'auth_events.json', 'network_events.json']
+            else:
+                required_files = ['transactions.json', 'profiles.json']
+
+            missing_files = [f for f in required_files if not (input_dir / f).exists()]
+            if missing_files:
+                return Response(
+                    {"error": f"Missing input files: {missing_files}"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+
+            # Import and run pipeline
+            from api.ml_data.pipeline import Pipeline
+
+            pipeline = Pipeline(str(model_path), threshold, mode)
+            summary = pipeline.run(str(input_dir), str(output_dir))
+
+            # Load generated outputs
+            with open(output_dir / 'alerts.json') as f:
+                alerts = json.load(f)
+
+            with open(output_dir / 'cases.json') as f:
+                cases = json.load(f)
+
+            return Response({
+                "success": True,
+                "mode": mode,
+                "summary": summary,
+                "alerts_count": len(alerts),
+                "cases_count": len(cases),
+                "alerts": alerts,
+                "cases": cases
+            }, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            import traceback
+            return Response({
+                "error": str(e),
+                "traceback": traceback.format_exc()
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 # ============ DATA LOADER ============
 class DataLoader:
     """Centralized data loading with caching"""

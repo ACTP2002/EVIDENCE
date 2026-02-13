@@ -2,7 +2,7 @@
   {
     "alert_id": "ALT-000250",
     "event_time": "2026-03-09T03:14:44.859485Z",
-    "created_at": "2026-02-13T14:53:04.621103Z",
+    "created_at": "2026-02-13T15:32:20.458497Z",
     "detector_type": "ATO",
     "detector_source": "ml_isolation_forest",
     "signal": "SUSPICIOUS_LOGIN_PATTERN",
@@ -32,7 +32,7 @@
   {
     "alert_id": "ALT-000251",
     "event_time": "2026-03-09T03:17:44.859485Z",
-    "created_at": "2026-02-13T14:53:04.621238Z",
+    "created_at": "2026-02-13T15:32:20.458686Z",
     "detector_type": "ATO",
     "detector_source": "ml_isolation_forest",
     "signal": "SUSPICIOUS_LOGIN_PATTERN",
@@ -62,7 +62,7 @@
   {
     "alert_id": "ALT-000252",
     "event_time": "2026-03-09T03:19:44.859485Z",
-    "created_at": "2026-02-13T14:53:04.621328Z",
+    "created_at": "2026-02-13T15:32:20.458839Z",
     "detector_type": "ATO",
     "detector_source": "ml_isolation_forest",
     "signal": "SUSPICIOUS_LOGIN_PATTERN",
@@ -92,7 +92,7 @@
   {
     "alert_id": "ALT-000260",
     "event_time": "2026-03-14T09:48:36.228744Z",
-    "created_at": "2026-02-13T14:53:04.621407Z",
+    "created_at": "2026-02-13T15:32:20.458969Z",
     "detector_type": "ATO",
     "detector_source": "ml_isolation_forest",
     "signal": "SUSPICIOUS_LOGIN_PATTERN",
@@ -122,7 +122,7 @@
   {
     "alert_id": "ALT-000224",
     "event_time": "2026-02-22T13:45:00.415414Z",
-    "created_at": "2026-02-13T14:53:04.621482Z",
+    "created_at": "2026-02-13T15:32:20.459105Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "INCOME_EXCEEDS_DECLARATION",
@@ -152,7 +152,7 @@
   {
     "alert_id": "ALT-000225",
     "event_time": "2026-02-22T16:45:51.801845Z",
-    "created_at": "2026-02-13T14:53:04.621557Z",
+    "created_at": "2026-02-13T15:32:20.459243Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "INCOME_EXCEEDS_DECLARATION",
@@ -182,7 +182,7 @@
   {
     "alert_id": "ALT-000226",
     "event_time": "2026-02-22T20:03:51.688105Z",
-    "created_at": "2026-02-13T14:53:04.621630Z",
+    "created_at": "2026-02-13T15:32:20.459376Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "INCOME_EXCEEDS_DECLARATION",
@@ -212,7 +212,7 @@
   {
     "alert_id": "ALT-000238",
     "event_time": "2026-03-03T05:11:41.593759Z",
-    "created_at": "2026-02-13T14:53:04.621706Z",
+    "created_at": "2026-02-13T15:32:20.459515Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "STRUCTURING_PATTERN",
@@ -242,7 +242,7 @@
   {
     "alert_id": "ALT-000239",
     "event_time": "2026-03-03T07:29:54.392365Z",
-    "created_at": "2026-02-13T14:53:04.621782Z",
+    "created_at": "2026-02-13T15:32:20.459654Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "STRUCTURING_PATTERN",
@@ -272,7 +272,7 @@
   {
     "alert_id": "ALT-000240",
     "event_time": "2026-03-03T10:46:13.214168Z",
-    "created_at": "2026-02-13T14:53:04.621858Z",
+    "created_at": "2026-02-13T15:32:20.459790Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -302,7 +302,7 @@
   {
     "alert_id": "ALT-000241",
     "event_time": "2026-03-03T13:19:01.829205Z",
-    "created_at": "2026-02-13T14:53:04.621932Z",
+    "created_at": "2026-02-13T15:32:20.459931Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -332,7 +332,7 @@
   {
     "alert_id": "ALT-000242",
     "event_time": "2026-03-03T15:27:16.335824Z",
-    "created_at": "2026-02-13T14:53:04.622008Z",
+    "created_at": "2026-02-13T15:32:20.460076Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -362,7 +362,7 @@
   {
     "alert_id": "ALT-000243",
     "event_time": "2026-03-03T16:20:20.456171Z",
-    "created_at": "2026-02-13T14:53:04.622081Z",
+    "created_at": "2026-02-13T15:32:20.460221Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -392,7 +392,7 @@
   {
     "alert_id": "ALT-000244",
     "event_time": "2026-03-04T00:04:58.630550Z",
-    "created_at": "2026-02-13T14:53:04.622168Z",
+    "created_at": "2026-02-13T15:32:20.460389Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -422,7 +422,7 @@
   {
     "alert_id": "ALT-000245",
     "event_time": "2026-03-04T02:00:56.003410Z",
-    "created_at": "2026-02-13T14:53:04.622243Z",
+    "created_at": "2026-02-13T15:32:20.460553Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -452,7 +452,7 @@
   {
     "alert_id": "ALT-000247",
     "event_time": "2026-03-04T07:27:59.531781Z",
-    "created_at": "2026-02-13T14:53:04.622340Z",
+    "created_at": "2026-02-13T15:32:20.460692Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -482,7 +482,7 @@
   {
     "alert_id": "ALT-000248",
     "event_time": "2026-03-04T09:09:53.721742Z",
-    "created_at": "2026-02-13T14:53:04.622423Z",
+    "created_at": "2026-02-13T15:32:20.460827Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "RAPID_FUND_MOVEMENT",
@@ -512,7 +512,7 @@
   {
     "alert_id": "ALT-000265",
     "event_time": "2026-03-17T09:58:27.716575Z",
-    "created_at": "2026-02-13T14:53:04.622490Z",
+    "created_at": "2026-02-13T15:32:20.460946Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "MULTI_ACCOUNT_LAYERING",
@@ -542,7 +542,7 @@
   {
     "alert_id": "ALT-000266",
     "event_time": "2026-03-17T10:17:43.765439Z",
-    "created_at": "2026-02-13T14:53:04.622555Z",
+    "created_at": "2026-02-13T15:32:20.461056Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "MULTI_ACCOUNT_LAYERING",
@@ -572,7 +572,7 @@
   {
     "alert_id": "ALT-000267",
     "event_time": "2026-03-17T10:36:22.258330Z",
-    "created_at": "2026-02-13T14:53:04.622620Z",
+    "created_at": "2026-02-13T15:32:20.461163Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "MULTI_ACCOUNT_LAYERING",
@@ -602,7 +602,7 @@
   {
     "alert_id": "ALT-000268",
     "event_time": "2026-03-17T14:25:33.001517Z",
-    "created_at": "2026-02-13T14:53:04.622683Z",
+    "created_at": "2026-02-13T15:32:20.461270Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "MULTI_ACCOUNT_LAYERING",
@@ -632,7 +632,7 @@
   {
     "alert_id": "ALT-000269",
     "event_time": "2026-03-17T20:34:43.686498Z",
-    "created_at": "2026-02-13T14:53:04.622746Z",
+    "created_at": "2026-02-13T15:32:20.461380Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "MULTI_ACCOUNT_LAYERING",
@@ -662,7 +662,7 @@
   {
     "alert_id": "ALT-000270",
     "event_time": "2026-03-18T01:38:07.204466Z",
-    "created_at": "2026-02-13T14:53:04.622811Z",
+    "created_at": "2026-02-13T15:32:20.461492Z",
     "detector_type": "TRANSACTION",
     "detector_source": "ml_isolation_forest",
     "signal": "MULTI_ACCOUNT_LAYERING",
@@ -692,7 +692,7 @@
   {
     "alert_id": "ALT-000020",
     "event_time": "2026-02-02T09:15:03.950818Z",
-    "created_at": "2026-02-13T14:53:04.622888Z",
+    "created_at": "2026-02-13T15:32:20.461621Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -722,7 +722,7 @@
   {
     "alert_id": "ALT-000044",
     "event_time": "2026-02-03T16:19:21.196799Z",
-    "created_at": "2026-02-13T14:53:04.622963Z",
+    "created_at": "2026-02-13T15:32:20.461753Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -752,7 +752,7 @@
   {
     "alert_id": "ALT-000167",
     "event_time": "2026-02-09T17:05:39.718450Z",
-    "created_at": "2026-02-13T14:53:04.623050Z",
+    "created_at": "2026-02-13T15:32:20.461884Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -782,7 +782,7 @@
   {
     "alert_id": "ALT-000110",
     "event_time": "2026-02-06T19:06:10.445310Z",
-    "created_at": "2026-02-13T14:53:04.623139Z",
+    "created_at": "2026-02-13T15:32:20.462017Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -812,7 +812,7 @@
   {
     "alert_id": "ALT-000205",
     "event_time": "2026-02-15T23:37:25.831195Z",
-    "created_at": "2026-02-13T14:53:04.623230Z",
+    "created_at": "2026-02-13T15:32:20.462149Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -842,7 +842,7 @@
   {
     "alert_id": "ALT-000211",
     "event_time": "2026-02-17T23:21:16.939355Z",
-    "created_at": "2026-02-13T14:53:04.623308Z",
+    "created_at": "2026-02-13T15:32:20.462280Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -872,7 +872,7 @@
   {
     "alert_id": "ALT-000094",
     "event_time": "2026-02-05T22:57:49.991725Z",
-    "created_at": "2026-02-13T14:53:04.623385Z",
+    "created_at": "2026-02-13T15:32:20.462435Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -902,7 +902,7 @@
   {
     "alert_id": "ALT-000191",
     "event_time": "2026-02-11T03:55:53.612352Z",
-    "created_at": "2026-02-13T14:53:04.623461Z",
+    "created_at": "2026-02-13T15:32:20.462570Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -932,7 +932,7 @@
   {
     "alert_id": "ALT-000111",
     "event_time": "2026-02-06T19:08:46.567109Z",
-    "created_at": "2026-02-13T14:53:04.623536Z",
+    "created_at": "2026-02-13T15:32:20.462704Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -962,7 +962,7 @@
   {
     "alert_id": "ALT-000019",
     "event_time": "2026-02-02T09:01:46.180450Z",
-    "created_at": "2026-02-13T14:53:04.623609Z",
+    "created_at": "2026-02-13T15:32:20.462835Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -992,7 +992,7 @@
   {
     "alert_id": "ALT-000118",
     "event_time": "2026-02-07T00:35:56.077096Z",
-    "created_at": "2026-02-13T14:53:04.623682Z",
+    "created_at": "2026-02-13T15:32:20.462970Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -1022,7 +1022,7 @@
   {
     "alert_id": "ALT-000076",
     "event_time": "2026-02-05T07:07:37.511327Z",
-    "created_at": "2026-02-13T14:53:04.623754Z",
+    "created_at": "2026-02-13T15:32:20.463100Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -1052,7 +1052,7 @@
   {
     "alert_id": "ALT-000097",
     "event_time": "2026-02-06T01:55:07.743468Z",
-    "created_at": "2026-02-13T14:53:04.623826Z",
+    "created_at": "2026-02-13T15:32:20.463232Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -1082,7 +1082,7 @@
   {
     "alert_id": "ALT-000137",
     "event_time": "2026-02-08T00:39:17.830975Z",
-    "created_at": "2026-02-13T14:53:04.623898Z",
+    "created_at": "2026-02-13T15:32:20.463364Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -1112,7 +1112,7 @@
   {
     "alert_id": "ALT-000162",
     "event_time": "2026-02-09T05:12:35.530832Z",
-    "created_at": "2026-02-13T14:53:04.623972Z",
+    "created_at": "2026-02-13T15:32:20.463498Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -1142,7 +1142,7 @@
   {
     "alert_id": "ALT-000032",
     "event_time": "2026-02-03T07:12:56.764444Z",
-    "created_at": "2026-02-13T14:53:04.624044Z",
+    "created_at": "2026-02-13T15:32:20.463631Z",
     "detector_type": "BEHAVIOR",
     "detector_source": "ml_isolation_forest",
     "signal": "ML_ANOMALY_DETECTED",
@@ -1172,7 +1172,7 @@
   {
     "alert_id": "ALT-000231",
     "event_time": "2026-02-26T01:10:00Z",
-    "created_at": "2026-02-13T14:53:04.624115Z",
+    "created_at": "2026-02-13T15:32:20.463741Z",
     "detector_type": "NETWORK",
     "detector_source": "ml_isolation_forest",
     "signal": "COORDINATED_ACTIVITY",
@@ -1202,7 +1202,7 @@
   {
     "alert_id": "ALT-000232",
     "event_time": "2026-02-26T01:11:00Z",
-    "created_at": "2026-02-13T14:53:04.624181Z",
+    "created_at": "2026-02-13T15:32:20.463853Z",
     "detector_type": "NETWORK",
     "detector_source": "ml_isolation_forest",
     "signal": "COORDINATED_ACTIVITY",
@@ -1232,7 +1232,7 @@
   {
     "alert_id": "ALT-000233",
     "event_time": "2026-02-26T01:12:00Z",
-    "created_at": "2026-02-13T14:53:04.624243Z",
+    "created_at": "2026-02-13T15:32:20.463963Z",
     "detector_type": "NETWORK",
     "detector_source": "ml_isolation_forest",
     "signal": "COORDINATED_ACTIVITY",
@@ -1262,7 +1262,7 @@
   {
     "alert_id": "ALT-000234",
     "event_time": "2026-02-26T01:13:00Z",
-    "created_at": "2026-02-13T14:53:04.624303Z",
+    "created_at": "2026-02-13T15:32:20.464071Z",
     "detector_type": "NETWORK",
     "detector_source": "ml_isolation_forest",
     "signal": "COORDINATED_ACTIVITY",

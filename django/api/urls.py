@@ -2,7 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('ai-detect/', views.AIAnomalyDetectionView.as_view(), name='ai-detect'),
+    # ML Detection Endpoints
+    path('ai-detect/', views.AIAnomalyDetectionView.as_view(), name='ai-detect'),  # Teammate's original
+    path('ml/run-pipeline/', views.MLPipelineView.as_view(), name='ml-pipeline'),  # New SENTINEL pipeline
 
     # Cases
     path('cases/', views.CaseListView.as_view(), name='case-list'),

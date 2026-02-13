@@ -17,6 +17,7 @@ urlpatterns = [
     path('cases/<str:case_id>/network/', views.CaseNetworkView.as_view(), name='case-network'),
     path('cases/<str:case_id>/timeline/', views.CaseTimelineView.as_view(), name='case-timeline'),
     path('cases/<str:case_id>/notes/', views.CaseNotesView.as_view(), name='case-notes'),
+    path('cases/<str:case_id>/full/', views.CaseFullContextView.as_view(), name='case-full'),
 
     # AI Agent Investigation
     path('cases/<str:case_id>/investigate/', views.CaseInvestigateView.as_view(), name='case-investigate'),

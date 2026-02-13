@@ -745,6 +745,59 @@ class CaseContextAssembler:
         cases = self._load_cases()
         return [c.get("case_id") for c in cases if c.get("case_id")]
 
+    def get_related_cases(self, case_id: str) -> List[Dict[str, Any]]:
+        """
+        Find cases related to the given case via network connections.
+
+        Args:
+            case_id: The case ID to find related cases for
+
+        Returns:
+            List of related case info dicts with relationship details
+        """
+        context = self.assemble(case_id)
+        all_cases = self._load_cases()
+        customers = self._load_customers()
+
+        related = []
+        seen_case_ids = {case_id}  # Don't include self
+
+        for conn in context.network_connections:
+            entity_id = conn.connected_entity_id
+
+            # Find cases where this entity is the user
+            for case in all_cases:
+                related_case_id = case.get("case_id")
+                if related_case_id in seen_case_ids:
+                    continue
+
+                case_user = case.get("user_id")
+                is_match = False
+
+                if isinstance(case_user, list):
+                    if entity_id in case_user:
+                        is_match = True
+                elif case_user == entity_id:
+                    is_match = True
+
+                if is_match:
+                    seen_case_ids.add(related_case_id)
+
+                    # Get customer name
+                    customer_data = self._find_by_id(customers, "customer_id", entity_id)
+                    customer_name = customer_data.get("full_name", f"Customer {entity_id}") if customer_data else f"Customer {entity_id}"
+
+                    related.append({
+                        "case_id": related_case_id,
+                        "score": case.get("case_score", 50),
+                        "status": case.get("status", "OPEN"),
+                        "customer": customer_name,
+                        "relationship": conn.connection_type.replace("_", " ").title(),
+                        "relationship_detail": conn.details
+                    })
+
+        return related
+
 
 # Convenience function for quick assembly
 def assemble_case_context(case_id: str, data_path: Path = None) -> CaseContext:

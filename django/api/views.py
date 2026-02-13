@@ -661,6 +661,265 @@ class InvestigationFeedbackView(APIView):
             )
 
 
+# ============ CASE FULL CONTEXT (ML DATA) ============
+class CaseFullContextView(APIView):
+    """
+    Full Case Context Endpoint - Returns all evidence tab data in one request.
+
+    GET /api/cases/{case_id}/full/
+
+    Returns all data needed for the investigation page tabs:
+    - case: Case header info (id, risk level, score, status)
+    - alerts: List of alerts for this case
+    - transactions: Summary + list of transactions
+    - logins: Summary + list of login events
+    - network: Summary + list of network connections
+    - kyc: Customer KYC data
+    - timeline: Chronological events from multiple sources
+    - related_cases: Cases connected via network relationships
+    """
+
+    def get(self, request, case_id):
+        try:
+            from ai_agent.skills.case_context_assembler import CaseContextAssembler
+
+            assembler = CaseContextAssembler()
+            context = assembler.assemble(case_id)
+
+            # Get raw case data for additional fields
+            cases = assembler._load_cases()
+            case_data = next((c for c in cases if c.get("case_id") == case_id), {})
+
+            # ===== CASE HEADER =====
+            case_header = {
+                "case_id": context.case_id,
+                "risk_level": case_data.get("risk_level", "medium").lower(),
+                "risk_score": case_data.get("case_score", 50),
+                "customer_name": context.customer.full_name if context.customer else "Unknown",
+                "account_id": context.account.account_id if context.account else "",
+                "status": case_data.get("status", "OPEN"),
+                "fraud_type": case_data.get("fraud_type", "unknown"),
+                "created_at": context.created_at
+            }
+
+            # ===== ALERTS =====
+            alerts = [
+                {
+                    "alert_id": a.alert_id,
+                    "severity": a.severity,
+                    "description": a.description,
+                    "detector_source": a.detector_source,
+                    "triggered_at": a.triggered_at,
+                    "risk_score": a.risk_score
+                }
+                for a in context.alerts
+            ]
+
+            # ===== TRANSACTIONS =====
+            total_in = 0
+            total_out = 0
+            transactions = []
+
+            for t in context.transactions:
+                txn = {
+                    "transaction_id": t.transaction_id,
+                    "date": t.timestamp[:10] if t.timestamp else "",
+                    "timestamp": t.timestamp,
+                    "amount": t.amount,
+                    "type": t.type,
+                    "channel": t.channel.replace("_", " ").title() if t.channel else "Unknown",
+                    "currency": t.currency,
+                    "flagged": len(t.risk_flags) > 0,
+                    "risk_flags": t.risk_flags
+                }
+                transactions.append(txn)
+
+                if t.type == "deposit":
+                    total_in += t.amount
+                elif t.type == "withdrawal":
+                    total_out += t.amount
+
+            declared_income = context.customer.declared_income if context.customer else 0
+            income_ratio = round((total_in / declared_income) * 100) if declared_income else 0
+
+            transactions_data = {
+                "summary": {
+                    "total_in": round(total_in, 2),
+                    "total_out": round(total_out, 2),
+                    "declared_income": declared_income,
+                    "income_ratio": income_ratio,
+                    "transaction_count": len(transactions)
+                },
+                "items": transactions
+            }
+
+            # ===== LOGINS =====
+            logins = []
+            unique_ips = set()
+            vpn_count = 0
+            countries = set()
+
+            for l in context.logins:
+                login = {
+                    "event_id": l.event_id,
+                    "timestamp": l.timestamp,
+                    "country": l.location_country,
+                    "vpn": l.is_vpn,
+                    "device": f"{l.browser or 'Unknown'} / {l.device_type}",
+                    "ip_address": l.ip_address,
+                    "success": l.login_success
+                }
+                logins.append(login)
+                unique_ips.add(l.ip_address)
+                if l.is_vpn:
+                    vpn_count += 1
+                if l.location_country:
+                    countries.add(l.location_country)
+
+            logins_data = {
+                "summary": {
+                    "total": len(logins),
+                    "unique_ips": len(unique_ips),
+                    "vpn_count": vpn_count,
+                    "countries": len(countries)
+                },
+                "items": logins
+            }
+
+            # ===== NETWORK =====
+            connections = []
+            shared_devices = 0
+            flagged_connections = 0
+
+            for c in context.network_connections:
+                conn = {
+                    "account_id": c.connected_entity_id,
+                    "connection_type": c.connection_type.replace("_", " ").title(),
+                    "flagged": c.connection_strength == "strong",
+                    "details": c.details
+                }
+                connections.append(conn)
+                if "device" in c.connection_type.lower():
+                    shared_devices += 1
+                if c.connection_strength == "strong":
+                    flagged_connections += 1
+
+            fraud_ring_prob = "HIGH" if len(connections) >= 3 else "MEDIUM" if connections else "LOW"
+
+            network_data = {
+                "summary": {
+                    "shared_devices": shared_devices,
+                    "flagged_connections": flagged_connections,
+                    "fraud_ring_probability": fraud_ring_prob,
+                    "total_connections": len(connections)
+                },
+                "connections": connections
+            }
+
+            # ===== KYC =====
+            kyc_data = {}
+            if context.customer:
+                kyc_data = {
+                    "full_name": context.customer.full_name,
+                    "dob": context.customer.date_of_birth or "N/A",
+                    "country": context.customer.country,
+                    "declared_income": context.customer.declared_income,
+                    "pep": context.customer.pep_status,
+                    "sanctions": context.customer.sanctions_hit,
+                    "face_match": 95,  # Placeholder - not in ML data
+                    "id_verification": context.customer.verification_status.title() if context.customer.verification_status else "Unknown",
+                    "document_flags": context.customer.document_flags,
+                    "email": context.customer.email,
+                    "phone": context.customer.phone
+                }
+
+            # ===== TIMELINE =====
+            timeline_events = []
+
+            # Add alerts
+            for alert in context.alerts:
+                timeline_events.append({
+                    "timestamp": alert.triggered_at,
+                    "description": alert.description,
+                    "source": alert.detector_source,
+                    "flagged": True,
+                    "event_type": "alert"
+                })
+
+            # Add suspicious transactions
+            for txn in context.transactions:
+                if txn.risk_flags:
+                    timeline_events.append({
+                        "timestamp": txn.timestamp,
+                        "description": f"{txn.type.title()} of {txn.amount} {txn.currency}",
+                        "source": "transaction",
+                        "flagged": True,
+                        "event_type": "transaction"
+                    })
+
+            # Add failed logins
+            for login in context.logins:
+                if not login.login_success:
+                    timeline_events.append({
+                        "timestamp": login.timestamp,
+                        "description": f"Failed login from {login.location_country}",
+                        "source": "auth",
+                        "flagged": True,
+                        "event_type": "login_failed"
+                    })
+
+            # Sort by timestamp descending
+            timeline_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+
+            # ===== RELATED CASES =====
+            related_cases = assembler.get_related_cases(case_id)
+
+            # ===== DEVICES =====
+            devices = [
+                {
+                    "device_id": d.device_id,
+                    "device_type": d.device_type,
+                    "os": d.os,
+                    "first_seen": d.first_seen,
+                    "last_seen": d.last_seen,
+                    "is_trusted": d.is_trusted,
+                    "linked_accounts": d.linked_accounts
+                }
+                for d in context.devices
+            ]
+
+            return Response({
+                "case": case_header,
+                "alerts": alerts,
+                "transactions": transactions_data,
+                "logins": logins_data,
+                "network": network_data,
+                "kyc": kyc_data,
+                "timeline": timeline_events,
+                "related_cases": related_cases,
+                "devices": devices,
+                "data_completeness": {
+                    "kyc_data": context.data_completeness.kyc_data,
+                    "transaction_history": context.data_completeness.transaction_history,
+                    "login_history": context.data_completeness.login_history,
+                    "device_data": context.data_completeness.device_data,
+                    "network_analysis": context.data_completeness.network_analysis
+                }
+            })
+
+        except ValueError as e:
+            return Response(
+                {"error": str(e), "case_id": case_id},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Exception as e:
+            import traceback
+            return Response(
+                {"error": f"Failed to load case context: {str(e)}", "traceback": traceback.format_exc()},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
 # ============ SENTINEL CHAT AGENT ============
 class CaseChatView(APIView):
     """

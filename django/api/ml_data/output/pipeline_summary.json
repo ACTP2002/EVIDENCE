@@ -1,0 +1,27 @@
+{
+  "pipeline_run": "2026-02-13T14:53:04.632116Z",
+  "mode": "b2",
+  "threshold": 0.3,
+  "input_dir": "C:\\Users\\nerd\\deriv_evidence\\django\\api\\ml_data\\input",
+  "output_dir": "C:\\Users\\nerd\\deriv_evidence\\django\\api\\ml_data\\output",
+  "statistics": {
+    "total_transactions": 270,
+    "anomalies_detected": 43,
+    "anomaly_rate": 15.93,
+    "alerts_created": 43,
+    "cases_built": 17
+  },
+  "cases_by_type": {
+    "fraud_ring": 1,
+    "account_takeover": 2,
+    "income_anomaly": 1,
+    "money_mule": 1,
+    "multi_account_fraud": 1,
+    "behavioral_anomaly": 11
+  },
+  "alerts_by_severity": {
+    "HIGH": 7,
+    "CRITICAL": 13,
+    "MEDIUM": 23
+  }
+}

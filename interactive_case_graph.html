@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Case Graph Explorer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.65);
+      --stroke: rgba(255,255,255,0.22);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(56,189,248,0.18), transparent 55%),
+        radial-gradient(1200px 800px at 80% 90%, rgba(251,113,133,0.14), transparent 55%),
+        var(--bg);
+      height: 100vh;
+      overflow: hidden;
+    }
+    .app { display: grid; grid-template-columns: 380px 1fr; height: 100vh; }
+    .sidebar {
+      padding: 14px 14px 12px;
+      border-right: 1px solid var(--stroke);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      overflow: auto;
+    }
+    .title { display:flex; align-items:center; justify-content:space-between; gap: 8px; }
+    h1 { font-size: 16px; margin: 6px 0 10px; letter-spacing: 0.4px; }
+    .pill {
+      font-size: 12px; padding: 4px 8px;
+      border: 1px solid var(--stroke); border-radius: 999px;
+      background: rgba(255,255,255,0.04); color: var(--muted); white-space: nowrap;
+    }
+    .card {
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 12px;
+      background: var(--panel);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      margin-bottom: 10px;
+    }
+    .row { display:flex; gap: 10px; align-items:center; flex-wrap: wrap; }
+    label { font-size: 12px; color: var(--muted); display:block; margin: 8px 0 6px; }
+    input[type="search"], select {
+      width: 100%; padding: 10px 10px;
+      border-radius: 10px; border: 1px solid var(--stroke);
+      background: rgba(0,0,0,0.18); color: var(--text); outline: none;
+    }
+    input[type="range"] { width: 100%; }
+    .btns { display:flex; gap: 8px; flex-wrap:wrap; margin-top: 10px; }
+    button {
+      border-radius: 10px; padding: 9px 10px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.06);
+      color: var(--text); cursor: pointer;
+      transition: transform 0.06s ease, background 0.2s ease;
+      font-size: 12px;
+    }
+    button:hover { background: rgba(255,255,255,0.10); }
+    button:active { transform: translateY(1px); }
+
+    .legend {
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-top: 8px;
+    }
+    .legend-item { display:flex; align-items:center; gap: 8px; font-size: 12px; color: var(--muted); }
+    .swatch { width: 12px; height: 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); }
+
+    .hint { font-size: 12px; color: var(--muted); line-height: 1.35; }
+
+    .kvs {
+      display:grid; grid-template-columns: 110px 1fr;
+      gap: 8px 10px; font-size: 12px; margin-top: 8px;
+    }
+    .kvs div:nth-child(odd) { color: var(--muted); }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px; word-break: break-word;
+    }
+
+    .stage { position: relative; overflow: hidden; }
+    svg { width: 100%; height: 100%; display: block; }
+
+    .tooltip {
+      position: absolute; pointer-events: none;
+      padding: 10px 10px; border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(10, 14, 28, 0.88);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 46px rgba(0,0,0,0.35);
+      font-size: 12px; color: var(--text);
+      max-width: 380px;
+      opacity: 0;
+      transform: translate(-50%, -120%);
+      transition: opacity 0.12s ease;
+    }
+    .tooltip .muted { color: var(--muted); }
+    .badge {
+      display:inline-block; padding: 2px 6px;
+      border-radius: 999px; border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.06);
+      margin-left: 6px; color: var(--muted); font-size: 11px;
+    }
+
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { height: 44vh; border-right: none; border-bottom: 1px solid var(--stroke); }
+      .stage { height: 56vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="title">
+        <h1>Case Graph Explorer</h1>
+        <span class="pill" id="counts">—</span>
+      </div>
+
+      <div class="card">
+        <div class="hint">
+          Zoom/pan, drag nodes, click a node to pin + highlight its neighbors. Click an edge to inspect the event payload.
+        </div>
+
+        <label for="search">Search node ID</label>
+        <input id="search" type="search" placeholder='e.g. "user:u_001" or "ip:100.100.100.1"' />
+
+        <div class="row" style="margin-top:10px;">
+          <div style="flex:1; min-width: 150px;">
+            <label for="nodeType">Node type</label>
+            <select id="nodeType">
+              <option value="__all__">All</option>
+            </select>
+          </div>
+          <div style="flex:1; min-width: 150px;">
+            <label for="streamType">Stream type</label>
+            <select id="streamType">
+              <option value="__all__">All</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="minAmount">Min txn amount (USD)</label>
+        <input id="minAmount" type="range" min="0" max="50000" step="1000" value="0"/>
+        <div class="row" style="justify-content:space-between;">
+          <span class="pill" id="minAmountLabel">0</span>
+          <span class="pill">Filter edges by amount</span>
+        </div>
+
+        <div class="btns">
+          <button id="fit">Fit</button>
+          <button id="unpin">Unpin</button>
+          <button id="reset">Reset</button>
+        </div>
+
+        <div class="legend" id="legend"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between;">
+          <div style="font-size:13px;">Selection</div>
+          <span class="pill" id="selectionPill">None</span>
+        </div>
+        <div class="kvs" id="details">
+          <div>Tip</div><div class="hint">Click a node or edge to see details here.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="hint">
+          <div><span class="pill">Embed</span> Put this HTML into your FE container (static asset) and iframe it.</div>
+          <div style="margin-top:6px;">Want runtime JSON? Toggle <span class="mono">USE_FETCH</span> in the script.</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="stage">
+      <div class="tooltip" id="tooltip"></div>
+      <svg id="svg" aria-label="Interactive graph"></svg>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script>
+    // -------- Data source --------
+    const INLINE_DATA = {"directed": true, "multigraph": true, "node_count": 14, "edge_count": 18, "nodes": [{"id": "user:u_001", "type": "user"}, {"id": "ip:100.100.100.1", "type": "ip"}, {"id": "device:d_001", "type": "device"}, {"id": "stock:TSLAX", "type": "stock"}, {"id": "user:u_002", "type": "user"}, {"id": "device:d_002", "type": "device"}, {"id": "user:u_003", "type": "user"}, {"id": "device:d_003", "type": "device"}, {"id": "user:u_004", "type": "user"}, {"id": "device:d_004", "type": "device"}, {"id": "user:u_005", "type": "user"}, {"id": "device:d_005", "type": "device"}, {"id": "user:u_006", "type": "user"}, {"id": "device:d_006", "type": "device"}], "edges": [{"source": "user:u_001", "target": "ip:100.100.100.1", "key": "0", "relation": "user_ip_event", "event_id": "evt_txn_001", "event_time": "2026-02-07T10:05:17.233354Z", "stream_type": "transactional", "event_type": "buy", "data": {"txn_id": "T-0001", "amount": 50000, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_001", "target": "device:d_001", "key": "0", "relation": "user_device_event", "event_id": "evt_txn_001", "event_time": "2026-02-07T10:05:17.233354Z", "stream_type": "transactional", "event_type": "buy", "data": {"txn_id": "T-0001", "amount": 50000, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_001", "target": "stock:TSLAX", "key": "0", "relation": "user_stock_relation", "event_id": "evt_txn_001", "event_time": "2026-02-07T10:05:17.233354Z", "stream_type": "transactional", "event_type": "buy", "data": {"txn_id": "T-0001", "amount": 50000, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_002", "target": "ip:100.100.100.1", "key": "0", "relation": "user_ip_event", "event_id": "evt_txn_002", "event_time": "2026-02-07T10:06:17.23Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0002", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_002", "target": "device:d_002", "key": "0", "relation": "user_device_event", "event_id": "evt_txn_002", "event_time": "2026-02-07T10:06:17.23Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0002", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_002", "target": "stock:TSLAX", "key": "0", "relation": "user_stock_relation", "event_id": "evt_txn_002", "event_time": "2026-02-07T10:06:17.23Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0002", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_003", "target": "ip:100.100.100.1", "key": "0", "relation": "user_ip_event", "event_id": "evt_txn_003", "event_time": "2026-02-07T10:06:20.45Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0003", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_003", "target": "device:d_003", "key": "0", "relation": "user_device_event", "event_id": "evt_txn_003", "event_time": "2026-02-07T10:06:20.45Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0003", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_003", "target": "stock:TSLAX", "key": "0", "relation": "user_stock_relation", "event_id": "evt_txn_003", "event_time": "2026-02-07T10:06:20.45Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0003", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_004", "target": "ip:100.100.100.1", "key": "0", "relation": "user_ip_event", "event_id": "evt_txn_004", "event_time": "2026-02-07T10:06:20.50Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0004", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_004", "target": "device:d_004", "key": "0", "relation": "user_device_event", "event_id": "evt_txn_004", "event_time": "2026-02-07T10:06:20.50Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0004", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_004", "target": "stock:TSLAX", "key": "0", "relation": "user_stock_relation", "event_id": "evt_txn_004", "event_time": "2026-02-07T10:06:20.50Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0004", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_005", "target": "ip:100.100.100.1", "key": "0", "relation": "user_ip_event", "event_id": "evt_txn_005", "event_time": "2026-02-07T10:06:21.02Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0005", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_005", "target": "device:d_005", "key": "0", "relation": "user_device_event", "event_id": "evt_txn_005", "event_time": "2026-02-07T10:06:21.02Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0005", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_005", "target": "stock:TSLAX", "key": "0", "relation": "user_stock_relation", "event_id": "evt_txn_005", "event_time": "2026-02-07T10:06:21.02Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0005", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_006", "target": "ip:100.100.100.1", "key": "0", "relation": "user_ip_event", "event_id": "evt_txn_006", "event_time": "2026-02-07T10:06:21.55Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0006", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_006", "target": "device:d_006", "key": "0", "relation": "user_device_event", "event_id": "evt_txn_006", "event_time": "2026-02-07T10:06:21.55Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0006", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}, {"source": "user:u_006", "target": "stock:TSLAX", "key": "0", "relation": "user_stock_relation", "event_id": "evt_txn_006", "event_time": "2026-02-07T10:06:21.55Z", "stream_type": "transactional", "event_type": "sell", "data": {"txn_id": "T-0006", "amount": 10000.0, "currency": "USD", "channel": "web", "result": "success", "stock_id": "TSLAX"}}]};
+    const USE_FETCH = false; // set true to fetch("case_graph.json")
+
+    async function loadData() {
+      if (!USE_FETCH) return INLINE_DATA;
+      const res = await fetch("case_graph.json");
+      if (!res.ok) throw new Error("Failed to fetch case_graph.json: " + res.status);
+      return await res.json();
+    }
+
+    // -------- Helpers --------
+    const fmt = new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 });
+    const fmt2 = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 });
+
+    const COLORS = {
+      user: "#38bdf8",
+      ip: "#a78bfa",
+      device: "#34d399",
+      stock: "#f59e0b",
+      other: "#fb7185"
+    };
+    function colorForType(t) { return COLORS[t] || COLORS.other; }
+    function safe(v) { return (v === null || v === undefined) ? "" : String(v); }
+
+    // -------- Main --------
+    const svg = d3.select("#svg");
+    const stage = document.querySelector(".stage");
+    const tooltip = document.querySelector("#tooltip");
+
+    const searchEl = document.querySelector("#search");
+    const nodeTypeEl = document.querySelector("#nodeType");
+    const streamTypeEl = document.querySelector("#streamType");
+    const minAmountEl = document.querySelector("#minAmount");
+    const minAmountLabelEl = document.querySelector("#minAmountLabel");
+    const countsEl = document.querySelector("#counts");
+    const legendEl = document.querySelector("#legend");
+    const detailsEl = document.querySelector("#details");
+    const selectionPillEl = document.querySelector("#selectionPill");
+
+    const fitBtn = document.querySelector("#fit");
+    const resetBtn = document.querySelector("#reset");
+    const unpinBtn = document.querySelector("#unpin");
+
+    const gRoot = svg.append("g");
+    const gLinks = gRoot.append("g").attr("stroke", "rgba(255,255,255,0.28)").attr("stroke-width", 1.4);
+    const gDefs  = gRoot.append("defs");
+    const gNodes = gRoot.append("g");
+    const gLabels= gRoot.append("g");
+
+    // Arrow marker (for directed edges)
+    gDefs.append("marker")
+      .attr("id", "arrow")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 16)
+      .attr("refY", 0)
+      .attr("markerWidth", 8)
+      .attr("markerHeight", 8)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5")
+      .attr("fill", "rgba(255,255,255,0.28)");
+
+    const zoom = d3.zoom()
+      .scaleExtent([0.12, 6])
+      .on("zoom", (event) => gRoot.attr("transform", event.transform));
+    svg.call(zoom);
+
+    let nodesAll, linksAll;
+    let nodes = [], links = [];
+    let simulation;
+    let pinnedNodeId = null;
+    let idToNode = new Map();
+    let adjacency = new Map();
+
+    function computeAdjacency(linksArr) {
+      adjacency = new Map();
+      for (const l of linksArr) {
+        const s = l.source.id || l.source;
+        const t = l.target.id || l.target;
+        if (!adjacency.has(s)) adjacency.set(s, new Set());
+        if (!adjacency.has(t)) adjacency.set(t, new Set());
+        adjacency.get(s).add(t);
+        adjacency.get(t).add(s);
+      }
+    }
+
+    function updateCounts() { countsEl.textContent = `${nodes.length} nodes · ${links.length} edges`; }
+
+    function buildLegend(types) {
+      legendEl.innerHTML = "";
+      for (const t of types) {
+        const item = document.createElement("div");
+        item.className = "legend-item";
+        const sw = document.createElement("div");
+        sw.className = "swatch";
+        sw.style.background = colorForType(t);
+        const lab = document.createElement("div");
+        lab.textContent = t;
+        item.appendChild(sw);
+        item.appendChild(lab);
+        legendEl.appendChild(item);
+      }
+    }
+
+    function setDetails(kind, pill, kvPairs, rawJsonObj) {
+      selectionPillEl.textContent = pill || "—";
+      detailsEl.innerHTML = "";
+
+      const add = (k, v, isMono=false) => {
+        const kEl = document.createElement("div");
+        kEl.textContent = k;
+        const vEl = document.createElement("div");
+        if (isMono) vEl.className = "mono";
+        vEl.textContent = v;
+        detailsEl.appendChild(kEl);
+        detailsEl.appendChild(vEl);
+      };
+
+      add("Type", kind);
+      for (const [k, v] of kvPairs) add(k, v);
+      const rawStr = JSON.stringify(rawJsonObj, null, 2);
+      add("Raw", rawStr.slice(0, 1200) + (rawStr.length > 1200 ? "…" : ""), true);
+    }
+
+    function showTooltip(htmlStr, x, y) {
+      tooltip.innerHTML = htmlStr;
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+      tooltip.style.opacity = "1";
+    }
+    function hideTooltip() { tooltip.style.opacity = "0"; }
+
+    function filterData() {
+      const q = searchEl.value.trim().toLowerCase();
+      const nodeType = nodeTypeEl.value;
+      const streamType = streamTypeEl.value;
+      const minAmount = Number(minAmountEl.value || 0);
+      minAmountLabelEl.textContent = fmt.format(minAmount);
+
+      let filteredLinks = linksAll.filter(l => {
+        if (streamType !== "__all__" && l.stream_type !== streamType) return false;
+        const amt = Number(l.data?.amount ?? 0);
+        if (!Number.isNaN(amt) && amt < minAmount) return false;
+        return true;
+      });
+
+      let nodeKeep = new Set(nodesAll.map(n => n.id));
+      if (nodeType !== "__all__") nodeKeep = new Set(nodesAll.filter(n => n.type === nodeType).map(n => n.id));
+
+      let searchKeep = null;
+      if (q.length) searchKeep = new Set(nodesAll.filter(n => n.id.toLowerCase().includes(q)).map(n => n.id));
+
+      const linked = new Set();
+      for (const l of filteredLinks) { linked.add(l.source); linked.add(l.target); }
+
+      const finalKeep = new Set();
+      for (const id of linked) {
+        if (!nodeKeep.has(id)) continue;
+        if (searchKeep && !searchKeep.has(id)) continue;
+        finalKeep.add(id);
+      }
+      if (searchKeep) for (const id of searchKeep) if (nodeKeep.has(id)) finalKeep.add(id);
+
+      filteredLinks = filteredLinks.filter(l => finalKeep.has(l.source) && finalKeep.has(l.target));
+      const filteredNodes = nodesAll.filter(n => finalKeep.has(n.id));
+
+      nodes = filteredNodes.map(n => ({ ...n }));
+      links = filteredLinks.map(l => ({ ...l }));
+
+      idToNode = new Map(nodes.map(n => [n.id, n]));
+      for (const l of links) {
+        l.source = idToNode.get(l.source) || l.source;
+        l.target = idToNode.get(l.target) || l.target;
+      }
+      computeAdjacency(links);
+
+      if (pinnedNodeId && !idToNode.has(pinnedNodeId)) pinnedNodeId = null;
+
+      updateCounts();
+      restartSimulation();
+      applySelectionStyling();
+    }
+
+    function restartSimulation() {
+      gLinks.selectAll("*").remove();
+      gNodes.selectAll("*").remove();
+      gLabels.selectAll("*").remove();
+
+      const width = stage.clientWidth;
+      const height = stage.clientHeight;
+      svg.attr("viewBox", [0,0,width,height]);
+
+      const link = gLinks.selectAll("line")
+        .data(links, d => (d.event_id||"") + "|" + (d.relation||"") + "|" + (d.key||"") + "|" + (d.source.id||d.source) + "|" + (d.target.id||d.target))
+        .join("line")
+        .attr("marker-end", "url(#arrow)")
+        .attr("stroke-opacity", 0.6);
+
+      const linkHit = gLinks.selectAll("line.hit")
+        .data(links, d => "hit|" + (d.event_id||"") + "|" + (d.relation||"") + "|" + (d.key||"") + "|" + (d.source.id||d.source) + "|" + (d.target.id||d.target))
+        .join("line")
+        .classed("hit", true)
+        .attr("stroke", "transparent")
+        .attr("stroke-width", 10)
+        .attr("pointer-events", "stroke");
+
+      const node = gNodes.selectAll("circle")
+        .data(nodes, d => d.id)
+        .join("circle")
+        .attr("r", d => d.type === "user" ? 10 : d.type === "ip" ? 9 : 8)
+        .attr("fill", d => colorForType(d.type))
+        .attr("stroke", "rgba(255,255,255,0.35)")
+        .attr("stroke-width", 1.2)
+        .call(d3.drag()
+          .on("start", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.25).restart();
+            d.fx = d.x; d.fy = d.y;
+          })
+          .on("drag", (event, d) => { d.fx = event.x; d.fy = event.y; })
+          .on("end", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            if (pinnedNodeId !== d.id) { d.fx = null; d.fy = null; }
+          })
+        );
+
+      const label = gLabels.selectAll("text")
+        .data(nodes, d => d.id)
+        .join("text")
+        .text(d => d.id)
+        .attr("font-size", 11)
+        .attr("fill", "rgba(255,255,255,0.72)")
+        .attr("paint-order", "stroke")
+        .attr("stroke", "rgba(11,16,32,0.85)")
+        .attr("stroke-width", 3)
+        .attr("pointer-events", "none");
+
+      node.on("mousemove", (event, d) => {
+        const deg = adjacency.get(d.id)?.size || 0;
+        const html = `
+          <div><b>${safe(d.id)}</b><span class="badge">${safe(d.type)}</span></div>
+          <div class="muted">Degree: ${deg}</div>
+          <div class="muted">Click to pin + highlight neighbors</div>
+        `;
+        showTooltip(html, event.offsetX, event.offsetY);
+      }).on("mouseleave", hideTooltip);
+
+      node.on("click", (event, d) => {
+        event.stopPropagation();
+        pinnedNodeId = (pinnedNodeId === d.id) ? null : d.id;
+
+        if (pinnedNodeId) {
+          const n = idToNode.get(pinnedNodeId);
+          n.fx = n.x; n.fy = n.y;
+          setDetails("Node", "Node", [
+            ["id", n.id],
+            ["type", n.type],
+            ["neighbors", String(adjacency.get(n.id)?.size || 0)]
+          ], n);
+        } else {
+          setDetails("Selection", "None", [], { tip: "Click a node or edge to see details." });
+        }
+        applySelectionStyling();
+      });
+
+      linkHit.on("mousemove", (event, d) => {
+        const amt = d.data?.amount;
+        const amountStr = (amt === undefined) ? "—" : (Number.isInteger(amt) ? fmt.format(amt) : fmt2.format(amt));
+        const html = `
+          <div><b>${safe(d.relation)}</b><span class="badge">${safe(d.stream_type)}</span></div>
+          <div class="muted">${safe(d.source.id)} → ${safe(d.target.id)}</div>
+          <div class="muted">event: ${safe(d.event_id)} · ${safe(d.event_type)} · amount: ${amountStr}</div>
+          <div class="muted">Click to inspect</div>
+        `;
+        showTooltip(html, event.offsetX, event.offsetY);
+      })
+      .on("mouseleave", hideTooltip)
+      .on("click", (event, d) => {
+        event.stopPropagation();
+        pinnedNodeId = null;
+        applySelectionStyling();
+        const amount = d.data?.amount;
+        setDetails("Edge", "Edge", [
+          ["source", d.source.id],
+          ["target", d.target.id],
+          ["relation", d.relation],
+          ["key", d.key ?? "—"],
+          ["event_id", d.event_id],
+          ["event_time", d.event_time],
+          ["stream_type", d.stream_type],
+          ["event_type", d.event_type],
+          ["amount", amount === undefined ? "—" : String(amount)],
+          ["txn_id", d.data?.txn_id ?? "—"],
+          ["result", d.data?.result ?? "—"],
+          ["channel", d.data?.channel ?? "—"],
+          ["stock_id", d.data?.stock_id ?? "—"]
+        ], d);
+      });
+
+      svg.on("click", () => {
+        pinnedNodeId = null;
+        applySelectionStyling();
+        setDetails("Selection", "None", [], { tip: "Click a node or edge to see details." });
+      });
+
+      const isDirected = !!INLINE_DATA.directed;
+
+      simulation = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).id(d => d.id).distance(d => ((d.relation||"").includes("stock") ? 120 : 90)).strength(0.9))
+        .force("charge", d3.forceManyBody().strength(-420))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collide", d3.forceCollide().radius(d => (d.type === "user" ? 22 : 18)));
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+
+        linkHit
+          .attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+
+        node.attr("cx", d => d.x).attr("cy", d => d.y);
+        label.attr("x", d => d.x + 12).attr("y", d => d.y + 4);
+      });
+
+      requestAnimationFrame(() => fitToScreen());
+    }
+
+    function applySelectionStyling() {
+      const neighborSet = pinnedNodeId ? (adjacency.get(pinnedNodeId) || new Set()) : null;
+
+      gNodes.selectAll("circle")
+        .attr("opacity", d => !pinnedNodeId ? 1 : ((d.id === pinnedNodeId || neighborSet.has(d.id)) ? 1 : 0.18))
+        .attr("stroke-width", d => (d.id === pinnedNodeId ? 2.2 : 1.2));
+
+      gLabels.selectAll("text")
+        .attr("opacity", d => !pinnedNodeId ? 0.9 : ((d.id === pinnedNodeId || neighborSet.has(d.id)) ? 0.95 : 0.1));
+
+      gLinks.selectAll("line:not(.hit)")
+        .attr("opacity", d => {
+          if (!pinnedNodeId) return 1;
+          const s = d.source.id, t = d.target.id;
+          return (s === pinnedNodeId || t === pinnedNodeId) ? 1 : 0.12;
+        })
+        .attr("stroke", d => {
+          if (!pinnedNodeId) return "rgba(255,255,255,0.28)";
+          const s = d.source.id, t = d.target.id;
+          return (s === pinnedNodeId || t === pinnedNodeId) ? "rgba(56,189,248,0.65)" : "rgba(255,255,255,0.18)";
+        });
+    }
+
+    function fitToScreen() {
+      const width = stage.clientWidth;
+      const height = stage.clientHeight;
+
+      const bounds = gRoot.node().getBBox();
+      const fullWidth = bounds.width || 1;
+      const fullHeight = bounds.height || 1;
+      const midX = bounds.x + fullWidth / 2;
+      const midY = bounds.y + fullHeight / 2;
+
+      const scale = 0.92 / Math.max(fullWidth / width, fullHeight / height);
+      const translate = [width / 2 - scale * midX, height / 2 - scale * midY];
+
+      svg.transition().duration(350).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
+      );
+    }
+
+    function populateSelect(selectEl, values) {
+      const first = selectEl.querySelector("option");
+      selectEl.innerHTML = "";
+      selectEl.appendChild(first);
+      for (const v of values) {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        selectEl.appendChild(opt);
+      }
+    }
+
+    function resetFilters() {
+      searchEl.value = "";
+      nodeTypeEl.value = "__all__";
+      streamTypeEl.value = "__all__";
+      minAmountEl.value = "0";
+      pinnedNodeId = null;
+      filterData();
+      setDetails("Selection", "None", [], { tip: "Click a node or edge to see details." });
+    }
+
+    function unpin() {
+      pinnedNodeId = null;
+      gNodes.selectAll("circle").each(d => { d.fx = null; d.fy = null; });
+      applySelectionStyling();
+      selectionPillEl.textContent = "None";
+    }
+
+    const ro = new ResizeObserver(() => {
+      const width = stage.clientWidth;
+      const height = stage.clientHeight;
+      svg.attr("viewBox", [0,0,width,height]);
+      if (simulation) {
+        simulation.force("center", d3.forceCenter(width/2, height/2));
+        simulation.alpha(0.15).restart();
+      }
+    });
+    ro.observe(stage);
+
+    searchEl.addEventListener("input", filterData);
+    nodeTypeEl.addEventListener("change", filterData);
+    streamTypeEl.addEventListener("change", filterData);
+    minAmountEl.addEventListener("input", filterData);
+
+    fitBtn.addEventListener("click", fitToScreen);
+    resetBtn.addEventListener("click", resetFilters);
+    unpinBtn.addEventListener("click", unpin);
+
+    (async () => {
+      const rawData = await loadData();
+
+      nodesAll = rawData.nodes.map(n => ({ id: n.id, type: n.type || "other" }));
+      linksAll = rawData.edges.map(e => ({
+        source: e.source, target: e.target,
+        key: e.key,
+        relation: e.relation,
+        event_id: e.event_id,
+        event_time: e.event_time,
+        stream_type: e.stream_type,
+        event_type: e.event_type,
+        data: e.data || {}
+      }));
+
+      const types = Array.from(new Set(nodesAll.map(n => n.type))).sort();
+      const streams = Array.from(new Set(linksAll.map(l => l.stream_type).filter(Boolean))).sort();
+      populateSelect(nodeTypeEl, types);
+      populateSelect(streamTypeEl, streams);
+      buildLegend(types);
+
+      const maxAmt = Math.max(0, ...linksAll.map(l => Number(l.data?.amount || 0)).filter(x => !Number.isNaN(x)));
+      minAmountEl.max = String(Math.ceil(maxAmt/1000)*1000 || 50000);
+
+      filterData();
+      setDetails("Selection", "None", [], { tip: "Click a node or edge to see details here." });
+    })().catch(err => {
+      console.error(err);
+      alert("Failed to load graph: " + err.message);
+    });
+  </script>
+</body>
+</html>

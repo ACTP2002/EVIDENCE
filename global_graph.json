@@ -1,0 +1,638 @@
+{
+  "directed": true,
+  "multigraph": true,
+  "node_count": 22,
+  "edge_count": 30,
+  "nodes": [
+    {
+      "id": "user:u_001",
+      "type": "user"
+    },
+    {
+      "id": "ip:100.100.100.1",
+      "type": "ip"
+    },
+    {
+      "id": "device:d_001",
+      "type": "device"
+    },
+    {
+      "id": "stock:TSLAX",
+      "type": "stock"
+    },
+    {
+      "id": "user:u_002",
+      "type": "user"
+    },
+    {
+      "id": "device:d_002",
+      "type": "device"
+    },
+    {
+      "id": "user:u_003",
+      "type": "user"
+    },
+    {
+      "id": "device:d_003",
+      "type": "device"
+    },
+    {
+      "id": "user:u_004",
+      "type": "user"
+    },
+    {
+      "id": "device:d_004",
+      "type": "device"
+    },
+    {
+      "id": "user:u_005",
+      "type": "user"
+    },
+    {
+      "id": "device:d_005",
+      "type": "device"
+    },
+    {
+      "id": "user:u_006",
+      "type": "user"
+    },
+    {
+      "id": "device:d_006",
+      "type": "device"
+    },
+    {
+      "id": "user:u_100",
+      "type": "user"
+    },
+    {
+      "id": "ip:203.10.55.1",
+      "type": "ip"
+    },
+    {
+      "id": "device:d_100",
+      "type": "device"
+    },
+    {
+      "id": "stock:AAPL",
+      "type": "stock"
+    },
+    {
+      "id": "user:u_101",
+      "type": "user"
+    },
+    {
+      "id": "ip:150.20.10.5",
+      "type": "ip"
+    },
+    {
+      "id": "device:d_101",
+      "type": "device"
+    },
+    {
+      "id": "stock:MSFT",
+      "type": "stock"
+    }
+  ],
+  "edges": [
+    {
+      "source": "user:u_001",
+      "target": "ip:100.100.100.1",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_001",
+      "event_time": "2026-02-07T10:05:17.233354Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0001",
+        "amount": 50000,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_001",
+      "target": "device:d_001",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_001",
+      "event_time": "2026-02-07T10:05:17.233354Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0001",
+        "amount": 50000,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_001",
+      "target": "stock:TSLAX",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_001",
+      "event_time": "2026-02-07T10:05:17.233354Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0001",
+        "amount": 50000,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_002",
+      "target": "ip:100.100.100.1",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_002",
+      "event_time": "2026-02-07T10:06:17.23Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0002",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_002",
+      "target": "device:d_002",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_002",
+      "event_time": "2026-02-07T10:06:17.23Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0002",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_002",
+      "target": "stock:TSLAX",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_002",
+      "event_time": "2026-02-07T10:06:17.23Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0002",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_003",
+      "target": "ip:100.100.100.1",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_003",
+      "event_time": "2026-02-07T10:06:20.45Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0003",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_003",
+      "target": "device:d_003",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_003",
+      "event_time": "2026-02-07T10:06:20.45Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0003",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_003",
+      "target": "stock:TSLAX",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_003",
+      "event_time": "2026-02-07T10:06:20.45Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0003",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_004",
+      "target": "ip:100.100.100.1",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_004",
+      "event_time": "2026-02-07T10:06:20.50Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0004",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_004",
+      "target": "device:d_004",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_004",
+      "event_time": "2026-02-07T10:06:20.50Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0004",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_004",
+      "target": "stock:TSLAX",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_004",
+      "event_time": "2026-02-07T10:06:20.50Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0004",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_005",
+      "target": "ip:100.100.100.1",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_005",
+      "event_time": "2026-02-07T10:06:21.02Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0005",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_005",
+      "target": "device:d_005",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_005",
+      "event_time": "2026-02-07T10:06:21.02Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0005",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_005",
+      "target": "stock:TSLAX",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_005",
+      "event_time": "2026-02-07T10:06:21.02Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0005",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_006",
+      "target": "ip:100.100.100.1",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_006",
+      "event_time": "2026-02-07T10:06:21.55Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0006",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_006",
+      "target": "device:d_006",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_006",
+      "event_time": "2026-02-07T10:06:21.55Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0006",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_006",
+      "target": "stock:TSLAX",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_006",
+      "event_time": "2026-02-07T10:06:21.55Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0006",
+        "amount": 10000.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "TSLAX"
+      }
+    },
+    {
+      "source": "user:u_100",
+      "target": "ip:203.10.55.1",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_007",
+      "event_time": "2026-02-07T12:30:00Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0100",
+        "amount": 1500.0,
+        "currency": "USD",
+        "channel": "mobile",
+        "result": "success",
+        "stock_id": "AAPL"
+      }
+    },
+    {
+      "source": "user:u_100",
+      "target": "ip:203.10.55.1",
+      "key": "1",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_008",
+      "event_time": "2026-02-07T15:00:00Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0101",
+        "amount": 1600.0,
+        "currency": "USD",
+        "channel": "mobile",
+        "result": "success",
+        "stock_id": "AAPL"
+      }
+    },
+    {
+      "source": "user:u_100",
+      "target": "device:d_100",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_007",
+      "event_time": "2026-02-07T12:30:00Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0100",
+        "amount": 1500.0,
+        "currency": "USD",
+        "channel": "mobile",
+        "result": "success",
+        "stock_id": "AAPL"
+      }
+    },
+    {
+      "source": "user:u_100",
+      "target": "device:d_100",
+      "key": "1",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_008",
+      "event_time": "2026-02-07T15:00:00Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0101",
+        "amount": 1600.0,
+        "currency": "USD",
+        "channel": "mobile",
+        "result": "success",
+        "stock_id": "AAPL"
+      }
+    },
+    {
+      "source": "user:u_100",
+      "target": "stock:AAPL",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_007",
+      "event_time": "2026-02-07T12:30:00Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0100",
+        "amount": 1500.0,
+        "currency": "USD",
+        "channel": "mobile",
+        "result": "success",
+        "stock_id": "AAPL"
+      }
+    },
+    {
+      "source": "user:u_100",
+      "target": "stock:AAPL",
+      "key": "1",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_008",
+      "event_time": "2026-02-07T15:00:00Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0101",
+        "amount": 1600.0,
+        "currency": "USD",
+        "channel": "mobile",
+        "result": "success",
+        "stock_id": "AAPL"
+      }
+    },
+    {
+      "source": "user:u_101",
+      "target": "ip:150.20.10.5",
+      "key": "0",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_009",
+      "event_time": "2026-02-08T09:15:00Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0200",
+        "amount": 2500.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "MSFT"
+      }
+    },
+    {
+      "source": "user:u_101",
+      "target": "ip:150.20.10.5",
+      "key": "1",
+      "relation": "user_ip_event",
+      "event_id": "evt_txn_010",
+      "event_time": "2026-02-08T14:40:00Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0201",
+        "amount": 2600.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "MSFT"
+      }
+    },
+    {
+      "source": "user:u_101",
+      "target": "device:d_101",
+      "key": "0",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_009",
+      "event_time": "2026-02-08T09:15:00Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0200",
+        "amount": 2500.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "MSFT"
+      }
+    },
+    {
+      "source": "user:u_101",
+      "target": "device:d_101",
+      "key": "1",
+      "relation": "user_device_event",
+      "event_id": "evt_txn_010",
+      "event_time": "2026-02-08T14:40:00Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0201",
+        "amount": 2600.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "MSFT"
+      }
+    },
+    {
+      "source": "user:u_101",
+      "target": "stock:MSFT",
+      "key": "0",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_009",
+      "event_time": "2026-02-08T09:15:00Z",
+      "stream_type": "transactional",
+      "event_type": "buy",
+      "data": {
+        "txn_id": "T-0200",
+        "amount": 2500.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "MSFT"
+      }
+    },
+    {
+      "source": "user:u_101",
+      "target": "stock:MSFT",
+      "key": "1",
+      "relation": "user_stock_relation",
+      "event_id": "evt_txn_010",
+      "event_time": "2026-02-08T14:40:00Z",
+      "stream_type": "transactional",
+      "event_type": "sell",
+      "data": {
+        "txn_id": "T-0201",
+        "amount": 2600.0,
+        "currency": "USD",
+        "channel": "web",
+        "result": "success",
+        "stock_id": "MSFT"
+      }
+    }
+  ]
+}

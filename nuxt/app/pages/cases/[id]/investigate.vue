@@ -16,37 +16,12 @@
                     {{ caseData.risk_level.toUpperCase() }} ({{ caseData.risk_score }})
                 </span>
             </div>
-            <div class="flex items-center gap-3">
-                <div class="flex items-center gap-1.5 text-sm text-slate-500">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
-                        <path d="M8 5V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                    </svg>
-                    SLA: {{ caseData.sla_remaining }}
-                </div>
-                <button @click="toggleSentinel" type="button"
-                    class="group inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold text-white
-         bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500
-         shadow-md shadow-blue-500/20 ring-1 ring-white/10
-         transition-all duration-200
-         hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5
-         active:translate-y-0 active:shadow-md
-         focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 focus-visible:ring-offset-white">
-                    <!-- icon (sparkle/ai) -->
-                    <!-- <span
-                        class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/15 ring-1 ring-white/15">
-                        <svg class="h-4 w-4 opacity-95 transition-transform duration-200 group-hover:rotate-6"
-                            viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2l1.2 4.3L17.5 7.5l-4.3 1.2L12 13l-1.2-4.3L6.5 7.5l4.3-1.2L12 2z"
-                                fill="currentColor" />
-                            <path d="M19 12l.8 2.7 2.7.8-2.7.8L19 19l-.8-2.7-2.7-.8 2.7-.8L19 12z" fill="currentColor"
-                                opacity=".9" />
-                        </svg>
-                    </span> -->
-
-                    <!-- label -->
-                    <span>{{ sentinelVisible ? 'Hide AI SENTINEL' : '🔎AI SENTINEL' }}</span>
-                </button>
+            <div class="flex items-center gap-1.5 text-sm text-slate-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M8 5V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                SLA: {{ caseData.sla_remaining }}
             </div>
         </header>
 
@@ -490,80 +465,109 @@
                 </div>
             </div>
 
-            <!-- AI SENTINEL Panel (Right - Hidden by default) -->
-            <aside v-show="sentinelVisible"
-                class="w-[400px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col overflow-hidden">
-                <!-- AI SENTINEL Header -->
-                <div class="px-4 py-3 border-b border-gray-200 bg-slate-50">
-                    <h2 class="text-sm font-semibold text-slate-900">AI SENTINEL</h2>
-                    <p class="text-xs text-slate-500 mt-0.5">AI Investigation Assistant</p>
-                </div>
+        </div>
 
-                <!-- Chat Messages -->
-                <div ref="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
-                    <div v-for="message in messages" :key="message.id" :class="[
-                        'flex',
-                        message.sender === 'user' ? 'justify-end' : 'justify-start'
+        <!-- AI SENTINEL Floating Button -->
+        <button @click="toggleSentinel"
+            class="fixed bottom-6 right-6 z-50 group inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white
+                bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500
+                shadow-lg shadow-blue-500/25 ring-1 ring-white/10
+                transition-all duration-300
+                hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-0.5
+                active:translate-y-0 active:shadow-lg
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+            :class="{ 'scale-0 opacity-0': sentinelVisible, 'scale-100 opacity-100': !sentinelVisible }">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l1.2 4.3L17.5 7.5l-4.3 1.2L12 13l-1.2-4.3L6.5 7.5l4.3-1.2L12 2z" fill="currentColor" />
+                <path d="M19 12l.8 2.7 2.7.8-2.7.8L19 19l-.8-2.7-2.7-.8 2.7-.8L19 12z" fill="currentColor" opacity=".9" />
+            </svg>
+            <span>AI SENTINEL</span>
+        </button>
+
+        <!-- AI SENTINEL Floating Panel -->
+        <div v-show="sentinelVisible"
+            class="fixed bottom-6 right-6 w-[400px] h-[600px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden">
+            <!-- AI SENTINEL Header -->
+            <div class="px-4 py-3 border-b border-gray-200 bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-sm font-semibold text-white">AI SENTINEL</h2>
+                        <p class="text-xs text-white/80 mt-0.5">AI Investigation Assistant</p>
+                    </div>
+                    <button @click="toggleSentinel"
+                        class="w-8 h-8 rounded-full hover:bg-white/20 flex items-center justify-center transition-colors">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M15 5L5 15M5 5L15 15" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div ref="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                <div v-for="message in messages" :key="message.id" :class="[
+                    'flex',
+                    message.sender === 'user' ? 'justify-end' : 'justify-start'
+                ]">
+                    <div :class="[
+                        'max-w-[90%] rounded-2xl px-4 py-3',
+                        message.sender === 'user'
+                            ? 'bg-primary text-white rounded-br-sm'
+                            : 'bg-white text-slate-900 shadow-sm rounded-bl-sm'
                     ]">
+                        <div v-if="message.sender === 'bot'" class="text-xs font-semibold text-primary mb-1">
+                            AI SENTINEL</div>
+                        <div class="text-sm whitespace-pre-wrap">{{ message.text }}</div>
                         <div :class="[
-                            'max-w-[90%] rounded-lg px-4 py-3',
-                            message.sender === 'user'
-                                ? 'bg-primary text-white'
-                                : 'bg-slate-100 text-slate-900'
+                            'text-xs mt-2',
+                            message.sender === 'user' ? 'text-white/60' : 'text-slate-400'
                         ]">
-                            <div v-if="message.sender === 'bot'" class="text-xs font-semibold text-primary mb-1">
-                                AI SENTINEL</div>
-                            <div class="text-sm whitespace-pre-wrap">{{ message.text }}</div>
-                            <div :class="[
-                                'text-xs mt-2',
-                                message.sender === 'user' ? 'text-white/60' : 'text-slate-400'
-                            ]">
-                                {{ message.timestamp }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Typing Indicator -->
-                    <div v-if="isTyping" class="flex justify-start">
-                        <div class="bg-slate-100 rounded-lg px-4 py-3">
-                            <div class="flex items-center gap-1">
-                                <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                                <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
-                                    style="animation-delay: 0.1s"></div>
-                                <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
-                                    style="animation-delay: 0.2s"></div>
-                            </div>
+                            {{ message.timestamp }}
                         </div>
                     </div>
                 </div>
 
-                <!-- Suggested Questions -->
-                <div class="px-4 py-3 border-t border-gray-100 bg-slate-50/50">
-                    <div class="flex flex-wrap gap-2">
-                        <button v-for="suggestion in suggestedQuestions" :key="suggestion"
-                            @click="sendMessage(suggestion)"
-                            class="px-3 py-1.5 text-xs font-medium text-slate-600 bg-white border border-gray-200 rounded-full hover:bg-slate-100 hover:border-gray-300 transition-colors">
-                            {{ suggestion }}
-                        </button>
+                <!-- Typing Indicator -->
+                <div v-if="isTyping" class="flex justify-start">
+                    <div class="bg-white rounded-2xl px-4 py-3 shadow-sm">
+                        <div class="flex items-center gap-1">
+                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                                style="animation-delay: 0.1s"></div>
+                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                                style="animation-delay: 0.2s"></div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Chat Input -->
-                <div class="p-4 border-t border-gray-200 bg-white">
-                    <div class="flex items-center gap-2">
-                        <input v-model="userInput" @keyup.enter="sendMessage(userInput)" type="text"
-                            placeholder="Ask AI SENTINEL..."
-                            class="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
-                        <button @click="sendMessage(userInput)" :disabled="!userInput.trim()"
-                            class="px-3 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M14 2L7 9M14 2L9.5 14L7 9M14 2L2 6.5L7 9" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </div>
+            <!-- Suggested Questions -->
+            <div class="px-4 py-3 border-t border-gray-100 bg-white">
+                <div class="text-xs text-slate-400 mb-2">Suggested:</div>
+                <div class="flex flex-wrap gap-2">
+                    <button v-for="suggestion in suggestedQuestions" :key="suggestion"
+                        @click="sendMessage(suggestion)"
+                        class="px-3 py-1.5 text-xs font-medium text-slate-600 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                        {{ suggestion }}
+                    </button>
                 </div>
-            </aside>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200 bg-white">
+                <div class="flex items-center gap-2">
+                    <input v-model="userInput" @keyup.enter="sendMessage(userInput)" type="text"
+                        placeholder="Ask AI SENTINEL..."
+                        class="flex-1 px-4 py-2.5 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                    <button @click="sendMessage(userInput)" :disabled="!userInput.trim()"
+                        class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M14 2L7 9M14 2L9.5 14L7 9M14 2L2 6.5L7 9" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Notes Modal -->

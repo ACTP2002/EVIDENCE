@@ -1,0 +1,182 @@
+    [
+        {
+      "user_id": "u_001",
+      "created_at": "2025-08-16T11:04:06Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_001",
+        "account_status": "active",
+        "account_deposit": "52000"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-08-22T06:11:06Z",
+        "nationality": "MY",
+        "residence_country": "MY",
+        "age": "65",
+        "occupation": "business owner",
+        "income": "5000",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "false",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_002",
+      "created_at": "2025-08-16T11:04:06Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_002",
+        "account_status": "active",
+        "account_deposit": "1000"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-08-22T06:11:06Z",
+        "nationality": "VN",
+        "residence_country": "VN",
+        "age": "23",
+        "occupation": "student",
+        "income": "1500",
+        "source_of_funds": "part time job"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "false",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_003",
+      "created_at": "2025-08-16T11:04:06Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_003",
+        "account_status": "active",
+        "account_deposit": "20000"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-08-22T06:11:06Z",
+        "nationality": "VN",
+        "residence_country": "VN",
+        "age": "32",
+        "occupation": "merchant",
+        "income": "1500",
+        "source_of_funds": "business_profit"
+      },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "false",
+        "adverse_media_flag": false
+      },
+      "verification": {
+        "email_verified": true,
+        "phone_verified": true
+      }
+    },
+    {
+      "user_id": "u_004",
+      "created_at": "2025-08-16T11:04:06Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_004",
+        "account_status": "active",
+        "account_deposit": "5000"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-08-22T06:11:06Z",
+        "nationality": "MY",
+        "residence_country": "MY",
+        "age": "28",
+        "occupation": "engineer",
+        "income": "3000",
+        "source_of_funds": "salary"
+        },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "false",
+        "adverse_media_flag": false
+      },
+        "verification": {
+            "email_verified": true,
+            "phone_verified": true
+        }
+    },
+    {
+      "user_id": "u_005",
+      "created_at": "2025-08-16T11:04:06Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_005",
+        "account_status": "active",
+        "account_deposit": "2000"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-08-22T06:11:06Z",
+        "nationality": "MY",
+        "residence_country": "MY",
+        "age": "28",
+        "occupation": "food delivery",
+        "income": "1500",
+        "source_of_funds": "salary"
+        },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "false",
+        "adverse_media_flag": false
+      },
+        "verification": {
+            "email_verified": true,
+            "phone_verified": true
+        }
+    },
+    {
+      "user_id": "u_006",
+      "created_at": "2025-08-16T11:04:06Z",
+      "account_status": "active",
+      "account": {
+        "account_id": "a_006",
+        "account_status": "active",
+        "account_deposit": "3000"
+      },
+      "kyc": {
+        "kyc_level": "tier_1",
+        "verified_at": "2025-08-22T06:11:06Z",
+        "nationality": "MY",
+        "residence_country": "MY",
+        "age": "28",
+        "occupation": "teacher",
+        "income": "2500",
+        "source_of_funds": "salary"
+        },
+      "risk": {
+        "risk_tier": "low",
+        "pep_flag": false,
+        "sanctions_status": "false",
+        "adverse_media_flag": false
+      },
+        "verification": {
+            "email_verified": true,
+            "phone_verified": true
+        }
+    }
+    ]

@@ -5,7 +5,8 @@
             <div class="flex items-center gap-4">
                 <NuxtLink to="/cases" class="flex items-center gap-1 text-slate-500 hover:text-slate-700 text-sm">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
                     Cases
                 </NuxtLink>
@@ -18,19 +19,33 @@
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-1.5 text-sm text-slate-500">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M8 5V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M8 5V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                     SLA: {{ caseData.sla_remaining }}
                 </div>
-                <button
-                    @click="toggleSentinel"
-                    class="flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-600 hover:text-slate-900 border border-gray-200 rounded-md hover:bg-gray-50"
-                >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" :class="sentinelVisible ? '' : 'rotate-180'">
-                        <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    {{ sentinelVisible ? 'Hide SENTINEL' : 'Show SENTINEL' }}
+                <button @click="toggleSentinel" type="button"
+                    class="group inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold text-white
+         bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500
+         shadow-md shadow-blue-500/20 ring-1 ring-white/10
+         transition-all duration-200
+         hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5
+         active:translate-y-0 active:shadow-md
+         focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 focus-visible:ring-offset-white">
+                    <!-- icon (sparkle/ai) -->
+                    <!-- <span
+                        class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/15 ring-1 ring-white/15">
+                        <svg class="h-4 w-4 opacity-95 transition-transform duration-200 group-hover:rotate-6"
+                            viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2l1.2 4.3L17.5 7.5l-4.3 1.2L12 13l-1.2-4.3L6.5 7.5l4.3-1.2L12 2z"
+                                fill="currentColor" />
+                            <path d="M19 12l.8 2.7 2.7.8-2.7.8L19 19l-.8-2.7-2.7-.8 2.7-.8L19 12z" fill="currentColor"
+                                opacity=".9" />
+                        </svg>
+                    </span> -->
+
+                    <!-- label -->
+                    <span>{{ sentinelVisible ? 'Hide AI SENTINEL' : '🔎AI SENTINEL' }}</span>
                 </button>
             </div>
         </header>
@@ -56,22 +71,19 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <NuxtLink
-                    :to="`/cases/${caseId}/report`"
-                    class="px-3 py-1.5 text-sm font-medium text-white bg-slate-900 rounded-md hover:bg-slate-800"
-                >
+                <NuxtLink :to="`/cases/${caseId}/report`"
+                    class="px-3 py-1.5 text-sm font-medium text-white bg-slate-900 rounded-md hover:bg-slate-800">
                     Generate Report
                 </NuxtLink>
                 <button class="px-3 py-1.5 text-sm font-medium text-white bg-risk-critical rounded-md hover:bg-red-700">
                     Confirm Fraud
                 </button>
-                <button class="px-3 py-1.5 text-sm font-medium text-slate-700 border border-gray-200 rounded-md hover:bg-gray-50">
+                <button
+                    class="px-3 py-1.5 text-sm font-medium text-slate-700 border border-gray-200 rounded-md hover:bg-gray-50">
                     False Positive
                 </button>
-                <button
-                    @click="showNotesModal = true"
-                    class="px-3 py-1.5 text-sm font-medium text-slate-700 border border-gray-200 rounded-md hover:bg-gray-50"
-                >
+                <button @click="showNotesModal = true"
+                    class="px-3 py-1.5 text-sm font-medium text-slate-700 border border-gray-200 rounded-md hover:bg-gray-50">
                     Add Notes
                 </button>
             </div>
@@ -79,7 +91,7 @@
 
         <!-- Main Content -->
         <div class="flex flex-1 overflow-hidden p-4 gap-4">
-            <!-- Investigation Panel (Left - Full width when SENTINEL hidden) -->
+            <!-- Investigation Panel (Left - Full width when AI SENTINEL hidden) -->
             <div class="flex-1 flex flex-col gap-4 overflow-hidden">
                 <!-- Top Section: Alerts and Risk Breakdown -->
                 <div class="flex gap-4">
@@ -87,16 +99,11 @@
                     <div class="flex-1 bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex flex-col">
                         <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Alerts</div>
                         <div class="space-y-2 overflow-y-auto max-h-[200px]">
-                            <div
-                                v-for="alert in alerts"
-                                :key="alert.alert_id"
-                                class="p-3 border border-gray-200 rounded-lg"
-                            >
+                            <div v-for="alert in alerts" :key="alert.alert_id"
+                                class="p-3 border border-gray-200 rounded-lg">
                                 <div class="flex items-center gap-2 mb-1">
-                                    <span
-                                        :class="getAlertSeverityClass(alert.severity)"
-                                        class="px-2 py-0.5 text-xs font-semibold rounded"
-                                    >
+                                    <span :class="getAlertSeverityClass(alert.severity)"
+                                        class="px-2 py-0.5 text-xs font-semibold rounded">
                                         {{ alert.severity.toUpperCase() }}
                                     </span>
                                     <span class="text-xs text-slate-500">{{ alert.alert_id }}</span>
@@ -112,16 +119,14 @@
 
                     <!-- Risk Breakdown -->
                     <div class="w-[320px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm p-4">
-                        <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Risk Breakdown</div>
+                        <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Risk Breakdown
+                        </div>
                         <div class="space-y-2.5">
                             <div v-for="risk in riskBreakdown" :key="risk.category" class="flex items-center gap-3">
                                 <div class="w-20 text-xs text-slate-500">{{ risk.category }}</div>
                                 <div class="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div
-                                        class="h-full rounded-full transition-all"
-                                        :class="getRiskBarColor(risk.score)"
-                                        :style="{ width: (risk.score / 100 * 100) + '%' }"
-                                    ></div>
+                                    <div class="h-full rounded-full transition-all" :class="getRiskBarColor(risk.score)"
+                                        :style="{ width: (risk.score / 100 * 100) + '%' }"></div>
                                 </div>
                                 <div class="w-8 text-xs font-semibold text-slate-700 text-right">{{ risk.score }}</div>
                             </div>
@@ -129,10 +134,8 @@
                         <div class="flex items-center gap-3 mt-3 pt-3 border-t border-gray-200">
                             <div class="w-20 text-xs font-semibold text-slate-700">TOTAL</div>
                             <div class="flex-1 h-2.5 bg-gray-200 rounded-full overflow-hidden">
-                                <div
-                                    class="h-full rounded-full bg-primary"
-                                    :style="{ width: totalRiskScore + '%' }"
-                                ></div>
+                                <div class="h-full rounded-full bg-primary" :style="{ width: totalRiskScore + '%' }">
+                                </div>
                             </div>
                             <div class="w-8 text-sm font-bold text-primary text-right">{{ totalRiskScore }}</div>
                         </div>
@@ -143,17 +146,12 @@
                 <div class="flex-1 bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col overflow-hidden">
                     <!-- Evidence Tabs -->
                     <div class="flex border-b border-gray-200">
-                        <button
-                            v-for="tab in evidenceTabs"
-                            :key="tab.id"
-                            @click="activeEvidenceTab = tab.id"
-                            :class="[
-                                'flex-1 px-3 py-2.5 text-xs font-medium transition-colors',
-                                activeEvidenceTab === tab.id
-                                    ? 'text-primary border-b-2 border-primary bg-slate-50'
-                                    : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
-                            ]"
-                        >
+                        <button v-for="tab in evidenceTabs" :key="tab.id" @click="activeEvidenceTab = tab.id" :class="[
+                            'flex-1 px-3 py-2.5 text-xs font-medium transition-colors',
+                            activeEvidenceTab === tab.id
+                                ? 'text-primary border-b-2 border-primary bg-slate-50'
+                                : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+                        ]">
                             {{ tab.label }}
                         </button>
                     </div>
@@ -163,47 +161,53 @@
                         <!-- Transactions Tab -->
                         <div v-if="activeEvidenceTab === 'transactions'">
                             <div class="p-4 bg-slate-50 rounded-lg border border-gray-200 mb-4">
-                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Summary</div>
+                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Summary
+                                </div>
                                 <div class="grid grid-cols-4 gap-3 text-sm">
                                     <div>
                                         <div class="text-slate-500">Total In (30d)</div>
-                                        <div class="font-semibold text-slate-900">${{ transactionSummary.total_in.toLocaleString() }}</div>
+                                        <div class="font-semibold text-slate-900">${{
+                                            transactionSummary.total_in.toLocaleString() }}</div>
                                     </div>
                                     <div>
                                         <div class="text-slate-500">Total Out (30d)</div>
-                                        <div class="font-semibold text-slate-900">${{ transactionSummary.total_out.toLocaleString() }}</div>
+                                        <div class="font-semibold text-slate-900">${{
+                                            transactionSummary.total_out.toLocaleString() }}</div>
                                     </div>
                                     <div>
                                         <div class="text-slate-500">Declared Income</div>
-                                        <div class="font-semibold text-slate-900">${{ transactionSummary.declared_income.toLocaleString() }}/mo</div>
+                                        <div class="font-semibold text-slate-900">${{
+                                            transactionSummary.declared_income.toLocaleString() }}/mo</div>
                                     </div>
                                     <div>
                                         <div class="text-slate-500">Income Ratio</div>
-                                        <div class="font-semibold text-risk-critical">{{ transactionSummary.income_ratio }}%</div>
+                                        <div class="font-semibold text-risk-critical">{{ transactionSummary.income_ratio
+                                            }}%</div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Details</div>
                             <div class="space-y-2">
-                                <div
-                                    v-for="txn in transactions"
-                                    :key="txn.id"
+                                <div v-for="txn in transactions" :key="txn.id"
                                     @click="askAboutEvidence('transaction', txn)"
                                     class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg cursor-pointer transition-all hover:border-primary hover:bg-primary/5 hover:shadow-sm group"
-                                    title="Ask SENTINEL about this transaction"
-                                >
+                                    title="Ask AI SENTINEL about this transaction">
                                     <div class="flex items-center gap-4">
                                         <div class="text-xs text-slate-400 w-16">{{ txn.date }}</div>
-                                        <div class="text-sm font-semibold min-w-[80px]" :class="txn.type === 'deposit' ? 'text-green-600' : 'text-slate-900'">
+                                        <div class="text-sm font-semibold min-w-[80px]"
+                                            :class="txn.type === 'deposit' ? 'text-green-600' : 'text-slate-900'">
                                             {{ txn.type === 'deposit' ? '+' : '-' }}${{ txn.amount.toLocaleString() }}
                                         </div>
                                         <div class="text-xs text-slate-500">{{ txn.channel }}</div>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <span v-if="txn.flagged" class="w-5 h-5 flex items-center justify-center rounded-full bg-risk-critical/10 text-risk-critical text-xs font-bold">!</span>
-                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors" viewBox="0 0 16 16" fill="none">
-                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <span v-if="txn.flagged"
+                                            class="w-5 h-5 flex items-center justify-center rounded-full bg-risk-critical/10 text-risk-critical text-xs font-bold">!</span>
+                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
@@ -213,7 +217,8 @@
                         <!-- Logins Tab -->
                         <div v-if="activeEvidenceTab === 'logins'">
                             <div class="p-4 bg-slate-50 rounded-lg border border-gray-200 mb-4">
-                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Summary</div>
+                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Summary
+                                </div>
                                 <div class="grid grid-cols-4 gap-3 text-sm">
                                     <div>
                                         <div class="text-slate-500">Total Logins</div>
@@ -229,27 +234,28 @@
                                     </div>
                                     <div>
                                         <div class="text-slate-500">Countries</div>
-                                        <div class="font-semibold" :class="loginSummary.countries > 2 ? 'text-risk-critical' : 'text-slate-900'">{{ loginSummary.countries }}</div>
+                                        <div class="font-semibold"
+                                            :class="loginSummary.countries > 2 ? 'text-risk-critical' : 'text-slate-900'">
+                                            {{ loginSummary.countries }}</div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Details</div>
                             <div class="space-y-2">
-                                <div
-                                    v-for="login in logins"
-                                    :key="login.id"
-                                    @click="askAboutEvidence('login', login)"
+                                <div v-for="login in logins" :key="login.id" @click="askAboutEvidence('login', login)"
                                     class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg cursor-pointer transition-all hover:border-primary hover:bg-primary/5 hover:shadow-sm group"
-                                    title="Ask SENTINEL about this login"
-                                >
+                                    title="Ask AI SENTINEL about this login">
                                     <div class="flex items-center gap-4">
                                         <div class="text-xs text-slate-400 w-24">{{ login.timestamp }}</div>
                                         <div class="text-sm font-medium text-slate-900">{{ login.country }}</div>
-                                        <span v-if="login.vpn" class="px-1.5 py-0.5 text-xs font-medium bg-risk-critical/10 text-risk-critical rounded">VPN</span>
+                                        <span v-if="login.vpn"
+                                            class="px-1.5 py-0.5 text-xs font-medium bg-risk-critical/10 text-risk-critical rounded">VPN</span>
                                     </div>
-                                    <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors" viewBox="0 0 16 16" fill="none">
-                                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors"
+                                        viewBox="0 0 16 16" fill="none">
+                                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </div>
                             </div>
@@ -258,60 +264,71 @@
                         <!-- Network Tab -->
                         <div v-if="activeEvidenceTab === 'network'">
                             <div class="p-4 bg-slate-50 rounded-lg border border-gray-200 mb-4">
-                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Summary</div>
+                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Summary
+                                </div>
                                 <div class="space-y-2 text-sm">
                                     <div class="flex items-center gap-2 text-risk-critical">
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                            <path d="M7 1L13 12H1L7 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                                            <path d="M7 5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                            <circle cx="7" cy="10" r="0.5" fill="currentColor"/>
+                                            <path d="M7 1L13 12H1L7 1Z" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linejoin="round" />
+                                            <path d="M7 5V7.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                            <circle cx="7" cy="10" r="0.5" fill="currentColor" />
                                         </svg>
                                         {{ networkSummary.shared_devices }} accounts share device
                                     </div>
                                     <div class="flex items-center gap-2 text-risk-high">
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                            <path d="M7 1L13 12H1L7 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                                            <path d="M7 5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                            <circle cx="7" cy="10" r="0.5" fill="currentColor"/>
+                                            <path d="M7 1L13 12H1L7 1Z" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linejoin="round" />
+                                            <path d="M7 5V7.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                            <circle cx="7" cy="10" r="0.5" fill="currentColor" />
                                         </svg>
                                         {{ networkSummary.flagged_connections }} flagged accounts in network
                                     </div>
                                     <div class="text-slate-600">
-                                        Fraud ring probability: <span class="font-semibold text-risk-critical">HIGH</span>
+                                        Fraud ring probability: <span
+                                            class="font-semibold text-risk-critical">HIGH</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Network Graph</div>
-                            <div class="p-4 bg-slate-100 rounded-lg border border-gray-200 min-h-[120px] flex items-center justify-center mb-4">
+                            <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Network Graph
+                            </div>
+                            <div
+                                class="p-4 bg-slate-100 rounded-lg border border-gray-200 min-h-[120px] flex items-center justify-center mb-4">
                                 <div class="text-center text-slate-500 text-sm">
-                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="mx-auto mb-2 text-slate-300">
-                                        <circle cx="24" cy="12" r="6" stroke="currentColor" stroke-width="2"/>
-                                        <circle cx="12" cy="36" r="6" stroke="currentColor" stroke-width="2"/>
-                                        <circle cx="36" cy="36" r="6" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M20 16L14 32M28 16L34 32M18 36H30" stroke="currentColor" stroke-width="2"/>
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                        class="mx-auto mb-2 text-slate-300">
+                                        <circle cx="24" cy="12" r="6" stroke="currentColor" stroke-width="2" />
+                                        <circle cx="12" cy="36" r="6" stroke="currentColor" stroke-width="2" />
+                                        <circle cx="36" cy="36" r="6" stroke="currentColor" stroke-width="2" />
+                                        <path d="M20 16L14 32M28 16L34 32M18 36H30" stroke="currentColor"
+                                            stroke-width="2" />
                                     </svg>
                                     Network visualization coming soon
                                 </div>
                             </div>
 
-                            <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Connected Accounts</div>
+                            <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Connected
+                                Accounts</div>
                             <div class="space-y-2">
-                                <div
-                                    v-for="conn in networkConnections"
-                                    :key="conn.account_id"
+                                <div v-for="conn in networkConnections" :key="conn.account_id"
                                     @click="askAboutEvidence('network', conn)"
                                     class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg cursor-pointer transition-all hover:border-primary hover:bg-primary/5 hover:shadow-sm group"
-                                    title="Ask SENTINEL about this connection"
-                                >
+                                    title="Ask AI SENTINEL about this connection">
                                     <div class="flex items-center gap-4">
                                         <span class="text-sm font-semibold text-slate-900">{{ conn.account_id }}</span>
                                         <span class="text-xs text-slate-500">{{ conn.connection_type }}</span>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <span v-if="conn.flagged" class="px-1.5 py-0.5 text-xs font-medium bg-risk-critical/10 text-risk-critical rounded">Flagged</span>
-                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors" viewBox="0 0 16 16" fill="none">
-                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <span v-if="conn.flagged"
+                                            class="px-1.5 py-0.5 text-xs font-medium bg-risk-critical/10 text-risk-critical rounded">Flagged</span>
+                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
@@ -321,7 +338,8 @@
                         <!-- KYC Tab -->
                         <div v-if="activeEvidenceTab === 'kyc'">
                             <div class="p-4 bg-slate-50 rounded-lg border border-gray-200 mb-4">
-                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Verification Status</div>
+                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">
+                                    Verification Status</div>
                                 <div class="space-y-2 text-sm">
                                     <div class="flex items-center justify-between">
                                         <span class="text-slate-500">ID Verification</span>
@@ -333,14 +351,17 @@
                                     </div>
                                     <div class="flex items-center justify-between">
                                         <span class="text-slate-500">Document Flags</span>
-                                        <span class="font-medium" :class="kycData.document_flags.length > 0 ? 'text-risk-high' : 'text-green-600'">
-                                            {{ kycData.document_flags.length > 0 ? kycData.document_flags.length + ' issues' : 'None' }}
+                                        <span class="font-medium"
+                                            :class="kycData.document_flags.length > 0 ? 'text-risk-high' : 'text-green-600'">
+                                            {{ kycData.document_flags.length > 0 ? kycData.document_flags.length +
+                                                'issues' : 'None' }}
                                         </span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Customer Details</div>
+                            <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Customer
+                                Details</div>
                             <div class="space-y-3 text-sm">
                                 <div class="flex justify-between">
                                     <span class="text-slate-500">Full Name</span>
@@ -356,30 +377,35 @@
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-slate-500">Declared Income</span>
-                                    <span class="font-medium text-slate-900">${{ kycData.declared_income.toLocaleString() }}/mo</span>
+                                    <span class="font-medium text-slate-900">${{
+                                        kycData.declared_income.toLocaleString() }}/mo</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-slate-500">PEP Status</span>
-                                    <span class="font-medium" :class="kycData.pep ? 'text-risk-high' : 'text-green-600'">{{ kycData.pep ? 'Yes' : 'No' }}</span>
+                                    <span class="font-medium"
+                                        :class="kycData.pep ? 'text-risk-high' : 'text-green-600'">{{ kycData.pep ?
+                                            'Yes' : 'No' }}</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-slate-500">Sanctions</span>
-                                    <span class="font-medium" :class="kycData.sanctions ? 'text-risk-critical' : 'text-green-600'">{{ kycData.sanctions ? 'Hit' : 'Clear' }}</span>
+                                    <span class="font-medium"
+                                        :class="kycData.sanctions ? 'text-risk-critical' : 'text-green-600'">{{
+                                            kycData.sanctions ? 'Hit' : 'Clear' }}</span>
                                 </div>
                             </div>
 
                             <div v-if="kycData.document_flags.length > 0" class="mt-4">
-                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Document Flags</div>
+                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Document
+                                    Flags</div>
                                 <div class="space-y-1">
-                                    <div
-                                        v-for="flag in kycData.document_flags"
-                                        :key="flag"
-                                        class="flex items-center gap-2 p-2 bg-risk-high/10 rounded text-sm text-risk-high"
-                                    >
+                                    <div v-for="flag in kycData.document_flags" :key="flag"
+                                        class="flex items-center gap-2 p-2 bg-risk-high/10 rounded text-sm text-risk-high">
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                            <path d="M7 1L13 12H1L7 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                                            <path d="M7 5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                            <circle cx="7" cy="10" r="0.5" fill="currentColor"/>
+                                            <path d="M7 1L13 12H1L7 1Z" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linejoin="round" />
+                                            <path d="M7 5V7.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                            <circle cx="7" cy="10" r="0.5" fill="currentColor" />
                                         </svg>
                                         {{ flag }}
                                     </div>
@@ -390,30 +416,29 @@
                         <!-- Timeline Tab -->
                         <div v-if="activeEvidenceTab === 'timeline'">
                             <div class="p-4 bg-slate-50 rounded-lg border border-gray-200 mb-4">
-                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Case Timeline</div>
-                                <div class="text-sm text-slate-600">Chronological view of all events related to this case</div>
+                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Case
+                                    Timeline</div>
+                                <div class="text-sm text-slate-600">Chronological view of all events related to this
+                                    case</div>
                             </div>
 
                             <div class="space-y-2">
-                                <div
-                                    v-for="event in timelineEvents"
-                                    :key="event.id"
+                                <div v-for="event in timelineEvents" :key="event.id"
                                     @click="askAboutEvidence('timeline', event)"
                                     class="flex items-start gap-4 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer transition-all hover:border-primary hover:bg-primary/5 hover:shadow-sm group"
-                                    title="Ask SENTINEL about this event"
-                                >
+                                    title="Ask AI SENTINEL about this event">
                                     <div class="text-xs text-slate-400 w-28 flex-shrink-0">{{ event.timestamp }}</div>
                                     <div class="flex-1">
                                         <div class="text-sm text-slate-900">{{ event.description }}</div>
                                         <div class="text-xs text-slate-500 mt-1">Source: {{ event.source }}</div>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <span
-                                            v-if="event.flagged"
-                                            class="px-1.5 py-0.5 text-xs font-medium bg-risk-critical/10 text-risk-critical rounded"
-                                        >Flagged</span>
-                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors" viewBox="0 0 16 16" fill="none">
-                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <span v-if="event.flagged"
+                                            class="px-1.5 py-0.5 text-xs font-medium bg-risk-critical/10 text-risk-critical rounded">Flagged</span>
+                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
@@ -423,33 +448,39 @@
                         <!-- Related Cases Tab -->
                         <div v-if="activeEvidenceTab === 'related'">
                             <div class="p-4 bg-slate-50 rounded-lg border border-gray-200 mb-4">
-                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Related Cases</div>
-                                <div class="text-sm text-slate-600">Cases linked through shared devices, IPs, or financial connections</div>
+                                <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-3">Related
+                                    Cases</div>
+                                <div class="text-sm text-slate-600">Cases linked through shared devices, IPs, or
+                                    financial connections</div>
                             </div>
 
                             <div class="space-y-2">
-                                <div
-                                    v-for="related in caseData.related_cases"
-                                    :key="related.case_id"
+                                <div v-for="related in caseData.related_cases" :key="related.case_id"
                                     @click="askAboutEvidence('related', related)"
                                     class="p-3 bg-white border border-gray-200 rounded-lg cursor-pointer transition-all hover:border-primary hover:bg-primary/5 hover:shadow-sm group"
-                                    title="Ask SENTINEL about this related case"
-                                >
+                                    title="Ask AI SENTINEL about this related case">
                                     <div class="flex items-center justify-between mb-2">
                                         <div class="flex items-center gap-3">
-                                            <span class="text-sm font-semibold text-primary">{{ related.case_id }}</span>
-                                            <span :class="getRiskBadgeClass(related.score >= 85 ? 'critical' : related.score >= 70 ? 'high' : 'medium')" class="px-2 py-0.5 text-xs font-semibold rounded">
+                                            <span class="text-sm font-semibold text-primary">{{ related.case_id
+                                                }}</span>
+                                            <span
+                                                :class="getRiskBadgeClass(related.score >= 85 ? 'critical' : related.score >= 70 ? 'high' : 'medium')"
+                                                class="px-2 py-0.5 text-xs font-semibold rounded">
                                                 {{ related.score }}
                                             </span>
                                             <span class="text-xs text-slate-500">{{ related.status }}</span>
                                         </div>
-                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors" viewBox="0 0 16 16" fill="none">
-                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <svg class="w-4 h-4 text-slate-300 group-hover:text-primary transition-colors"
+                                            viewBox="0 0 16 16" fill="none">
+                                            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                     <div class="text-sm text-slate-900 mb-1">{{ related.customer }}</div>
                                     <div class="flex items-center gap-2">
-                                        <span class="px-1.5 py-0.5 text-xs font-medium bg-slate-100 text-slate-600 rounded">{{ related.relationship }}</span>
+                                        <span
+                                            class="px-1.5 py-0.5 text-xs font-medium bg-slate-100 text-slate-600 rounded">{{
+                                                related.relationship }}</span>
                                         <span class="text-xs text-slate-500">{{ related.relationship_detail }}</span>
                                     </div>
                                 </div>
@@ -459,43 +490,34 @@
                 </div>
             </div>
 
-            <!-- SENTINEL Panel (Right - Hidden by default) -->
-            <aside
-                v-show="sentinelVisible"
-                class="w-[400px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col overflow-hidden"
-            >
-                <!-- SENTINEL Header -->
+            <!-- AI SENTINEL Panel (Right - Hidden by default) -->
+            <aside v-show="sentinelVisible"
+                class="w-[400px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col overflow-hidden">
+                <!-- AI SENTINEL Header -->
                 <div class="px-4 py-3 border-b border-gray-200 bg-slate-50">
-                    <h2 class="text-sm font-semibold text-slate-900">SENTINEL</h2>
+                    <h2 class="text-sm font-semibold text-slate-900">AI SENTINEL</h2>
                     <p class="text-xs text-slate-500 mt-0.5">AI Investigation Assistant</p>
                 </div>
 
                 <!-- Chat Messages -->
                 <div ref="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
-                    <div
-                        v-for="message in messages"
-                        :key="message.id"
-                        :class="[
-                            'flex',
-                            message.sender === 'user' ? 'justify-end' : 'justify-start'
-                        ]"
-                    >
-                        <div
-                            :class="[
-                                'max-w-[90%] rounded-lg px-4 py-3',
-                                message.sender === 'user'
-                                    ? 'bg-primary text-white'
-                                    : 'bg-slate-100 text-slate-900'
-                            ]"
-                        >
-                            <div v-if="message.sender === 'bot'" class="text-xs font-semibold text-primary mb-1">SENTINEL</div>
+                    <div v-for="message in messages" :key="message.id" :class="[
+                        'flex',
+                        message.sender === 'user' ? 'justify-end' : 'justify-start'
+                    ]">
+                        <div :class="[
+                            'max-w-[90%] rounded-lg px-4 py-3',
+                            message.sender === 'user'
+                                ? 'bg-primary text-white'
+                                : 'bg-slate-100 text-slate-900'
+                        ]">
+                            <div v-if="message.sender === 'bot'" class="text-xs font-semibold text-primary mb-1">
+                                AI SENTINEL</div>
                             <div class="text-sm whitespace-pre-wrap">{{ message.text }}</div>
-                            <div
-                                :class="[
-                                    'text-xs mt-2',
-                                    message.sender === 'user' ? 'text-white/60' : 'text-slate-400'
-                                ]"
-                            >
+                            <div :class="[
+                                'text-xs mt-2',
+                                message.sender === 'user' ? 'text-white/60' : 'text-slate-400'
+                            ]">
                                 {{ message.timestamp }}
                             </div>
                         </div>
@@ -506,8 +528,10 @@
                         <div class="bg-slate-100 rounded-lg px-4 py-3">
                             <div class="flex items-center gap-1">
                                 <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                                <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                                <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                                <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                                    style="animation-delay: 0.1s"></div>
+                                <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"
+                                    style="animation-delay: 0.2s"></div>
                             </div>
                         </div>
                     </div>
@@ -516,12 +540,9 @@
                 <!-- Suggested Questions -->
                 <div class="px-4 py-3 border-t border-gray-100 bg-slate-50/50">
                     <div class="flex flex-wrap gap-2">
-                        <button
-                            v-for="suggestion in suggestedQuestions"
-                            :key="suggestion"
+                        <button v-for="suggestion in suggestedQuestions" :key="suggestion"
                             @click="sendMessage(suggestion)"
-                            class="px-3 py-1.5 text-xs font-medium text-slate-600 bg-white border border-gray-200 rounded-full hover:bg-slate-100 hover:border-gray-300 transition-colors"
-                        >
+                            class="px-3 py-1.5 text-xs font-medium text-slate-600 bg-white border border-gray-200 rounded-full hover:bg-slate-100 hover:border-gray-300 transition-colors">
                             {{ suggestion }}
                         </button>
                     </div>
@@ -530,20 +551,14 @@
                 <!-- Chat Input -->
                 <div class="p-4 border-t border-gray-200 bg-white">
                     <div class="flex items-center gap-2">
-                        <input
-                            v-model="userInput"
-                            @keyup.enter="sendMessage(userInput)"
-                            type="text"
-                            placeholder="Ask SENTINEL..."
-                            class="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-                        />
-                        <button
-                            @click="sendMessage(userInput)"
-                            :disabled="!userInput.trim()"
-                            class="px-3 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                        >
+                        <input v-model="userInput" @keyup.enter="sendMessage(userInput)" type="text"
+                            placeholder="Ask AI SENTINEL..."
+                            class="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                        <button @click="sendMessage(userInput)" :disabled="!userInput.trim()"
+                            class="px-3 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M14 2L7 9M14 2L9.5 14L7 9M14 2L2 6.5L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 2L7 9M14 2L9.5 14L7 9M14 2L2 6.5L7 9" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -559,29 +574,23 @@
                     <h3 class="text-base font-semibold text-slate-900">Add Investigation Notes</h3>
                     <button @click="showNotesModal = false" class="p-1 text-slate-400 hover:text-slate-600">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M6 6L14 14M14 6L6 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M6 6L14 14M14 6L6 14" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" />
                         </svg>
                     </button>
                 </div>
                 <div class="p-4">
-                    <textarea
-                        v-model="noteText"
-                        rows="5"
-                        placeholder="Enter your investigation notes..."
-                        class="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"
-                    ></textarea>
+                    <textarea v-model="noteText" rows="5" placeholder="Enter your investigation notes..."
+                        class="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none"></textarea>
                 </div>
-                <div class="flex items-center justify-end gap-2 px-4 py-3 border-t border-gray-200 bg-slate-50 rounded-b-lg">
-                    <button
-                        @click="showNotesModal = false"
-                        class="px-4 py-2 text-sm font-medium text-slate-700 border border-gray-200 rounded-md hover:bg-gray-50"
-                    >
+                <div
+                    class="flex items-center justify-end gap-2 px-4 py-3 border-t border-gray-200 bg-slate-50 rounded-b-lg">
+                    <button @click="showNotesModal = false"
+                        class="px-4 py-2 text-sm font-medium text-slate-700 border border-gray-200 rounded-md hover:bg-gray-50">
                         Cancel
                     </button>
-                    <button
-                        @click="saveNote"
-                        class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-light"
-                    >
+                    <button @click="saveNote"
+                        class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary-light">
                         Save Note
                     </button>
                 </div>
@@ -809,7 +818,7 @@ function formatAlertTime(isoString) {
 }
 
 function askAboutEvidence(type, item) {
-    // Show SENTINEL if hidden
+    // Show AI SENTINEL if hidden
     if (!sentinelVisible.value) {
         sentinelVisible.value = true
     }
@@ -935,9 +944,12 @@ function saveNote() {
 
 <style scoped>
 @keyframes bounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-4px);
     }

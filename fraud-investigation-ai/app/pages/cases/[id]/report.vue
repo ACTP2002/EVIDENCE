@@ -8,7 +8,7 @@
                 <div class="flex items-center gap-5">
                     <button
                         class="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center text-slate-400 hover:bg-gray-50 hover:border-gray-300 hover:text-slate-900 transition-all"
-                        @click="navigateTo(`/case/${caseId}`)">
+                        @click="navigateTo(`/cases/${caseId}`)">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M12 16L6 10L12 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
@@ -128,7 +128,7 @@
                         </div>
 
                         <p class="text-sm leading-relaxed text-slate-900 mb-4">
-                            This report documents the investigation of client Marcus Chen (Client ID: CL-48291) for
+                            This report documents the investigation of client James Terrence (Client ID: CL-48291) for
                             suspected money laundering activity. The investigation was initiated on February 7, 2026,
                             following automated detection of critical risk indicators by the FraudShield AI monitoring
                             system.
@@ -157,7 +157,7 @@
                         <div class="space-y-4">
                             <div class="grid grid-cols-[220px_1fr] gap-5 pb-4 border-b border-gray-100">
                                 <div class="text-[13px] font-semibold text-slate-400">Full Name</div>
-                                <div class="text-sm text-slate-900">Marcus Chen</div>
+                                <div class="text-sm text-slate-900">James Terrence</div>
                             </div>
                             <div class="grid grid-cols-[220px_1fr] gap-5 pb-4 border-b border-gray-100">
                                 <div class="text-[13px] font-semibold text-slate-400">Client ID</div>

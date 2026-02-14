@@ -58,7 +58,7 @@
                         <rect x="11" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5" />
                     </svg>
                     <span class="flex-1">Case Inbox</span>
-                    <span class="badge">24</span>
+                    <span class="badge">4</span>
                 </NuxtLink>
 
                 <NuxtLink to="/analytics" class="nav-item group">

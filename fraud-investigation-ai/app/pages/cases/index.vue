@@ -148,7 +148,7 @@
                                         <div class="w-1 h-1 rounded-full bg-slate-300 flex-shrink-0"></div>
                                         {{ reason.text }}
                                         <span class="font-mono font-semibold text-slate-900 text-xs">{{ reason.value
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                 </div>
                             </td>
@@ -212,19 +212,19 @@ const filters = [
 
 const cases = ref([
     {
-        id: 'FR-2024-0847',
+        id: 'CASE-2025-88412',
         riskScore: 94,
         topReasons: [
             { text: 'Deposits exceed declared income by', value: '1,420%' },
             { text: 'VPN access from sanctioned jurisdiction', value: '73% of logins' }
         ],
-        client: { name: 'Marcus Chen', id: 'CL-48291' },
+        client: { name: 'James Terrence', id: 'CL-48291' },
         flaggedTime: '2 hours ago',
         flaggedDate: 'Feb 7, 2026',
         status: 'Open'
     },
     {
-        id: 'FR-2024-0846',
+        id: 'CASE-2025-88413',
         riskScore: 91,
         topReasons: [
             { text: 'AI-generated face detected in verification', value: '98% confidence' },
@@ -236,7 +236,7 @@ const cases = ref([
         status: 'Open'
     },
     {
-        id: 'FR-2024-0845',
+        id: 'CASE-2025-88414',
         riskScore: 87,
         topReasons: [
             { text: 'Rapid deposit-withdrawal cycle detected', value: '$24K in 48hrs' },
@@ -248,7 +248,7 @@ const cases = ref([
         status: 'Under Review'
     },
     {
-        id: 'FR-2024-0844',
+        id: 'CASE-2025-88416',
         riskScore: 33,
         topReasons: [
             { text: 'Synthetic identity indicators', value: '5 data inconsistencies' },
@@ -260,7 +260,7 @@ const cases = ref([
         status: 'Open'
     },
     {
-        id: 'FR-2024-0843',
+        id: 'CASE-2025-88417',
         riskScore: 50,
         topReasons: [
             { text: 'Document verification failed', value: 'Forged passport detected' },

@@ -1,0 +1,12 @@
+{
+  "alert_id": "A-002",
+  "event_time": "2026-02-07T09:05:10Z",
+  "detector_type": "BEHAVIOR",
+  "signal": "LOGIN_TIME_ANOMALY",
+  "severity": "MEDIUM",
+  "confidence": 0.71,
+  "evidence": {
+    "avg_login_hour": 2,
+    "current_login_hour": 9
+  }
+}

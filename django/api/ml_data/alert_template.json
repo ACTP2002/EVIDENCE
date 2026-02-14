@@ -1,12 +1,27 @@
 {
-  "alert_id": "A-002",
-  "event_time": "2026-02-07T09:05:10Z",
+  "alert_id": "ALERT-FR-000",
+  "event_time": "2026-03-03 11:20:43",
+  "txn_id": "TXN-00000",
+  "user_id": "UFR2",
+  "human_interpretation": "FP",
   "detector_type": "BEHAVIOR",
-  "signal": "LOGIN_TIME_ANOMALY",
-  "severity": "MEDIUM",
-  "confidence": 0.71,
-  "evidence": {
-    "avg_login_hour": 2,
-    "current_login_hour": 9
-  }
+  "signal": "Monetary Deviation",
+  "severity": "HIGH",
+  "confidence": "0.854198268810753",
+  "evidence": [
+    {
+      "risk_category": "Monetary Deviation",
+      "feature": "mod_z_score_abs",
+      "impact": "reduced",
+      "contribution": 0.380739533664993,
+      "explanation": "mod_z_score_abs reduced with contribution 0.38."
+    },
+    {
+      "risk_category": "Liquidity Shift",
+      "feature": "net_flow_1d",
+      "impact": "reduced",
+      "contribution": 0.191749981472621,
+      "explanation": "net_flow_1d reduced with contribution 0.19."
+    }
+  ]
 }

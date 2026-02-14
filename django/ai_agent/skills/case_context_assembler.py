@@ -22,46 +22,45 @@ DUMMY_DATA_PATH = Path(__file__).parent.parent.parent / "api" / "dummy_data"
 class AlertInfo:
     """What triggered this case to be created."""
     alert_id: str
-    alert_type: str  # e.g., ATO, money_laundering, identity_fraud
-    triggered_at: str  # ISO datetime string
-    severity: str  # low, medium, high, critical
-    risk_score: int  # 0-100
-    description: str
-    detector_source: str
-    evidence: List[Dict[str, Any]] = field(default_factory=list)
-    raw_signal_refs: List[str] = field(default_factory=list)
+    event_time: str  
+    txn_id: str  
+    user_id: str 
+    human_interpretation: str
+    detector_type: str
+    signal: str  
+    severity: str 
+    confidence: str
+    evidence: List[Dict[str, str, str, float, str]] = field(default_factory=list)
 
 
 @dataclass
 class Transaction:
     """A single financial transaction."""
-    transaction_id: str
-    timestamp: str
-    type: str  # deposit, withdrawal, trade, transfer
-    amount: float
-    currency: str
-    status: str  # completed, pending, failed, reversed, blocked
-    channel: str  # bank_transfer, card, crypto, ewallet, platform
-    counterparty: Optional[str] = None
-    risk_flags: List[str] = field(default_factory=list)
+    event_id: str
+    event_time: str
+    stream_type: str 
+    event_type: str
+    user_id: str
+    account_id: str  
+    session_id: str  
+    device_id: str
+    ip: str 
+    data: Dict[str, float, str, str, str] 
 
 
 @dataclass
 class LoginEvent:
     """A single login/authentication event."""
     event_id: str
-    timestamp: str
-    ip_address: str
-    device_id: str
-    device_type: str  # mobile, desktop, tablet
-    location_country: str
-    is_vpn: bool
-    is_proxy: bool
-    login_success: bool
-    risk_flags: List[str] = field(default_factory=list)
-    browser: Optional[str] = None
-    location_city: Optional[str] = None
-    failure_reason: Optional[str] = None
+    event_time: str
+    stream_type: str
+    event_type: str
+    user_id: str  # mobile, desktop, tablet
+    account_id: str
+    session_id: bool
+    device_id: bool
+    ip: bool
+    data: Dict[str, bool, bool, str, str, str, Dict[str, str]] 
 
 
 @dataclass
@@ -79,54 +78,38 @@ class DeviceInfo:
 @dataclass
 class KYCData:
     """Know Your Customer - Identity verification data."""
-    customer_id: str
-    full_name: str
-    email: str
-    phone: str
-    country: str
-    verification_status: str  # verified, pending, failed, expired
-    verification_method: str  # document, biometric, video
-    risk_rating: str  # low, medium, high
-    pep_status: bool  # Politically Exposed Person
-    sanctions_hit: bool
-    adverse_media: bool
-    document_verified: bool
-    document_flags: List[str] = field(default_factory=list)
-    date_of_birth: Optional[str] = None
-    address: Optional[str] = None
-    verification_date: Optional[str] = None
-    declared_income: Optional[float] = None
-    income_currency: Optional[str] = None
-    employment_status: Optional[str] = None
-    document_type: Optional[str] = None
-    document_country: Optional[str] = None
+    user_id: str
+    created_at: str
+    account_status: str
+    account: Dict[str, str, str]
+    kyc: Dict[str, str, str, str, str, str, str, str]
+    risk:  Dict[str, bool, str, bool]
+    verification:  Dict[bool, bool]
 
 
 @dataclass
 class AccountSummary:
     """Summary of the account status and activity."""
-    account_id: str
-    account_type: str  # trading, wallet, savings
-    account_status: str  # active, suspended, closed, under_review, pending_verification
-    created_at: str
-    total_deposits_30d: float
-    total_withdrawals_30d: float
-    total_trades_30d: int
-    average_transaction_amount: float
-    account_age_days: int
-    is_dormant_reactivated: bool
-    customer_id: str
-    deposit_to_income_ratio: Optional[float] = None
+    user_id: str
+    as_of: str  # trading, wallet, savings
+    txn: Dict[int, int, int, float, float, float, float, float, float, float, float]  
+    auth: Dict[int, int, int, int, int, str] 
+    network: Dict[int, int, int, float] 
 
 
 @dataclass
 class NetworkConnection:
     """Links to other accounts/entities (for fraud ring detection)."""
-    connection_type: str  # shared_device, shared_ip, shared_phone, same_document
-    connected_entity_id: str
-    connection_strength: str  # strong, medium, weak
-    first_observed: str
-    details: str
+    event_id: str
+    event_time: str
+    stream_type: str
+    event_type: str
+    user_id: str
+    account_id: str
+    session_id: str
+    device_id: str
+    ip: str
+    data: Dict[int, float, int, int, bool, Dict[str, str]] 
 
 
 @dataclass

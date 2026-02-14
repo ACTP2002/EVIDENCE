@@ -1,0 +1,302 @@
+[
+  {
+    "case_id": "CASE-20260214-FRAUDRING-001",
+    "alerts": [
+      {
+        "alert_id": "ALERT-FR-000",
+        "event_time": "2026-02-13 11:20:43",
+        "txn_id": "TXN-00000",
+        "user_id": "UFR2",
+        "human_interpretation": "FP",
+        "detector_type": "BEHAVIOR",
+        "signal": "Monetary Deviation",
+        "severity": "HIGH",
+        "confidence": "0.854198268810753",
+        "evidence": [
+          {
+            "risk_category": "Monetary Deviation",
+            "feature": "mod_z_score_abs",
+            "impact": "reduced",
+            "contribution": 0.380739533664993,
+            "explanation": "mod_z_score_abs reduced with contribution 0.38."
+          },
+          {
+            "risk_category": "Liquidity Shift",
+            "feature": "net_flow_1d",
+            "impact": "reduced",
+            "contribution": 0.191749981472621,
+            "explanation": "net_flow_1d reduced with contribution 0.19."
+          }
+        ]
+      },
+      {
+        "alert_id": "ALERT-FR-001",
+        "event_time": "2026-02-13 11:16:50",
+        "txn_id": "TXN-00001",
+        "user_id": "UFR5",
+        "human_interpretation": "TP",
+        "detector_type": "BEHAVIOR",
+        "signal": "Monetary Deviation",
+        "severity": "HIGH",
+        "confidence": "0.905522804725949",
+        "evidence": [
+          {
+            "risk_category": "Monetary Deviation",
+            "feature": "mod_z_score_abs",
+            "impact": "reduced",
+            "contribution": 0.259268099346809,
+            "explanation": "mod_z_score_abs reduced with contribution 0.26."
+          },
+          {
+            "risk_category": "Monetary Deviation",
+            "feature": "mod_z_score_abs",
+            "impact": "increased",
+            "contribution": 0.132445212859256,
+            "explanation": "mod_z_score_abs increased with contribution 0.13."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-20260214-FRAUDRING-002",
+    "alerts": [
+      {
+        "alert_id": "ALERT-FR-010",
+        "event_time": "2026-02-13 12:56:42",
+        "txn_id": "TXN-01000",
+        "user_id": "UFR2",
+        "human_interpretation": "FP",
+        "detector_type": "BEHAVIOR",
+        "signal": "Monetary Deviation",
+        "severity": "MEDIUM",
+        "confidence": "0.996139511284297",
+        "evidence": [
+          {
+            "risk_category": "Monetary Deviation",
+            "feature": "ewma_resid",
+            "impact": "increased",
+            "contribution": -0.090143543814886,
+            "explanation": "ewma_resid increased with contribution -0.09."
+          },
+          {
+            "risk_category": "Geographic Risk",
+            "feature": "is_cross_border",
+            "impact": "increased",
+            "contribution": -0.4195424573375,
+            "explanation": "is_cross_border increased with contribution -0.42."
+          }
+        ]
+      },
+      {
+        "alert_id": "ALERT-FR-011",
+        "event_time": "2026-02-13 12:54:55",
+        "txn_id": "TXN-01001",
+        "user_id": "UFR1",
+        "human_interpretation": "FP",
+        "detector_type": "BEHAVIOR",
+        "signal": "Liquidity Shift",
+        "severity": "LOW",
+        "confidence": "0.703086818535775",
+        "evidence": [
+          {
+            "risk_category": "Liquidity Shift",
+            "feature": "net_flow_1d",
+            "impact": "reduced",
+            "contribution": 0.200290446777459,
+            "explanation": "net_flow_1d reduced with contribution 0.20."
+          },
+          {
+            "risk_category": "Geographic Risk",
+            "feature": "is_cross_border",
+            "impact": "increased",
+            "contribution": -0.243014360959412,
+            "explanation": "is_cross_border increased with contribution -0.24."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-20260214-FRAUDRING-003",
+    "alerts": [
+      {
+        "alert_id": "ALERT-FR-020",
+        "event_time": "2026-02-13 14:22:18",
+        "txn_id": "TXN-02000",
+        "user_id": "UFR3",
+        "human_interpretation": "TP",
+        "detector_type": "NETWORK",
+        "signal": "Ring Activity",
+        "severity": "HIGH",
+        "confidence": "0.881234567890123",
+        "evidence": [
+          {
+            "risk_category": "Network Link",
+            "feature": "shared_beneficiary_count",
+            "impact": "increased",
+            "contribution": 0.445678901234567,
+            "explanation": "shared_beneficiary_count increased with contribution 0.45."
+          },
+          {
+            "risk_category": "Coordination Pattern",
+            "feature": "timing_correlation",
+            "impact": "increased",
+            "contribution": 0.312345678901234,
+            "explanation": "timing_correlation increased with contribution 0.31."
+          }
+        ]
+      },
+      {
+        "alert_id": "ALERT-FR-021",
+        "event_time": "2026-02-13 14:25:33",
+        "txn_id": "TXN-02001",
+        "user_id": "UFR4",
+        "human_interpretation": "TP",
+        "detector_type": "BEHAVIOR",
+        "signal": "Monetary Deviation",
+        "severity": "HIGH",
+        "confidence": "0.923456789012345",
+        "evidence": [
+          {
+            "risk_category": "Monetary Deviation",
+            "feature": "mod_z_score_abs",
+            "impact": "increased",
+            "contribution": 0.512345678901234,
+            "explanation": "mod_z_score_abs increased with contribution 0.51."
+          },
+          {
+            "risk_category": "Liquidity Shift",
+            "feature": "net_flow_1d",
+            "impact": "increased",
+            "contribution": 0.287654321098765,
+            "explanation": "net_flow_1d increased with contribution 0.29."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-20260214-ATO-001",
+    "alerts": [
+      {
+        "alert_id": "ALERT-ATO-001",
+        "event_time": "2026-02-10 08:12:44",
+        "txn_id": "TXN-ATO-001",
+        "user_id": "UATO1",
+        "human_interpretation": "TP",
+        "detector_type": "ATO",
+        "signal": "Multi Device Login",
+        "severity": "HIGH",
+        "confidence": "0.920000000000000",
+        "evidence": [
+          {
+            "risk_category": "Device Anomaly",
+            "feature": "device_count_5m",
+            "impact": "increased",
+            "contribution": 0.450000000000000,
+            "explanation": "device_count_5m increased with contribution 0.45."
+          },
+          {
+            "risk_category": "Geographic Anomaly",
+            "feature": "country_change_velocity",
+            "impact": "increased",
+            "contribution": 0.350000000000000,
+            "explanation": "country_change_velocity increased with contribution 0.35."
+          }
+        ]
+      },
+      {
+        "alert_id": "ALERT-ATO-002",
+        "event_time": "2026-02-10 08:18:22",
+        "txn_id": "TXN-ATO-002",
+        "user_id": "UATO1",
+        "human_interpretation": "TP",
+        "detector_type": "TRANSACTION",
+        "signal": "Withdrawal Spike",
+        "severity": "HIGH",
+        "confidence": "0.880000000000000",
+        "evidence": [
+          {
+            "risk_category": "Monetary Deviation",
+            "feature": "withdrawal_amount_ratio",
+            "impact": "increased",
+            "contribution": 0.520000000000000,
+            "explanation": "withdrawal_amount_ratio increased with contribution 0.52."
+          },
+          {
+            "risk_category": "Behavioral Anomaly",
+            "feature": "post_login_velocity",
+            "impact": "increased",
+            "contribution": 0.280000000000000,
+            "explanation": "post_login_velocity increased with contribution 0.28."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-20260214-ML-001",
+    "alerts": [
+      {
+        "alert_id": "ALERT-ML-001",
+        "event_time": "2026-02-08 14:25:00",
+        "txn_id": "TXN-ML-001",
+        "user_id": "UML1",
+        "human_interpretation": "TP",
+        "detector_type": "AML",
+        "signal": "Structured Deposits",
+        "severity": "HIGH",
+        "confidence": "0.820000000000000",
+        "evidence": [
+          {
+            "risk_category": "Structuring Pattern",
+            "feature": "near_threshold_count",
+            "impact": "increased",
+            "contribution": 0.480000000000000,
+            "explanation": "near_threshold_count increased with contribution 0.48."
+          },
+          {
+            "risk_category": "Timing Pattern",
+            "feature": "deposit_timing_regularity",
+            "impact": "increased",
+            "contribution": 0.220000000000000,
+            "explanation": "deposit_timing_regularity increased with contribution 0.22."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "CASE-20260214-FP-001",
+    "alerts": [
+      {
+        "alert_id": "ALERT-FP-001",
+        "event_time": "2026-02-05 09:55:00",
+        "txn_id": "TXN-FP-001",
+        "user_id": "UFP1",
+        "human_interpretation": "FP",
+        "detector_type": "BEHAVIOR",
+        "signal": "Geographic Anomaly",
+        "severity": "MEDIUM",
+        "confidence": "0.550000000000000",
+        "evidence": [
+          {
+            "risk_category": "Geographic Risk",
+            "feature": "login_country_new",
+            "impact": "increased",
+            "contribution": 0.420000000000000,
+            "explanation": "login_country_new increased with contribution 0.42."
+          },
+          {
+            "risk_category": "Travel Indicator",
+            "feature": "flight_booking_correlation",
+            "impact": "reduced",
+            "contribution": -0.250000000000000,
+            "explanation": "flight_booking_correlation reduced with contribution -0.25."
+          }
+        ]
+      }
+    ]
+  }
+]

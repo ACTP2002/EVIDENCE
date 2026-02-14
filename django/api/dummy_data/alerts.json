@@ -1,224 +1,172 @@
 [
   {
-  "alert_id": "ALT-9901",
-  "case_id": "CASE-2025-88412",
-  "customer_id": "U9001",
-  "account_id": "ACC-882193",
-  "alert_type": "anomalous behaviour",
-  "triggered_at": "2025-05-14T08:00:00Z",
-  "severity": "critical",
-  "risk_score": 92,
-  "description": "Withdrawals exceed 6× declared income",
-  "detector_source": "ml_anomaly",
-  "evidence": [
-    {
-      "evidence_type": "income_anomaly",
-      "details": {
-        "declared_income": 2500,
-        "actual_deposits_30d": 35000,
-        "ratio": 14.0
-      }
-    }
-  ],
-  "raw_signal_refs": [
-    "sig_10001",
-    "sig_10002"
-  ],
-  "transaction_data": [
-    {
-      "user_id": "U9001",
-      "txn_id": 8,
-      "event_time": "2026-03-03T01:10:00",
-      "event_type": "deposit",
-      "amount": 1000,
-      "currency": "usd",
-      "channel": "mobile",
-      "declared_income": 4000,
-      "account_deposit": 3500,
-      "residence_country": "us",
-      "transaction_country": "us",
-      "amount_in_1d": 1000,
-      "amount_out_1d": 0,
-      "login_count_1h": 2,
-      "failed_login_1h": 0,
-      "new_ip_1d": 0,
-      "geo_change_1d": 0
-    },
-    {
-      "user_id": "U9001",
-      "txn_id": 9,
-      "event_time": "2026-03-03T01:12:00",
-      "event_type": "withdrawal",
-      "amount": 25000,
-      "currency": "usd",
-      "channel": "mobile",
-      "declared_income": 4000,
-      "account_deposit": 1000,
-      "residence_country": "us",
-      "transaction_country": "sg",
-      "amount_in_1d": 1000,
-      "amount_out_1d": 25000,
-      "login_count_1h": 15,
-      "failed_login_1h": 10,
-      "new_ip_1d": 1,
-      "geo_change_1d": 1
-    },
-    {
-      "user_id": "U9001",
-      "txn_id": 10,
-      "event_time": "2026-03-03T01:13:00",
-      "event_type": "withdrawal",
-      "amount": 18000,
-      "currency": "usd",
-      "channel": "mobile",
-      "declared_income": 4000,
-      "account_deposit": -17000,
-      "residence_country": "us",
-      "transaction_country": "sg",
-      "amount_in_1d": 1000,
-      "amount_out_1d": 43000,
-      "login_count_1h": 18,
-      "failed_login_1h": 12,
-      "new_ip_1d": 1,
-      "geo_change_1d": 1
-    }
-  ]
-},
-  {
-    "alert_id": "ALT-1122",
-    "case_id": "CASE-2025-91203",
-    "customer_id": "CUST-4512",
-    "account_id": "ACC-451288",
-    "alert_type": "account_takeover",
-    "triggered_at": "2025-06-02T10:15:00Z",
-    "severity": "high",
-    "risk_score": 87,
-    "description": "Login from new device in different country, followed by immediate large withdrawal.",
-    "detector_source": "behavior_detector",
+    "alert_id": "ALERT-ATO-001",
+    "event_time": "2026-02-10T08:12:44Z",
+    "txn_id": "TXN-ATO-001",
+    "user_id": "U-001",
+    "human_interpretation": "PENDING",
+    "detector_type": "ATO",
+    "signal": "MULTI_DEVICE_LOGIN",
+    "severity": "HIGH",
+    "confidence": "0.92",
     "evidence": [
       {
-        "evidence_type": "impossible_travel",
-        "details": {
-          "previous_location": "London, UK",
-          "current_location": "Bucharest, Romania",
-          "time_diff_minutes": 127,
-          "distance_km": 2100
-        }
-      }
-    ],
-    "raw_signal_refs": ["sig_20001"]
-  },
-  {
-    "alert_id": "ALT-1123",
-    "case_id": "CASE-2025-91203",
-    "customer_id": "CUST-4512",
-    "account_id": "ACC-451288",
-    "alert_type": "velocity_check",
-    "triggered_at": "2025-06-02T10:22:00Z",
-    "severity": "medium",
-    "risk_score": 74,
-    "description": "3 transactions totaling $8,500 within 15 minutes.",
-    "detector_source": "transaction_monitor",
-    "evidence": null,
-    "raw_signal_refs": ["sig_20002", "sig_20003"]
-  },
-  {
-    "alert_id": "ALT-7712",
-    "case_id": "CASE-2025-77884",
-    "customer_id": "CUST-9821",
-    "account_id": "ACC-982145",
-    "alert_type": "structuring",
-    "triggered_at": "2025-04-18T13:00:00Z",
-    "severity": "critical",
-    "risk_score": 95,
-    "description": "12 deposits just under $10,000 threshold in 7 days.",
-    "detector_source": "aml_detector",
-    "evidence": [
-      {
-        "evidence_type": "smurfing_pattern",
-        "details": {
-          "num_transactions": 12,
-          "avg_amount": 9833,
-          "threshold": 10000,
-          "days": 7
-        }
-      }
-    ],
-    "raw_signal_refs": ["sig_30001", "sig_30002", "sig_30003"]
-  },
-  {
-    "alert_id": "ALT-5521",
-    "case_id": "CASE-2025-55201",
-    "customer_id": "CUST-1029",
-    "account_id": "ACC-102948",
-    "alert_type": "unusual_transaction",
-    "triggered_at": "2025-03-10T08:20:00Z",
-    "severity": "low",
-    "risk_score": 63,
-    "description": "Single large transaction ($8,500) significantly above historical average ($145).",
-    "detector_source": "ml_transaction_scorer",
-    "evidence": [
-      {
-        "evidence_type": "amount_anomaly",
-        "details": {
-          "amount_usd": 8500,
-          "historical_avg_usd": 145,
-          "z_score": 4.2
-        }
-      }
-    ],
-    "raw_signal_refs": ["sig_40001"]
-  },
-  {
-    "alert_id": "ALT-3340",
-    "case_id": "CASE-2025-66339",
-    "customer_id": "CUST-7744",
-    "account_id": "ACC-774422",
-    "alert_type": "money_mule",
-    "triggered_at": "2025-07-01T15:30:00Z",
-    "severity": "critical",
-    "risk_score": 91,
-    "description": "Rapid in-out flow: $12,400 in, $11,950 out within 24 hours.",
-    "detector_source": "mule_detector",
-    "evidence": [
-      {
-        "evidence_type": "rapid_in_out_flow",
-        "details": {
-          "inflow_24h_usd": 12400,
-          "outflow_24h_usd": 11950,
-          "retention_ratio": 0.036
-        }
-      }
-    ],
-    "raw_signal_refs": ["sig_50001", "sig_50002"]
-  },
-  {
-    "alert_id": "ALT-8810",
-    "case_id": "CASE-2025-66339",
-    "customer_id": "CUST-7744",
-    "account_id": "ACC-774422",
-    "alert_type": "synthetic_identity",
-    "triggered_at": "2025-07-01T15:35:00Z",
-    "severity": "critical",
-    "risk_score": 86,
-    "description": "Disposable email domain and identity inconsistencies detected.",
-    "detector_source": "synthetic_identity_engine",
-    "evidence": [
-      {
-        "evidence_type": "email_disposable",
-        "details": {
-          "domain": "tempmail.io",
-          "disposable_score": 0.99
-        }
+        "risk_category": "Device Anomaly",
+        "feature": "device_count_5m",
+        "impact": "increased",
+        "contribution": 0.45,
+        "explanation": "3 distinct devices accessed account within 5 minute window, far exceeding baseline of 1."
       },
       {
-        "evidence_type": "identity_mix",
-        "details": {
-          "name_age_mismatch": true,
-          "address_validation_failed": true
-        }
+        "risk_category": "Geographic Anomaly",
+        "feature": "country_change_velocity",
+        "impact": "increased",
+        "contribution": 0.35,
+        "explanation": "Country changed from MY to VN to TH within 5 minutes - impossible travel detected."
+      },
+      {
+        "risk_category": "Session Anomaly",
+        "feature": "concurrent_sessions",
+        "impact": "increased",
+        "contribution": 0.12,
+        "explanation": "Multiple concurrent active sessions from different geographic regions."
       }
-    ],
-    "raw_signal_refs": ["sig_50003", "sig_50004"]
+    ]
+  },
+  {
+    "alert_id": "ALERT-ATO-002",
+    "event_time": "2026-02-10T08:18:22Z",
+    "txn_id": "TXN-ATO-002",
+    "user_id": "U-001",
+    "human_interpretation": "PENDING",
+    "detector_type": "TRANSACTION",
+    "signal": "WITHDRAWAL_SPIKE",
+    "severity": "HIGH",
+    "confidence": "0.88",
+    "evidence": [
+      {
+        "risk_category": "Monetary Deviation",
+        "feature": "withdrawal_amount_ratio",
+        "impact": "increased",
+        "contribution": 0.52,
+        "explanation": "Withdrawal amount 15x higher than 30-day rolling average."
+      },
+      {
+        "risk_category": "Behavioral Anomaly",
+        "feature": "post_login_velocity",
+        "impact": "increased",
+        "contribution": 0.28,
+        "explanation": "Withdrawal initiated within 6 minutes of suspicious login event."
+      },
+      {
+        "risk_category": "Destination Risk",
+        "feature": "new_destination_flag",
+        "impact": "increased",
+        "contribution": 0.08,
+        "explanation": "Withdrawal to destination never seen before for this account."
+      }
+    ]
+  },
+  {
+    "alert_id": "ALERT-ML-001",
+    "event_time": "2026-02-08T14:25:00Z",
+    "txn_id": "TXN-ML-003",
+    "user_id": "U-002",
+    "human_interpretation": "PENDING",
+    "detector_type": "AML",
+    "signal": "STRUCTURED_DEPOSITS",
+    "severity": "HIGH",
+    "confidence": "0.82",
+    "evidence": [
+      {
+        "risk_category": "Structuring Pattern",
+        "feature": "near_threshold_count",
+        "impact": "increased",
+        "contribution": 0.48,
+        "explanation": "8 deposits in 7 days averaging $9,850 - consistently below $10,000 reporting threshold."
+      },
+      {
+        "risk_category": "Timing Pattern",
+        "feature": "deposit_timing_regularity",
+        "impact": "increased",
+        "contribution": 0.22,
+        "explanation": "Deposits made at regular intervals suggesting automated or coordinated activity."
+      },
+      {
+        "risk_category": "Source Pattern",
+        "feature": "single_source_concentration",
+        "impact": "increased",
+        "contribution": 0.12,
+        "explanation": "All deposits from same bank account despite declared multiple income sources."
+      }
+    ]
+  },
+  {
+    "alert_id": "ALERT-ML-002",
+    "event_time": "2026-02-08T14:28:00Z",
+    "txn_id": null,
+    "user_id": "U-002",
+    "human_interpretation": "PENDING",
+    "detector_type": "NETWORK",
+    "signal": "NETWORK_RING",
+    "severity": "MEDIUM",
+    "confidence": "0.71",
+    "evidence": [
+      {
+        "risk_category": "Network Link",
+        "feature": "shared_device_accounts",
+        "impact": "increased",
+        "contribution": 0.38,
+        "explanation": "Device DEV-SHARED-01 linked to 4 accounts including 2 previously flagged."
+      },
+      {
+        "risk_category": "Transaction Flow",
+        "feature": "inter_account_transfers",
+        "impact": "increased",
+        "contribution": 0.21,
+        "explanation": "Funds flow pattern suggests layering between linked accounts."
+      },
+      {
+        "risk_category": "Behavioral Similarity",
+        "feature": "deposit_pattern_correlation",
+        "impact": "increased",
+        "contribution": 0.12,
+        "explanation": "Similar structuring patterns observed across linked accounts."
+      }
+    ]
+  },
+  {
+    "alert_id": "ALERT-FP-001",
+    "event_time": "2026-02-05T09:55:00Z",
+    "txn_id": null,
+    "user_id": "U-003",
+    "human_interpretation": "FP",
+    "detector_type": "BEHAVIOR",
+    "signal": "GEO_ANOMALY",
+    "severity": "MEDIUM",
+    "confidence": "0.55",
+    "evidence": [
+      {
+        "risk_category": "Geographic Deviation",
+        "feature": "login_country_new",
+        "impact": "increased",
+        "contribution": 0.42,
+        "explanation": "Login from Japan while baseline shows Singapore-only activity."
+      },
+      {
+        "risk_category": "Travel Indicator",
+        "feature": "flight_booking_correlation",
+        "impact": "reduced",
+        "contribution": -0.25,
+        "explanation": "Email metadata shows flight booking to Japan 5 days prior - legitimate travel likely."
+      },
+      {
+        "risk_category": "Behavioral Consistency",
+        "feature": "transaction_pattern_match",
+        "impact": "reduced",
+        "contribution": -0.12,
+        "explanation": "Transaction patterns during trip consistent with historical behavior."
+      }
+    ]
   }
 ]

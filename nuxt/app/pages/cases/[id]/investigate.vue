@@ -79,32 +79,8 @@
 
         <!-- Main Content -->
         <div class="flex flex-1 overflow-hidden p-4 gap-4">
-            <!-- Loading State -->
-            <div v-if="isLoading" class="flex-1 flex items-center justify-center">
-                <div class="text-center">
-                    <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <div class="text-slate-600">Loading case data...</div>
-                </div>
-            </div>
-
-            <!-- Error State -->
-            <div v-else-if="loadError" class="flex-1 flex items-center justify-center">
-                <div class="text-center max-w-md">
-                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Failed to Load Case</h3>
-                    <p class="text-slate-600 mb-4">{{ loadError }}</p>
-                    <button @click="fetchCaseData" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-light">
-                        Try Again
-                    </button>
-                </div>
-            </div>
-
             <!-- Investigation Panel (Left - Full width when SENTINEL hidden) -->
-            <div v-else class="flex-1 flex flex-col gap-4 overflow-hidden">
+            <div class="flex-1 flex flex-col gap-4 overflow-hidden">
                 <!-- Top Section: Alerts and Risk Breakdown -->
                 <div class="flex gap-4">
                     <!-- Alerts Section -->
@@ -301,107 +277,21 @@
                                         {{ networkSummary.flagged_connections }} flagged accounts in network
                                     </div>
                                     <div class="text-slate-600">
-                                        Fraud ring probability: <span class="font-semibold" :class="networkSummary.fraud_ring_probability === 'HIGH' ? 'text-risk-critical' : networkSummary.fraud_ring_probability === 'MEDIUM' ? 'text-risk-high' : 'text-risk-low'">{{ networkSummary.fraud_ring_probability }}</span>
+                                        Fraud ring probability: <span class="font-semibold text-risk-critical">HIGH</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Network Graph</div>
-                            <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg border border-gray-200 mb-4 overflow-hidden">
-                                <!-- Dynamic Network Graph -->
-                                <div v-if="networkConnections.length > 0" class="flex justify-center items-center py-8 px-4">
-                                    <svg
-                                        :width="networkGraphSize.width"
-                                        :height="networkGraphSize.height"
-                                        :viewBox="`-80 -80 ${networkGraphSize.width + 160} ${networkGraphSize.height + 160}`"
-                                        class="overflow-visible"
-                                    >
-                                        <!-- Background glow for center -->
-                                        <circle
-                                            :cx="networkGraphSize.centerX"
-                                            :cy="networkGraphSize.centerY"
-                                            r="60"
-                                            fill="url(#centerGlow)"
-                                        />
-
-                                        <!-- Gradient definitions -->
-                                        <defs>
-                                            <radialGradient id="centerGlow">
-                                                <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.2"/>
-                                                <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
-                                            </radialGradient>
-                                            <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                                                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/>
-                                            </filter>
-                                        </defs>
-
-                                        <!-- Edges (lines connecting nodes) -->
-                                        <line
-                                            v-for="(conn, idx) in networkConnections"
-                                            :key="'edge-' + idx"
-                                            :x1="networkGraphSize.centerX"
-                                            :y1="networkGraphSize.centerY"
-                                            :x2="getNodePosition(idx, networkConnections.length).x"
-                                            :y2="getNodePosition(idx, networkConnections.length).y"
-                                            :stroke="conn.flagged ? '#ef4444' : '#cbd5e1'"
-                                            :stroke-width="conn.flagged ? 3 : 2"
-                                            :stroke-dasharray="conn.flagged ? '0' : '6,4'"
-                                            stroke-linecap="round"
-                                        />
-
-                                        <!-- Center Node (Current Case) -->
-                                        <g :transform="`translate(${networkGraphSize.centerX}, ${networkGraphSize.centerY})`" filter="url(#shadow)">
-                                            <circle r="44" fill="url(#centerNodeGradient)"/>
-                                            <defs>
-                                                <linearGradient id="centerNodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                    <stop offset="0%" stop-color="#38bdf8"/>
-                                                    <stop offset="100%" stop-color="#0284c7"/>
-                                                </linearGradient>
-                                            </defs>
-                                            <text y="6" text-anchor="middle" fill="white" font-size="16" font-weight="700">CASE</text>
-                                        </g>
-
-                                        <!-- Connected Nodes -->
-                                        <g
-                                            v-for="(conn, idx) in networkConnections"
-                                            :key="'node-' + idx"
-                                            :transform="`translate(${getNodePosition(idx, networkConnections.length).x}, ${getNodePosition(idx, networkConnections.length).y})`"
-                                            class="cursor-pointer hover:opacity-80 transition-opacity"
-                                            @click="askAboutEvidence('network', conn)"
-                                            filter="url(#shadow)"
-                                        >
-                                            <!-- Node circle -->
-                                            <circle
-                                                r="44"
-                                                :fill="conn.flagged ? '#fef2f2' : 'white'"
-                                                :stroke="conn.flagged ? '#ef4444' : '#94a3b8'"
-                                                :stroke-width="conn.flagged ? 3 : 2"
-                                            />
-                                            <!-- Account ID -->
-                                            <text y="-4" text-anchor="middle" :fill="conn.flagged ? '#dc2626' : '#1e293b'" font-size="11" font-weight="600">
-                                                {{ truncateAccountId(conn.account_id) }}
-                                            </text>
-                                            <!-- Connection type -->
-                                            <text y="12" text-anchor="middle" fill="#64748b" font-size="10">
-                                                {{ truncateConnectionType(conn.connection_type) }}
-                                            </text>
-                                            <!-- Flagged indicator -->
-                                            <g v-if="conn.flagged" transform="translate(30, -30)">
-                                                <circle r="12" fill="#ef4444"/>
-                                                <text y="4" text-anchor="middle" fill="white" font-size="14" font-weight="bold">!</text>
-                                            </g>
-                                        </g>
+                            <div class="p-4 bg-slate-100 rounded-lg border border-gray-200 min-h-[120px] flex items-center justify-center mb-4">
+                                <div class="text-center text-slate-500 text-sm">
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="mx-auto mb-2 text-slate-300">
+                                        <circle cx="24" cy="12" r="6" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="36" r="6" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="36" cy="36" r="6" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M20 16L14 32M28 16L34 32M18 36H30" stroke="currentColor" stroke-width="2"/>
                                     </svg>
-                                </div>
-                                <!-- No connections state -->
-                                <div v-else class="flex items-center justify-center py-12">
-                                    <div class="text-center text-slate-400 text-sm">
-                                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" class="mx-auto mb-3 text-slate-300">
-                                            <circle cx="28" cy="28" r="20" stroke="currentColor" stroke-width="2" stroke-dasharray="4,4"/>
-                                            <circle cx="28" cy="28" r="8" fill="currentColor" opacity="0.3"/>
-                                        </svg>
-                                        No network connections detected
-                                    </div>
+                                    Network visualization coming soon
                                 </div>
                             </div>
 
@@ -571,7 +461,7 @@
 
             <!-- SENTINEL Panel (Right - Hidden by default) -->
             <aside
-                v-show="sentinelVisible && !isLoading && !loadError"
+                v-show="sentinelVisible"
                 class="w-[400px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col overflow-hidden"
             >
                 <!-- SENTINEL Header -->
@@ -703,17 +593,12 @@
 <script setup>
 const route = useRoute()
 const caseId = computed(() => route.params.id)
-const config = useRuntimeConfig()
 
 // API composable
 const { chatWithSentinel } = useApi()
 
 // Conversation history for API context
 const conversationHistory = ref([])
-
-// Loading and error states
-const isLoading = ref(true)
-const loadError = ref(null)
 
 // UI State
 const sentinelVisible = ref(false)
@@ -742,270 +627,139 @@ const suggestedQuestions = ref([
     'What should I check next?'
 ])
 
-// Data from API - initialized with defaults
-const alerts = ref([])
-const timelineEvents = ref([])
+// Alerts data
+const alerts = ref([
+    {
+        alert_id: 'ALT-9901',
+        severity: 'critical',
+        description: 'Withdrawals exceed 6x declared income',
+        detector_source: 'ml_anomaly',
+        triggered_at: '2025-05-14T08:00:00Z'
+    },
+    {
+        alert_id: 'ALT-9902',
+        severity: 'high',
+        description: 'VPN login from high-risk jurisdiction (Cyprus)',
+        detector_source: 'behavior_detector',
+        triggered_at: '2025-05-14T08:00:00Z'
+    },
+    {
+        alert_id: 'ALT-9903',
+        severity: 'critical',
+        description: 'Device fingerprint shared with 3 flagged accounts',
+        detector_source: 'network_analyzer',
+        triggered_at: '2025-05-13T14:30:00Z'
+    },
+    {
+        alert_id: 'ALT-9904',
+        severity: 'high',
+        description: 'Crypto-to-bank layering pattern detected',
+        detector_source: 'ml_anomaly',
+        triggered_at: '2025-05-12T11:15:00Z'
+    },
+    {
+        alert_id: 'ALT-9905',
+        severity: 'medium',
+        description: 'Unusual transaction velocity - 5 deposits in 48 hours',
+        detector_source: 'rule_engine',
+        triggered_at: '2025-05-12T09:00:00Z'
+    },
+    {
+        alert_id: 'ALT-9906',
+        severity: 'high',
+        description: 'KYC document shows potential AI-generated face',
+        detector_source: 'document_analyzer',
+        triggered_at: '2025-05-10T16:45:00Z'
+    }
+])
 
+// Timeline data
+const timelineEvents = ref([
+    { id: 1, timestamp: 'May 14 09:22', description: 'Alert triggered: deposit spike pattern', source: 'ml_anomaly', flagged: true },
+    { id: 2, timestamp: 'May 14 09:15', description: 'Withdrawal: $5,000 to bank account', source: 'transaction', flagged: true },
+    { id: 3, timestamp: 'May 14 08:00', description: 'Login from Cyprus via VPN', source: 'auth', flagged: true },
+    { id: 4, timestamp: 'May 13 14:22', description: 'Withdrawal: $3,200 to bank account', source: 'transaction', flagged: false },
+    { id: 5, timestamp: 'May 12 14:15', description: 'Login from Cyprus via VPN', source: 'auth', flagged: true },
+    { id: 6, timestamp: 'May 12 11:08', description: 'Deposit: $8,500 from crypto wallet', source: 'transaction', flagged: true },
+    { id: 7, timestamp: 'May 10 16:45', description: 'Deposit: $12,000 from crypto wallet', source: 'transaction', flagged: true },
+    { id: 8, timestamp: 'May 10 10:00', description: 'Login from USA, no VPN', source: 'auth', flagged: false },
+    { id: 9, timestamp: 'May 08 09:30', description: 'Deposit: $1,200 via card', source: 'transaction', flagged: false }
+])
+
+// Hardcoded placeholder data
 const caseData = ref({
-    case_id: caseId.value || '',
-    risk_level: 'medium',
-    risk_score: 0,
+    case_id: caseId.value || 'CASE-2025-88412',
+    risk_level: 'critical',
+    risk_score: 87,
     sla_remaining: '4h remaining',
-    customer_name: '',
-    account_id: '',
-    status: 'Loading...',
-    related_cases: []
+    customer_name: 'James Miller',
+    account_id: 'ACC-882193',
+    status: 'Investigating',
+    related_cases: [
+        { case_id: 'CASE-2025-0812', score: 92, status: 'Investigating', customer: 'Sarah Chen', relationship: 'Shared Device', relationship_detail: 'Same device fingerprint DEV-IPHONE-99' },
+        { case_id: 'CASE-2025-0799', score: 87, status: 'Pending Review', customer: 'Mike Johnson', relationship: 'Shared IP', relationship_detail: 'Multiple logins from IP 185.234.xx.xx' },
+        { case_id: 'CASE-2025-0756', score: 78, status: 'Confirmed Fraud', customer: 'Alex Wong', relationship: 'Fund Transfer', relationship_detail: 'Direct transfers totaling $15,000' }
+    ]
 })
 
 const transactionSummary = ref({
-    total_in: 0,
-    total_out: 0,
-    declared_income: 0,
-    income_ratio: 0
+    total_in: 21700,
+    total_out: 8200,
+    declared_income: 4000,
+    income_ratio: 542
 })
 
-const transactions = ref([])
+const transactions = ref([
+    { id: 1, date: 'May 14', amount: 5000, type: 'withdrawal', channel: 'Bank Transfer', flagged: true },
+    { id: 2, date: 'May 13', amount: 3200, type: 'withdrawal', channel: 'Bank Transfer', flagged: false },
+    { id: 3, date: 'May 12', amount: 8500, type: 'deposit', channel: 'Crypto', flagged: true },
+    { id: 4, date: 'May 10', amount: 12000, type: 'deposit', channel: 'Crypto', flagged: true },
+    { id: 5, date: 'May 08', amount: 1200, type: 'deposit', channel: 'Card', flagged: false }
+])
 
 const loginSummary = ref({
-    total: 0,
-    unique_ips: 0,
-    vpn_count: 0,
-    countries: 0
+    total: 47,
+    unique_ips: 12,
+    vpn_count: 8,
+    countries: 3
 })
 
-const logins = ref([])
+const logins = ref([
+    { id: 1, timestamp: 'May 14 08:00', country: 'Cyprus', vpn: true, device: 'Chrome' },
+    { id: 2, timestamp: 'May 13 09:20', country: 'USA', vpn: false, device: 'Chrome' },
+    { id: 3, timestamp: 'May 12 14:15', country: 'Cyprus', vpn: true, device: 'Mobile' },
+    { id: 4, timestamp: 'May 10 10:00', country: 'USA', vpn: false, device: 'Chrome' },
+    { id: 5, timestamp: 'May 09 16:30', country: 'Russia', vpn: true, device: 'Firefox' }
+])
 
 const networkSummary = ref({
-    shared_devices: 0,
-    flagged_connections: 0,
-    fraud_ring_probability: 'LOW'
+    shared_devices: 4,
+    flagged_connections: 2
 })
 
-const networkConnections = ref([])
+const networkConnections = ref([
+    { account_id: 'ACC-0012', connection_type: 'Shared Device', flagged: true },
+    { account_id: 'ACC-0034', connection_type: 'Shared IP', flagged: false },
+    { account_id: 'ACC-0091', connection_type: 'Shared Device', flagged: true }
+])
 
 const kycData = ref({
-    full_name: '',
-    dob: 'N/A',
-    country: '',
-    declared_income: 0,
-    face_match: 0,
+    full_name: 'James Terrence Miller',
+    dob: '1985-11-12',
+    country: 'USA',
+    declared_income: 4000,
+    face_match: 94,
     pep: false,
     sanctions: false,
-    document_flags: []
+    document_flags: ['AI-generated face risk', 'Unusual font spacing']
 })
 
 const riskBreakdown = ref([
-    { category: 'Income', score: 0 },
-    { category: 'Geographic', score: 0 },
-    { category: 'Network', score: 0 },
-    { category: 'Behavior', score: 0 }
+    { category: 'Income', score: 35 },
+    { category: 'Geographic', score: 25 },
+    { category: 'Network', score: 20 },
+    { category: 'Behavior', score: 7 }
 ])
-
-// Network Graph computed properties and helpers
-const networkGraphSize = computed(() => {
-    const connectionCount = networkConnections.value.length
-    // Larger graph for better visibility
-    const baseSize = 400
-    const sizePerConnection = 50
-    const size = Math.max(baseSize, baseSize + (connectionCount - 3) * sizePerConnection)
-    return {
-        width: size,
-        height: size,
-        centerX: size / 2,
-        centerY: size / 2,
-        radius: size / 2 - 80 // Distance from center to connected nodes
-    }
-})
-
-function getNodePosition(index, total) {
-    const { centerX, centerY, radius } = networkGraphSize.value
-    // Distribute nodes evenly in a circle around the center
-    // Start from top (-90 degrees) and go clockwise
-    const angleStep = (2 * Math.PI) / total
-    const angle = -Math.PI / 2 + index * angleStep
-    return {
-        x: centerX + radius * Math.cos(angle),
-        y: centerY + radius * Math.sin(angle)
-    }
-}
-
-function truncateAccountId(accountId) {
-    if (!accountId) return ''
-    // Show shortened version for long IDs
-    if (accountId.length > 12) {
-        return accountId.substring(0, 10) + '...'
-    }
-    return accountId
-}
-
-function truncateConnectionType(type) {
-    if (!type) return ''
-    // Shorten common connection types
-    const shortNames = {
-        'Shared Device': 'Device',
-        'Shared Ip': 'IP',
-        'Same Owner': 'Owner',
-        'Fund Transfer': 'Transfer'
-    }
-    return shortNames[type] || type.substring(0, 10)
-}
-
-// Fetch case data from API
-async function fetchCaseData() {
-    isLoading.value = true
-    loadError.value = null
-
-    try {
-        const apiBase = config.public.apiBase || 'http://localhost:8000'
-        const response = await fetch(`${apiBase}/api/cases/${caseId.value}/full/`)
-
-        if (!response.ok) {
-            throw new Error(`Failed to load case: ${response.status} ${response.statusText}`)
-        }
-
-        const data = await response.json()
-
-        // Map case header
-        caseData.value = {
-            case_id: data.case?.case_id || caseId.value,
-            risk_level: data.case?.risk_level || 'medium',
-            risk_score: data.case?.risk_score || 0,
-            sla_remaining: '4h remaining',
-            customer_name: data.case?.customer_name || 'Unknown',
-            account_id: data.case?.account_id || '',
-            status: data.case?.status || 'OPEN',
-            fraud_type: data.case?.fraud_type || '',
-            related_cases: data.related_cases || []
-        }
-
-        // Map alerts
-        alerts.value = data.alerts || []
-
-        // Map transactions
-        transactionSummary.value = data.transactions?.summary || {
-            total_in: 0,
-            total_out: 0,
-            declared_income: 0,
-            income_ratio: 0
-        }
-        transactions.value = (data.transactions?.items || []).map((t, idx) => ({
-            id: t.transaction_id || idx,
-            date: formatDateShort(t.date || t.timestamp),
-            amount: t.amount || 0,
-            type: t.type || 'unknown',
-            channel: t.channel || 'Unknown',
-            flagged: t.flagged || false
-        }))
-
-        // Map logins
-        loginSummary.value = data.logins?.summary || {
-            total: 0,
-            unique_ips: 0,
-            vpn_count: 0,
-            countries: 0
-        }
-        logins.value = (data.logins?.items || []).map((l, idx) => ({
-            id: l.event_id || idx,
-            timestamp: formatDateTimeShort(l.timestamp),
-            country: l.country || 'Unknown',
-            vpn: l.vpn || false,
-            device: l.device || 'Unknown',
-            success: l.success !== false
-        }))
-
-        // Map network
-        networkSummary.value = data.network?.summary || {
-            shared_devices: 0,
-            flagged_connections: 0,
-            fraud_ring_probability: 'LOW'
-        }
-        networkConnections.value = data.network?.connections || []
-
-        // Map KYC
-        kycData.value = {
-            full_name: data.kyc?.full_name || 'Unknown',
-            dob: data.kyc?.dob || 'N/A',
-            country: data.kyc?.country || 'Unknown',
-            declared_income: data.kyc?.declared_income || 0,
-            face_match: data.kyc?.face_match || 0,
-            pep: data.kyc?.pep || false,
-            sanctions: data.kyc?.sanctions || false,
-            document_flags: data.kyc?.document_flags || []
-        }
-
-        // Map timeline
-        timelineEvents.value = (data.timeline || []).map((e, idx) => ({
-            id: idx,
-            timestamp: formatDateTimeShort(e.timestamp),
-            description: e.description || '',
-            source: e.source || 'unknown',
-            flagged: e.flagged || false
-        }))
-
-        // Calculate risk breakdown from case score
-        const totalScore = data.case?.risk_score || 0
-        riskBreakdown.value = calculateRiskBreakdown(totalScore, data)
-
-    } catch (error) {
-        console.error('Error fetching case data:', error)
-        loadError.value = error.message
-    } finally {
-        isLoading.value = false
-    }
-}
-
-// Helper to format dates
-function formatDateShort(dateStr) {
-    if (!dateStr) return ''
-    try {
-        const date = new Date(dateStr)
-        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-    } catch {
-        return dateStr.substring(0, 10)
-    }
-}
-
-function formatDateTimeShort(dateStr) {
-    if (!dateStr) return ''
-    try {
-        const date = new Date(dateStr)
-        return date.toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        })
-    } catch {
-        return dateStr.substring(0, 16)
-    }
-}
-
-// Calculate risk breakdown based on available data
-function calculateRiskBreakdown(totalScore, data) {
-    // Distribute score based on data indicators
-    const hasHighIncomeRatio = (data.transactions?.summary?.income_ratio || 0) > 100
-    const hasMultipleCountries = (data.logins?.summary?.countries || 0) > 1
-    const hasNetworkFlags = (data.network?.summary?.flagged_connections || 0) > 0
-    const hasVpnUsage = (data.logins?.summary?.vpn_count || 0) > 0
-
-    // Weight factors
-    let incomeScore = hasHighIncomeRatio ? Math.min(35, totalScore * 0.4) : Math.min(10, totalScore * 0.15)
-    let geoScore = hasMultipleCountries ? Math.min(25, totalScore * 0.3) : Math.min(5, totalScore * 0.1)
-    let networkScore = hasNetworkFlags ? Math.min(25, totalScore * 0.25) : Math.min(5, totalScore * 0.1)
-    let behaviorScore = hasVpnUsage ? Math.min(15, totalScore * 0.2) : Math.min(5, totalScore * 0.1)
-
-    return [
-        { category: 'Income', score: Math.round(incomeScore) },
-        { category: 'Geographic', score: Math.round(geoScore) },
-        { category: 'Network', score: Math.round(networkScore) },
-        { category: 'Behavior', score: Math.round(behaviorScore) }
-    ]
-}
-
-// Fetch data on mount
-onMounted(() => {
-    fetchCaseData()
-})
 
 const totalRiskScore = computed(() => {
     return riskBreakdown.value.reduce((sum, item) => sum + item.score, 0)

@@ -2,9 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # ML Detection Endpoints
-    path('ai-detect/', views.AIAnomalyDetectionView.as_view(), name='ai-detect'),  # Teammate's original
-    path('ml/run-pipeline/', views.MLPipelineView.as_view(), name='ml-pipeline'),  # New SENTINEL pipeline
+    path('ai-detect/', views.AIAnomalyDetectionView.as_view(), name='ai-detect'),
 
     # Cases
     path('cases/', views.CaseListView.as_view(), name='case-list'),
@@ -17,7 +15,6 @@ urlpatterns = [
     path('cases/<str:case_id>/network/', views.CaseNetworkView.as_view(), name='case-network'),
     path('cases/<str:case_id>/timeline/', views.CaseTimelineView.as_view(), name='case-timeline'),
     path('cases/<str:case_id>/notes/', views.CaseNotesView.as_view(), name='case-notes'),
-    path('cases/<str:case_id>/full/', views.CaseFullContextView.as_view(), name='case-full'),
 
     # AI Agent Investigation
     path('cases/<str:case_id>/investigate/', views.CaseInvestigateView.as_view(), name='case-investigate'),

@@ -2,12 +2,8 @@
 Aggregates all relevant data (transactions, logins, devices, KYC, history)
 into a single, coherent case view that matches the CaseContext schema.
 
-This skill reads from ML pipeline output (ml_data/) and assembles
+This skill reads from Django's separate dummy_data JSON files and assembles
 them into a unified CaseContext object for the AI Agent to investigate.
-
-Updated to support ML pipeline data structure:
-- output/: cases.json, alerts.json
-- input/: profiles.json, transactions_raw.json, auth_events.json, network_events.json
 """
 
 import json
@@ -18,26 +14,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-# Load environment variables
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    pass
-
-
-# Path to ML data directory (configurable via FRAUD_DATA_DIR env var)
-def _get_data_path() -> Path:
-    """Get the data path from environment or default."""
-    data_dir = os.getenv('FRAUD_DATA_DIR', 'api/ml_data')
-    # Handle both absolute and relative paths
-    if os.path.isabs(data_dir):
-        return Path(data_dir)
-    # Relative to Django project root
-    return Path(__file__).parent.parent.parent / data_dir
-
-
-ML_DATA_PATH = _get_data_path()
+# Path to Django's dummy data (relative to Django project root)
+DUMMY_DATA_PATH = Path(__file__).parent.parent.parent / "api" / "dummy_data"
 
 
 @dataclass
@@ -199,13 +177,10 @@ class CaseContext:
 
 class CaseContextAssembler:
     """
-    Assembles case context from ML pipeline data files.
+    Assembles case context from Django's separate data files.
 
-    This class reads from the ml_data directory structure:
-    - output/: cases.json, alerts.json (ML pipeline results)
-    - input/: profiles.json, transactions_raw.json, auth_events.json, network_events.json
-
-    It transforms these into the unified CaseContext schema for AI investigation.
+    This class reads from the dummy_data directory and joins all relevant
+    data for a given case into a single CaseContext object.
     """
 
     def __init__(self, data_path: Path = None):
@@ -213,39 +188,26 @@ class CaseContextAssembler:
         Initialize the assembler.
 
         Args:
-            data_path: Path to the ml_data directory. Defaults to FRAUD_DATA_DIR env var.
+            data_path: Path to the dummy_data directory. Defaults to Django's api/dummy_data.
         """
-        self.data_path = data_path or ML_DATA_PATH
-        self.input_path = self.data_path / "input"
-        self.output_path = self.data_path / "output"
+        self.data_path = data_path or DUMMY_DATA_PATH
         self._cache: Dict[str, List[Dict]] = {}
 
-    def _load_json(self, filename: str, subdir: str = None) -> List[Dict[str, Any]]:
+    def _load_json(self, filename: str) -> List[Dict[str, Any]]:
         """Load and cache a JSON file."""
-        cache_key = f"{subdir}/{filename}" if subdir else filename
-
-        if cache_key not in self._cache:
-            if subdir:
-                file_path = self.data_path / subdir / filename
-            else:
-                file_path = self.data_path / filename
-
+        if filename not in self._cache:
+            file_path = self.data_path / filename
             if file_path.exists():
                 with open(file_path, 'r', encoding='utf-8') as f:
-                    self._cache[cache_key] = json.load(f)
+                    self._cache[filename] = json.load(f)
             else:
-                self._cache[cache_key] = []
-        return self._cache[cache_key]
+                self._cache[filename] = []
+        return self._cache[filename]
 
     def _find_by_id(self, data: List[Dict], id_field: str, id_value: str) -> Optional[Dict]:
         """Find a single item by ID field."""
         for item in data:
-            item_id = item.get(id_field)
-            # Handle cases where id_field can be a list (fraud rings have user_id as list)
-            if isinstance(item_id, list):
-                if id_value in item_id:
-                    return item
-            elif item_id == id_value:
+            if item.get(id_field) == id_value:
                 return item
         return None
 
@@ -257,287 +219,6 @@ class CaseContextAssembler:
             if match:
                 results.append(item)
         return results
-
-    def _filter_by_account_or_user(self, data: List[Dict], account_id: str = None, user_id: str = None) -> List[Dict]:
-        """Filter data by account_id or user_id (whichever matches)."""
-        results = []
-        for item in data:
-            if account_id and item.get("account_id") == account_id:
-                results.append(item)
-            elif user_id and item.get("user_id") == user_id:
-                results.append(item)
-        return results
-
-    # =========================================================================
-    # SCHEMA ADAPTERS - Transform ML data to CaseContext schema
-    # =========================================================================
-
-    def _load_cases(self) -> List[Dict[str, Any]]:
-        """Load cases from ML pipeline output."""
-        return self._load_json("cases.json", subdir="output")
-
-    def _load_alerts(self) -> List[Dict[str, Any]]:
-        """Load and transform alerts from ML pipeline output."""
-        raw_alerts = self._load_json("alerts.json", subdir="output")
-
-        transformed = []
-        for a in raw_alerts:
-            transformed.append({
-                "alert_id": a.get("alert_id", ""),
-                "alert_type": a.get("detector_type", a.get("fraud_type_inferred", "")),
-                "triggered_at": a.get("event_time", a.get("created_at", "")),
-                "severity": a.get("severity", "medium").lower(),
-                "risk_score": int(a.get("confidence", 0) * 100),
-                "description": f"{a.get('signal', 'Anomaly detected')} - {a.get('fraud_type_inferred', 'unknown')}",
-                "detector_source": a.get("detector_source", "ml_pipeline"),
-                "evidence": [a.get("evidence", {})] if a.get("evidence") else [],
-                "raw_signal_refs": [str(a.get("txn_id", ""))] if a.get("txn_id") else [],
-                # Keep original fields for lookups
-                "user_id": a.get("user_id"),
-                "account_id": a.get("account_id"),
-            })
-        return transformed
-
-    def _load_customers(self) -> List[Dict[str, Any]]:
-        """Transform profiles.json to customers schema."""
-        profiles = self._load_json("profiles.json", subdir="input")
-
-        transformed = []
-        for p in profiles:
-            user_id = p.get("user_id", "")
-            country = p.get("residence_country", "").upper()
-
-            transformed.append({
-                "customer_id": user_id,
-                "full_name": f"Customer {user_id}",  # Placeholder - ML data doesn't have names
-                "email": f"{user_id.lower().replace('-', '.')}@example.com",  # Placeholder
-                "phone": "+1-XXX-XXX-XXXX",  # Placeholder
-                "country": country,
-                "verification_status": "verified",  # Default assumption
-                "verification_method": "document",
-                "risk_rating": "medium",  # Default
-                "pep_status": False,
-                "sanctions_hit": False,
-                "adverse_media": False,
-                "document_verified": True,
-                "document_flags": [],
-                "declared_income": p.get("declared_income"),
-                "income_currency": "USD",
-                "accounts": p.get("accounts", []),
-            })
-        return transformed
-
-    def _load_accounts(self) -> List[Dict[str, Any]]:
-        """Derive accounts from profiles.json."""
-        profiles = self._load_json("profiles.json", subdir="input")
-        transactions = self._load_json("transactions_raw.json", subdir="input")
-
-        accounts = []
-        for p in profiles:
-            user_id = p.get("user_id", "")
-            account_ids = p.get("accounts", [])
-            account_deposit = p.get("account_deposit", 0)
-
-            for acc_id in account_ids:
-                # Calculate activity from transactions
-                acc_txns = [t for t in transactions if t.get("account_id") == acc_id]
-
-                deposits = sum(t.get("amount", 0) for t in acc_txns
-                             if t.get("event_type") in ["deposit"])
-                withdrawals = sum(t.get("amount", 0) for t in acc_txns
-                                if t.get("event_type") in ["withdrawal"])
-                trades = len([t for t in acc_txns if t.get("event_type") in ["buy", "sell"]])
-
-                avg_amount = sum(t.get("amount", 0) for t in acc_txns) / len(acc_txns) if acc_txns else 0
-
-                # Calculate deposit to income ratio
-                declared_income = p.get("declared_income", 0)
-                deposit_ratio = deposits / declared_income if declared_income > 0 else None
-
-                accounts.append({
-                    "account_id": acc_id,
-                    "customer_id": user_id,
-                    "account_type": "trading",
-                    "account_status": "active",
-                    "created_at": "2025-01-01T00:00:00Z",  # Placeholder
-                    "total_deposits_30d": deposits,
-                    "total_withdrawals_30d": withdrawals,
-                    "total_trades_30d": trades,
-                    "average_transaction_amount": round(avg_amount, 2),
-                    "account_age_days": 365,  # Placeholder
-                    "is_dormant_reactivated": False,
-                    "deposit_to_income_ratio": round(deposit_ratio, 2) if deposit_ratio else None,
-                    "account_deposit": account_deposit,
-                })
-        return accounts
-
-    def _load_transactions(self) -> List[Dict[str, Any]]:
-        """Transform transactions_raw.json to transactions schema."""
-        raw_txns = self._load_json("transactions_raw.json", subdir="input")
-
-        # Map event_type to standard types
-        type_map = {
-            "deposit": "deposit",
-            "withdrawal": "withdrawal",
-            "buy": "trade",
-            "sell": "trade",
-            "transfer": "transfer",
-        }
-
-        transformed = []
-        for t in raw_txns:
-            event_type = t.get("event_type", "").lower()
-            transformed.append({
-                "transaction_id": str(t.get("txn_id", "")),
-                "timestamp": t.get("event_time", ""),
-                "type": type_map.get(event_type, event_type),
-                "amount": t.get("amount", 0),
-                "currency": t.get("currency", "USD").upper(),
-                "status": "completed",  # Assume completed
-                "channel": t.get("channel", "unknown"),
-                "counterparty": None,
-                "risk_flags": [],
-                # Keep original fields for filtering
-                "account_id": t.get("account_id"),
-                "user_id": t.get("user_id"),
-                "device_id": t.get("device_id"),
-                "ip_address": t.get("ip_address"),
-                "transaction_country": t.get("transaction_country"),
-            })
-        return transformed
-
-    def _load_logins(self) -> List[Dict[str, Any]]:
-        """Transform auth_events.json to logins schema."""
-        auth_events = self._load_json("auth_events.json", subdir="input")
-
-        transformed = []
-        for e in auth_events:
-            event_type = e.get("event_type", "")
-            login_success = event_type == "login_success"
-
-            transformed.append({
-                "event_id": e.get("event_id", ""),
-                "timestamp": e.get("event_time", ""),
-                "ip_address": e.get("ip_address", ""),
-                "device_id": e.get("device_id", ""),
-                "device_type": "unknown",  # Not in ML data
-                "location_country": e.get("geo_country", "").upper(),
-                "is_vpn": False,  # Not in ML data
-                "is_proxy": False,  # Not in ML data
-                "login_success": login_success,
-                "risk_flags": [] if login_success else ["login_failed"],
-                "browser": None,
-                "location_city": None,
-                "failure_reason": "authentication_failed" if not login_success else None,
-                # Keep for filtering
-                "user_id": e.get("user_id"),
-                "account_id": e.get("account_id"),
-            })
-        return transformed
-
-    def _derive_devices(self, account_id: str, user_id: str) -> List[Dict[str, Any]]:
-        """Derive device information from transactions and auth events."""
-        transactions = self._load_transactions()
-        logins = self._load_logins()
-
-        # Collect all device IDs for this account/user
-        device_data: Dict[str, Dict] = {}
-
-        # From transactions
-        for t in transactions:
-            if t.get("account_id") == account_id or t.get("user_id") == user_id:
-                device_id = t.get("device_id")
-                if device_id:
-                    if device_id not in device_data:
-                        device_data[device_id] = {
-                            "device_id": device_id,
-                            "timestamps": [],
-                            "accounts": set(),
-                            "channels": set(),
-                        }
-                    device_data[device_id]["timestamps"].append(t.get("timestamp", ""))
-                    device_data[device_id]["accounts"].add(t.get("account_id", ""))
-                    device_data[device_id]["channels"].add(t.get("channel", ""))
-
-        # From logins
-        for l in logins:
-            if l.get("user_id") == user_id:
-                device_id = l.get("device_id")
-                if device_id:
-                    if device_id not in device_data:
-                        device_data[device_id] = {
-                            "device_id": device_id,
-                            "timestamps": [],
-                            "accounts": set(),
-                            "channels": set(),
-                        }
-                    device_data[device_id]["timestamps"].append(l.get("timestamp", ""))
-
-        # Transform to DeviceInfo format
-        devices = []
-        for device_id, data in device_data.items():
-            timestamps = sorted([t for t in data["timestamps"] if t])
-            channels = data.get("channels", set())
-
-            # Infer device type from channel
-            device_type = "unknown"
-            if "mobile" in channels:
-                device_type = "mobile"
-            elif "web" in channels:
-                device_type = "desktop"
-            elif "api" in channels:
-                device_type = "desktop"
-
-            devices.append({
-                "device_id": device_id,
-                "device_type": device_type,
-                "os": "unknown",
-                "first_seen": timestamps[0] if timestamps else "",
-                "last_seen": timestamps[-1] if timestamps else "",
-                "is_trusted": True,  # Default
-                "linked_accounts": list(data.get("accounts", set())),
-            })
-
-        return devices
-
-    def _derive_network_connections(self, case_data: Dict, account_id: str, user_id: str) -> List[Dict[str, Any]]:
-        """Derive network connections from case data (fraud rings, shared devices)."""
-        connections = []
-
-        # Check for fraud ring data
-        if case_data.get("fraud_type") == "fraud_ring":
-            ring_members = case_data.get("ring_members", [])
-            shared_device = case_data.get("shared_device")
-            shared_ip = case_data.get("shared_ip")
-
-            for member in ring_members:
-                if member != user_id:
-                    connections.append({
-                        "connection_type": "shared_device",
-                        "connected_entity_id": member,
-                        "connection_strength": "strong",
-                        "first_observed": case_data.get("created_at", ""),
-                        "details": f"Shared device {shared_device} and IP {shared_ip}",
-                    })
-
-        # Check for multi-account fraud
-        if case_data.get("fraud_type") == "multi_account_fraud":
-            accounts_involved = case_data.get("accounts_involved", [])
-            for acc in accounts_involved:
-                if acc != account_id:
-                    connections.append({
-                        "connection_type": "same_owner",
-                        "connected_entity_id": acc,
-                        "connection_strength": "strong",
-                        "first_observed": case_data.get("created_at", ""),
-                        "details": f"Multiple accounts owned by same user {user_id}",
-                    })
-
-        return connections
-
-    # =========================================================================
-    # MAIN ASSEMBLY METHOD
-    # =========================================================================
 
     def assemble(self, case_id: str) -> CaseContext:
         """
@@ -552,46 +233,38 @@ class CaseContextAssembler:
         Raises:
             ValueError: If case not found
         """
-        # Load all data using adapters
-        cases = self._load_cases()
-        all_alerts = self._load_alerts()
-        customers = self._load_customers()
-        accounts = self._load_accounts()
-        all_transactions = self._load_transactions()
-        all_logins = self._load_logins()
+        # Load all data files
+        cases = self._load_json("cases.json")
+        customers = self._load_json("customers.json")
+        accounts = self._load_json("accounts.json")
+        transactions = self._load_json("transactions.json")
+        logins = self._load_json("logins.json")
+        devices = self._load_json("devices.json")
+        network_connections = self._load_json("network_connections.json")
+        prior_cases = self._load_json("prior_cases.json")
 
         # Find the case
         case_data = self._find_by_id(cases, "case_id", case_id)
         if not case_data:
             raise ValueError(f"Case not found: {case_id}")
 
-        # Get user_id and account_id - handle both string and list formats
-        user_id = case_data.get("user_id")
-        if isinstance(user_id, list):
-            user_id = user_id[0]  # Take first user for fraud rings
-
+        customer_id = case_data.get("customer_id")
         account_id = case_data.get("account_id")
 
-        # Map user_id to customer_id (they're the same in ML data)
-        customer_id = user_id
-
-        # Assemble alerts for this case
-        case_alert_ids = case_data.get("alert_ids", [])
-        case_alerts = [a for a in all_alerts if a.get("alert_id") in case_alert_ids]
-
+        # Assemble alerts
         alerts = [
             AlertInfo(
                 alert_id=a.get("alert_id", ""),
                 alert_type=a.get("alert_type", ""),
                 triggered_at=a.get("triggered_at", ""),
-                severity=a.get("severity", "medium"),
+                severity=a.get("severity", ""),
                 risk_score=a.get("risk_score", 0),
                 description=a.get("description", ""),
                 detector_source=a.get("detector_source", ""),
                 evidence=a.get("evidence") or [],
                 raw_signal_refs=a.get("raw_signal_refs") or []
             )
-            for a in case_alerts
+            for a in case_data.get("alerts", [])
         ]
 
         # Assemble customer (KYC data)
@@ -642,7 +315,7 @@ class CaseContextAssembler:
             )
 
         # Assemble transactions for this account
-        account_transactions = [t for t in all_transactions if t.get("account_id") == account_id]
+        account_transactions = self._filter_by(transactions, account_id=account_id)
         txn_list = [
             Transaction(
                 transaction_id=t.get("transaction_id", ""),
@@ -658,8 +331,8 @@ class CaseContextAssembler:
             for t in account_transactions
         ]
 
-        # Assemble logins for this user
-        user_logins = [l for l in all_logins if l.get("user_id") == user_id]
+        # Assemble logins for this account
+        account_logins = self._filter_by(logins, account_id=account_id)
         login_list = [
             LoginEvent(
                 event_id=l.get("event_id", ""),
@@ -676,26 +349,29 @@ class CaseContextAssembler:
                 location_city=l.get("location_city"),
                 failure_reason=l.get("failure_reason")
             )
-            for l in user_logins
+            for l in account_logins
         ]
 
-        # Derive devices
-        device_data_list = self._derive_devices(account_id, user_id)
-        device_list = [
-            DeviceInfo(
-                device_id=d.get("device_id", ""),
-                device_type=d.get("device_type", ""),
-                os=d.get("os", ""),
-                first_seen=d.get("first_seen", ""),
-                last_seen=d.get("last_seen", ""),
-                is_trusted=d.get("is_trusted", False),
-                linked_accounts=d.get("linked_accounts") or []
-            )
-            for d in device_data_list
-        ]
+        # Assemble devices - find devices linked to this account
+        device_list = []
+        for d in devices:
+            if account_id in d.get("linked_accounts", []):
+                device_list.append(DeviceInfo(
+                    device_id=d.get("device_id", ""),
+                    device_type=d.get("device_type", ""),
+                    os=d.get("os", ""),
+                    first_seen=d.get("first_seen", ""),
+                    last_seen=d.get("last_seen", ""),
+                    is_trusted=d.get("is_trusted", False),
+                    linked_accounts=d.get("linked_accounts") or []
+                ))
 
-        # Derive network connections from case data
-        network_data = self._derive_network_connections(case_data, account_id, user_id)
+        # Assemble network connections for this account
+        account_connections = self._filter_by(network_connections, entity_id=account_id)
+        # Also check for customer-level connections
+        customer_connections = self._filter_by(network_connections, entity_id=customer_id)
+        all_connections = account_connections + customer_connections
+
         connection_list = [
             NetworkConnection(
                 connection_type=c.get("connection_type", ""),
@@ -704,13 +380,23 @@ class CaseContextAssembler:
                 first_observed=c.get("first_observed", ""),
                 details=c.get("details", "")
             )
-            for c in network_data
+            for c in all_connections
         ]
 
-        # Prior cases - not available in ML data, return empty
-        prior_case_list = []
+        # Assemble prior cases for this customer
+        customer_prior_cases = self._filter_by(prior_cases, customer_id=customer_id)
+        prior_case_list = [
+            PriorCase(
+                case_id=p.get("case_id", ""),
+                case_date=p.get("case_date", ""),
+                case_type=p.get("case_type", ""),
+                outcome=p.get("outcome", ""),
+                resolution_notes=p.get("resolution_notes")
+            )
+            for p in customer_prior_cases
+        ]
 
-        # Generate data completeness
+        # Generate data completeness dynamically
         data_completeness = DataCompleteness(
             kyc_data=customer is not None,
             transaction_history=len(txn_list) > 0,
@@ -739,64 +425,6 @@ class CaseContextAssembler:
     def clear_cache(self):
         """Clear the data cache."""
         self._cache.clear()
-
-    def get_all_case_ids(self) -> List[str]:
-        """Get all available case IDs from ML output."""
-        cases = self._load_cases()
-        return [c.get("case_id") for c in cases if c.get("case_id")]
-
-    def get_related_cases(self, case_id: str) -> List[Dict[str, Any]]:
-        """
-        Find cases related to the given case via network connections.
-
-        Args:
-            case_id: The case ID to find related cases for
-
-        Returns:
-            List of related case info dicts with relationship details
-        """
-        context = self.assemble(case_id)
-        all_cases = self._load_cases()
-        customers = self._load_customers()
-
-        related = []
-        seen_case_ids = {case_id}  # Don't include self
-
-        for conn in context.network_connections:
-            entity_id = conn.connected_entity_id
-
-            # Find cases where this entity is the user
-            for case in all_cases:
-                related_case_id = case.get("case_id")
-                if related_case_id in seen_case_ids:
-                    continue
-
-                case_user = case.get("user_id")
-                is_match = False
-
-                if isinstance(case_user, list):
-                    if entity_id in case_user:
-                        is_match = True
-                elif case_user == entity_id:
-                    is_match = True
-
-                if is_match:
-                    seen_case_ids.add(related_case_id)
-
-                    # Get customer name
-                    customer_data = self._find_by_id(customers, "customer_id", entity_id)
-                    customer_name = customer_data.get("full_name", f"Customer {entity_id}") if customer_data else f"Customer {entity_id}"
-
-                    related.append({
-                        "case_id": related_case_id,
-                        "score": case.get("case_score", 50),
-                        "status": case.get("status", "OPEN"),
-                        "customer": customer_name,
-                        "relationship": conn.connection_type.replace("_", " ").title(),
-                        "relationship_detail": conn.details
-                    })
-
-        return related
 
 
 # Convenience function for quick assembly

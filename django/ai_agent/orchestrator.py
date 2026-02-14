@@ -60,7 +60,6 @@ class InvestigationResult:
     recommendations: Dict[str, Any]
     network_analysis: Dict[str, Any]
     report: Dict[str, Any]
-    regulatory: Dict[str, Any]  # Regulatory explanations for different audiences
 
     # Metadata
     skills_executed: List[SkillExecution]
@@ -91,7 +90,6 @@ class InvestigationOrchestrator:
     6. Recommendation Generation - Suggest next steps
     7. Network Intelligence - Analyze connections
     8. Report Generation - Create documentation
-    9. Regulatory Explainer - Audience-tailored explanations (optional)
 
     Skills can be run individually or as a complete investigation.
     """
@@ -168,7 +166,6 @@ class InvestigationOrchestrator:
         recommendation_result = {}
         network_result = {}
         report_result = {}
-        regulatory_result = {}
 
         # Step 1: Assemble case context (required for all other skills)
         if "case_context_assembler" in skills_to_run:
@@ -350,28 +347,6 @@ class InvestigationOrchestrator:
                 ))
                 status = "partial"
 
-        # Step 9: Regulatory explanations (optional)
-        if "regulatory_explainer" in skills_to_run and case_context:
-            skill_start = datetime.now(timezone.utc)
-            try:
-                result = self.regulatory_explainer.explain(case_context)
-                regulatory_result = result.to_dict()
-                skills_executed.append(SkillExecution(
-                    skill_name="Regulatory Explainer",
-                    executed_at=skill_start.isoformat(),
-                    duration_ms=int((datetime.now(timezone.utc) - skill_start).total_seconds() * 1000),
-                    success=True
-                ))
-            except Exception as e:
-                skills_executed.append(SkillExecution(
-                    skill_name="Regulatory Explainer",
-                    executed_at=skill_start.isoformat(),
-                    duration_ms=int((datetime.now(timezone.utc) - skill_start).total_seconds() * 1000),
-                    success=False,
-                    error=str(e)
-                ))
-                status = "partial"
-
         # Calculate totals
         completed_at = datetime.now(timezone.utc)
         total_duration = int((completed_at - started_at).total_seconds() * 1000)
@@ -399,7 +374,6 @@ class InvestigationOrchestrator:
             recommendations=recommendation_result,
             network_analysis=network_result,
             report=report_result,
-            regulatory=regulatory_result,
             skills_executed=skills_executed,
             total_duration_ms=total_duration,
             dashboard_summary=dashboard_summary
@@ -429,7 +403,6 @@ class InvestigationOrchestrator:
             recommendations={},
             network_analysis={},
             report={},
-            regulatory={},
             skills_executed=skills_executed,
             total_duration_ms=int((completed_at - started_at).total_seconds() * 1000),
             dashboard_summary={"error": error}

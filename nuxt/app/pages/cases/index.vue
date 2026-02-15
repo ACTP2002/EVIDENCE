@@ -142,13 +142,17 @@
                             </td>
 
                             <td class="px-4 py-4">
-                                <div class="flex flex-col gap-1.5">
+                                <div class="flex flex-col gap-2">
                                     <div v-for="(reason, idx) in case_.topReasons.slice(0, 2)" :key="idx"
-                                        class="flex items-center gap-2 text-[13px] text-slate-500">
-                                        <div class="w-1 h-1 rounded-full bg-slate-300 flex-shrink-0"></div>
-                                        {{ reason.text }}
-                                        <span class="font-mono font-semibold text-slate-900 text-xs">{{ reason.value
-                                            }}</span>
+                                        class="flex items-start justify-between gap-4">
+                                        <div class="flex items-start gap-2 text-[13px] text-slate-600 flex-1">
+                                            <div class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0 mt-1.5"></div>
+                                            <span class="leading-snug">{{ reason.text }}</span>
+                                        </div>
+                                        <div class="flex flex-col items-end flex-shrink-0 min-w-[60px]">
+                                            <span class="font-mono font-bold text-slate-900 text-sm">{{ reason.confidence }}</span>
+                                            <span class="text-[10px] text-slate-400 uppercase tracking-wide">confidence</span>
+                                        </div>
                                     </div>
                                 </div>
                             </td>
@@ -198,10 +202,14 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { getRiskLevel, getRiskStatistics } from '~/utils/riskAssessment'
 
+const { getCases } = useApi()
+
 const activeFilter = ref('all')
+const loading = ref(true)
+const error = ref(null)
 
 const filters = [
     { id: 'all', label: 'All Cases', count: null }, // Will be computed
@@ -210,68 +218,72 @@ const filters = [
     { id: 'confirmed', label: 'Confirmed Fraud', count: null }
 ]
 
-const cases = ref([
-    {
-        id: 'FR-2024-0847',
-        riskScore: 94,
-        topReasons: [
-            { text: 'Deposits exceed declared income by', value: '1,420%' },
-            { text: 'VPN access from sanctioned jurisdiction', value: '73% of logins' }
-        ],
-        client: { name: 'Marcus Chen', id: 'CL-48291' },
-        flaggedTime: '2 hours ago',
-        flaggedDate: 'Feb 7, 2026',
-        status: 'Open'
-    },
-    {
-        id: 'FR-2024-0846',
-        riskScore: 91,
-        topReasons: [
-            { text: 'AI-generated face detected in verification', value: '98% confidence' },
-            { text: 'Device fingerprint matches', value: '7 flagged accounts' }
-        ],
-        client: { name: 'Elena Rodriguez', id: 'CL-59284' },
-        flaggedTime: '3 hours ago',
-        flaggedDate: 'Feb 7, 2026',
-        status: 'Open'
-    },
-    {
-        id: 'FR-2024-0845',
-        riskScore: 87,
-        topReasons: [
-            { text: 'Rapid deposit-withdrawal cycle detected', value: '$24K in 48hrs' },
-            { text: 'Transaction pattern matches known ML network', value: '12 confirmed cases' }
-        ],
-        client: { name: 'David Kim', id: 'CL-73849' },
-        flaggedTime: '5 hours ago',
-        flaggedDate: 'Feb 7, 2026',
-        status: 'Under Review'
-    },
-    {
-        id: 'FR-2024-0844',
-        riskScore: 33,
-        topReasons: [
-            { text: 'Synthetic identity indicators', value: '5 data inconsistencies' },
-            { text: 'Login from geographically impossible location', value: '2,400 km in 3 hrs' }
-        ],
-        client: { name: 'Sarah O\'Brien', id: 'CL-29384' },
-        flaggedTime: '8 hours ago',
-        flaggedDate: 'Feb 7, 2026',
-        status: 'Open'
-    },
-    {
-        id: 'FR-2024-0843',
-        riskScore: 50,
-        topReasons: [
-            { text: 'Document verification failed', value: 'Forged passport detected' },
-            { text: 'Email domain associated with fraud network', value: '23 flagged accounts' }
-        ],
-        client: { name: 'Ahmed Hassan', id: 'CL-84729' },
-        flaggedTime: '12 hours ago',
-        flaggedDate: 'Feb 6, 2026',
-        status: 'Open'
+const cases = ref([])
+
+/**
+ * Transform backend case data to frontend format
+ */
+const transformCase = (backendCase) => {
+    // Extract top reasons from alerts - get explanation and confidence separately
+    const topReasons = (backendCase.alerts || []).slice(0, 2).map(alert => {
+        // Get first evidence explanation or use signal as fallback
+        const evidence = alert.evidence?.[0]
+        const confidenceVal = parseFloat(alert.confidence) || 0
+        const confidencePercent = confidenceVal > 1 ? confidenceVal : Math.round(confidenceVal * 100)
+
+        return {
+            text: evidence?.explanation || alert.signal || 'Anomaly detected',
+            confidence: `${confidencePercent}%`
+        }
+    })
+
+    // Format flagged time
+    const flaggedDate = new Date(backendCase.opened_at || backendCase.last_updated)
+    const now = new Date()
+    const hoursAgo = Math.floor((now - flaggedDate) / (1000 * 60 * 60))
+    const daysAgo = Math.floor(hoursAgo / 24)
+    const flaggedTime = daysAgo > 0 ? `${daysAgo} days ago` : `${hoursAgo} hours ago`
+
+    return {
+        id: backendCase.case_id,
+        riskScore: backendCase.case_score || 0,
+        topReasons: topReasons.length > 0 ? topReasons : [{ text: 'Under investigation', confidence: 'Pending' }],
+        client: {
+            name: backendCase.user_id || 'Unknown',
+            id: backendCase.user_id || 'N/A'
+        },
+        flaggedTime: flaggedTime,
+        flaggedDate: flaggedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        status: backendCase.status === 'OPEN' ? 'Open' :
+                backendCase.status === 'CLOSED' ? 'Closed' :
+                backendCase.status === 'ESCALATED' ? 'Under Review' : 'Open'
     }
-])
+}
+
+/**
+ * Fetch cases from backend API
+ */
+const fetchCases = async () => {
+    loading.value = true
+    error.value = null
+
+    try {
+        const data = await getCases()
+        cases.value = data.map(transformCase)
+    } catch (e) {
+        console.error('Failed to fetch cases:', e)
+        error.value = e.message
+        // Fallback to empty array
+        cases.value = []
+    } finally {
+        loading.value = false
+    }
+}
+
+// Fetch cases on mount
+onMounted(() => {
+    fetchCases()
+})
 
 // Sort cases by risk score (high to low)
 const sortedCases = computed(() => {
@@ -322,10 +334,10 @@ const filteredCases = computed(() => {
 })
 
 const navigateToCase = (caseId) => {
-    navigateTo(`/cases/${caseId}`)
+    navigateTo(`/cases/${caseId}/investigate`)
 }
 
 const openCase = (caseId) => {
-    navigateTo(`/cases/${caseId}`)
+    navigateTo(`/cases/${caseId}/investigate`)
 }
 </script>

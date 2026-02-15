@@ -1,0 +1,86 @@
+[
+  {
+    "device_id": "DEV-001-TRUSTED",
+    "device_type": "desktop",
+    "os": "Windows 11",
+    "first_seen": "2025-06-15T09:05:00Z",
+    "last_seen": "2026-02-09T22:30:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-001"],
+    "device_fingerprint": "dfp_001_trusted",
+    "browser": "Chrome/120",
+    "screen_resolution": "1920x1080"
+  },
+  {
+    "device_id": "DEV-NEW-01",
+    "device_type": "desktop",
+    "os": "Windows 10",
+    "first_seen": "2026-02-10T08:10:15Z",
+    "last_seen": "2026-02-10T08:18:00Z",
+    "is_trusted": false,
+    "linked_accounts": ["ACC-001"],
+    "device_fingerprint": "dfp_new_01",
+    "browser": "Chrome/121",
+    "screen_resolution": "1366x768"
+  },
+  {
+    "device_id": "DEV-NEW-02",
+    "device_type": "desktop",
+    "os": "Linux Ubuntu",
+    "first_seen": "2026-02-10T08:14:55Z",
+    "last_seen": "2026-02-10T08:19:00Z",
+    "is_trusted": false,
+    "linked_accounts": ["ACC-001"],
+    "device_fingerprint": "dfp_new_02",
+    "browser": "Firefox/115",
+    "screen_resolution": "1920x1200"
+  },
+  {
+    "device_id": "DEV-SHARED-01",
+    "device_type": "desktop",
+    "os": "Windows 10",
+    "first_seen": "2025-03-10T11:05:00Z",
+    "last_seen": "2026-02-08T14:30:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-002", "ACC-005", "ACC-006", "ACC-007"],
+    "device_fingerprint": "dfp_shared_ring",
+    "browser": "Chrome/120",
+    "screen_resolution": "1920x1080"
+  },
+  {
+    "device_id": "DEV-003-MOBILE",
+    "device_type": "mobile",
+    "os": "iOS 17.3",
+    "first_seen": "2024-11-01T08:10:00Z",
+    "last_seen": "2026-02-05T10:00:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-003"],
+    "device_fingerprint": "dfp_003_iphone",
+    "browser": "Safari Mobile/17",
+    "screen_resolution": "1179x2556"
+  },
+  {
+    "device_id": "DEV-003-DESKTOP",
+    "device_type": "desktop",
+    "os": "macOS Sonoma",
+    "first_seen": "2024-11-02T09:00:00Z",
+    "last_seen": "2026-02-04T18:00:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-003"],
+    "device_fingerprint": "dfp_003_mac",
+    "browser": "Safari/17",
+    "screen_resolution": "2560x1600"
+  },
+  {
+    "device_id": "DEV-004-DESKTOP",
+    "device_type": "desktop",
+    "os": "Windows 11",
+    "first_seen": "2025-01-20T12:05:00Z",
+    "last_seen": "2026-02-10T07:30:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-004"],
+    "device_fingerprint": "dfp_004_win",
+    "browser": "Chrome/122",
+    "screen_resolution": "2560x1440"
+  }
+]

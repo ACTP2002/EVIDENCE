@@ -1,0 +1,877 @@
+[
+  {
+    "event_id": "evt_txn_001",
+    "event_time": "2026-02-07T10:05:17.233354Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_001",
+    "account_id": "a_001",
+    "session_id": "s_001",
+    "device_id": "d_001",
+    "ip": "100.100.100.1",
+    "data": {
+      "txn_id": "T-0001",
+      "amount": 50000,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "TSLAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_002",
+    "event_time": "2026-02-01T10:07:17.233354Z",
+    "stream_type": "transactional",
+    "event_type": "withdrawal",
+    "user_id": "u_001",
+    "account_id": "a_001",
+    "session_id": "s_001",
+    "device_id": "d_001",
+    "ip": "100.100.100.1",
+    "data": {
+      "txn_id": "T-0001",
+      "amount": 7000,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": ""
+    }
+  },
+  {
+    "event_id": "evt_txn_003",
+    "event_time": "2026-02-07T10:06:17.23Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_002",
+    "account_id": "a_002",
+    "session_id": "s_002",
+    "device_id": "d_002",
+    "ip": "100.100.100.1",
+    "data": {
+      "txn_id": "T-0002",
+      "amount": 10000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "TSLAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_004",
+    "event_time": "2026-02-07T10:06:20.45Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_003",
+    "account_id": "a_003",
+    "session_id": "s_003",
+    "device_id": "d_003",
+    "ip": "100.100.100.1",
+    "data": {
+      "txn_id": "T-0003",
+      "amount": 10000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "TSLAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_005",
+    "event_time": "2026-02-07T10:06:20.50Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_004",
+    "account_id": "a_004",
+    "session_id": "s_004",
+    "device_id": "d_004",
+    "ip": "100.100.100.1",
+    "data": {
+      "txn_id": "T-0004",
+      "amount": 10000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "TSLAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_006",
+    "event_time": "2026-02-07T10:06:21.02Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_005",
+    "account_id": "a_005",
+    "session_id": "s_005",
+    "device_id": "d_005",
+    "ip": "100.100.100.1",
+    "data": {
+      "txn_id": "T-0005",
+      "amount": 10000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "TSLAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_007",
+    "event_time": "2026-02-07T10:06:21.55Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_006",
+    "account_id": "a_006",
+    "session_id": "s_006",
+    "device_id": "d_006",
+    "ip": "100.100.100.1",
+    "data": {
+      "txn_id": "T-0006",
+      "amount": 10000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "TSLAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_101",
+    "event_time": "2026-02-10T03:45:12Z",
+    "stream_type": "transactional",
+    "event_type": "withdrawal",
+    "user_id": "u_007",
+    "account_id": "a_007",
+    "session_id": "s_113",
+    "device_id": "d_113",
+    "ip": "41.190.2.92",
+    "data": {
+      "txn_id": "T-0101",
+      "amount": 44190.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "destination": "external_wallet",
+      "wallet_address": "0x7a9f...3b21"
+    }
+  },
+  {
+    "event_id": "evt_txn_201",
+    "event_time": "2026-02-06T09:00:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_201",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0201",
+      "amount": 9450.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_202",
+    "event_time": "2026-02-06T14:15:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_201",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0202",
+      "amount": 9500.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_203",
+    "event_time": "2026-02-06T19:30:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_201",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0203",
+      "amount": 9400.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_204",
+    "event_time": "2026-02-07T09:00:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_202",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0204",
+      "amount": 9550.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_205",
+    "event_time": "2026-02-07T14:20:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_202",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0205",
+      "amount": 9350.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_206",
+    "event_time": "2026-02-08T09:10:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_203",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0206",
+      "amount": 9480.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_207",
+    "event_time": "2026-02-08T14:25:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_203",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0207",
+      "amount": 9520.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_208",
+    "event_time": "2026-02-09T09:05:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_204",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0208",
+      "amount": 9410.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_209",
+    "event_time": "2026-02-09T14:30:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_204",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0209",
+      "amount": 9490.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_210",
+    "event_time": "2026-02-10T09:00:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_205",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0210",
+      "amount": 9380.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_211",
+    "event_time": "2026-02-10T14:15:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_205",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0211",
+      "amount": 9570.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_212",
+    "event_time": "2026-02-11T09:10:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_206",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0212",
+      "amount": 9440.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_213",
+    "event_time": "2026-02-11T14:25:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_206",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0213",
+      "amount": 9510.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_214",
+    "event_time": "2026-02-12T09:00:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_207",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0214",
+      "amount": 9450.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_215",
+    "event_time": "2026-02-12T14:20:00Z",
+    "stream_type": "transactional",
+    "event_type": "deposit",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_207",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "txn_id": "T-0215",
+      "amount": 9350.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "source": "bank_transfer"
+    }
+  },
+  {
+    "event_id": "evt_txn_301",
+    "event_time": "2026-02-14T09:05:00Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0301",
+      "amount": 5000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_302",
+    "event_time": "2026-02-14T09:07:15Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0302",
+      "amount": 5010.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_303",
+    "event_time": "2026-02-14T09:07:18Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_304",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0303",
+      "amount": 5010.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_304",
+    "event_time": "2026-02-14T09:12:00Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0304",
+      "amount": 7500.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_305",
+    "event_time": "2026-02-14T09:14:22Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0305",
+      "amount": 7520.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_306",
+    "event_time": "2026-02-14T09:14:25Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_304",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0306",
+      "amount": 7520.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_307",
+    "event_time": "2026-02-14T09:20:00Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_304",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0307",
+      "amount": 7540.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_308",
+    "event_time": "2026-02-14T09:20:03Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0308",
+      "amount": 7540.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_309",
+    "event_time": "2026-02-14T09:28:00Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0309",
+      "amount": 10000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_310",
+    "event_time": "2026-02-14T09:30:15Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0310",
+      "amount": 10025.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_311",
+    "event_time": "2026-02-14T09:30:18Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_304",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0311",
+      "amount": 10025.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_312",
+    "event_time": "2026-02-14T09:45:00Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_304",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0312",
+      "amount": 10050.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_313",
+    "event_time": "2026-02-14T09:45:02Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "txn_id": "T-0313",
+      "amount": 10050.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_314",
+    "event_time": "2026-02-14T10:15:00Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_305",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0314",
+      "amount": 15000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_315",
+    "event_time": "2026-02-14T10:17:30Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_305",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0315",
+      "amount": 15075.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_316",
+    "event_time": "2026-02-14T10:17:33Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_306",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0316",
+      "amount": 15075.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_317",
+    "event_time": "2026-02-14T10:35:00Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_306",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0317",
+      "amount": 15100.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_318",
+    "event_time": "2026-02-14T10:35:03Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_305",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0318",
+      "amount": 15100.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_319",
+    "event_time": "2026-02-14T10:50:00Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_305",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0319",
+      "amount": 20000.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_320",
+    "event_time": "2026-02-14T10:52:45Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_305",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0320",
+      "amount": 20100.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_321",
+    "event_time": "2026-02-14T10:52:48Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_306",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0321",
+      "amount": 20100.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_322",
+    "event_time": "2026-02-14T11:10:00Z",
+    "stream_type": "transactional",
+    "event_type": "sell",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_306",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0322",
+      "amount": 20150.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  },
+  {
+    "event_id": "evt_txn_323",
+    "event_time": "2026-02-14T11:10:02Z",
+    "stream_type": "transactional",
+    "event_type": "buy",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_305",
+    "device_id": "d_303",
+    "ip": "120.28.45.67",
+    "data": {
+      "txn_id": "T-0323",
+      "amount": 20150.00,
+      "currency": "USD",
+      "channel": "web",
+      "result": "success",
+      "stock_id": "NVDAX"
+    }
+  }
+]

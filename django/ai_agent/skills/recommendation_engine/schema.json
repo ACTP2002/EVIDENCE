@@ -7,7 +7,9 @@
   "properties": {
     "recommendations": {
       "type": "array",
-      "description": "Prioritized list of recommendations",
+      "description": "Prioritized list of recommendations (3-5 required)",
+      "minItems": 3,
+      "maxItems": 5,
       "items": {
         "type": "object",
         "required": ["action", "priority", "reason", "category", "estimated_impact"],

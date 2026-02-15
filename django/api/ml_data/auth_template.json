@@ -1,0 +1,23 @@
+{
+  "event_id": "evt_auth_...",
+  "event_time": "2026-02-07T09:13:10.120Z",
+  "stream_type": "auth",
+  "event_type": "login_attempt",
+
+  "user_id": "u_001",
+  "account_id": "a_101",
+
+  "session_id": "s_789",
+  "device_id": "d_abcd",
+  "ip": "203.0.113.10",
+
+  "data": {
+    "method": "password",
+    "mfa_used": true,
+    "success": false,
+    "failure_reason": "wrong_password",
+    "risk_hint": "impossible_travel",
+    "user_agent": "Chrome/144",
+    "geo": { "country": "MY", "city": "Kuala Lumpur" }
+  }
+}

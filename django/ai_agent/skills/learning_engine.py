@@ -133,8 +133,8 @@ class LearningEngine:
         """Extract patterns from case."""
         patterns = []
 
-        # Extract alert combination patterns
-        alert_types = sorted([a.alert_type for a in case_context.alerts])
+        # Extract alert combination patterns (using signal field from new schema)
+        alert_types = sorted([a.signal for a in case_context.alerts if a.signal])
         if len(alert_types) > 1:
             pattern_id = f"COMBO-{'-'.join(alert_types[:3])}"
             correlation = 0.5  # Default neutral
@@ -153,47 +153,62 @@ class LearningEngine:
                 last_updated=datetime.now(timezone.utc).isoformat()
             ))
 
-        # Extract behavioral patterns
-        login_flags = []
+        # Extract behavioral patterns from login data (new schema uses data.success, data.method)
+        login_indicators = []
         for login in case_context.logins:
-            login_flags.extend(login.risk_flags)
-        login_flags = list(set(login_flags))
+            if login.data:
+                if not login.data.success:
+                    login_indicators.append("failed_login")
+                if login.data.risk_hint:
+                    login_indicators.append(login.data.risk_hint)
+                if login.data.geo and login.data.geo.country:
+                    login_indicators.append(f"country_{login.data.geo.country}")
+        login_indicators = list(set(login_indicators))
 
-        if login_flags:
+        if login_indicators:
             patterns.append(PatternLearning(
-                pattern_id=f"LOGIN-{'-'.join(sorted(login_flags)[:3])}",
+                pattern_id=f"LOGIN-{'-'.join(sorted(login_indicators)[:3])}",
                 pattern_type="login_behavior",
-                indicators=login_flags,
+                indicators=login_indicators,
                 outcome_correlation=0.5 if outcome != InvestigationOutcome.FALSE_POSITIVE else -0.4,
                 sample_size=1,
                 confidence=0.3,
                 last_updated=datetime.now(timezone.utc).isoformat()
             ))
 
-        # Extract transaction patterns
-        txn_flags = []
+        # Extract transaction patterns (new schema uses event_type, data.amount)
+        txn_indicators = []
         for txn in case_context.transactions:
-            txn_flags.extend(txn.risk_flags)
-        txn_flags = list(set(txn_flags))
+            if txn.event_type:
+                txn_indicators.append(f"type_{txn.event_type}")
+            if txn.data and txn.data.amount and txn.data.amount > 10000:
+                txn_indicators.append("high_value")
+            if txn.data and txn.data.stock_id:
+                txn_indicators.append(f"stock_{txn.data.stock_id}")
+        txn_indicators = list(set(txn_indicators))
 
-        if txn_flags:
+        if txn_indicators:
             patterns.append(PatternLearning(
-                pattern_id=f"TXN-{'-'.join(sorted(txn_flags)[:3])}",
+                pattern_id=f"TXN-{'-'.join(sorted(txn_indicators)[:3])}",
                 pattern_type="transaction_behavior",
-                indicators=txn_flags,
+                indicators=txn_indicators,
                 outcome_correlation=0.6 if outcome == InvestigationOutcome.CONFIRMED_FRAUD else 0.0,
                 sample_size=1,
                 confidence=0.3,
                 last_updated=datetime.now(timezone.utc).isoformat()
             ))
 
-        # Extract network patterns
-        if len(case_context.network_connections) >= 3:
-            conn_types = list(set(c.connection_type for c in case_context.network_connections))
+        # Extract network patterns (new schema uses network_events)
+        if len(case_context.network_events) >= 3:
+            vpn_count = sum(1 for n in case_context.network_events if n.data and n.data.vpn_suspected)
+            unique_ips = len(set(n.ip for n in case_context.network_events if n.ip))
+            network_indicators = [f"events_{len(case_context.network_events)}", f"unique_ips_{unique_ips}"]
+            if vpn_count > 0:
+                network_indicators.append(f"vpn_count_{vpn_count}")
             patterns.append(PatternLearning(
-                pattern_id=f"NETWORK-{len(case_context.network_connections)}",
+                pattern_id=f"NETWORK-{len(case_context.network_events)}",
                 pattern_type="network_cluster",
-                indicators=conn_types + [f"size_{len(case_context.network_connections)}"],
+                indicators=network_indicators,
                 outcome_correlation=0.7 if outcome == InvestigationOutcome.CONFIRMED_FRAUD else 0.2,
                 sample_size=1,
                 confidence=0.4,
@@ -214,9 +229,10 @@ class LearningEngine:
         if outcome == InvestigationOutcome.FALSE_POSITIVE:
             # Suggest ways to reduce false positives
 
-            # Check for travel-related false positive
+            # Check for travel-related false positive (new schema uses data.risk_hint)
             travel_related = any(
-                "impossible_travel" in l.risk_flags for l in case_context.logins
+                l.data and l.data.risk_hint and "travel" in l.data.risk_hint.lower()
+                for l in case_context.logins
             )
             if travel_related:
                 insights.append(LearningInsight(
@@ -231,18 +247,25 @@ class LearningEngine:
                     ]
                 ))
 
-            # Check for amount-based false positive
-            if case_context.account and case_context.account.account_age_days > 365:
-                insights.append(LearningInsight(
-                    insight_type="pattern_improvement",
-                    description="Established account flagged for amount anomaly",
-                    impact_estimate="Could improve precision for mature accounts",
-                    recommendation="Consider adjusting thresholds based on account tenure",
-                    supporting_evidence=[
-                        f"Account age: {case_context.account.account_age_days} days",
-                        "False positive on established account"
-                    ]
-                ))
+            # Check for amount-based false positive (new schema uses profile.created_at)
+            if case_context.profile and case_context.profile.created_at:
+                try:
+                    from datetime import datetime
+                    created = datetime.fromisoformat(case_context.profile.created_at.replace("Z", "+00:00"))
+                    account_age_days = (datetime.now(timezone.utc) - created).days
+                    if account_age_days > 365:
+                        insights.append(LearningInsight(
+                            insight_type="pattern_improvement",
+                            description="Established account flagged for amount anomaly",
+                            impact_estimate="Could improve precision for mature accounts",
+                            recommendation="Consider adjusting thresholds based on account tenure",
+                            supporting_evidence=[
+                                f"Account age: {account_age_days} days",
+                                "False positive on established account"
+                            ]
+                        ))
+                except (ValueError, TypeError):
+                    pass  # Skip if date parsing fails
 
         elif outcome == InvestigationOutcome.CONFIRMED_FRAUD:
             # Suggest ways to improve detection
@@ -261,15 +284,17 @@ class LearningEngine:
                         ]
                     ))
 
-            # Check if network analysis could have helped earlier
-            if case_context.network_connections:
+            # Check if network analysis could have helped earlier (new schema uses network_events)
+            if case_context.network_events:
+                vpn_events = sum(1 for n in case_context.network_events if n.data and n.data.vpn_suspected)
                 insights.append(LearningInsight(
                     insight_type="pattern_improvement",
-                    description="Network connections present in confirmed fraud case",
+                    description="Network events present in confirmed fraud case",
                     impact_estimate="Network-based detection could catch similar cases",
                     recommendation="Weight network signals more heavily in risk scoring",
                     supporting_evidence=[
-                        f"{len(case_context.network_connections)} network connections found"
+                        f"{len(case_context.network_events)} network events found",
+                        f"{vpn_events} VPN-suspected connections"
                     ]
                 ))
 
@@ -282,20 +307,27 @@ class LearningEngine:
         notes: str = None
     ) -> FeedbackRecord:
         """Record investigation feedback."""
-        # Extract indicators by outcome
+        # Extract indicators by outcome (new schema uses different fields)
         fp_indicators = []
         fraud_indicators = []
 
-        all_flags = []
+        all_indicators = []
         for login in case_context.logins:
-            all_flags.extend(login.risk_flags)
+            if login.data and login.data.risk_hint:
+                all_indicators.append(login.data.risk_hint)
+            if login.data and not login.data.success:
+                all_indicators.append("failed_login")
         for txn in case_context.transactions:
-            all_flags.extend(txn.risk_flags)
+            if txn.event_type:
+                all_indicators.append(f"txn_{txn.event_type}")
+        for net in case_context.network_events:
+            if net.data and net.data.vpn_suspected:
+                all_indicators.append("vpn_suspected")
 
         if outcome == InvestigationOutcome.FALSE_POSITIVE:
-            fp_indicators = list(set(all_flags))
+            fp_indicators = list(set(all_indicators))
         elif outcome == InvestigationOutcome.CONFIRMED_FRAUD:
-            fraud_indicators = list(set(all_flags))
+            fraud_indicators = list(set(all_indicators))
 
         record = FeedbackRecord(
             case_id=case_context.case_id,
@@ -303,7 +335,7 @@ class LearningEngine:
             feedback_timestamp=datetime.now(timezone.utc).isoformat(),
             investigator_id=None,
             notes=notes,
-            patterns_identified=[a.alert_type for a in case_context.alerts],
+            patterns_identified=[a.signal for a in case_context.alerts if a.signal],
             false_positive_indicators=fp_indicators,
             confirmed_fraud_indicators=fraud_indicators
         )

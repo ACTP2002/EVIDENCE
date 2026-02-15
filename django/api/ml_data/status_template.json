@@ -1,0 +1,31 @@
+{
+  "user_id": "u_100",
+  "as_of": "2026-02-07T09:15:00Z",
+  "txn": {
+    "count_5m": 0,
+    "count_1h": 1,
+    "count_1d": 9,
+    "amount_in_5m": 13.41,
+    "amount_in_1h": 155.17,
+    "amount_in_1d": 975.16,
+    "amount_in_30d": 10000000,
+    "amount_out_5m": 13.41,
+    "amount_out_1h": 155.17,
+    "amount_out_1d": 975.16,
+    "amount_out_30d": 10000000
+  },
+  "auth": {
+    "login_count_5m": 0,
+    "failed_login_5m": 0,
+    "failed_login_1h": 0,
+    "new_device_1d": 0,
+    "new_ip_1d": 1,
+    "last_login_ts": "2026-02-07T09:10:17.233354Z"
+  },
+  "network": {
+    "unique_ip_5m": 1,
+    "geo_change_1d": 0,
+    "rtt_p95_5m": 72,
+    "packet_loss_5m": 1.03
+  }
+}

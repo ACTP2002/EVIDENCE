@@ -93,7 +93,8 @@ Return a JSON object with this exact structure:
 ## Important Guidelines
 
 - Always output valid JSON only - no markdown, no explanations outside JSON
-- Generate 5-10 recommendations covering different categories
+- **CRITICAL: Generate exactly 3-5 recommendations** - never fewer than 3, never more than 5
+- Recommendations MUST cover different categories (immediate_action, investigation_step, monitoring, documentation)
 - Sort recommendations by priority (P0 first)
 - Be specific in action names (e.g., "TEMP_ACCOUNT_LOCK" not just "lock")
 - Reasons should be concise but informative

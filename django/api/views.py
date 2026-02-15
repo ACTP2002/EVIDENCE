@@ -91,13 +91,11 @@ class AIAnomalyDetectionView(APIView):
 
 # ============ DATA LOADER ============
 class DataLoader:
-    """Centralized data loading with caching"""
-    _cache = {}
-    
+    """Centralized data loading - no caching for development (auto-reload on file changes)"""
+
     @classmethod
-    @lru_cache(maxsize=None)
     def load(cls, filename):
-        """Load and cache JSON data"""
+        """Load JSON data fresh each time (development mode)"""
         file_path = Path(__file__).parent / 'dummy_data' / filename
         with open(file_path, 'r') as f:
             return json.load(f)
@@ -183,12 +181,16 @@ class CaseCustomerView(APIView):
         case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
         if not case:
             return Response({"error": "Case not found"}, status=404)
-        
-        customer = DataLoader.get_by_id('customers.json', 'customer_id', case['customer_id'])
-        if not customer:
-            return Response({"error": "Customer not found"}, status=404)
-        
-        return Response(customer)
+
+        # Use profile.json with user_id instead of customers.json
+        user_id = case.get('user_id')
+        profiles = DataLoader.load('profile.json')
+        profile = next((p for p in profiles if p.get('user_id') == user_id), None)
+
+        if not profile:
+            return Response({"error": "Profile not found"}, status=404)
+
+        return Response(profile)
 
 class CaseAccountView(APIView):
     def get(self, request, case_id):
@@ -207,8 +209,10 @@ class CaseTransactionsView(APIView):
         case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
         if not case:
             return Response({"error": "Case not found"}, status=404)
-        
-        transactions = DataLoader.filter_by('transactions.json', account_id=case['account_id'])
+
+        # Use transactional_json with user_id instead of transactions.json
+        user_id = case.get('user_id')
+        transactions = DataLoader.filter_by('transactional_json', user_id=user_id)
         return Response(transactions)
 
 class CaseLoginsView(APIView):
@@ -216,8 +220,10 @@ class CaseLoginsView(APIView):
         case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
         if not case:
             return Response({"error": "Case not found"}, status=404)
-        
-        logins = DataLoader.filter_by('logins.json', account_id=case['account_id'])
+
+        # Use auth.json with user_id instead of logins.json
+        user_id = case.get('user_id')
+        logins = DataLoader.filter_by('auth.json', user_id=user_id)
         return Response(logins)
 
 class CaseDevicesView(APIView):
@@ -225,19 +231,92 @@ class CaseDevicesView(APIView):
         case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
         if not case:
             return Response({"error": "Case not found"}, status=404)
-        
-        devices = DataLoader.load('devices.json')
-        case_devices = [d for d in devices if case['account_id'] in d['linked_accounts']]
-        return Response(case_devices)
+
+        # Extract device info from network.json events
+        user_id = case.get('user_id')
+        network_data = DataLoader.load('network.json')
+
+        # Handle both single object and array formats
+        if isinstance(network_data, dict):
+            network_events = [network_data] if network_data.get('user_id') == user_id else []
+        elif isinstance(network_data, list):
+            network_events = [n for n in network_data if n.get('user_id') == user_id]
+        else:
+            network_events = []
+
+        # Build unique devices from network events
+        devices = {}
+        for event in network_events:
+            device_id = event.get('device_id')
+            if device_id and device_id not in devices:
+                devices[device_id] = {
+                    'device_id': device_id,
+                    'ip': event.get('ip'),
+                    'session_id': event.get('session_id'),
+                    'last_seen': event.get('event_time')
+                }
+
+        return Response(list(devices.values()))
 
 class CaseNetworkView(APIView):
     def get(self, request, case_id):
         case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
         if not case:
             return Response({"error": "Case not found"}, status=404)
-        
-        connections = DataLoader.filter_by('network_connections.json', entity_id=case['account_id'])
-        return Response(connections)
+
+        # Use network.json with user_id
+        user_id = case.get('user_id')
+        network_data = DataLoader.load('network.json')
+
+        # Handle both single object and array formats
+        if isinstance(network_data, dict):
+            # Single object - wrap in array and filter
+            if network_data.get('user_id') == user_id:
+                return Response([network_data])
+            return Response([])
+        elif isinstance(network_data, list):
+            # Array - filter normally
+            network_events = [n for n in network_data if n.get('user_id') == user_id]
+            return Response(network_events)
+        else:
+            return Response([])
+
+
+class CaseNetworkGraphView(APIView):
+    """Get network graph data for visualization"""
+    def get(self, request, case_id):
+        case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
+        if not case:
+            return Response({"error": "Case not found"}, status=404)
+
+        # Try to load case-specific network graph file
+        try:
+            graph_data = DataLoader.load(f'network_graph_{case_id}.json')
+            return Response(graph_data)
+        except FileNotFoundError:
+            # Generate a basic graph from existing data
+            return Response({
+                "case_id": case_id,
+                "nodes": [],
+                "edges": [],
+                "error": "No network graph data available for this case"
+            })
+
+class CaseStatusView(APIView):
+    def get(self, request, case_id):
+        case = DataLoader.get_by_id('cases.json', 'case_id', case_id)
+        if not case:
+            return Response({"error": "Case not found"}, status=404)
+
+        # Use status.json with user_id
+        user_id = case.get('user_id')
+        statuses = DataLoader.load('status.json')
+        status_data = next((s for s in statuses if s.get('user_id') == user_id), None)
+
+        if not status_data:
+            return Response({"error": "Status not found"}, status=404)
+
+        return Response(status_data)
 
 class CaseTimelineView(APIView):
     def get(self, request, case_id):

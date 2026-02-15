@@ -1,33 +1,158 @@
 [
-    {
-      "user_id": "u_001",
-      "as_of": "2026-02-07T09:15:00Z",
-      "txn": {
-        "count_5m": 1,
-        "count_1h": 1,
-        "count_1d": 1,
-        "amount_in_5m": 0,
-        "amount_in_1h": 0,
-        "amount_in_1d": 0,
-	    "amount_in_30d": 52000,
-        "amount_out_5m": 50000,
-        "amount_out_1h": 50000,
-        "amount_out_1d": 50000,
-	      "amount_out_30d": 50000
-      },
-      "auth": {
-        "login_count_1h": 1,
-        "failed_login_5m": 0,
-        "failed_login_1h": 0,
-        "new_device_1d": 1,
-        "new_ip_1d": 1,
-        "last_login_ts": "2026-02-07T09:10:17.233354Z"
-      },
-      "network": {
-        "unique_ip_5m": 1,
-        "geo_change_1d": 0,
-        "rtt_p95_5m": 72,
-        "packet_loss_5m": 1.03
-      }
+  {
+    "user_id": "u_001",
+    "as_of": "2026-02-07T09:15:00Z",
+    "txn": {
+      "count_5m": 1,
+      "count_1h": 1,
+      "count_1d": 1,
+      "amount_in_5m": 0,
+      "amount_in_1h": 0,
+      "amount_in_1d": 0,
+      "amount_in_30d": 52000,
+      "amount_out_5m": 57000,
+      "amount_out_1h": 57000,
+      "amount_out_1d": 57000,
+      "amount_out_30d": 57000
+    },
+    "auth": {
+      "login_count_1h": 5,
+      "failed_login_5m": 4,
+      "failed_login_1h": 4,
+      "new_device_1d": 5,
+      "new_ip_1d": 5,
+      "last_login_ts": "2026-02-07T09:10:17.233354Z"
+    },
+    "network": {
+      "unique_ip_5m": 5,
+      "geo_change_1d": 4,
+      "rtt_p95_5m": 72,
+      "packet_loss_5m": 1.03
     }
+  },
+  {
+    "user_id": "u_007",
+    "as_of": "2026-02-10T03:50:00Z",
+    "txn": {
+      "count_5m": 1,
+      "count_1h": 1,
+      "count_1d": 1,
+      "amount_in_5m": 0,
+      "amount_in_1h": 0,
+      "amount_in_1d": 0,
+      "amount_in_30d": 45000,
+      "amount_out_5m": 44190,
+      "amount_out_1h": 44190,
+      "amount_out_1d": 44190,
+      "amount_out_30d": 44190
+    },
+    "auth": {
+      "login_count_1h": 13,
+      "failed_login_5m": 12,
+      "failed_login_1h": 12,
+      "new_device_1d": 7,
+      "new_ip_1d": 4,
+      "last_login_ts": "2026-02-10T02:31:45Z"
+    },
+    "network": {
+      "unique_ip_5m": 4,
+      "geo_change_1d": 4,
+      "rtt_p95_5m": 365,
+      "packet_loss_5m": 4.1
+    }
+  },
+  {
+    "user_id": "u_008",
+    "as_of": "2026-02-12T18:45:00Z",
+    "txn": {
+      "count_5m": 0,
+      "count_1h": 1,
+      "count_1d": 2,
+      "amount_in_5m": 0,
+      "amount_in_1h": 9350,
+      "amount_in_1d": 18800,
+      "amount_in_7d": 141750,
+      "amount_in_30d": 141750,
+      "amount_out_5m": 0,
+      "amount_out_1h": 0,
+      "amount_out_1d": 0,
+      "amount_out_30d": 0
+    },
+    "auth": {
+      "login_count_1h": 1,
+      "failed_login_5m": 0,
+      "failed_login_1h": 0,
+      "new_device_1d": 0,
+      "new_ip_1d": 0,
+      "last_login_ts": "2026-02-12T08:35:00Z"
+    },
+    "network": {
+      "unique_ip_5m": 1,
+      "geo_change_1d": 0,
+      "rtt_p95_5m": 85,
+      "packet_loss_5m": 0.3
+    }
+  },
+  {
+    "user_id": "u_009",
+    "as_of": "2026-02-14T11:15:00Z",
+    "txn": {
+      "count_5m": 4,
+      "count_1h": 12,
+      "count_1d": 23,
+      "amount_in_5m": 35250,
+      "amount_in_1h": 87615,
+      "amount_in_1d": 175230,
+      "amount_in_30d": 175230,
+      "amount_out_5m": 35175,
+      "amount_out_1h": 87505,
+      "amount_out_1d": 175010,
+      "amount_out_30d": 175010
+    },
+    "auth": {
+      "login_count_1h": 2,
+      "failed_login_5m": 0,
+      "failed_login_1h": 0,
+      "new_device_1d": 3,
+      "new_ip_1d": 2,
+      "last_login_ts": "2026-02-14T10:00:00Z"
+    },
+    "network": {
+      "unique_ip_5m": 1,
+      "geo_change_1d": 1,
+      "rtt_p95_5m": 118,
+      "packet_loss_5m": 0.4
+    }
+  },
+  {
+    "user_id": "u_010",
+    "as_of": "2026-02-14T11:15:00Z",
+    "txn": {
+      "count_5m": 4,
+      "count_1h": 11,
+      "count_1d": 22,
+      "amount_in_5m": 35175,
+      "amount_in_1h": 87445,
+      "amount_in_1d": 174890,
+      "amount_in_30d": 174890,
+      "amount_out_5m": 35250,
+      "amount_out_1h": 87550,
+      "amount_out_1d": 175100,
+      "amount_out_30d": 175100
+    },
+    "auth": {
+      "login_count_1h": 2,
+      "failed_login_5m": 0,
+      "failed_login_1h": 0,
+      "new_device_1d": 3,
+      "new_ip_1d": 2,
+      "last_login_ts": "2026-02-14T10:01:00Z"
+    },
+    "network": {
+      "unique_ip_5m": 1,
+      "geo_change_1d": 1,
+      "rtt_p95_5m": 120,
+      "packet_loss_5m": 0.4
+    }
+  }
 ]

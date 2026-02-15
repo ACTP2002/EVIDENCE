@@ -13,6 +13,8 @@ urlpatterns = [
     path('cases/<str:case_id>/logins/', views.CaseLoginsView.as_view(), name='case-logins'),
     path('cases/<str:case_id>/devices/', views.CaseDevicesView.as_view(), name='case-devices'),
     path('cases/<str:case_id>/network/', views.CaseNetworkView.as_view(), name='case-network'),
+    path('cases/<str:case_id>/network-graph/', views.CaseNetworkGraphView.as_view(), name='case-network-graph'),
+    path('cases/<str:case_id>/status/', views.CaseStatusView.as_view(), name='case-status'),
     path('cases/<str:case_id>/timeline/', views.CaseTimelineView.as_view(), name='case-timeline'),
     path('cases/<str:case_id>/notes/', views.CaseNotesView.as_view(), name='case-notes'),
 

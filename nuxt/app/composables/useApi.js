@@ -6,6 +6,20 @@ export const useApi = () => {
   const baseUrl = 'http://localhost:8000/api'
 
   /**
+   * Get all cases for the cases list page
+   * @returns {Promise<Array>} List of cases
+   */
+  const getCases = async () => {
+    const response = await fetch(`${baseUrl}/cases/`)
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch cases: ${response.status}`)
+    }
+
+    return response.json()
+  }
+
+  /**
    * Send a message to SENTINEL chat agent
    * @param {string} caseId - The case ID (e.g., 'CASE-2025-88412')
    * @param {string} message - User's message
@@ -88,6 +102,21 @@ export const useApi = () => {
   }
 
   /**
+   * Get case network graph data for visualization
+   * @param {string} caseId - The case ID
+   * @returns {Promise<Object>} Network graph with nodes and edges
+   */
+  const getCaseNetworkGraph = async (caseId) => {
+    const response = await fetch(`${baseUrl}/cases/${caseId}/network-graph/`)
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch network graph: ${response.status}`)
+    }
+
+    return response.json()
+  }
+
+  /**
    * Get customer KYC data
    * @param {string} caseId - The case ID
    * @returns {Promise<Object>} Customer data
@@ -102,12 +131,56 @@ export const useApi = () => {
     return response.json()
   }
 
+  /**
+   * Get case status/aggregations
+   * @param {string} caseId - The case ID
+   * @returns {Promise<Object>} Status aggregations
+   */
+  const getCaseStatus = async (caseId) => {
+    const response = await fetch(`${baseUrl}/cases/${caseId}/status/`)
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch status: ${response.status}`)
+    }
+
+    return response.json()
+  }
+
+  /**
+   * Fetch all investigate page data in parallel
+   * @param {string} caseId - The case ID
+   * @returns {Promise<Object>} All case data for investigate page
+   */
+  const getInvestigateData = async (caseId) => {
+    const [caseData, transactions, logins, network, customer, status] = await Promise.all([
+      getCaseData(caseId),
+      getCaseTransactions(caseId),
+      getCaseLogins(caseId),
+      getCaseNetwork(caseId),
+      getCaseCustomer(caseId),
+      getCaseStatus(caseId)
+    ])
+
+    return {
+      caseData,
+      transactions,
+      logins,
+      network,
+      customer,
+      status
+    }
+  }
+
   return {
+    getCases,
     chatWithSentinel,
     getCaseData,
     getCaseTransactions,
     getCaseLogins,
     getCaseNetwork,
-    getCaseCustomer
+    getCaseNetworkGraph,
+    getCaseCustomer,
+    getCaseStatus,
+    getInvestigateData
   }
 }

@@ -232,93 +232,134 @@ class SentinelChatAgent:
         return self.case_context
 
     def _format_context_for_prompt(self) -> Dict[str, Any]:
-        """Format case context into prompt template variables."""
+        """Format case context into prompt template variables (updated for new ML output schema)."""
         ctx = self.case_context
 
-        # Format alerts
+        # Format alerts - using new schema fields: signal, severity, confidence, evidence
         if ctx.alerts:
-            alerts_formatted = "\n".join([
-                f"- **[{a.severity.upper()}]** {a.alert_type}: {a.description} (Score: {a.risk_score})"
-                for a in ctx.alerts
-            ])
+            alerts_list = []
+            for a in ctx.alerts:
+                # Get first evidence explanation or use signal as description
+                description = a.signal
+                if a.evidence and len(a.evidence) > 0:
+                    description = a.evidence[0].explanation or a.signal
+                alerts_list.append(
+                    f"- **[{a.severity.upper()}]** {a.signal}: {description} (Confidence: {a.confidence})"
+                )
+            alerts_formatted = "\n".join(alerts_list)
         else:
             alerts_formatted = "- No alerts on record"
 
-        # Format KYC
-        kyc = ctx.customer
-        if kyc:
-            declared_income_str = f"${kyc.declared_income:,.2f} {kyc.income_currency or 'USD'}" if kyc.declared_income else "Not declared"
-            kyc_formatted = f"""- **Name:** {kyc.full_name}
-- **Email:** {kyc.email}
-- **Country:** {kyc.country}
-- **Verification Status:** {kyc.verification_status}
-- **Risk Rating:** {kyc.risk_rating}
-- **PEP Status:** {"Yes" if kyc.pep_status else "No"}
-- **Sanctions Hit:** {"Yes" if kyc.sanctions_hit else "No"}
-- **Declared Income:** {declared_income_str}"""
+        # Format KYC - using new schema: profile.kyc, profile.risk
+        profile = ctx.profile
+        if profile and profile.kyc:
+            kyc = profile.kyc
+            risk = profile.risk
+            try:
+                income_val = float(kyc.income) if kyc.income else 0
+                declared_income_str = f"${income_val:,.2f} USD" if income_val > 0 else "Not declared"
+            except (ValueError, TypeError):
+                declared_income_str = str(kyc.income) if kyc.income else "Not declared"
+
+            kyc_formatted = f"""- **User ID:** {profile.user_id}
+- **Country:** {kyc.residence_country or kyc.nationality or 'Unknown'}
+- **Nationality:** {kyc.nationality or 'Unknown'}
+- **KYC Level:** {kyc.kyc_level or 'Unknown'}
+- **Occupation:** {kyc.occupation or 'Unknown'}
+- **Risk Tier:** {risk.risk_tier if risk else 'Unknown'}
+- **PEP Status:** {"Yes" if risk and risk.pep_flag else "No"}
+- **Sanctions Status:** {risk.sanctions_status if risk else 'Clear'}
+- **Declared Income:** {declared_income_str}
+- **Source of Funds:** {kyc.source_of_funds or 'Not specified'}"""
         else:
             kyc_formatted = "- KYC data not available"
 
-        # Format transactions (last 20)
+        # Format transactions (last 20) - using new schema: event_time, event_type, data.amount
         if ctx.transactions:
-            transactions_formatted = "\n".join([
-                f"- {t.timestamp[:10]} | {t.type.upper():12} | ${t.amount:>10,.2f} | {t.status} | {', '.join(t.risk_flags) if t.risk_flags else 'No flags'}"
-                for t in sorted(ctx.transactions, key=lambda x: x.timestamp, reverse=True)[:20]
-            ])
+            txn_list = []
+            for t in sorted(ctx.transactions, key=lambda x: x.event_time, reverse=True)[:20]:
+                amount = t.data.amount if t.data else 0
+                result = t.data.result if t.data else "unknown"
+                stock_id = t.data.stock_id if t.data else ""
+                stock_info = f" [{stock_id}]" if stock_id else ""
+                txn_list.append(
+                    f"- {t.event_time[:10]} | {t.event_type.upper():12} | ${amount:>10,.2f} | {result}{stock_info}"
+                )
+            transactions_formatted = "\n".join(txn_list)
         else:
             transactions_formatted = "- No transactions on record"
 
-        # Format logins (last 10)
+        # Format logins (last 10) - using new schema: event_time, ip, data.geo, data.success
         if ctx.logins:
-            logins_formatted = "\n".join([
-                f"- {l.timestamp[:16]} | {l.ip_address:15} | {l.location_country} | {'VPN' if l.is_vpn else ''} {'FAILED' if not l.login_success else 'OK'}"
-                for l in sorted(ctx.logins, key=lambda x: x.timestamp, reverse=True)[:10]
-            ])
+            login_list = []
+            for l in sorted(ctx.logins, key=lambda x: x.event_time, reverse=True)[:10]:
+                country = l.data.geo.country if l.data and l.data.geo else "Unknown"
+                success = l.data.success if l.data else True
+                method = l.data.method if l.data else "unknown"
+                status = "OK" if success else "FAILED"
+                login_list.append(
+                    f"- {l.event_time[:16]} | {l.ip:15} | {country} | {method} | {status}"
+                )
+            logins_formatted = "\n".join(login_list)
         else:
             logins_formatted = "- No login history"
 
-        # Format devices
-        if ctx.devices:
-            devices_formatted = "\n".join([
-                f"- {d.device_id[:20]} | {d.device_type} | {d.os} | {'Trusted' if d.is_trusted else 'Untrusted'} | Linked to {len(d.linked_accounts)} accounts"
-                for d in ctx.devices
-            ])
-        else:
-            devices_formatted = "- No device data"
+        # Format devices from network events - extract unique devices
+        unique_devices = {}
+        for n in ctx.network_events:
+            if n.device_id and n.device_id not in unique_devices:
+                vpn = "VPN suspected" if n.data and n.data.vpn_suspected else "Clean"
+                unique_devices[n.device_id] = f"- {n.device_id[:20]} | IP: {n.ip} | {vpn}"
+        devices_formatted = "\n".join(unique_devices.values()) if unique_devices else "- No device data"
 
-        # Format network connections
-        if ctx.network_connections:
-            network_formatted = "\n".join([
-                f"- {c.connection_type}: Connected to {c.connected_entity_id} ({c.connection_strength} strength) - {c.details}"
-                for c in ctx.network_connections
-            ])
+        # Format network events (VPN, geo anomalies)
+        if ctx.network_events:
+            network_list = []
+            for n in ctx.network_events[:10]:
+                vpn = "VPN DETECTED" if n.data and n.data.vpn_suspected else ""
+                country = n.data.geo.country if n.data and n.data.geo else "Unknown"
+                rtt = n.data.rtt_ms_p95 if n.data else 0
+                network_list.append(
+                    f"- {n.event_time[:16]} | {n.ip:15} | {country} | RTT: {rtt}ms | {vpn}"
+                )
+            network_formatted = "\n".join(network_list)
         else:
-            network_formatted = "- No network connections detected"
+            network_formatted = "- No network events recorded"
 
-        # Format prior cases
-        if ctx.prior_cases:
-            prior_cases_formatted = "\n".join([
-                f"- {p.case_id} ({p.case_date[:10]}): {p.case_type} - **{p.outcome}**"
-                for p in ctx.prior_cases
-            ])
-        else:
-            prior_cases_formatted = "- No prior investigation cases"
+        # Prior cases - not in new schema, show as N/A
+        prior_cases_formatted = "- No prior investigation cases in current data"
 
-        # Account data
-        account = ctx.account
+        # Account and status data
+        account = profile.account if profile else None
+        status = ctx.status
+
+        # Calculate deposits/withdrawals from status
+        total_deposits = status.txn.amount_in_30d if status and status.txn else 0
+        total_withdrawals = status.txn.amount_out_30d if status and status.txn else 0
+        total_trades = status.txn.count_1d if status and status.txn else 0
+
+        # Calculate deposit to income ratio
+        try:
+            income = float(profile.kyc.income) if profile and profile.kyc and profile.kyc.income else 0
+            if income > 0 and total_deposits > 0:
+                deposit_ratio = f"{total_deposits / income:.1f}x"
+            else:
+                deposit_ratio = "N/A"
+        except (ValueError, TypeError):
+            deposit_ratio = "N/A"
 
         return {
             "case_id": self.case_id,
-            "created_at": ctx.created_at[:10] if ctx.created_at else "Unknown",
-            "customer_name": kyc.full_name if kyc else "Unknown",
-            "customer_id": kyc.customer_id if kyc else "Unknown",
-            "account_id": account.account_id if account else "Unknown",
-            "account_status": account.account_status if account else "Unknown",
-            "account_age_days": account.account_age_days if account else 0,
-            "total_deposits": account.total_deposits_30d if account else 0,
-            "total_withdrawals": account.total_withdrawals_30d if account else 0,
-            "deposit_to_income_ratio": f"{account.deposit_to_income_ratio:.1f}x" if account and account.deposit_to_income_ratio else "N/A",
-            "total_trades": account.total_trades_30d if account else 0,
+            "created_at": ctx.case_info.opened_at[:10] if ctx.case_info and ctx.case_info.opened_at else "Unknown",
+            "customer_name": ctx.user_id,
+            "customer_id": ctx.user_id,
+            "account_id": account.account_id if account else ctx.user_id,
+            "account_status": account.account_status if account else (profile.account_status if profile else "Unknown"),
+            "account_age_days": 0,  # Not available in new schema
+            "total_deposits": total_deposits,
+            "total_withdrawals": total_withdrawals,
+            "deposit_to_income_ratio": deposit_ratio,
+            "total_trades": total_trades,
             "alerts_formatted": alerts_formatted,
             "kyc_formatted": kyc_formatted,
             "transactions_formatted": transactions_formatted,

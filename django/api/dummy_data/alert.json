@@ -1,85 +1,332 @@
 [
-    {
-  "alert_id": "A-0001",
-  "event_time": "2026-02-07T10:07:55Z",
-  "txn_id": "T-0001A",
-  "user_id": "u_001",
-  "is_anomaly": 1,
-  "detector_type": "RULE_BASED",
-  "signal": "Monetary Deviation",
-  "severity": "LOW",
-  "confidence": "0.77658",
-  "evidence": [
-    {
-      "risk_category": "Monetary Deviation",
-      "feature": "ammount_out_in_1d",
-      "impact": "reduced",
-      "contribution": -0.0055617871694266,
-      "explanation": "Recent transaction amount exceed threshold value of 500.00."
-    }
-  ]
-},
-    {
-  "alert_id": "A-0002",
-  "event_time": "2026-02-08T05:18:00Z",
-  "txn_id": "T-0001B",
-  "user_id": "u_001",
-  "is_anomaly": 1,
-  "detector_type": "BEHAVIOR",
-  "signal": "Liquidity Shift",
-  "severity": "MED",
-  "confidence": "0.77658",
-  "evidence": [
-    {
-      "risk_category": "Liquidity Shift",
-      "feature": "net_flow_1d",
-      "impact": "increased",
-      "contribution": 0.0032452,
-      "explanation": "Daily net cash flow shift detected (net_flow_1d=-2000.00). This increased anomaly risk."
-    }
-  ]
-},
-    {
-  "alert_id": "A-0003",
-  "event_time": "2026-02-07T10:05:18Z",
-  "txn_id": "T-0001",
-  "user_id": "u_001",
-  "is_anomaly": 1,
-  "detector_type": "BEHAVIOR",
-  "signal": "Liquidity Shift",
-  "severity": "HIGH",
-  "confidence": "0.986558766168058",
-  "evidence": [
-    {
-      "risk_category": "Liquidity Shift",
-      "feature": "net_flow_1d",
-      "impact": "increased",
-      "contribution": 0.1242170557379722,
-      "explanation": "Daily net cash flow shift detected (net_flow_1d=-50000.00). This increased anomaly risk."
-    },
-    {
-      "risk_category": "Monetary Deviation",
-      "feature": "ewma_resid",
-      "impact": "reduced",
-      "contribution": -0.0055617871694266,
-      "explanation": "Recent transaction amount differs from short-term trend (EWMA residual=0.00). This reduced anomaly risk."
-    }
-  ]
-},
-{
-  "event_time": "2026-02-07T11:01:22Z",
-  "user_id": "u_001",
-  "is_anomaly": 1,
-  "detector_type": "GRAPH RISK",
-  "signal": "Multi-Accounting",
-  "severity": "HIGH",
-  "confidence": "0.968058",
-  "evidence": [
-    {
-      "risk_category": "Multi-Accounting",
-      "feature": "ip_to_device_ratio",
-      "value": 6.0
-          }
-  ]
-}
+  {
+    "alert_id": "A-0001",
+    "event_time": "2026-02-01T10:07:55Z",
+    "txn_id": "T-0001A",
+    "user_id": "u_001",
+    "is_anomaly": 1,
+    "detector_type": "RULE_BASED",
+    "signal": "Monetary Deviation",
+    "severity": "LOW",
+    "confidence": "0.77658",
+    "evidence": [
+      {
+        "risk_category": "Monetary Deviation",
+        "feature": "amount_out_in_1d",
+        "impact": "reduced",
+        "contribution": -0.0055617871694266,
+        "explanation": "Recent transaction amount exceed threshold value of 5000.00."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0002",
+    "event_time": "2026-02-08T05:18:00Z",
+    "txn_id": "T-0001B",
+    "user_id": "u_001",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Liquidity Shift",
+    "severity": "MED",
+    "confidence": "0.77658",
+    "evidence": [
+      {
+        "risk_category": "Liquidity Shift",
+        "feature": "net_flow_1d",
+        "impact": "increased",
+        "contribution": 0.0032452,
+        "explanation": "Daily net cash flow shift detected (net_flow_1d=-2000.00). This increased anomaly risk."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0003",
+    "event_time": "2026-02-07T10:05:18Z",
+    "txn_id": "T-0001",
+    "user_id": "u_001",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Liquidity Shift",
+    "severity": "HIGH",
+    "confidence": "0.986558766168058",
+    "evidence": [
+      {
+        "risk_category": "Liquidity Shift",
+        "feature": "net_flow_1d",
+        "impact": "increased",
+        "contribution": 0.1242170557379722,
+        "explanation": "Daily net cash flow shift detected (net_flow_1d=-50000.00). This increased anomaly risk."
+      },
+      {
+        "risk_category": "Monetary Deviation",
+        "feature": "ewma_resid",
+        "impact": "reduced",
+        "contribution": -0.0055617871694266,
+        "explanation": "Recent transaction amount differs from short-term trend (EWMA residual=0.00). This reduced anomaly risk."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0004",
+    "event_time": "2026-02-07T11:01:22Z",
+    "user_id": "u_001",
+    "is_anomaly": 1,
+    "detector_type": "GRAPH RISK",
+    "signal": "Multi-Accounting",
+    "severity": "HIGH",
+    "confidence": "0.968058",
+    "evidence": [
+      {
+        "risk_category": "Multi-Accounting",
+        "feature": "ip_to_device_ratio",
+        "value": 6.0
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0005",
+    "event_time": "2026-02-07T09:07:30Z",
+    "user_id": "u_001",
+    "is_anomaly": 1,
+    "detector_type": "RULE_BASED",
+    "signal": "Account Takeover Risk",
+    "severity": "HIGH",
+    "confidence": "0.94521",
+    "evidence": [
+      {
+        "risk_category": "Account Takeover",
+        "feature": "failed_login_3m",
+        "impact": "increased",
+        "contribution": 0.4125,
+        "explanation": "3 consecutive failed login attempts detected within 3-minute window from 3 different countries (ID, VN, DE). Credential stuffing attack pattern identified."
+      },
+      {
+        "risk_category": "Authentication Anomaly",
+        "feature": "geo_dispersion",
+        "impact": "increased",
+        "contribution": 0.2876,
+        "explanation": "Login attempts originating from geographically dispersed locations (Jakarta, Ho Chi Minh, Frankfurt) within short timeframe. Physical travel impossible."
+      },
+      {
+        "risk_category": "Fraud Indicator",
+        "feature": "suspicious_user_agent",
+        "impact": "increased",
+        "contribution": 0.1654,
+        "explanation": "Non-browser user agents detected (Python-urllib, curl). Automated attack tools suspected."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0101",
+    "event_time": "2026-02-10T02:15:33Z",
+    "user_id": "u_007",
+    "is_anomaly": 1,
+    "detector_type": "RULE_BASED",
+    "signal": "Brute Force Attack",
+    "severity": "HIGH",
+    "confidence": "0.92145",
+    "evidence": [
+      {
+        "risk_category": "Authentication Anomaly",
+        "feature": "failed_login_5m",
+        "impact": "increased",
+        "contribution": 0.3245,
+        "explanation": "12 failed login attempts detected within 5-minute window from 4 different IP addresses."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0102",
+    "event_time": "2026-02-10T02:31:45Z",
+    "user_id": "u_007",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Geo Velocity Anomaly",
+    "severity": "CRITICAL",
+    "confidence": "0.98732",
+    "evidence": [
+      {
+        "risk_category": "Impossible Travel",
+        "feature": "geo_change_velocity",
+        "impact": "increased",
+        "contribution": 0.4521,
+        "explanation": "Login from Jakarta, ID followed by login from Lagos, NG within 8 minutes. Physical travel impossible."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0103",
+    "event_time": "2026-02-10T02:35:00Z",
+    "user_id": "u_007",
+    "is_anomaly": 1,
+    "detector_type": "RULE_BASED",
+    "signal": "Credential Change",
+    "severity": "HIGH",
+    "confidence": "0.89541",
+    "evidence": [
+      {
+        "risk_category": "Account Takeover",
+        "feature": "password_change_after_suspicious_login",
+        "impact": "increased",
+        "contribution": 0.2876,
+        "explanation": "Password changed within 4 minutes of suspicious login from new device and location."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0104",
+    "event_time": "2026-02-10T03:45:12Z",
+    "txn_id": "T-0101",
+    "user_id": "u_007",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Rapid Liquidation",
+    "severity": "CRITICAL",
+    "confidence": "0.99124",
+    "evidence": [
+      {
+        "risk_category": "Account Takeover",
+        "feature": "full_balance_withdrawal",
+        "impact": "increased",
+        "contribution": 0.5234,
+        "explanation": "Withdrawal of 98.2% of account balance ($44,190) within 70 minutes of suspicious authentication events."
+      },
+      {
+        "risk_category": "Velocity Anomaly",
+        "feature": "time_to_withdrawal",
+        "impact": "increased",
+        "contribution": 0.1892,
+        "explanation": "Time from login to large withdrawal (70 min) is 94% faster than user's historical average."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0201",
+    "event_time": "2026-02-12T14:30:00Z",
+    "user_id": "u_008",
+    "is_anomaly": 1,
+    "detector_type": "RULE_BASED",
+    "signal": "Structuring Pattern",
+    "severity": "HIGH",
+    "confidence": "0.94521",
+    "evidence": [
+      {
+        "risk_category": "Money Laundering",
+        "feature": "deposit_just_under_threshold",
+        "impact": "increased",
+        "contribution": 0.3892,
+        "explanation": "15 deposits detected averaging $9,450 each over 7 days. All deposits strategically below $10,000 reporting threshold."
+      },
+      {
+        "risk_category": "Structuring",
+        "feature": "deposit_frequency_anomaly",
+        "impact": "increased",
+        "contribution": 0.2145,
+        "explanation": "Deposit frequency (2.14/day) is 847% higher than user's historical average of 0.23/day."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0202",
+    "event_time": "2026-02-12T16:15:30Z",
+    "user_id": "u_008",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Temporal Pattern",
+    "severity": "MED",
+    "confidence": "0.87234",
+    "evidence": [
+      {
+        "risk_category": "Structuring",
+        "feature": "timing_consistency",
+        "impact": "increased",
+        "contribution": 0.1756,
+        "explanation": "Deposits occur at suspiciously regular intervals (avg 5.2 hours apart, std dev 0.3 hours)."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0203",
+    "event_time": "2026-02-12T18:45:22Z",
+    "user_id": "u_008",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Source Mismatch",
+    "severity": "HIGH",
+    "confidence": "0.91876",
+    "evidence": [
+      {
+        "risk_category": "Money Laundering",
+        "feature": "income_deposit_ratio",
+        "impact": "increased",
+        "contribution": 0.2987,
+        "explanation": "7-day deposit total ($141,750) exceeds 31x declared monthly income ($4,500). Source of funds inconsistent with KYC profile."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0301",
+    "event_time": "2026-02-14T09:15:00Z",
+    "user_id": "u_009",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Wash Trading Pattern",
+    "severity": "MED",
+    "confidence": "0.88654",
+    "evidence": [
+      {
+        "risk_category": "Market Manipulation",
+        "feature": "round_trip_trades",
+        "impact": "increased",
+        "contribution": 0.2654,
+        "explanation": "23 round-trip trades detected on NVDAX within 4-hour window. Buy-sell pairs average 2.3 minutes apart."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0302",
+    "event_time": "2026-02-14T10:22:15Z",
+    "user_id": "u_009",
+    "is_anomaly": 1,
+    "detector_type": "GRAPH RISK",
+    "signal": "Coordinated Trading",
+    "severity": "HIGH",
+    "confidence": "0.93127",
+    "evidence": [
+      {
+        "risk_category": "Collusion",
+        "feature": "counterparty_concentration",
+        "impact": "increased",
+        "contribution": 0.3421,
+        "explanation": "87% of u_009's sell orders matched by single counterparty u_010. Statistical probability < 0.001%."
+      },
+      {
+        "risk_category": "Multi-Accounting",
+        "feature": "shared_device_fingerprint",
+        "impact": "increased",
+        "contribution": 0.1876,
+        "explanation": "u_009 and u_010 share 3 common device fingerprints across 47 sessions."
+      }
+    ]
+  },
+  {
+    "alert_id": "A-0303",
+    "event_time": "2026-02-14T11:30:45Z",
+    "txn_id": "T-0315",
+    "user_id": "u_010",
+    "is_anomaly": 1,
+    "detector_type": "BEHAVIOR",
+    "signal": "Artificial Volume",
+    "severity": "MED",
+    "confidence": "0.86543",
+    "evidence": [
+      {
+        "risk_category": "Market Manipulation",
+        "feature": "volume_impact",
+        "impact": "increased",
+        "contribution": 0.2234,
+        "explanation": "Coordinated trading between u_009 and u_010 contributed to 12.4% of NVDAX daily volume. Price impact minimal suggesting wash trading."
+      }
+    ]
+  }
 ]

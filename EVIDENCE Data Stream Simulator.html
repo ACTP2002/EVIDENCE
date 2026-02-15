@@ -12,7 +12,7 @@
         .phone-frame { width: 300px; height: 580px; background: #fff; border-radius: 36px; border: 8px solid #1e293b; overflow: hidden; color: #1e293b; }
         .dashboard-container { height: 100vh; overflow-y: auto; }
 .json-viewer { 
-    /* display: none;  <-- REMOVE THIS LINE */
+    /* display: none; */
     background: #000; 
     color: #10b981; 
     padding: 10px; 
@@ -278,7 +278,7 @@ function handleLogin() {
     document.getElementById('screen-wallet').classList.remove('hidden');
     
     // Set balance and holdings
-    if (user.account.tslax_held === undefined) user.account.tslax_held = 50; 
+    if (user.account.tslax_held === undefined) user.account.tslax_held = 150; 
     
     document.getElementById('app-balance').innerText = `$${parseFloat(user.account.account_deposit).toLocaleString(undefined, {minimumFractionDigits: 2})}`;
     document.getElementById('app-holdings').innerText = user.account.tslax_held.toFixed(2);
@@ -448,7 +448,7 @@ const FEATURE_DB = {
     "u_001": {
         "user_id": "u_001",
         "as_of": "2026-02-07T09:15:00Z",
-        "txn": { "amount_out_5m": 50000, "amount_in_30d": 52000 },
+        "txn": { "amount_out_5m": 0, "amount_in_30d": 52000 },
         "auth": { "new_device_1d": 1 },
         "network": { "packet_loss_5m": 1.03 }
     },
@@ -486,11 +486,8 @@ function loadUserContext(uid) {
     // Logic: Highlight red if outflow > 80% of monthly income
     // We reset the class first to remove old pulses from previous users
     outEl.className = "font-mono font-bold"; 
-    if (out5m > (u.kyc.income * 0.8)) {
-        outEl.classList.add('text-red-500', 'animate-pulse');
-    } else {
         outEl.classList.add('text-emerald-400');
-    }
+
 
     // B. 30d Total Inflow
     document.getElementById('feat-in-30d').innerText = `$${feat.txn.amount_in_30d.toLocaleString()}`;
@@ -498,14 +495,14 @@ function loadUserContext(uid) {
     // C. New Device Check
     const devEl = document.getElementById('feat-new-dev');
     const isNewDevice = feat.auth.new_device_1d > 0;
-    devEl.innerText = isNewDevice ? "YES (RISK)" : "NO";
-    devEl.className = isNewDevice ? "font-bold text-orange-400" : "font-bold text-slate-300";
+    devEl.innerText = "NO";
+    devEl.className = "font-bold text-slate-300";
 
     // D. Network Health (Packet Loss)
     const netEl = document.getElementById('feat-net');
     const loss = feat.network.packet_loss_5m;
-    netEl.innerText = loss > 1 ? "UNSTABLE / VPN" : "STABLE";
-    netEl.className = loss > 1 ? "font-bold text-amber-500" : "font-bold text-emerald-500";
+    netEl.innerText = "STABLE";
+    netEl.className = "font-bold text-emerald-500";
 
     // --- FIX: POPULATE JSON VIEWERS ---
     // This ensures the text is actually there when you click "Toggle"

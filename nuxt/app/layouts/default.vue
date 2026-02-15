@@ -50,7 +50,7 @@
                         </defs>
                     </svg>
                     <div v-if="!sidebarCollapsed" class="flex-1 min-w-0">
-                        <div class="text-base font-bold text-slate-900 tracking-tight">EVIDENCE</div>
+                        <div class="text-base font-bold text-slate-900 tracking-tight">E.V.I.D.E.N.C.E</div>
                         <div class="text-[11px] text-slate-400 uppercase tracking-wider font-medium mt-0.5">
                             Investigation Platform</div>
                     </div>

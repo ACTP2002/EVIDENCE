@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyst 360 - Fraud Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; overflow: hidden; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+        .phone-frame { width: 300px; height: 580px; background: #fff; border-radius: 36px; border: 8px solid #1e293b; overflow: hidden; color: #1e293b; }
+        .dashboard-container { height: 100vh; overflow-y: auto; }
+.json-viewer { 
+    /* display: none; */
+    background: #000; 
+    color: #10b981; 
+    padding: 10px; 
+    border-radius: 4px; 
+    margin-top: 8px; 
+    white-space: pre-wrap; 
+    border: 1px solid #065f46; 
+    font-family: 'JetBrains Mono', monospace; 
+    font-size: 10px; 
+}
+        .static-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; }
+    </style>
+</head>
+<body class="p-4">
+
+    <div class="flex h-full gap-6">
+        
+        <!-- LEFT: CUSTOMER INTERFACE (The Data Generator) -->
+        <div class="flex flex-col items-center shrink-0">
+            <h2 class="mb-4 text-sm font-bold tracking-widest text-slate-500 uppercase">Customer App</h2>
+            <div class="phone-frame shadow-2xl flex flex-col">
+                <div class="bg-indigo-600 p-6 pt-10 text-white shrink-0">
+                    <h1 id="app-title" class="text-xl font-bold">EVIDENCE</h1>
+                </div>
+
+                <div id="screen-login" class="p-6">
+                    <label class="block text-xs font-bold mb-1 uppercase opacity-50">Select Identity</label>
+                    <select id="user-id" class="w-full border p-2 rounded mb-4 bg-gray-50 text-sm">
+                        <option value="u_001">u_001 (Main Buyer)</option>
+                        <option value="u_002">u_002 (Seller 1)</option>
+                        <option value="u_003">u_003 (Seller 2)</option>
+                        <option value="u_004">u_004 (Seller 3)</option>
+                        <option value="u_005">u_005 (Seller 4)</option>
+                        <option value="u_006">u_006 (Seller 5)</option>
+                    </select>
+
+                    <button onclick="handleLogin()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold active:scale-95 transition shadow-lg">Login</button>
+                </div>
+
+                <div id="screen-wallet" class="p-6 hidden">
+    <!-- Stock Header -->
+    <div class="flex items-center justify-between mb-6 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold text-xs">TX</div>
+            <div>
+                <div class="text-[10px] font-bold text-slate-400 leading-none">TSLAX</div>
+                <div class="text-sm font-black text-slate-800">Tesla Extended</div>
+            </div>
+        </div>
+        <div class="text-right">
+            <div class="text-[10px] font-bold text-emerald-500">LIVE PRICE</div>
+            <div class="text-sm font-mono font-bold">$100</div>
+        </div>
+    </div>
+
+    <!-- Balance & Holdings Row -->
+    <div class="flex gap-2 mb-6">
+        <div class="flex-1 bg-slate-100 p-3 rounded-xl">
+            <span class="text-[9px] uppercase text-slate-400 font-bold">Wallet</span>
+            <div id="app-balance" class="text-sm font-bold">$0.00</div>
+        </div>
+        <div class="flex-1 bg-slate-100 p-3 rounded-xl">
+            <span class="text-[9px] uppercase text-slate-400 font-bold">TSLAX Owned</span>
+            <div id="app-holdings" class="text-sm font-bold">0.00</div>
+        </div>
+    </div>
+
+    <label class="block text-xs text-slate-400 mb-1 font-bold">Units to Trade</label>
+    <input type="number" id="txn-amount" value="10" class="w-full border p-2 rounded mb-6 text-xl font-bold">
+    
+    <!-- Action Buttons -->
+    <div class="flex gap-3 mb-4">
+        <button onclick="executeTrade('BUY')" class="flex-1 bg-emerald-600 text-white py-3 rounded-xl font-bold shadow-lg active:scale-95 transition">Buy</button>
+        <button onclick="executeTrade('SELL')" class="flex-1 bg-red-600 text-white py-3 rounded-xl font-bold shadow-lg active:scale-95 transition">Sell</button>
+    </div>
+    
+    <button onclick="handleLogout()" class="w-full text-slate-400 text-xs uppercase tracking-widest font-bold">Logout</button>
+</div>
+            </div>
+        </div>
+
+        <!-- RIGHT: ANALYST DASHBOARD (The Data Consumer) -->
+        <div class="flex-1 dashboard-container">
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Real-Time Data Stream Simulator</h2>
+                    <p class="text-slate-400 text-sm">Real-time data simulation based on user actions.</p>
+                </div>
+                <div class="text-right">
+                    <span class="text-xs font-bold text-slate-500 uppercase block">Timestamp:</span>
+                    <span id="case-id-display" class="text-blue-400 font-mono">--</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-6">
+                
+                <!-- COLUMN 1: STATIC DATA (PROFILE & KYC) -->
+                <div class="col-span-5 space-y-6">
+                    <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest border-b border-indigo-900/50 pb-2">User Intelligence (Static)</h3>
+                    
+                    <!-- KYC/Profile Section -->
+                    <div class="static-card p-4">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-sm font-bold text-slate-300">Declared Profile (KYC)</h4>
+                            <button onclick="toggleJson('json-profile')" class="text-[10px] bg-slate-700 px-2 py-0.5 rounded text-slate-300">JSON</button>
+                        </div>
+                        <div id="profile-content" class="grid grid-cols-2 gap-y-3 text-xs">
+                            <div class="text-slate-500">Occupation</div><div id="p-occ" class="font-bold text-slate-300">--</div>
+                            <div class="text-slate-500">Declared Income</div><div id="p-inc" class="font-bold text-emerald-400">--</div>
+                            <div class="text-slate-500">Source of Funds</div><div id="p-sof" class="font-bold text-slate-300">--</div>
+                            <div class="text-slate-500">Age / Nationality</div><div id="p-age-nat" class="font-bold text-slate-300">--</div>
+                        </div>
+<div id="json-profile" class="json-viewer hidden"></div>
+                    </div>
+
+                    <!-- Risk & Account Section -->
+                    <!-- ACCOUNT STATUS (Aggregated Features) -->
+<div class="static-card p-4 border-t-4 border-t-indigo-500">
+    <div class="flex justify-between items-start mb-4">
+        <h4 class="text-sm font-bold text-slate-300">Live Behavior Status</h4>
+        <button onclick="toggleJson('json-status')" class="text-[10px] bg-slate-700 px-2 py-0.5 rounded text-slate-300">JSON</button>
+    </div>
+    
+    <div id="status-content" class="grid grid-cols-2 gap-y-3 text-xs">
+        <!-- Transaction Aggregates -->
+        <div class="text-slate-500 text-[10px] uppercase">5m Outflow</div>
+        <div id="feat-out-5m" class="font-mono font-bold text-red-400">--</div>
+
+        <div class="text-slate-500 text-[10px] uppercase">30d Total In</div>
+        <div id="feat-in-30d" class="font-mono font-bold text-emerald-400">--</div>
+
+        <!-- Auth Aggregates -->
+        <div class="text-slate-500 text-[10px] uppercase">New Device (24h)</div>
+        <div id="feat-new-dev" class="font-bold text-slate-300">--</div>
+
+        <!-- Network Aggregates -->
+        <div class="text-slate-500 text-[10px] uppercase">Network Health</div>
+        <div id="feat-net" class="font-bold text-slate-300">--</div>
+    </div>
+
+    <!-- This is where your provided JSON will be displayed -->
+    <div id="json-status" class="json-viewer hidden"></div>
+</div>
+                </div>
+
+                <!-- COLUMN 2: MOVING DATA (LIVE STREAM) -->
+                <div class="col-span-7 space-y-6">
+                    <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-widest border-b border-emerald-900/50 pb-2">Event Stream (Moving)</h3>
+                    <div id="event-log" class="space-y-3 overflow-y-auto max-h-[70vh] pr-2">
+                        <div class="text-center py-20 text-slate-600 text-sm italic">
+                            Waiting for app interaction to generate stream data...
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- THEMED ERROR POPUP -->
+    <div id="error-popup" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-slate-900 border border-red-500/50 w-80 p-6 rounded-3xl shadow-[0_0_30px_rgba(239,68,68,0.2)] text-center">
+            <div class="w-16 h-16 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl border border-red-500/20">✕</div>
+            <h3 class="text-xl font-bold text-white mb-2">Transfer Blocked</h3>
+            <p id="popup-error-msg" class="text-slate-400 text-sm mb-6">Insufficient funds for this transaction.</p>
+            <button onclick="closePopup()" class="w-full bg-slate-800 hover:bg-slate-700 text-white py-3 rounded-xl font-bold transition-colors border border-slate-700">Dismiss</button>
+        </div>
+    </div>
+
+<script>
+
+    // 1. LIVE CLOCK
+    function updateClock() {
+        const now = new Date();
+        const timestamp = now.getFullYear() + '-' +
+            String(now.getMonth() + 1).padStart(2, '0') + '-' +
+            String(now.getDate()).padStart(2, '0') + ' ' +
+            String(now.getHours()).padStart(2, '0') + ':' +
+            String(now.getMinutes()).padStart(2, '0') + ':' +
+            String(now.getSeconds()).padStart(2, '0');
+        const clockEl = document.getElementById('case-id-display');
+        if(clockEl) clockEl.textContent = timestamp;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 2. COMPREHENSIVE DATA STORE
+    const USER_DB = {
+        "u_001": {
+            "user_id": "u_001",
+            "created_at": "2025-08-16T11:04:06Z",
+            "account_status": "active",
+            "account": { "account_id": "a_001", "account_status": "active", "account_deposit": "52000" },
+            "kyc": { "kyc_level": "tier_1", "verified_at": "2025-08-22T06:11:06Z", "nationality": "MY", "residence_country": "MY", "age": "65", "occupation": "business owner", "income": "5000", "source_of_funds": "business_profit" },
+            "risk": { "risk_tier": "low", "pep_flag": false, "sanctions_status": "false", "adverse_media_flag": false },
+            "verification": { "email_verified": true, "phone_verified": true }
+        },
+        "u_002": {
+            "user_id": "u_002",
+            "created_at": "2025-08-16T11:04:06Z",
+            "account_status": "active",
+            "account": { "account_id": "a_002", "account_status": "active", "account_deposit": "1000" },
+            "kyc": { "kyc_level": "tier_1", "verified_at": "2025-08-22T06:11:06Z", "nationality": "VN", "residence_country": "VN", "age": "23", "occupation": "student", "income": "1500", "source_of_funds": "part time job" },
+            "risk": { "risk_tier": "low", "pep_flag": false, "sanctions_status": "false", "adverse_media_flag": false },
+            "verification": { "email_verified": true, "phone_verified": true }
+        },
+        "u_003": {
+            "user_id": "u_003",
+            "created_at": "2025-08-16T11:04:06Z",
+            "account_status": "active",
+            "account": { "account_id": "a_003", "account_status": "active", "account_deposit": "20000" },
+            "kyc": { "kyc_level": "tier_1", "verified_at": "2025-08-22T06:11:06Z", "nationality": "VN", "residence_country": "VN", "age": "32", "occupation": "merchant", "income": "1500", "source_of_funds": "business_profit" },
+            "risk": { "risk_tier": "low", "pep_flag": false, "sanctions_status": "false", "adverse_media_flag": false },
+            "verification": { "email_verified": true, "phone_verified": true }
+        },
+        "u_004": {
+            "user_id": "u_004",
+            "created_at": "2025-08-16T11:04:06Z",
+            "account_status": "active",
+            "account": { "account_id": "a_004", "account_status": "active", "account_deposit": "5000" },
+            "kyc": { "kyc_level": "tier_1", "verified_at": "2025-08-22T06:11:06Z", "nationality": "MY", "residence_country": "MY", "age": "28", "occupation": "engineer", "income": "3000", "source_of_funds": "salary" },
+            "risk": { "risk_tier": "low", "pep_flag": false, "sanctions_status": "false", "adverse_media_flag": false },
+            "verification": { "email_verified": true, "phone_verified": true }
+        },
+        "u_005": {
+            "user_id": "u_005",
+            "created_at": "2025-08-16T11:04:06Z",
+            "account_status": "active",
+            "account": { "account_id": "a_005", "account_status": "active", "account_deposit": "2000" },
+            "kyc": { "kyc_level": "tier_1", "verified_at": "2025-08-22T06:11:06Z", "nationality": "MY", "residence_country": "MY", "age": "28", "occupation": "food delivery", "income": "1500", "source_of_funds": "salary" },
+            "risk": { "risk_tier": "low", "pep_flag": false, "sanctions_status": "false", "adverse_media_flag": false },
+            "verification": { "email_verified": true, "phone_verified": true }
+        },
+        "u_006": {
+            "user_id": "u_006",
+            "created_at": "2025-08-16T11:04:06Z",
+            "account_status": "active",
+            "account": { "account_id": "a_006", "account_status": "active", "account_deposit": "3000" },
+            "kyc": { "kyc_level": "tier_1", "verified_at": "2025-08-22T06:11:06Z", "nationality": "MY", "residence_country": "MY", "age": "28", "occupation": "teacher", "income": "2500", "source_of_funds": "salary" },
+            "risk": { "risk_tier": "low", "pep_flag": false, "sanctions_status": "false", "adverse_media_flag": false },
+            "verification": { "email_verified": true, "phone_verified": true }
+        }
+    };
+
+    let currentUserID = null;
+
+   const TSLAX_PRICE = 100;
+let currentSessionID = null; // Generated at login
+let currentDeviceID = "d_" + Math.random().toString(36).substr(2, 4);
+
+// Update your USER_DB to include an initial stock holding (optional)
+// Or just let it default to 0 in handleLogin
+
+function handleLogin() {
+    currentUserID = document.getElementById('user-id').value;
+    const user = USER_DB[currentUserID];
+    
+    // Create a session ID for this login
+    currentSessionID = "s_" + Math.random().toString(36).substr(2, 6);
+    
+    // Switch UI
+    document.getElementById('screen-login').classList.add('hidden');
+    document.getElementById('screen-wallet').classList.remove('hidden');
+    
+    // Set balance and holdings
+    if (user.account.tslax_held === undefined) user.account.tslax_held = 150; 
+    
+    document.getElementById('app-balance').innerText = `$${parseFloat(user.account.account_deposit).toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+    document.getElementById('app-holdings').innerText = user.account.tslax_held.toFixed(2);
+    
+    loadUserContext(currentUserID);
+
+    // --- NEW: GENERATE AUTH EVENT ---
+    const authEvent = {
+        "event_id": "evt_auth_" + Math.random().toString(36).substr(2, 9),
+        "event_time": new Date().toISOString(),
+        "stream_type": "authentication",
+        "event_type": "login",
+        "user_id": currentUserID,
+        "session_id": currentSessionID,
+        "device_id": currentDeviceID,
+        "data": {
+            "method": "password",
+            "status": "success",
+            "ip": "100.100.100.1",
+            "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0)",
+            "geo": "Kuala Lumpur, MY"
+        }
+    };
+    generateJSONLog('AUTH_LOGIN', authEvent, 'border-indigo-500 bg-indigo-950/20');
+}
+
+function handleLogout() {
+    // Capture details before clearing
+    const loggedOutUser = currentUserID;
+    const loggedOutSession = currentSessionID;
+
+    // Reset State
+    currentUserID = null;
+    currentSessionID = null;
+    document.getElementById('screen-wallet').classList.add('hidden');
+    document.getElementById('screen-login').classList.remove('hidden');
+
+    // --- NEW: GENERATE LOGOUT EVENT ---
+    const logoutEvent = {
+        "event_id": "evt_auth_" + Math.random().toString(36).substr(2, 9),
+        "event_time": new Date().toISOString(),
+        "stream_type": "authentication",
+        "event_type": "logout",
+        "user_id": loggedOutUser,
+        "session_id": loggedOutSession,
+        "data": {
+            "reason": "user_initiated",
+            "session_duration_seconds": 45 
+        }
+    };
+    generateJSONLog('AUTH_LOGOUT', logoutEvent, 'border-slate-500');
+}
+function executeTrade(type) {
+    const units = parseFloat(document.getElementById('txn-amount').value) || 0;
+    const totalValue = units * TSLAX_PRICE;
+    
+    const user = USER_DB[currentUserID];
+    const balanceEl = document.getElementById('app-balance');
+    const holdingsEl = document.getElementById('app-holdings');
+    
+    let currentCash = parseFloat(balanceEl.innerText.replace(/[$,]/g, ''));
+    let currentHoldings = user.account.tslax_held;
+
+    // Logic Checks
+    if (type === 'BUY' && totalValue > currentCash) {
+        showError("Insufficient Funds");
+        return;
+    }
+    if (type === 'SELL' && units > currentHoldings) {
+        showError("Insufficient Stock Units");
+        return;
+    }
+
+    // Update Values
+    if (type === 'BUY') {
+        currentCash -= totalValue;
+        currentHoldings += units;
+    } else {
+        currentCash += totalValue;
+        currentHoldings -= units;
+    }
+
+    // Update UI & DB
+    user.account.account_deposit = currentCash;
+    user.account.tslax_held = currentHoldings;
+    balanceEl.innerText = `$${currentCash.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+    holdingsEl.innerText = currentHoldings.toFixed(2);
+
+    // GENERATE COMPLIANT JSON
+    const transactionEvent = {
+        "event_id": "evt_txn_" + Math.random().toString(36).substr(2, 9),
+        "event_time": new Date().toISOString(),
+        "stream_type": "transactional",
+        "event_type": type.toLowerCase(), // "buy" or "sell"
+
+        "user_id": user.user_id,
+        "account_id": user.account.account_id,
+
+        "session_id": currentSessionID,
+        "device_id": currentDeviceID,
+        "ip": "100.100.100.1", // Static for demo
+
+        "data": {
+            "txn_id": "T-" + Math.floor(1000 + Math.random() * 9000),
+            "amount": totalValue,
+            "currency": "USD",
+            "channel": "mobile_app",
+            "result": "success",
+            "stock_id": "TSLAX",
+            "units": units // Added for clarity
+        }
+    };
+
+    generateJSONLog(type === 'BUY' ? 'STOCK_BUY' : 'STOCK_SELL', 
+                    transactionEvent, 
+                    type === 'BUY' ? 'border-emerald-500' : 'border-red-500');
+}
+// Helper for blocking logs
+function logTradeBlocked(reason, units, type) {
+    generateJSONLog('TRADE_REJECTED', {
+        reason: reason,
+        attempted_action: type,
+        units: units,
+        price: TSLAX_PRICE,
+        timestamp: new Date().toISOString()
+    }, 'border-amber-500 bg-amber-950/20');
+}
+
+function showError(msg) {
+    document.getElementById('popup-error-msg').innerText = msg;
+    document.getElementById('error-popup').classList.remove('hidden');
+}
+
+    function handleTransfer() {
+        const amountInput = document.getElementById('txn-amount');
+        const amount = parseFloat(amountInput.value) || 0;
+        const balanceEl = document.getElementById('app-balance');
+        let currentBalance = parseFloat(balanceEl.innerText.replace(/[$,]/g, ''));
+
+        if (amount > currentBalance) {
+            document.getElementById('popup-error-msg').innerText = `Insufficient funds. Your balance is $${currentBalance.toLocaleString()}.`;
+            document.getElementById('error-popup').classList.remove('hidden');
+            
+            generateJSONLog('TRANSACTION_BLOCKED', {
+                reason: "INSUFFICIENT_FUNDS",
+                attempted: amount,
+                available: currentBalance,
+                timestamp: new Date().toISOString()
+            }, 'border-red-500 bg-red-950/20');
+            return;
+        }
+
+        currentBalance -= amount;
+        balanceEl.innerText = `$${currentBalance.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+        generateJSONLog('TRANSACTION_PAYLOAD', {
+            tx_id: "tx_" + Math.random().toString(36).substr(2, 9),
+            timestamp: new Date().toISOString(),
+            amount: amount,
+            new_balance: currentBalance,
+            status: "success"
+        }, 'border-emerald-500');
+    }
+
+// 1. DATA STORE (Using your provided JSON structure)
+const FEATURE_DB = {
+    "u_001": {
+        "user_id": "u_001",
+        "as_of": "2026-02-07T09:15:00Z",
+        "txn": { "amount_out_5m": 0, "amount_in_30d": 52000 },
+        "auth": { "new_device_1d": 1 },
+        "network": { "packet_loss_5m": 1.03 }
+    },
+    "u_002": {
+        "user_id": "u_002",
+        "as_of": "2026-02-07T09:15:00Z",
+        "txn": { "amount_out_5m": 0, "amount_in_30d": 1500 },
+        "auth": { "new_device_1d": 0 },
+        "network": { "packet_loss_5m": 0.02 }
+    }
+};
+
+function loadUserContext(uid) {
+    const u = USER_DB[uid];
+    
+    // 1. Get feature data from your provided JSON structure
+    // If FEATURE_DB[uid] doesn't exist, it falls back to u_001 for the demo
+    const feat = FEATURE_DB[uid] || FEATURE_DB["u_001"]; 
+
+    if(!u) return;
+    
+    // --- TOP CARD: STATIC KYC ---
+    document.getElementById('p-occ').innerText = u.kyc.occupation.toUpperCase();
+    document.getElementById('p-inc').innerText = "$" + parseFloat(u.kyc.income).toLocaleString();
+    document.getElementById('p-sof').innerText = u.kyc.source_of_funds.replace('_',' ').toUpperCase();
+    document.getElementById('p-age-nat').innerText = `${u.kyc.age} / ${u.kyc.nationality}`;
+    
+    // --- BOTTOM CARD: STATUS (FEATURE AGGREGATES) ---
+    
+    // A. 5m Outflow Display
+    const out5m = feat.txn.amount_out_5m;
+    const outEl = document.getElementById('feat-out-5m');
+    outEl.innerText = `$${out5m.toLocaleString()}`;
+    
+    // Logic: Highlight red if outflow > 80% of monthly income
+    // We reset the class first to remove old pulses from previous users
+    outEl.className = "font-mono font-bold"; 
+        outEl.classList.add('text-emerald-400');
+
+
+    // B. 30d Total Inflow
+    document.getElementById('feat-in-30d').innerText = `$${feat.txn.amount_in_30d.toLocaleString()}`;
+
+    // C. New Device Check
+    const devEl = document.getElementById('feat-new-dev');
+    const isNewDevice = feat.auth.new_device_1d > 0;
+    devEl.innerText = "NO";
+    devEl.className = "font-bold text-slate-300";
+
+    // D. Network Health (Packet Loss)
+    const netEl = document.getElementById('feat-net');
+    const loss = feat.network.packet_loss_5m;
+    netEl.innerText = "STABLE";
+    netEl.className = "font-bold text-emerald-500";
+
+    // --- FIX: POPULATE JSON VIEWERS ---
+    // This ensures the text is actually there when you click "Toggle"
+    const profileJsonEl = document.getElementById('json-profile');
+    const statusJsonEl = document.getElementById('json-status');
+
+    if (profileJsonEl) profileJsonEl.innerText = JSON.stringify(u, null, 2);
+    if (statusJsonEl) statusJsonEl.innerText = JSON.stringify(feat, null, 2);
+}
+
+// FIXED: Collapsible Stream Function
+function generateJSONLog(type, jsonBody, borderClass) {
+    const logContainer = document.getElementById('event-log');
+    if (logContainer.children[0]?.classList.contains('italic')) logContainer.innerHTML = '';
+
+    const uniqueId = "json-" + Math.random().toString(36).substr(2, 9);
+    const card = document.createElement('div');
+    
+    // We use a button-like div for the header to ensure clicks are registered
+    card.className = `p-3 mb-2 rounded bg-slate-800/50 border-l-4 ${borderClass} shadow-sm`;
+    card.innerHTML = `
+        <div class="flex justify-between items-center cursor-pointer group" onclick="toggleJson('${uniqueId}')">
+            <div class="flex flex-col">
+                <span class="text-[9px] font-mono text-slate-500 uppercase tracking-tighter">${new Date().toLocaleTimeString()}</span>
+                <span class="text-xs font-bold text-slate-200 group-hover:text-indigo-400 transition-colors">${type}</span>
+            </div>
+            <span class="text-[9px] bg-slate-700 px-2 py-1 rounded text-slate-300 font-bold">JSON</span>
+        </div>
+        <pre id="${uniqueId}" class="hidden mt-3 p-3 bg-black/60 rounded border border-slate-700 overflow-x-auto text-[10px] font-mono text-emerald-400 leading-relaxed">${JSON.stringify(jsonBody, null, 2)}</pre>
+    `;
+    logContainer.prepend(card);
+}
+
+// FIXED: Simplified Toggle Logic
+function toggleJson(id) {
+    const el = document.getElementById(id);
+    if(el) {
+        el.classList.toggle('hidden');
+    }
+}
+    function closePopup() {
+        document.getElementById('error-popup').classList.add('hidden');
+    }
+</script>
+</body>
+</html>

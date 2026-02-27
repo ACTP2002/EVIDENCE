@@ -1,0 +1,39 @@
+{
+  "case_id": "CASE-20260207-AB12CD34",
+  "user_id": "U123",
+  "status": "OPEN",
+
+  "opened_at": "2026-02-07T09:01:22Z",
+  "last_updated": "2026-02-07T09:05:10Z",
+
+  "case_score": 78,
+  "risk_level": "HIGH",
+
+  "alerts": [
+    {
+      "alert_id": "A-001",
+      "event_time": "2026-02-07T09:01:22Z",
+      "detector_type": "ATO",
+      "signal": "MULTI_DEVICE_LOGIN",
+      "severity": "HIGH",
+      "confidence": 0.92,
+      "evidence": {
+        "devices_seen": 3,
+        "countries": ["MY", "VN"],
+        "time_diff_minutes": 4
+      }
+    },
+    {
+      "alert_id": "A-002",
+      "event_time": "2026-02-07T09:05:10Z",
+      "detector_type": "BEHAVIOR",
+      "signal": "LOGIN_TIME_ANOMALY",
+      "severity": "MEDIUM",
+      "confidence": 0.71,
+      "evidence": {
+        "avg_login_hour": 2,
+        "current_login_hour": 9
+      }
+    }
+  ]
+}

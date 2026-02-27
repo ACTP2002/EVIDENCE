@@ -1,0 +1,206 @@
+[
+  {
+    "customer_id": "CUST-001",
+    "user_id": "U-001",
+    "full_name": "Ahmad Razak bin Abdullah",
+    "email": "ahmad.razak@email.my",
+    "phone": "+60123456789",
+    "country": "MY",
+    "created_at": "2025-06-15T09:00:00Z",
+    "account_status": "active",
+    "account": {
+      "account_id": "ACC-001",
+      "account_status": "frozen",
+      "account_deposit": "45000"
+    },
+    "kyc": {
+      "kyc_level": "tier_2",
+      "verified_at": "2025-06-20T14:30:00Z",
+      "nationality": "MY",
+      "residence_country": "MY",
+      "age": "34",
+      "occupation": "software_engineer",
+      "income": "8500",
+      "source_of_funds": "salary"
+    },
+    "risk": {
+      "risk_tier": "medium",
+      "pep_flag": false,
+      "sanctions_status": "clear",
+      "adverse_media_flag": false
+    },
+    "verification": {
+      "email_verified": true,
+      "phone_verified": true
+    },
+    "verification_status": "verified",
+    "verification_method": "document_scan",
+    "risk_rating": "medium",
+    "pep_status": false,
+    "sanctions_hit": false,
+    "adverse_media": false,
+    "document_verified": true,
+    "document_flags": [],
+    "date_of_birth": "1992-03-15",
+    "address": "123 Jalan Ampang, Kuala Lumpur, Malaysia",
+    "verification_date": "2025-06-20T14:30:00Z",
+    "declared_income": 8500,
+    "income_currency": "USD",
+    "employment_status": "employed",
+    "document_type": "passport",
+    "document_country": "MY"
+  },
+  {
+    "customer_id": "CUST-002",
+    "user_id": "U-002",
+    "full_name": "Nguyen Van Minh",
+    "email": "minh.nguyen@email.vn",
+    "phone": "+84901234567",
+    "country": "VN",
+    "created_at": "2025-03-10T11:00:00Z",
+    "account_status": "suspended",
+    "account": {
+      "account_id": "ACC-002",
+      "account_status": "suspended",
+      "account_deposit": "185000"
+    },
+    "kyc": {
+      "kyc_level": "tier_1",
+      "verified_at": "2025-03-15T10:00:00Z",
+      "nationality": "VN",
+      "residence_country": "VN",
+      "age": "42",
+      "occupation": "business_owner",
+      "income": "15000",
+      "source_of_funds": "business_profit"
+    },
+    "risk": {
+      "risk_tier": "high",
+      "pep_flag": false,
+      "sanctions_status": "clear",
+      "adverse_media_flag": true
+    },
+    "verification": {
+      "email_verified": true,
+      "phone_verified": true
+    },
+    "verification_status": "verified",
+    "verification_method": "video_call",
+    "risk_rating": "high",
+    "pep_status": false,
+    "sanctions_hit": false,
+    "adverse_media": true,
+    "document_verified": true,
+    "document_flags": ["document_edge_cropped"],
+    "date_of_birth": "1984-08-22",
+    "address": "456 Nguyen Hue Street, Ho Chi Minh City, Vietnam",
+    "verification_date": "2025-03-15T10:00:00Z",
+    "declared_income": 15000,
+    "income_currency": "USD",
+    "employment_status": "self_employed",
+    "document_type": "national_id",
+    "document_country": "VN"
+  },
+  {
+    "customer_id": "CUST-003",
+    "user_id": "U-003",
+    "full_name": "Tan Wei Lin",
+    "email": "weilin.tan@email.sg",
+    "phone": "+6591234567",
+    "country": "SG",
+    "created_at": "2024-11-01T08:00:00Z",
+    "account_status": "active",
+    "account": {
+      "account_id": "ACC-003",
+      "account_status": "active",
+      "account_deposit": "92000"
+    },
+    "kyc": {
+      "kyc_level": "tier_3",
+      "verified_at": "2024-11-05T16:00:00Z",
+      "nationality": "SG",
+      "residence_country": "SG",
+      "age": "29",
+      "occupation": "financial_analyst",
+      "income": "12000",
+      "source_of_funds": "salary"
+    },
+    "risk": {
+      "risk_tier": "low",
+      "pep_flag": false,
+      "sanctions_status": "clear",
+      "adverse_media_flag": false
+    },
+    "verification": {
+      "email_verified": true,
+      "phone_verified": true
+    },
+    "verification_status": "verified",
+    "verification_method": "biometric",
+    "risk_rating": "low",
+    "pep_status": false,
+    "sanctions_hit": false,
+    "adverse_media": false,
+    "document_verified": true,
+    "document_flags": [],
+    "date_of_birth": "1997-01-28",
+    "address": "789 Orchard Road, Singapore",
+    "verification_date": "2024-11-05T16:00:00Z",
+    "declared_income": 12000,
+    "income_currency": "USD",
+    "employment_status": "employed",
+    "document_type": "passport",
+    "document_country": "SG"
+  },
+  {
+    "customer_id": "CUST-004",
+    "user_id": "U-004",
+    "full_name": "Somchai Prasert",
+    "email": "somchai.p@email.th",
+    "phone": "+66812345678",
+    "country": "TH",
+    "created_at": "2025-01-20T12:00:00Z",
+    "account_status": "active",
+    "account": {
+      "account_id": "ACC-004",
+      "account_status": "active",
+      "account_deposit": "28000"
+    },
+    "kyc": {
+      "kyc_level": "tier_2",
+      "verified_at": "2025-01-25T09:00:00Z",
+      "nationality": "TH",
+      "residence_country": "TH",
+      "age": "38",
+      "occupation": "import_export",
+      "income": "11000",
+      "source_of_funds": "business_profit"
+    },
+    "risk": {
+      "risk_tier": "medium",
+      "pep_flag": false,
+      "sanctions_status": "clear",
+      "adverse_media_flag": false
+    },
+    "verification": {
+      "email_verified": true,
+      "phone_verified": true
+    },
+    "verification_status": "verified",
+    "verification_method": "document_scan",
+    "risk_rating": "medium",
+    "pep_status": false,
+    "sanctions_hit": false,
+    "adverse_media": false,
+    "document_verified": true,
+    "document_flags": [],
+    "date_of_birth": "1988-05-14",
+    "address": "321 Sukhumvit Road, Bangkok, Thailand",
+    "verification_date": "2025-01-25T09:00:00Z",
+    "declared_income": 11000,
+    "income_currency": "USD",
+    "employment_status": "self_employed",
+    "document_type": "passport",
+    "document_country": "TH"
+  }
+]

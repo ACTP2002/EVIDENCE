@@ -1,0 +1,209 @@
+[
+  {
+    "event_id": "TL-001",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-01-10T14:22:10Z",
+    "event_type": "account_created",
+    "entity_id": "ACC-882193",
+    "description": "Trading account created for customer CUST-7721",
+    "severity": null
+  },
+  {
+    "event_id": "TL-002",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-01-10T14:30:00Z",
+    "event_type": "kyc_verified",
+    "entity_id": "CUST-7721",
+    "description": "KYC verification completed via biometric method",
+    "severity": null
+  },
+  {
+    "event_id": "TL-003",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-05-10T09:15:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-44098",
+    "description": "Deposit of $8,500 USD from unknown sender",
+    "severity": "medium"
+  },
+  {
+    "event_id": "TL-004",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-05-13T14:20:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-44102",
+    "description": "Large crypto deposit of $15,000 USD",
+    "severity": "high"
+  },
+  {
+    "event_id": "TL-005",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-05-13T16:05:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-44105",
+    "description": "Withdrawal of $14,500 USD to offshore bank",
+    "severity": "high"
+  },
+  {
+    "event_id": "TL-006",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-05-14T07:45:00Z",
+    "event_type": "login",
+    "entity_id": "EVT-1029",
+    "description": "Login from Nigeria via VPN - impossible travel detected",
+    "severity": "critical"
+  },
+  {
+    "event_id": "TL-007",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-05-14T08:00:00Z",
+    "event_type": "alert_triggered",
+    "entity_id": "ALT-9901",
+    "description": "Money laundering alert - deposits exceed income by 1400%",
+    "severity": "critical"
+  },
+  {
+    "event_id": "TL-008",
+    "case_id": "CASE-2025-88412",
+    "timestamp": "2025-05-14T09:15:00Z",
+    "event_type": "case_created",
+    "entity_id": "CASE-2025-88412",
+    "description": "Fraud case created and assigned to INV-001",
+    "severity": "critical"
+  },
+  {
+    "event_id": "TL-009",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2024-11-20T09:10:00Z",
+    "event_type": "account_created",
+    "entity_id": "ACC-451288",
+    "description": "Savings account created for customer CUST-4512",
+    "severity": null
+  },
+  {
+    "event_id": "TL-010",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T08:45:00Z",
+    "event_type": "login",
+    "entity_id": "EVT-5498",
+    "description": "Normal login from London, UK",
+    "severity": null
+  },
+  {
+    "event_id": "TL-011",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T10:12:00Z",
+    "event_type": "login",
+    "entity_id": "EVT-5501",
+    "description": "Suspicious login from Romania via proxy - new device",
+    "severity": "high"
+  },
+  {
+    "event_id": "TL-012",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T10:15:00Z",
+    "event_type": "alert_triggered",
+    "entity_id": "ALT-1122",
+    "description": "Account takeover alert - impossible travel detected",
+    "severity": "high"
+  },
+  {
+    "event_id": "TL-013",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T10:18:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-88201",
+    "description": "ATM withdrawal of £3,000 GBP from new device",
+    "severity": "high"
+  },
+  {
+    "event_id": "TL-014",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T10:22:00Z",
+    "event_type": "alert_triggered",
+    "entity_id": "ALT-1123",
+    "description": "Velocity alert - rapid transactions detected",
+    "severity": "medium"
+  },
+  {
+    "event_id": "TL-015",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T10:25:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-88202",
+    "description": "Online transfer of £2,500 GBP to new beneficiary",
+    "severity": "high"
+  },
+  {
+    "event_id": "TL-016",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T10:32:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-88203",
+    "description": "Transaction blocked - £3,000 GBP withdrawal attempt",
+    "severity": "critical"
+  },
+  {
+    "event_id": "TL-017",
+    "case_id": "CASE-2025-91203",
+    "timestamp": "2025-06-02T10:32:00Z",
+    "event_type": "status_change",
+    "entity_id": "ACC-451288",
+    "description": "Account frozen due to suspicious activity",
+    "severity": "critical"
+  },
+  {
+    "event_id": "TL-018",
+    "case_id": "CASE-2025-77884",
+    "timestamp": "2025-04-12T10:00:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-77101",
+    "description": "Cash deposit $9,950 - just under threshold",
+    "severity": "medium"
+  },
+  {
+    "event_id": "TL-019",
+    "case_id": "CASE-2025-77884",
+    "timestamp": "2025-04-13T11:15:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-77102",
+    "description": "Cash deposit $9,800 - structuring pattern",
+    "severity": "medium"
+  },
+  {
+    "event_id": "TL-020",
+    "case_id": "CASE-2025-77884",
+    "timestamp": "2025-04-14T09:30:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-77103",
+    "description": "Cash deposit $9,900 - structuring pattern",
+    "severity": "medium"
+  },
+  {
+    "event_id": "TL-021",
+    "case_id": "CASE-2025-77884",
+    "timestamp": "2025-04-15T14:45:00Z",
+    "event_type": "transaction",
+    "entity_id": "TXN-77104",
+    "description": "Cash deposit $9,750 - structuring pattern",
+    "severity": "medium"
+  },
+  {
+    "event_id": "TL-022",
+    "case_id": "CASE-2025-77884",
+    "timestamp": "2025-04-18T13:00:00Z",
+    "event_type": "alert_triggered",
+    "entity_id": "ALT-7712",
+    "description": "Structuring alert - 12 deposits under $10K threshold",
+    "severity": "critical"
+  },
+  {
+    "event_id": "TL-023",
+    "case_id": "CASE-2025-77884",
+    "timestamp": "2025-04-18T14:05:00Z",
+    "event_type": "case_created",
+    "entity_id": "CASE-2025-77884",
+    "description": "Case escalated to senior investigator",
+    "severity": "critical"
+  }
+]

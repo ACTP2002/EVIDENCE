@@ -1,0 +1,22 @@
+{
+  "event_id": "evt_net_...",
+  "event_time": "2026-02-07T09:15:00.000Z",
+  "stream_type": "network",
+  "event_type": "session_net_health",
+
+  "user_id": "u_001",
+  "account_id": "a_101",
+
+  "session_id": "s_789",
+  "device_id": "d_abcd",
+  "ip": "203.0.113.10",
+
+  "data": {
+    "rtt_ms_p95": 180,
+    "packet_loss_pct": 0.8,
+    "jitter_ms_p95": 35,
+    "asn": 4788,
+    "vpn_suspected": true,
+    "geo": { "country": "MY", "city": "Kuala Lumpur" }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "case_id": "CASE-2025-001",
+  "customer": {
+    "id": "CUST-99",
+    "name": "Alex River",
+    "risk_score": 45,
+    "declared_income": 4000
+  },
+  "alerts": [
+    {
+      "id": "AL-505",
+      "type": "Impossible Travel",
+      "severity": "High",
+      "description": "Login from London 10 minutes after login from New York"
+    },
+    {
+      "id": "AL-506",
+      "type": "High Velocity Withdrawal",
+      "severity": "Medium",
+      "description": "3 withdrawals of $1000 within 5 minutes"
+    }
+  ],
+  "logins": [
+    {"timestamp": "2025-02-08T10:00:00Z", "location": "New York", "device_id": "DEV-1"},
+    {"timestamp": "2025-02-08T10:10:00Z", "location": "London", "device_id": "DEV-2"}
+  ],
+  "transactions": [
+    {"amount": 1000, "currency": "USD", "type": "withdrawal", "status": "completed"},
+    {"amount": 1000, "currency": "USD", "type": "withdrawal", "status": "completed"},
+    {"amount": 1000, "currency": "USD", "type": "withdrawal", "status": "completed"}
+  ]
+}

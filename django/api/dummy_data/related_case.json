@@ -1,0 +1,118 @@
+{
+  "case_id": "CASE-20260209-0002",
+  "user_id": "u_004",
+  "status": "OPEN",
+  "opened_at": "2026-02-09T14:22:41Z",
+  "last_updated": "2026-02-09T15:03:10Z",
+  "case_score": 92,
+  "risk_level": "HIGH",
+  "confusion_matrix": "TP",
+  "similarity_score": 88,
+  "cluster_type": "OPPOSITE TRADING",
+  "alerts": [
+    {
+      "alert_id": "A-0101",
+      "event_time": "2026-02-09T13:58:02Z",
+      "user_id": "u_004",
+      "is_anomaly": 1,
+      "detector_type": "RULE_BASED",
+      "signal": "Account Takeover Risk",
+      "severity": "HIGH",
+      "confidence": "0.95874",
+      "evidence": [
+        {
+          "risk_category": "Account Takeover",
+          "feature": "failed_login_5m",
+          "impact": "increased",
+          "contribution": 0.4382,
+          "explanation": "5 consecutive failed login attempts detected within 5-minute window from 4 distinct IP addresses across PH, TH, and RU. Automated brute-force attack suspected."
+        },
+        {
+          "risk_category": "Authentication Anomaly",
+          "feature": "impossible_travel",
+          "impact": "increased",
+          "contribution": 0.3017,
+          "explanation": "Successful login from Manila followed by login attempt from Moscow within 6 minutes. Physical travel impossible."
+        },
+        {
+          "risk_category": "Fraud Indicator",
+          "feature": "headless_browser_signature",
+          "impact": "increased",
+          "contribution": 0.1823,
+          "explanation": "Headless browser fingerprint detected (Selenium/ChromeDriver). Automation tools likely used."
+        }
+      ]
+    },
+    {
+      "alert_id": "A-0102",
+      "event_time": "2026-02-09T14:05:17Z",
+      "txn_id": "T-0452A",
+      "user_id": "u_004",
+      "is_anomaly": 1,
+      "detector_type": "BEHAVIOR",
+      "signal": "Sudden Withdrawal Spike",
+      "severity": "HIGH",
+      "confidence": "0.97234",
+      "evidence": [
+        {
+          "risk_category": "Liquidity Shift",
+          "feature": "net_flow_1d",
+          "impact": "increased",
+          "contribution": 0.1385,
+          "explanation": "Large withdrawal of 75,000.00 detected within 15 minutes of suspicious login. Daily net_flow_1d=-75000.00."
+        },
+        {
+          "risk_category": "Behavioral Drift",
+          "feature": "txn_velocity_1h",
+          "impact": "increased",
+          "contribution": 0.0942,
+          "explanation": "Transaction velocity exceeds historical 95th percentile baseline. Unusual spending burst detected."
+        }
+      ]
+    },
+    {
+      "alert_id": "A-0103",
+      "event_time": "2026-02-09T14:07:20Z",
+      "txn_id": "T-0452B",
+      "user_id": "u_004",
+      "is_anomaly": 1,
+      "detector_type": "BEHAVIOR",
+      "signal": "Monetary Deviation",
+      "severity": "MED",
+      "confidence": "0.81455",
+      "evidence": [
+        {
+          "risk_category": "Monetary Deviation",
+          "feature": "ewma_resid",
+          "impact": "increased",
+          "contribution": 0.0412,
+          "explanation": "Transaction amount significantly deviates from short-term EWMA trend (residual=3.42σ)."
+        }
+      ]
+    },
+    {
+      "alert_id": "A-0104",
+      "event_time": "2026-02-09T15:03:10Z",
+      "user_id": "u_004",
+      "is_anomaly": 1,
+      "detector_type": "GRAPH RISK",
+      "signal": "Multi-Accounting",
+      "severity": "HIGH",
+      "confidence": "0.95221",
+      "evidence": [
+        {
+          "risk_category": "Multi-Accounting",
+          "feature": "shared_device_cluster",
+          "value": 5,
+          "explanation": "Device fingerprint linked to 5 other accounts previously flagged for bonus abuse."
+        },
+        {
+          "risk_category": "Network Risk",
+          "feature": "ip_reuse_degree",
+          "value": 8,
+          "explanation": "IP address reused across 8 accounts within 24 hours. Strong mule network indicator."
+        }
+      ]
+    }
+  ]
+}

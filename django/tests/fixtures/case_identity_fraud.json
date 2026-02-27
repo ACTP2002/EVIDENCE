@@ -1,0 +1,112 @@
+{
+  "_description": "Test Fixture: Identity Fraud - AI Generated Documents suspected",
+
+  "case_id": "CASE-2025-00144",
+  "created_at": "2025-01-17T11:00:00Z",
+  "assembled_at": "2025-01-17T11:00:04Z",
+
+  "alerts": [
+    {
+      "alert_id": "ALT-78402",
+      "alert_type": "identity_fraud",
+      "triggered_at": "2025-01-17T10:58:00Z",
+      "severity": "high",
+      "risk_score": 82,
+      "description": "Document verification flagged potential AI-generated face in passport photo",
+      "detector_source": "image_processor"
+    },
+    {
+      "alert_id": "ALT-78403",
+      "alert_type": "synthetic_identity",
+      "triggered_at": "2025-01-17T10:58:00Z",
+      "severity": "medium",
+      "risk_score": 68,
+      "description": "Identity elements match pattern of synthetic identity: new credit file, no social media presence, mismatched data points",
+      "detector_source": "identity_risk_scorer"
+    }
+  ],
+
+  "customer": {
+    "customer_id": "CUST-NEW-9921",
+    "full_name": "James Robert Anderson",
+    "email": "jranderson8847@tempmail.com",
+    "phone": "+14155551234",
+    "date_of_birth": "1990-03-15",
+    "country": "United States",
+    "address": "789 Oak Street, San Francisco, CA",
+    "verification_status": "pending",
+    "verification_method": "document",
+    "verification_date": null,
+    "declared_income": 95000.00,
+    "income_currency": "USD",
+    "employment_status": "employed",
+    "risk_rating": "high",
+    "pep_status": false,
+    "sanctions_hit": false,
+    "adverse_media": false,
+    "document_type": "passport",
+    "document_country": "United States",
+    "document_verified": false,
+    "document_flags": ["ai_generated_face_suspected", "metadata_anomaly", "font_inconsistency"]
+  },
+
+  "account": {
+    "account_id": "ACC-NEW-5543",
+    "customer_id": "CUST-NEW-9921",
+    "account_type": "trading",
+    "account_status": "pending_verification",
+    "created_at": "2025-01-17T10:30:00Z",
+    "total_deposits_30d": 0.00,
+    "total_withdrawals_30d": 0.00,
+    "total_trades_30d": 0,
+    "average_transaction_amount": 0.00,
+    "deposit_to_income_ratio": null,
+    "account_age_days": 0,
+    "is_dormant_reactivated": false
+  },
+
+  "transactions": [],
+
+  "logins": [
+    {
+      "event_id": "LOGIN-NEW-001",
+      "timestamp": "2025-01-17T10:30:00Z",
+      "ip_address": "104.28.xxx.xxx",
+      "device_id": "DEV-NEWUSER1",
+      "device_type": "desktop",
+      "browser": "Chrome",
+      "location_country": "United States",
+      "location_city": "Los Angeles",
+      "is_vpn": true,
+      "is_proxy": false,
+      "login_success": true,
+      "failure_reason": null,
+      "risk_flags": ["vpn_detected", "location_mismatch"]
+    }
+  ],
+
+  "devices": [
+    {
+      "device_id": "DEV-NEWUSER1",
+      "device_type": "desktop",
+      "os": "Windows 11",
+      "first_seen": "2025-01-17",
+      "last_seen": "2025-01-17",
+      "is_trusted": false,
+      "linked_accounts": ["ACC-NEW-5543"]
+    }
+  ],
+
+  "network_connections": [],
+
+  "prior_cases": [],
+
+  "data_completeness": {
+    "kyc_data": true,
+    "transaction_history": true,
+    "login_history": true,
+    "device_data": true,
+    "network_analysis": true,
+    "prior_cases": true
+  }
+}

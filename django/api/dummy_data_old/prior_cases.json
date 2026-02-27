@@ -1,0 +1,47 @@
+[
+  {
+    "prior_case_id": "PC-001",
+    "customer_id": "CUST-7721",
+    "case_id": "CASE-2025-1102",
+    "case_date": "2025-02-15T11:00:00Z",
+    "case_type": "identity_fraud",
+    "outcome": "false_positive",
+    "resolution_notes": "Customer provided valid secondary ID verification after initial flag. Document quality issues resolved - lighting conditions caused unusual shadows on biometric scan. No fraud detected."
+  },
+  {
+    "prior_case_id": "PC-002",
+    "customer_id": "CUST-9821",
+    "case_id": "CASE-2024-8821",
+    "case_date": "2024-11-10T14:00:00Z",
+    "case_type": "unusual_activity",
+    "outcome": "inconclusive",
+    "resolution_notes": "Large deposit ($25K) flagged. Customer explained as business sale proceeds. Unable to fully verify due to incomplete documentation. Closed with elevated monitoring."
+  },
+  {
+    "prior_case_id": "PC-003",
+    "customer_id": "CUST-4512",
+    "case_id": "CASE-2024-4401",
+    "case_date": "2024-12-05T09:30:00Z",
+    "case_type": "velocity_check",
+    "outcome": "false_positive",
+    "resolution_notes": "Holiday shopping season - multiple legitimate purchases flagged velocity rules. Customer provided receipts. No fraud."
+  },
+  {
+    "prior_case_id": "PC-004",
+    "customer_id": "CUST-1029",
+    "case_id": "CASE-2024-1029",
+    "case_date": "2024-01-20T10:00:00Z",
+    "case_type": "unusual_transaction",
+    "outcome": "false_positive",
+    "resolution_notes": "Home downpayment transaction flagged as anomaly. Customer provided mortgage documentation. Legitimate transaction."
+  },
+  {
+    "prior_case_id": "PC-005",
+    "customer_id": "CUST-3348",
+    "case_id": "CASE-2024-3301",
+    "case_date": "2024-08-12T13:00:00Z",
+    "case_type": "login_anomaly",
+    "outcome": "false_positive",
+    "resolution_notes": "Login from Portugal during vacation. Customer confirmed it was her. Added travel notification feature reminder to account."
+  }
+]

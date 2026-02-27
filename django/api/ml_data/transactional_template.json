@@ -1,0 +1,18 @@
+{
+  "event_id": "evt_txn_...",
+  "event_time": "2026-02-07T09:15:12.345Z",
+  "stream_type": "transactional",
+  "event_type": "deposit/withdrawal/buy/sell",
+  "user_id": "u_001",
+  "account_id": "a_101",
+  "session_id": "s_789",
+  "device_id": "d_abcd",
+  "ip": "203.0.113.10",
+  "data": {
+    "txn_id": "T-883192",
+    "amount": 1083.21,
+    "currency": "USD",
+    "channel": "web",
+    "result": "success"
+  }
+}

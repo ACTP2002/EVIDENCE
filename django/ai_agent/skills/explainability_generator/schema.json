@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExplainabilityOutput",
+  "description": "Output schema for the Explainability Generator AI skill",
+  "type": "object",
+  "required": ["primary_hypothesis", "confidence", "justification", "plain_english_summary"],
+  "properties": {
+    "primary_hypothesis": {
+      "type": "string",
+      "description": "Primary fraud hypothesis with brief description"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score between 0.0 and 1.0"
+    },
+    "justification": {
+      "type": "array",
+      "description": "List of claims with supporting evidence",
+      "items": {
+        "type": "object",
+        "required": ["claim", "business_facts"],
+        "properties": {
+          "claim": {
+            "type": "string",
+            "description": "Clear statement of what is suspicious"
+          },
+          "business_facts": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Observable facts supporting the claim"
+          },
+          "linked_alerts": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Alert IDs related to this claim"
+          }
+        }
+      }
+    },
+    "plain_english_summary": {
+      "type": "string",
+      "description": "Human-readable summary for investigators"
+    }
+  }
+}

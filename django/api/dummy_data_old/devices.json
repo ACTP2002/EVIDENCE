@@ -1,0 +1,74 @@
+[
+  {
+    "device_id": "DEV-IPHONE-99",
+    "device_type": "mobile",
+    "os": "iOS 17.4",
+    "first_seen": "2025-05-10T10:00:00Z",
+    "last_seen": "2025-05-14T07:45:00Z",
+    "is_trusted": false,
+    "linked_accounts": ["ACC-882193", "ACC-0012", "ACC-4491"]
+  },
+  {
+    "device_id": "DEV-LAPTOP-2201",
+    "device_type": "desktop",
+    "os": "Windows 11",
+    "first_seen": "2025-01-10T14:00:00Z",
+    "last_seen": "2025-05-13T09:20:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-882193"]
+  },
+  {
+    "device_id": "DEV-ANDROID-5521",
+    "device_type": "mobile",
+    "os": "Android 13",
+    "first_seen": "2025-06-02T08:30:00Z",
+    "last_seen": "2025-06-02T10:32:00Z",
+    "is_trusted": false,
+    "linked_accounts": ["ACC-451288", "ACC-7821", "ACC-9104"]
+  },
+  {
+    "device_id": "DEV-LAPTOP-2202",
+    "device_type": "desktop",
+    "os": "macOS 14.2",
+    "first_seen": "2024-11-21T10:00:00Z",
+    "last_seen": "2025-06-02T08:45:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-451288"]
+  },
+  {
+    "device_id": "DEV-DESKTOP-8821",
+    "device_type": "desktop",
+    "os": "Windows 10",
+    "first_seen": "2024-08-15T12:00:00Z",
+    "last_seen": "2025-04-18T12:00:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-982145"]
+  },
+  {
+    "device_id": "DEV-IPHONE-1029",
+    "device_type": "mobile",
+    "os": "iOS 16.5",
+    "first_seen": "2023-09-12T11:00:00Z",
+    "last_seen": "2025-03-10T08:00:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-102948"]
+  },
+  {
+    "device_id": "DEV-ANDROID-9910",
+    "device_type": "mobile",
+    "os": "Android 12",
+    "first_seen": "2025-06-30T07:50:00Z",
+    "last_seen": "2025-06-30T20:45:00Z",
+    "is_trusted": false,
+    "linked_accounts": ["ACC-774422", "ACC-1122", "ACC-5544", "ACC-8899"]
+  },
+  {
+    "device_id": "DEV-IPHONE-3348",
+    "device_type": "mobile",
+    "os": "iOS 17.2",
+    "first_seen": "2024-05-22T09:00:00Z",
+    "last_seen": "2025-06-28T10:15:00Z",
+    "is_trusted": true,
+    "linked_accounts": ["ACC-334821"]
+  }
+]

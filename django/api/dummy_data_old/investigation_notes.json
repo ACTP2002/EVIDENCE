@@ -1,0 +1,128 @@
+[
+  {
+    "note_id": "NOTE-001",
+    "case_id": "CASE-2025-88412",
+    "investigator_id": "INV-001",
+    "timestamp": "2025-05-14T09:30:00Z",
+    "action_type": "note",
+    "content": "Case assigned. Multiple red flags: VPN usage from Nigeria, deposits far exceed declared income, crypto transactions with obfuscated sources. Document flags on passport suggest possible AI-generated face. Prioritizing for immediate review.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-002",
+    "case_id": "CASE-2025-88412",
+    "investigator_id": "INV-001",
+    "timestamp": "2025-05-14T10:15:00Z",
+    "action_type": "document_requested",
+    "content": "Requested additional identity verification documents from customer. Email sent requesting: (1) Utility bill dated within last 90 days, (2) Secondary government-issued ID, (3) Bank statements for source of crypto deposits.",
+    "attachments": ["email_20250514_101500.pdf"]
+  },
+  {
+    "note_id": "NOTE-003",
+    "case_id": "CASE-2025-88412",
+    "investigator_id": "INV-001",
+    "timestamp": "2025-05-14T14:35:00Z",
+    "action_type": "account_frozen",
+    "content": "Account frozen pending customer response. Withdrawal capabilities disabled. Customer has 48 hours to respond to document request before escalation to compliance team.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-004",
+    "case_id": "CASE-2025-91203",
+    "investigator_id": "INV-002",
+    "timestamp": "2025-06-02T11:45:00Z",
+    "action_type": "note",
+    "content": "Classic account takeover pattern. Customer has legitimate 6-month account history from London. Sudden login from Romania via proxy, followed by immediate cash-out attempts. Account already auto-frozen by system. Attempting to contact customer via registered phone.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-005",
+    "case_id": "CASE-2025-91203",
+    "investigator_id": "INV-002",
+    "timestamp": "2025-06-02T15:20:00Z",
+    "action_type": "note",
+    "content": "Customer contact successful. She confirms she did NOT authorize any transactions after 08:45 GMT. Reports receiving phishing email yesterday that she may have clicked. Legitimate customer - likely phishing victim. Recommended password change and 2FA enablement.",
+    "attachments": ["customer_call_transcript.txt"]
+  },
+  {
+    "note_id": "NOTE-006",
+    "case_id": "CASE-2025-91203",
+    "investigator_id": "INV-002",
+    "timestamp": "2025-06-02T16:00:00Z",
+    "action_type": "closed",
+    "content": "OUTCOME: Confirmed fraud - Account takeover via phishing. Customer verified as legitimate victim. Reversed fraudulent transactions (TXN-88201, TXN-88202). Account unfrozen after password reset and 2FA setup. Blocklisted device DEV-ANDROID-5521 and IP 103.28.45.122.",
+    "attachments": ["resolution_summary.pdf"]
+  },
+  {
+    "note_id": "NOTE-007",
+    "case_id": "CASE-2025-77884",
+    "investigator_id": "INV-003",
+    "timestamp": "2025-04-18T14:30:00Z",
+    "action_type": "escalated",
+    "content": "Textbook structuring case. 12 deposits over 7 days, each just under $10K CTR threshold. Average amount $9,833. Customer owns a cash-heavy business (construction) which could explain cash deposits, but pattern is highly suspicious. Escalating to AML compliance team for SAR filing.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-008",
+    "case_id": "CASE-2025-77884",
+    "investigator_id": "INV-003",
+    "timestamp": "2025-04-18T16:45:00Z",
+    "action_type": "document_requested",
+    "content": "Requested business financial records: tax returns (2023-2024), business bank statements, customer lists, invoices for cash payments received. Also requested explanation for deposit pattern.",
+    "attachments": ["document_request_letter.pdf"]
+  },
+  {
+    "note_id": "NOTE-009",
+    "case_id": "CASE-2025-55201",
+    "investigator_id": "INV-001",
+    "timestamp": "2025-03-10T09:00:00Z",
+    "action_type": "note",
+    "content": "Low-risk alert. Single large transaction ($8,500) flagged as anomaly, but customer has 1+ year history with no issues. Transaction labeled as 'Employer Bonus Payment'. Reviewing for legitimacy.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-010",
+    "case_id": "CASE-2025-55201",
+    "investigator_id": "INV-001",
+    "timestamp": "2025-03-10T11:30:00Z",
+    "action_type": "note",
+    "content": "Customer contacted. Confirmed she received annual performance bonus from employer. Provided copy of bonus letter and W-2 amendment. Transaction is legitimate.",
+    "attachments": ["bonus_letter.pdf", "w2_amendment.pdf"]
+  },
+  {
+    "note_id": "NOTE-011",
+    "case_id": "CASE-2025-55201",
+    "investigator_id": "INV-001",
+    "timestamp": "2025-03-10T12:00:00Z",
+    "action_type": "closed",
+    "content": "OUTCOME: False positive. Legitimate employer bonus payment. No action required. Case closed.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-012",
+    "case_id": "CASE-2025-66339",
+    "investigator_id": "INV-002",
+    "timestamp": "2025-07-01T15:50:00Z",
+    "action_type": "note",
+    "content": "Multiple critical alerts. Suspected money mule account. Brand new account (2 days old), disposable email, unverified KYC, rapid in-out flow ($12.4K in, $11.95K out in 24h), VPN from datacenter IP, device linked to 3 other suspicious accounts. High confidence this is a mule account.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-013",
+    "case_id": "CASE-2025-66339",
+    "investigator_id": "INV-002",
+    "timestamp": "2025-07-01T16:10:00Z",
+    "action_type": "account_frozen",
+    "content": "Account immediately frozen. All outbound transactions blocked. Remaining balance ($450) held pending investigation. Flagged connected accounts (ACC-1122, ACC-5544, ACC-8899) for review.",
+    "attachments": null
+  },
+  {
+    "note_id": "NOTE-014",
+    "case_id": "CASE-2025-66339",
+    "investigator_id": "INV-002",
+    "timestamp": "2025-07-01T16:45:00Z",
+    "action_type": "escalated",
+    "content": "Escalated to law enforcement liaison. Suspected organized fraud ring. Device DEV-ANDROID-9910 linked to 4 accounts created within 48 hours, all showing mule patterns. Requesting trace on crypto wallet 0xA8B...3f2 (source) and 0x9F1...cc8 (destination).",
+    "attachments": ["network_analysis.pdf"]
+  }
+]

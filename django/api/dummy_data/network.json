@@ -1,0 +1,327 @@
+[
+  {
+    "event_id": "evt_net_0001",
+    "event_time": "2026-02-07T09:10:17.233354Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_001",
+    "account_id": "a_001",
+    "session_id": "s_001",
+    "device_id": "d_001",
+    "ip": "100.100.100.1",
+    "data": {
+      "rtt_ms_p95": 180,
+      "packet_loss_pct": 0.8,
+      "jitter_ms_p95": 35,
+      "asn": 4788,
+      "vpn_suspected": false,
+      "shared_ip_detected": true,
+      "shared_ip_accounts": 6,
+      "geo": { "country": "MY", "city": "Kuala Lumpur" }
+    }
+  },
+  {
+    "event_id": "evt_net_0002",
+    "event_time": "2026-02-07T10:06:17.230Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_002",
+    "account_id": "a_002",
+    "session_id": "s_002",
+    "device_id": "d_002",
+    "ip": "100.100.100.1",
+    "data": {
+      "rtt_ms_p95": 175,
+      "packet_loss_pct": 0.7,
+      "jitter_ms_p95": 32,
+      "asn": 4788,
+      "vpn_suspected": false,
+      "shared_ip_detected": true,
+      "shared_ip_accounts": 6,
+      "flagged": true,
+      "geo": { "country": "MY", "city": "Kuala Lumpur" }
+    }
+  },
+  {
+    "event_id": "evt_net_0003",
+    "event_time": "2026-02-07T10:06:20.450Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_003",
+    "account_id": "a_003",
+    "session_id": "s_003",
+    "device_id": "d_003",
+    "ip": "100.100.100.1",
+    "data": {
+      "rtt_ms_p95": 182,
+      "packet_loss_pct": 0.9,
+      "jitter_ms_p95": 38,
+      "asn": 4788,
+      "vpn_suspected": false,
+      "shared_ip_detected": true,
+      "shared_ip_accounts": 6,
+      "flagged": true,
+      "geo": { "country": "MY", "city": "Kuala Lumpur" }
+    }
+  },
+  {
+    "event_id": "evt_net_0004",
+    "event_time": "2026-02-07T10:06:20.500Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_004",
+    "account_id": "a_004",
+    "session_id": "s_004",
+    "device_id": "d_004",
+    "ip": "100.100.100.1",
+    "data": {
+      "rtt_ms_p95": 178,
+      "packet_loss_pct": 0.6,
+      "jitter_ms_p95": 30,
+      "asn": 4788,
+      "vpn_suspected": false,
+      "shared_ip_detected": true,
+      "shared_ip_accounts": 6,
+      "flagged": true,
+      "geo": { "country": "MY", "city": "Kuala Lumpur" }
+    }
+  },
+  {
+    "event_id": "evt_net_0005",
+    "event_time": "2026-02-07T10:06:21.020Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_005",
+    "account_id": "a_005",
+    "session_id": "s_005",
+    "device_id": "d_005",
+    "ip": "100.100.100.1",
+    "data": {
+      "rtt_ms_p95": 185,
+      "packet_loss_pct": 1.0,
+      "jitter_ms_p95": 40,
+      "asn": 4788,
+      "vpn_suspected": false,
+      "shared_ip_detected": true,
+      "shared_ip_accounts": 6,
+      "flagged": true,
+      "geo": { "country": "MY", "city": "Kuala Lumpur" }
+    }
+  },
+  {
+    "event_id": "evt_net_0006",
+    "event_time": "2026-02-07T10:06:21.550Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_006",
+    "account_id": "a_006",
+    "session_id": "s_006",
+    "device_id": "d_006",
+    "ip": "100.100.100.1",
+    "data": {
+      "rtt_ms_p95": 190,
+      "packet_loss_pct": 1.1,
+      "jitter_ms_p95": 42,
+      "asn": 4788,
+      "vpn_suspected": false,
+      "shared_ip_detected": true,
+      "shared_ip_accounts": 6,
+      "flagged": true,
+      "geo": { "country": "MY", "city": "Kuala Lumpur" }
+    }
+  },
+  {
+    "event_id": "evt_net_0101",
+    "event_time": "2026-02-10T02:12:05Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_007",
+    "account_id": "a_007",
+    "session_id": "s_107",
+    "device_id": "d_107",
+    "ip": "202.55.134.22",
+    "data": {
+      "rtt_ms_p95": 245,
+      "packet_loss_pct": 2.1,
+      "jitter_ms_p95": 58,
+      "asn": 17974,
+      "vpn_suspected": false,
+      "geo": { "country": "ID", "city": "Jakarta" }
+    }
+  },
+  {
+    "event_id": "evt_net_0102",
+    "event_time": "2026-02-10T02:13:22Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_007",
+    "account_id": "a_007",
+    "session_id": "s_108",
+    "device_id": "d_108",
+    "ip": "185.220.101.45",
+    "data": {
+      "rtt_ms_p95": 420,
+      "packet_loss_pct": 5.2,
+      "jitter_ms_p95": 125,
+      "asn": 51167,
+      "vpn_suspected": true,
+      "tor_exit_node": true,
+      "geo": { "country": "DE", "city": "Frankfurt" }
+    }
+  },
+  {
+    "event_id": "evt_net_0103",
+    "event_time": "2026-02-10T02:14:01Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_007",
+    "account_id": "a_007",
+    "session_id": "s_109",
+    "device_id": "d_109",
+    "ip": "41.190.2.88",
+    "data": {
+      "rtt_ms_p95": 380,
+      "packet_loss_pct": 4.5,
+      "jitter_ms_p95": 95,
+      "asn": 36873,
+      "vpn_suspected": false,
+      "geo": { "country": "NG", "city": "Lagos" }
+    }
+  },
+  {
+    "event_id": "evt_net_0104",
+    "event_time": "2026-02-10T02:15:02Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_007",
+    "account_id": "a_007",
+    "session_id": "s_110",
+    "device_id": "d_110",
+    "ip": "103.28.121.56",
+    "data": {
+      "rtt_ms_p95": 295,
+      "packet_loss_pct": 3.8,
+      "jitter_ms_p95": 72,
+      "asn": 45899,
+      "vpn_suspected": true,
+      "proxy_detected": true,
+      "geo": { "country": "VN", "city": "Ho Chi Minh" }
+    }
+  },
+  {
+    "event_id": "evt_net_0105",
+    "event_time": "2026-02-10T02:31:45Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_007",
+    "account_id": "a_007",
+    "session_id": "s_113",
+    "device_id": "d_113",
+    "ip": "41.190.2.92",
+    "data": {
+      "rtt_ms_p95": 365,
+      "packet_loss_pct": 4.1,
+      "jitter_ms_p95": 88,
+      "asn": 36873,
+      "vpn_suspected": false,
+      "geo": { "country": "NG", "city": "Lagos" }
+    }
+  },
+  {
+    "event_id": "evt_net_0201",
+    "event_time": "2026-02-06T08:15:00Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_008",
+    "account_id": "a_008",
+    "session_id": "s_201",
+    "device_id": "d_201",
+    "ip": "171.96.45.123",
+    "data": {
+      "rtt_ms_p95": 85,
+      "packet_loss_pct": 0.3,
+      "jitter_ms_p95": 18,
+      "asn": 23969,
+      "vpn_suspected": false,
+      "geo": { "country": "TH", "city": "Bangkok" }
+    }
+  },
+  {
+    "event_id": "evt_net_0301",
+    "event_time": "2026-02-14T08:00:00Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_301",
+    "device_id": "d_301",
+    "ip": "120.28.45.67",
+    "data": {
+      "rtt_ms_p95": 125,
+      "packet_loss_pct": 0.5,
+      "jitter_ms_p95": 22,
+      "asn": 9299,
+      "vpn_suspected": false,
+      "geo": { "country": "PH", "city": "Manila" }
+    }
+  },
+  {
+    "event_id": "evt_net_0302",
+    "event_time": "2026-02-14T08:05:00Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_302",
+    "device_id": "d_301",
+    "ip": "120.28.45.67",
+    "data": {
+      "rtt_ms_p95": 128,
+      "packet_loss_pct": 0.5,
+      "jitter_ms_p95": 24,
+      "asn": 9299,
+      "vpn_suspected": false,
+      "shared_device_detected": true,
+      "geo": { "country": "PH", "city": "Manila" }
+    }
+  },
+  {
+    "event_id": "evt_net_0303",
+    "event_time": "2026-02-14T09:00:00Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_009",
+    "account_id": "a_009",
+    "session_id": "s_303",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "rtt_ms_p95": 118,
+      "packet_loss_pct": 0.4,
+      "jitter_ms_p95": 20,
+      "asn": 9299,
+      "vpn_suspected": false,
+      "geo": { "country": "PH", "city": "Quezon City" }
+    }
+  },
+  {
+    "event_id": "evt_net_0304",
+    "event_time": "2026-02-14T09:02:00Z",
+    "stream_type": "network",
+    "event_type": "session_net_health",
+    "user_id": "u_010",
+    "account_id": "a_010",
+    "session_id": "s_304",
+    "device_id": "d_302",
+    "ip": "120.28.45.89",
+    "data": {
+      "rtt_ms_p95": 120,
+      "packet_loss_pct": 0.4,
+      "jitter_ms_p95": 21,
+      "asn": 9299,
+      "vpn_suspected": false,
+      "shared_device_detected": true,
+      "geo": { "country": "PH", "city": "Quezon City" }
+    }
+  }
+]

@@ -1,0 +1,271 @@
+{
+  "case_id": "CASE-20260207-AB12CD34",
+  "user_id": "U123",
+  "status": "OPEN",
+  "opened_at": "2026-02-07T09:01:22Z",
+  "last_updated": "2026-02-07T09:12:40Z",
+  "case_score": 78,
+  "risk_level": "HIGH",
+
+  "alerts": [
+    {
+      "alert_id": "A-001",
+      "event_time": "2026-02-07T09:01:22Z",
+      "detector_type": "ATO",
+      "signal": "MULTI_DEVICE_LOGIN",
+      "severity": "HIGH",
+      "confidence": 0.92,
+      "evidence": {
+        "devices_seen": 3,
+        "device_fingerprints": ["dfp_91a2", "dfp_77c1", "dfp_0be9"],
+        "countries": ["MY", "VN"],
+        "ips": ["101.23.xx.xx", "14.191.xx.xx", "113.22.xx.xx"],
+        "time_diff_minutes": 4,
+        "new_device_1d": 2,
+        "new_ip_1d": 2
+      }
+    },
+    {
+      "alert_id": "A-002",
+      "event_time": "2026-02-07T09:05:10Z",
+      "detector_type": "BEHAVIOR",
+      "signal": "LOGIN_TIME_ANOMALY",
+      "severity": "MEDIUM",
+      "confidence": 0.71,
+      "evidence": {
+        "avg_login_hour_local": 2,
+        "current_login_hour_local": 9,
+        "baseline_window_days": 30,
+        "z_score": 2.6
+      }
+    },
+    {
+      "alert_id": "A-003",
+      "event_time": "2026-02-07T09:06:05Z",
+      "detector_type": "BEHAVIOR",
+      "signal": "FAILED_LOGIN_SPIKE",
+      "severity": "MEDIUM",
+      "confidence": 0.76,
+      "evidence": {
+        "failed_login_5m": 8,
+        "failed_login_1h": 12,
+        "baseline_failed_login_1h_p95": 3
+      }
+    },
+    {
+      "alert_id": "A-004",
+      "event_time": "2026-02-07T09:08:44Z",
+      "detector_type": "TRANSACTION",
+      "signal": "WITHDRAWAL_AMOUNT_SPIKE",
+      "severity": "HIGH",
+      "confidence": 0.84,
+      "evidence": {
+        "amount_5m": 4200.0,
+        "baseline_amount_5m_avg": 120.0,
+        "baseline_amount_5m_p95": 600.0,
+        "txn_count_5m": 6,
+        "merchant_or_destination_risk_tag": "NEW_DESTINATION"
+      }
+    }
+  ],
+
+  "ai_investigation": {
+    "skills_used": [
+      "Case Context Assembler (Sofiya)",
+      "Explainability Generator (Danial)",
+      "Historical Similarity & Pattern Matching (TP)",
+      "Timeline Reconstruction Engine (Ushalvn)"
+    ],
+
+    "case_context": {
+      "profile_snapshot": {
+        "kyc_level": "FULL",
+        "account_age_days": 214,
+        "declared_country": "MY",
+        "typical_active_hours_local": [0, 1, 2, 3],
+        "known_devices_30d": ["dfp_91a2"],
+        "known_countries_30d": ["MY"],
+        "known_ips_30d": ["101.23.xx.xx"]
+      },
+      "status_snapshot": {
+        "txn": {
+          "avg_amount_5m": 120.0,
+          "avg_amount_1h": 800.0,
+          "avg_amount_1d": 3200.0,
+          "avg_count_5m": 0.4,
+          "avg_count_1h": 2.1,
+          "avg_count_1d": 9.0
+        },
+        "auth": {
+          "avg_login_hour_local": 2,
+          "avg_failed_login_1h": 0.6,
+          "avg_new_device_1d": 0.1,
+          "avg_new_ip_1d": 0.2,
+          "last_login_ts": "2026-02-05T09:20:12.918857Z"
+        },
+        "network": {
+          "typical_geo": "MY-KUL",
+          "vpn_seen_30d": false,
+          "rtt_p95_5m_baseline": 85,
+          "packet_loss_p95_5m_baseline": 0.2
+        }
+      },
+      "recent_activity_summary": {
+        "window_start": "2026-02-07T08:55:00Z",
+        "window_end": "2026-02-07T09:12:40Z",
+        "distinct_devices": 3,
+        "distinct_ips": 3,
+        "distinct_countries": 2,
+        "txn_total_amount": 4200.0,
+        "txn_total_count": 6
+      }
+    },
+
+    "explainability": {
+      "primary_hypothesis": "Account Takeover (ATO) leading to suspicious withdrawals",
+      "confidence": 0.86,
+      "justification": [
+        {
+          "claim": "Login behavior deviates sharply from the user's normal pattern",
+          "business_facts": [
+            "Login occurred at 09:xx local time, while typical activity is around 00:00–03:00",
+            "Failed login attempts spiked above historical 95th percentile"
+          ],
+          "linked_alerts": ["A-002", "A-003"]
+        },
+        {
+          "claim": "Access originated from new devices/IPs and a second country within minutes",
+          "business_facts": [
+            "3 devices observed in a short window vs 1 known device in last 30 days",
+            "Country changed from MY to VN within 4 minutes (improbable travel)"
+          ],
+          "linked_alerts": ["A-001"]
+        },
+        {
+          "claim": "Financial behavior escalated after suspicious access",
+          "business_facts": [
+            "Withdrawals totaling 4200 in 5 minutes vs baseline p95 of 600",
+            "Destination flagged as new/unseen for the account"
+          ],
+          "linked_alerts": ["A-004"]
+        }
+      ],
+      "plain_english_summary": "This case is high risk because the account was accessed from multiple new devices and a second country within minutes, followed by abnormal login timing, a spike in failed logins, and a sudden surge in withdrawal activity that is far above the user’s normal pattern."
+    },
+
+    "historical_similarity": {
+      "top_matches": [
+        {
+          "matched_case_id": "CASE-20260118-K9P2LM11",
+          "match_score": 0.87,
+          "matched_patterns": ["MULTI_DEVICE_LOGIN", "GEO_CHANGE", "WITHDRAWAL_SPIKE"],
+          "outcome": "CONFIRMED_FRAUD",
+          "resolution_action": "ACCOUNT_LOCK + FUNDS_HOLD",
+          "notes": "Similar rapid geo shift and immediate withdrawal burst after credential stuffing."
+        },
+        {
+          "matched_case_id": "CASE-20251203-QQ77AZ90",
+          "match_score": 0.81,
+          "matched_patterns": ["FAILED_LOGIN_SPIKE", "NEW_IP", "LOGIN_TIME_ANOMALY"],
+          "outcome": "CONFIRMED_FRAUD",
+          "resolution_action": "FORCED_RESET + STEP_UP_AUTH",
+          "notes": "Attack chain started with failed logins then successful access from new IP."
+        },
+        {
+          "matched_case_id": "CASE-20251121-ZZ10TT55",
+          "match_score": 0.63,
+          "matched_patterns": ["LOGIN_TIME_ANOMALY", "NEW_DEVICE"],
+          "outcome": "FALSE_POSITIVE",
+          "resolution_action": "ALLOWLIST_DEVICE",
+          "notes": "User was traveling; no abnormal transactions followed."
+        }
+      ],
+      "inference": {
+        "most_likely_outcome": "CONFIRMED_FRAUD",
+        "support": "Two high-similarity matches ended as confirmed fraud and include the same escalation into withdrawals."
+      }
+    },
+
+    "timeline": {
+      "sequence": [
+        {
+          "t": "2026-02-07T09:00:40Z",
+          "type": "AUTH",
+          "event": "FAILED_LOGIN_ATTEMPTS_START",
+          "details": { "failed_login_5m": 3, "ip": "14.191.xx.xx", "country": "VN" },
+          "related_alerts": ["A-003"]
+        },
+        {
+          "t": "2026-02-07T09:01:22Z",
+          "type": "AUTH",
+          "event": "SUCCESS_LOGIN_NEW_DEVICE",
+          "details": { "device_fingerprint": "dfp_77c1", "ip": "14.191.xx.xx", "country": "VN" },
+          "related_alerts": ["A-001"]
+        },
+        {
+          "t": "2026-02-07T09:03:58Z",
+          "type": "AUTH",
+          "event": "SECOND_SUCCESS_LOGIN_DIFFERENT_DEVICE",
+          "details": { "device_fingerprint": "dfp_0be9", "ip": "113.22.xx.xx", "country": "MY" },
+          "related_alerts": ["A-001"]
+        },
+        {
+          "t": "2026-02-07T09:05:10Z",
+          "type": "BEHAVIOR",
+          "event": "LOGIN_TIME_OUTSIDE_BASELINE",
+          "details": { "avg_login_hour_local": 2, "current_login_hour_local": 9 },
+          "related_alerts": ["A-002"]
+        },
+        {
+          "t": "2026-02-07T09:08:44Z",
+          "type": "TRANSACTION",
+          "event": "WITHDRAWAL_BURST",
+          "details": { "count_5m": 6, "amount_5m": 4200.0, "destination": "NEW_DESTINATION" },
+          "related_alerts": ["A-004"]
+        }
+      ],
+      "escalation_assessment": {
+        "pattern": "Failed logins → successful access from new device/geo → rapid additional access → abnormal withdrawals",
+        "severity": "HIGH"
+      }
+    },
+
+    "recommended_actions": [
+      {
+        "action": "STEP_UP_AUTH",
+        "priority": "P0",
+        "reason": "Multiple new devices + geo change in minutes (ATO-like)."
+      },
+      {
+        "action": "TEMP_ACCOUNT_LOCK",
+        "priority": "P0",
+        "reason": "High similarity to confirmed ATO cases and active withdrawal burst."
+      },
+      {
+        "action": "HOLD_WITHDRAWALS_AND_REVIEW_DESTINATION",
+        "priority": "P0",
+        "reason": "Withdrawal spike far above baseline; destination is new/unseen."
+      },
+      {
+        "action": "USER_OUTREACH_VERIFICATION",
+        "priority": "P1",
+        "reason": "Confirm whether travel/new device is legitimate (reduce false positives)."
+      }
+    ],
+
+    "dashboard_fields": {
+      "headline": "Suspected ATO with rapid geo/device switching and abnormal withdrawal burst",
+      "key_evidence": [
+        "3 devices in minutes (2 new in 1d)",
+        "MY→VN country change within 4 minutes",
+        "Failed logins spike (8 in 5m)",
+        "Withdrawals 4200 in 5m vs baseline p95 600"
+      ],
+      "links": {
+        "user_profile_ref": "profile_store/U123",
+        "status_ref": "status_store/U123",
+        "raw_events_ref": "event_store?user_id=U123&from=2026-02-07T08:55:00Z&to=2026-02-07T09:12:40Z"
+      }
+    }
+  }
+}
